@@ -1,0 +1,60 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+
+class LoginController extends Controller
+{
+    public function login(){
+        return view('login.index');
+    }
+
+    public function loginCheck(Request $request){
+        $credentials = $request->only('email','password');
+        if(Auth::attempt($credentials)){
+            if(Auth::user()->role=='admin') return redirect()->route('admin.home');
+        }
+        else {
+            return redirect()->route('login')->withErrors('Email adresi veya şifre hatalı!');
+        }
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('login');
+    }
+
+    public function admin(){
+        return view('admin.home');
+    }
+
+    public function RegisterUser(){
+        return view('login.register');
+    }
+    public function register(Request $request){
+        $email = User::where('email','=',$request->email)->first();
+        if(true){ //$request->role=='user'
+            if ($email==null) {
+                $user = new User();
+                $user->name = $request->name;
+                $user->surname = $request->surname;
+                $user->email = $request->email;
+                $user->role = 'admin';
+                $user->password = Hash::make($request->password);
+                $user->inform = $request->inform? 1 : 0;
+                $user->save();
+            }
+            else{
+                return redirect()->route('register.user')->withErrors('Bu email kayıtlıdır. Lütfen başka bir email adresi giriniz.');
+            }
+        }
+        return redirect()->route('login');
+    }
+}
