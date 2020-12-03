@@ -11,7 +11,7 @@ Projeyi çalıştırabilmek için aşağıdaki şartları sağlamalısınız.
 - Laravel >= 8.x
 - PHP >= 7.4
 
-# zip dosyasıyla indir
+## zip dosyasıyla indir
 
 - Yeşil renkli code butonu ile projenin zip dosyasını bilgisayarınıza indirin.
 - Dosyayı zip'ten çıkarın.
@@ -32,27 +32,15 @@ Bilgisayarınızda git kurulu değilse bu <a href="https://git-scm.com/downloads
 
   ```
   "composer install"
-  ```
-  ```
   "php artisan key:generate"
-  ```
-  ```
   "php artisan storage:link"
-  ```
-  ```
   "php artisan migrate:fresh"
-  ```
-  ```
   "php artisan db:seed"
-  ```
-  ```
   "php artisan optimize"
-  ```
-  ```
   "php artisan serve"
   ```
 
-  - localhost:8000 portundan projeye erişebilirsiniz.
+- localhost:8000 portundan projeye erişebilirsiniz.
 
 ## Gereksinimler
 
