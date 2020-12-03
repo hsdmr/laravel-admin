@@ -21,6 +21,7 @@ Projeyi çalıştırabilmek için aşağıdaki şartları sağlamalısınız.
 Bilgisayarınızda git kurulu değilse bu <a href="https://git-scm.com/downloads">linkden</a> işletim sisteminize uygun olanı kurun.
 
 - Terminal ekranı açarak aşağıdaki aşağıdaki kodu yapıştırın ve çalıştırın.
+
   ```
   "git clone https://github.com/hsdmr/laravel-admin.git"
   ```
@@ -42,8 +43,12 @@ Bilgisayarınızda git kurulu değilse bu <a href="https://git-scm.com/downloads
 
 - localhost:8000 portundan projeye erişebilirsiniz.
 
-## Gereksinimler
+## Hatırlatmalar
 
-- Laravel >= 8.x
-- PHP >= 7.4
+Projeyi servera deploy ederken bazen klasör izin hataları oluyor aşağıdaki iki kodu deneyebilirsiniz.
+
+  ```
+  "chmod -R o+w storage"
+  "chmod 755 -R laravel-admin"
+  ```
 
