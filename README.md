@@ -1,12 +1,11 @@
-<h2 align="center">
-    Laravel Admin Panel
-</h2>
+<p align="center">
+    #Laravel Admin Panel
+</p>
 
-- Projeyi çalıştırmak için bilgisayarınıza <a href="https://getcomposer.org/">composer</a> kurmalısınız
 
 ## Gereksinimler
 
-Projeyi çalıştırabilmek için aşağıdaki şartları sağlamalısınız.
+Projeyi çalıştırmak için bilgisayarınıza <a href="https://getcomposer.org/">composer</a> kurmalısınız ve aşağıdaki şartları sağlamalısınız
 
 - Laravel >= 8.x
 - PHP >= 7.4
