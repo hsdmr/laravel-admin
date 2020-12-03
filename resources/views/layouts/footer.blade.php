@@ -1,4 +1,4 @@
-<footer style="background-color: gray; ">
+<footer>
     <div class="container py-4" style="color: white;">
       <div class="row">
         <div class="col-md-3 " style="color: white;">
@@ -79,7 +79,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-12 border-top p-3" style="color: white;">
+    <div class="col-md-12 p-3" style="color: white;">
       <div class="text-center">HasPanel © 2020 - Tüm Hakları Saklıdır.</div>
     </div>
   </footer>

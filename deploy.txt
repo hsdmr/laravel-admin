@@ -3,8 +3,8 @@ composer install --optimize-autoloader --no-dev
 .env.example -> rename ->.env
 ;chmod 755 -R superDoktor
 chmod -R o+w storage
-php artisan storage:link
 php artisan key:generate
+php artisan storage:link
 php artisan migrate:fresh
 php artisan db:seed
 php artisan config:cache

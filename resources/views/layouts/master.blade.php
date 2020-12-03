@@ -34,7 +34,7 @@
         @yield('content')
     </div>
 
-    <!--@include('layouts.footer')-->
+    @include('layouts.footer')
 
     @yield('script')
     {!! $setting->footerjs !!}
