@@ -1,6 +1,5 @@
-<p align="center">
-    #Laravel Admin Panel
-</p>
+# Laravel Admin Panel
+
 
 
 ## Gereksinimler
