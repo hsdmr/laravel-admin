@@ -45,7 +45,7 @@ Bilgisayarınızda git kurulu değilse bu <a href="https://git-scm.com/downloads
 
 ## Hatırlatmalar
 
-Projeyi servera deploy ederken bazen klasör izin hataları oluyor aşağıdaki iki kodu deneyebilirsiniz.
+Projeyi sunucuya deploy ederken klasör izin hataları olursa aşağıdaki kodları deneyebilirsiniz.
 
   ```
   "chmod -R o+w storage"
