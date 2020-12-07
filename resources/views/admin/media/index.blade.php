@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-{{ __('Media') }}
+{{ __('main.Media') }}
 @endsection
 
 @section('content')
@@ -12,12 +12,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h4 class="m-0 text-dark">{{ __('Media') }}</h4>
+            <h4 class="m-0 text-dark">{{ __('main.Media') }}</h4>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">{{ __('Home') }}</a></li>
-              <li class="breadcrumb-item active">{{ __('Media') }}</li>
+              <li class="breadcrumb-item"><a href="#">{{ __('main.Home') }}</a></li>
+              <li class="breadcrumb-item active">{{ __('main.Media') }}</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->

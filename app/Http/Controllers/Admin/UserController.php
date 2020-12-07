@@ -30,7 +30,7 @@ class UserController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
 
-        return redirect()->route('admin.user.edit',$user->id)->with(['type' => 'success', 'message' =>'Kullanıcı Oluşturuldu.']);
+        return redirect()->route('admin.user.edit',$user->id)->with(['type' => 'success', 'message' =>'User Created.']);
     }
 
     public function show($id)
@@ -54,14 +54,14 @@ class UserController extends Controller
         $request->password==null ? "" : $user->password = Hash::make($request->password);
         $user->save();
 
-        return redirect()->route('admin.user.edit',$user->id)->with(['type' => 'success', 'message' =>'Kullanıcı Oluşturuldu.']);
+        return redirect()->route('admin.user.edit',$user->id)->with(['type' => 'success', 'message' =>'User Created.']);
     }
 
     public function delete($id)
     {
         $user = User::find($id);
         $user->delete();
-        return redirect()->route('admin.user.index')->with(['type' => 'success', 'message' =>'Kullanıcı Geri Dönüşüm Kutusuna Taşındı.']);
+        return redirect()->route('admin.user.index')->with(['type' => 'success', 'message' =>'User Moved to Recycle Bin.']);
     }
 
     public function trash()
@@ -74,14 +74,14 @@ class UserController extends Controller
     {
         $user = User::withTrashed()->find($id);
         $user->restore();
-        return redirect()->route('admin.user.trash')->with(['type' => 'success', 'message' =>'Kullanıcı Kurtarıldı.']);
+        return redirect()->route('admin.user.trash')->with(['type' => 'success', 'message' =>'User Recovered.']);
     }
 
     public function destroy($id)
     {
         $user = User::withTrashed()->find($id);
         $user->forceDelete();
-        return redirect()->route('admin.user.trash')->with(['type' => 'error', 'message' =>'Kullanıcı Silindi.']);
+        return redirect()->route('admin.user.trash')->with(['type' => 'error', 'message' =>'User Deleted.']);
     }
 
 }

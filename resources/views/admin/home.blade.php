@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-{{ __('Dashboard') }}
+{{ __('main.Dashboard') }}
 @endsection
 
 @section('content')
@@ -19,7 +19,7 @@
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
-        <h1 class="text-danger text-center mt-5">Veriler Eklenecek</h1>
+        <h1 class="text-danger text-center mt-5">{{ __('main.Welcome') }}</h1>
       </div>
     </div>
   </div>

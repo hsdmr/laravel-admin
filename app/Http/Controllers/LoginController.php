@@ -21,7 +21,7 @@ class LoginController extends Controller
             if(Auth::user()->role=='admin') return redirect()->route('admin.home');
         }
         else {
-            return redirect()->route('login')->withErrors('Email adresi veya şifre hatalı!');
+            return redirect()->route('login')->withErrors('Email address or password is incorrect!');
         }
     }
 
@@ -52,7 +52,7 @@ class LoginController extends Controller
                 $user->save();
             }
             else{
-                return redirect()->route('register.user')->withErrors('Bu email kayıtlıdır. Lütfen başka bir email adresi giriniz.');
+                return redirect()->route('register.user')->withErrors('This email is registered. Please enter another email address.');
             }
         }
         return redirect()->route('login');

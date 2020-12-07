@@ -38,7 +38,7 @@ class MenuController extends Controller
         $pages = Page::where('statu','=','1')->get();
         $categories = Category::all();
         $articles = Article::where('statu','=','1')->get();
-        return view('admin.setting.menu.show',compact('menus','pages','categories','articles'))->with(['type' => 'success', 'message' =>'Menü Kaydedildi.']);
+        return view('admin.setting.menu.show',compact('menus','pages','categories','articles'))->with(['type' => 'success', 'message' =>'Menu Saved.']);
     }
 
     public function show($id)
@@ -77,7 +77,7 @@ class MenuController extends Controller
         $pages = Page::where('statu','=','1')->get();
         $categories = Category::all();
         $articles = Article::where('statu','=','1')->get();
-        return view('admin.setting.menu.show',compact('menus','pages','categories','articles'))->with(['type' => 'success', 'message' =>'Menü Kaydedildi.']);
+        return view('admin.setting.menu.show',compact('menus','pages','categories','articles'))->with(['type' => 'success', 'message' =>'Menu Saved.']);
     }
 
     public function delete($id)
@@ -87,7 +87,7 @@ class MenuController extends Controller
         $menuname = Menu::where('menuname','=',$menuname)->first();
         $menuname = $menuname->id;
         $menu->delete();
-        return redirect()->route('admin.setting.menu.show',$menuname)->with(['type' => 'success', 'message' =>'Menü Satırı Silindi.']);
+        return redirect()->route('admin.setting.menu.show',$menuname)->with(['type' => 'success', 'message' =>'Menu Line Deleted.']);
     }
 
     public function destroy($id)
@@ -97,7 +97,7 @@ class MenuController extends Controller
         foreach($menus as $menu){
             $menu->forceDelete();
         }
-        return redirect()->route('admin.setting.menu.index')->with(['type' => 'error', 'message' =>'Menü Silindi.']);
+        return redirect()->route('admin.setting.menu.index')->with(['type' => 'error', 'message' =>'The Menu Has Been Deleted.']);
     }
 
     public function position(Request $request)

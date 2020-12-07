@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-{{ __('Comments') }}
+{{ __('main.Comments') }}
 @endsection
 
 @section('content')
@@ -12,12 +12,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h4 class="m-0 text-dark">{{ __('Comments') }}</h4>
+            <h4 class="m-0 text-dark">{{ __('main.Comments') }}</h4>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('Home') }}</a></li>
-              <li class="breadcrumb-item active">{{ __('Comments') }}</li>
+              <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('main.Home') }}</a></li>
+              <li class="breadcrumb-item active">{{ __('main.Comments') }}</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -32,17 +32,17 @@
                 <div class="col-12">
                   <div class="card">
                     <div class="card-header">
-                        <a href="{{ route('admin.comment.trash') }}" class="btn btn-warning btn-sm float-right"><i class="fas fa-trash-alt"></i>{{ __('Recylce') }}</a>
+                        <a href="{{ route('admin.comment.trash') }}" class="btn btn-warning btn-sm float-right"><i class="fas fa-trash-alt"></i>{{ __('main.Recycle') }}</a>
                     </div>
                     <div class="card-body">
                         <table id="table1" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
-                                    <th>{{ __('Author') }}</th>
-                                    <th>{{ __('Comment') }}</th>
-                                    <th>{{ __('Post') }}</th>
-                                    <th>{{ __('Creaton Date') }}</th>
-                                    <th>{{ __('Statu') }}</th>
+                                    <th>{{ __('main.Author') }}</th>
+                                    <th>{{ __('main.Comment') }}</th>
+                                    <th>{{ __('main.Post') }}</th>
+                                    <th>{{ __('main.Creation Date') }}</th>
+                                    <th>{{ __('main.Statu') }}</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -55,9 +55,9 @@
                                         <td>{{ $comment->created_at->diffForHumans() }}</td>
                                         <td><input class="switch" type="checkbox" name="my-checkbox" data-id="{{$comment->id}}" @if ($comment->statu==1) checked @endif data-toggle="toggle" data-size="mini" data-on="Onaylandı" data-off="Bekliyor" data-onstyle="success" data-offstyle="danger"></td>
                                         <td>
-                                            <a href="" title="{{ __('Show') }}" class="btn btn-success btn-xs"><i class="fas fa-arrow-right"></i></a>
-                                            <a href="{{ route('admin.comment.edit',$comment->id) }}" title="{{ __('Edit') }}" class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></a>
-                                            <a href="{{ route('admin.comment.delete',$comment->id) }}" onclick="validate({{$comment->id}})" title="{{ __('Delete') }}" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>
+                                            <a href="" title="{{ __('main.Show') }}" class="btn btn-success btn-xs"><i class="fas fa-arrow-right"></i></a>
+                                            <a href="{{ route('admin.comment.edit',$comment->id) }}" title="{{ __('main.Edit') }}" class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></a>
+                                            <a href="{{ route('admin.comment.delete',$comment->id) }}" onclick="validate({{$comment->id}})" title="{{ __('main.Delete') }}" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

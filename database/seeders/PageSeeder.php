@@ -11,7 +11,7 @@ class PageSeeder extends Seeder
 {
     public function run()
     {
-        $pages = ['Anasayfa','Blog','İletişim'];
+        $pages = ['Home','Blog','Contact'];
         foreach($pages as $page){
             $slug = new Slug();
             $slug->slug = Str::slug($page);

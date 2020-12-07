@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-{{ __('Yazılar') }}
+{{ __('main.Posts') }}
 @endsection
 
 @section('content')
@@ -12,12 +12,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h4 class="m-0 text-dark">{{ __('Yazılar') }}</h4>
+            <h4 class="m-0 text-dark">{{ __('main.Posts') }}</h4>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('Anasayfa') }}</a></li>
-              <li class="breadcrumb-item active">{{ __('Yazılar') }}</li>
+              <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('main.Home') }}</a></li>
+              <li class="breadcrumb-item active">{{ __('main.Posts') }}</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -32,20 +32,20 @@
                 <div class="col-12">
                   <div class="card">
                     <div class="card-header">
-                        <a href="{{ route('admin.article.create') }}" class="btn btn-success btn-sm">Yeni Ekle</a>
-                        <a href="{{ route('admin.article.trash') }}" class="btn btn-warning btn-sm float-right"><i class="fas fa-trash-alt"></i> Geri Dönüşüm Kutusu</a>
+                        <a href="{{ route('admin.article.create') }}" class="btn btn-success btn-sm">{{ __('main.Add New') }}</a>
+                        <a href="{{ route('admin.article.trash') }}" class="btn btn-warning btn-sm float-right"><i class="fas fa-trash-alt"></i>{{ __('main.Recycle') }}</a>
                     </div>
                     <div class="card-body">
                         <table id="table1" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
-                                    <th>Görsel</th>
-                                    <th>Başlık</th>
-                                    <th>Kısa Ad</th>
-                                    <th>Kategori</th>
-                                    <th>Hit</th>
-                                    <th>Oluşturma Tarihi</th>
-                                    <th>Durum</th>
+                                    <th>{{ __('main.Image') }}</th>
+                                    <th>{{ __('main.Title') }}</th>
+                                    <th>{{ __('main.Permalink') }}</th>
+                                    <th>{{ __('main.Category') }}</th>
+                                    <th>{{ __('main.Hit') }}</th>
+                                    <th>{{ __('main.Creation Date') }}</th>
+                                    <th>{{ __('main.Statu') }}</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -60,9 +60,9 @@
                                         <td>{{ $article->created_at->diffForHumans() }}</td>
                                         <td><input class="switch" type="checkbox" name="my-checkbox" data-id="{{$article->id}}" @if ($article->statu==1) checked @endif data-toggle="toggle" data-size="mini" data-on="Yayında" data-off="Taslak" data-onstyle="success" data-offstyle="danger"></td>
                                         <td>
-                                            <a href="{{ url('/',$article->getSlug->slug) }}" title="Görüntüle" class="btn btn-success btn-xs"><i class="fas fa-arrow-right"></i></a>
-                                            <a href="{{ route('admin.article.edit',$article->id) }}" title="Düzenle" class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></a>
-                                            <a href="{{ route('admin.article.delete',$article->id) }}" onclick="validate({{$article->id}})" title="Sil" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>
+                                            <a href="{{ url('/',$article->getSlug->slug) }}" title="{{ __('main.Show') }}" class="btn btn-success btn-xs"><i class="fas fa-arrow-right"></i></a>
+                                            <a href="{{ route('admin.article.edit',$article->id) }}" title="{{ __('main.Edit') }}" class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></a>
+                                            <a href="{{ route('admin.article.delete',$article->id) }}" onclick="validate({{$article->id}})" title="{{ __('main.Delete') }}" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

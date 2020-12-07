@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-{{ __('Upload') }}
+{{ __('main.Upload') }}
 @endsection
 
 @section('content')
@@ -12,13 +12,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h4 class="m-0 text-dark">{{ __('Upload') }}</h4>
+            <h4 class="m-0 text-dark">{{ __('main.Upload') }}</h4>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('Home') }}</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('admin.media.index') }}">{{ __('Media') }}</a></li>
-              <li class="breadcrumb-item active">{{ __('Upload') }}</li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('main.Home') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.media.index') }}">{{ __('main.Media') }}</a></li>
+              <li class="breadcrumb-item active">{{ __('main.Upload') }}</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -40,7 +40,7 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <button class="btn btn-success text-center px-5" type="submit" id="submit">{{ __('Upload') }}</button>
+                                <button class="btn btn-success text-center px-5" type="submit" id="submit">{{ __('main.Upload') }}</button>
                             </div>
                         </form>
                     </div>

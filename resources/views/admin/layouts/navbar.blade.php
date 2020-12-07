@@ -6,13 +6,13 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item dropdown d-none d-sm-inline-block">
-        <a id="dropdownSubMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-item dropdown-toggle">{{ __('Add New') }}</a>
+        <a id="dropdownSubMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-item dropdown-toggle">{{ __('main.Add New') }}</a>
         <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
-            <li><a href="{{route('admin.page.create')}}" class="dropdown-item">{{ __('Page') }}</a></li>
-            <li><a href="{{route('admin.article.create')}}" class="dropdown-item">{{ __('Post') }}</a></li>
-            <li><a href="{{route('admin.category.create')}}" class="dropdown-item">{{ __('Category') }}</a></li>
-            <li><a href="{{route('admin.media.create')}}" class="dropdown-item">{{ __('Media') }}</a></li>
-            <li><a href="{{route('admin.user.create')}}" class="dropdown-item">{{ __('User') }}</a></li>
+            <li><a href="{{route('admin.page.create')}}" class="dropdown-item">{{ __('main.Page') }}</a></li>
+            <li><a href="{{route('admin.article.create')}}" class="dropdown-item">{{ __('main.Post') }}</a></li>
+            <li><a href="{{route('admin.category.create')}}" class="dropdown-item">{{ __('main.Category') }}</a></li>
+            <li><a href="{{route('admin.media.create')}}" class="dropdown-item">{{ __('main.Media') }}</a></li>
+            <li><a href="{{route('admin.user.create')}}" class="dropdown-item">{{ __('main.User') }}</a></li>
         </ul>
       </li>
     </ul>
@@ -23,19 +23,10 @@
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">{{count($suspend)!=0? count($suspend) : ''}}</span>
+          <span class="badge badge-warning navbar-badge">0</span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-header">{{count($suspend)!=0 ? count($suspend).' __("yeni bildirim var")' : '__("Bildirim yok")'}}</span>
-          @if (count($suspend)!=0)
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-user-md mr-2"></i> {{ __('There are changes pending approval') }}
-            <span class="float-right text-muted text-sm"></span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="{{route('admin.suspend.index')}}" class="dropdown-item dropdown-footer">{{ __('See all') }}</a>
-          @endif
+          <span class="dropdown-header">{{ __("main.No Notification") }}</span>
         </div>
       </li>
       <li class="nav-item">

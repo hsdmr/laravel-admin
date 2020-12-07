@@ -11,7 +11,7 @@ class CategorySeeder extends Seeder
 {
     public function run()
     {
-        $categories = ['Genel','Makaleler','Videolar'];
+        $categories = ['Unnamed','Articles','Videos'];
         foreach($categories as $category){
             $slug = new Slug();
             $slug->slug = Str::slug($category);

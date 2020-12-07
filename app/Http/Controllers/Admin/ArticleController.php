@@ -51,7 +51,7 @@ class ArticleController extends Controller
         $article->content = $request->content;
         $article->save();
 
-        return redirect()->route('admin.article.edit',$article->id)->with(['type' => 'success', 'message' =>'Yazı Kaydedildi.']);
+        return redirect()->route('admin.article.edit',$article->id)->with(['type' => 'success', 'message' =>'Post Saved.']);
     }
 
     public function show($id)
@@ -96,7 +96,7 @@ class ArticleController extends Controller
             $article->content = $request->content;
             $article->save();
 
-            return redirect()->route('admin.article.edit',$id)->with(['type' => 'success', 'message' =>'Yazı Güncellendi.']);
+            return redirect()->route('admin.article.edit',$id)->with(['type' => 'success', 'message' =>'The Post Has Been Updated.']);
         };
     }
 
@@ -105,7 +105,7 @@ class ArticleController extends Controller
         $article = Article::find($id);
         Slug::find($article->slug_id)->delete();
         $article->delete();
-        return redirect()->route('admin.article.index')->with(['type' => 'success', 'message' =>'Yazı Geri Dönüşüm Kutusuna Taşındı.']);
+        return redirect()->route('admin.article.index')->with(['type' => 'success', 'message' =>'Post Moved To Recycle Bin.']);
     }
 
     public function trash()
@@ -119,7 +119,7 @@ class ArticleController extends Controller
         $article = Article::withTrashed()->find($id);
         Slug::withTrashed()->find($article->slug_id)->restore();
         $article->restore();
-        return redirect()->route('admin.article.trash')->with(['type' => 'success', 'message' =>'Yazı Kurtarıldı.']);
+        return redirect()->route('admin.article.trash')->with(['type' => 'success', 'message' =>'Post Recovered.']);
     }
 
     public function destroy($id)
@@ -128,7 +128,7 @@ class ArticleController extends Controller
         $slug = Slug::withTrashed()->find($article->slug_id);
         $article->forceDelete();
         $slug->forceDelete();
-        return redirect()->route('admin.article.trash')->with(['type' => 'error', 'message' =>'Yazı Silindi.']);
+        return redirect()->route('admin.article.trash')->with(['type' => 'error', 'message' =>'Post Deleted.']);
     }
 
     public function switch(Request $request)

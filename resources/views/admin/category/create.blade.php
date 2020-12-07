@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-    Yeni Kategori Ekle
+{{ __('main.Add New Category') }}
 @endsection
 
 @section('content')
@@ -12,13 +12,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h4 class="m-0 text-dark">{{ __('Yeni Kategori Ekle') }}</h4>
+            <h4 class="m-0 text-dark">{{ __('main.Add New Category') }}</h4>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('Anasayfa') }}</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('admin.category.index') }}">{{ __('Kategori') }}</a></li>
-              <li class="breadcrumb-item active">{{ __('Yeni Kategori Ekle') }}</li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('main.Home') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.category.index') }}">{{ __('main.Categories') }}</a></li>
+              <li class="breadcrumb-item active">{{ __('main.Add New Category') }}</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -40,15 +40,15 @@
                                 <div class="row">
                                     <div class="col-md-9">
                                         <div class="form-group">
-                                            <label for="title">İsim</label>
+                                            <label for="title">{{ __('main.Name') }}</label>
                                             <input type="text" class="form-control form-control-sm" id="title" name="title">
                                         </div>
                                         <div class="form-group">
-                                            <label for="slug">Kısa Ad</label>
+                                            <label for="slug">{{ __('main.Permalink') }}</label>
                                             <input type="text" class="form-control form-control-sm" id="slug" name="slug">
                                         </div>
                                         <div class="form-group">
-                                            <label for="content">Açıklama</label>
+                                            <label for="content">{{ __('main.Description') }}</label>
                                             <textarea class="form-control form-control-sm" rows="3" id="content" name="content"></textarea>
                                         </div>
                                         @include('admin.layouts.slug')
@@ -56,19 +56,19 @@
                                     <div class="col-md-3">
                                         <div class="card">
                                             <div class="card-header">
-                                                <label for="media_img">{{ __('Öne Çıkan Görsel') }}</label>
+                                                <label for="media_img">{{ __('main.Featured Image') }}</label>
                                             </div>
                                             <div class="card-body">
                                                 <img src="" alt="" id="media_img" class="w-100">
                                             </div>
                                             <div class="card-footer">
-                                                <a href="javascript:void(0);" class="btn btn-xs btn-primary float-left" id="choose">Görsel Seç</a>
-                                                <a href="javascript:void(0);" class="btn btn-xs btn-warning float-right" id="remove">Görseli Kaldır</a>
+                                                <a href="javascript:void(0);" class="btn btn-xs btn-primary float-left" id="choose">{{ __('main.Choose Image') }}</a>
+                                                <a href="javascript:void(0);" class="btn btn-xs btn-warning float-right" id="remove">{{ __('main.Remove Image') }}</a>
                                             </div>
                                         </div>
                                         <div class="card">
                                             <div class="card-header">
-                                                <label for="upper">{{ __('Ebeveyn Kategori') }}</label>
+                                                <label for="upper">{{ __('main.Parent') }}</label>
                                             </div>
                                             <div class="card-body">
                                                 <div class="form-group">
@@ -86,7 +86,7 @@
                             </div>
                         </form>
                         <div class="card-footer">
-                            <a href="javascript:void(0);" class="btn btn-success btn-sm float-right" id="submit">Yeni Kategori Ekle</a>
+                            <a href="javascript:void(0);" class="btn btn-success btn-sm float-right" id="submit">{{ __('main.Save') }}</a>
                         </div>
                     </div>
                 </div>

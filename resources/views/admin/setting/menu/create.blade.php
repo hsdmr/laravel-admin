@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-{{ __('Menüler') }}
+{{ __('main.Menus') }}
 @endsection
 
 @section('content')
@@ -11,13 +11,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h4 class="m-0 text-dark">{{ __('Menüler') }}</h4>
+            <h4 class="m-0 text-dark">{{ __('main.Menus') }}</h4>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('Anasayfa') }}</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('admin.setting.index') }}">{{ __('Ayarlar') }}</a></li>
-              <li class="breadcrumb-item active">{{ __('Menüler') }}</li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('main.Home') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.setting.index') }}">{{ __('main.Settings') }}</a></li>
+              <li class="breadcrumb-item active">{{ __('main.Menus') }}</li>
             </ol>
             </ol>
           </div><!-- /.col -->
@@ -35,9 +35,9 @@
                         <form action="{{ route('admin.setting.menu.store')}}" method="post">
                             @csrf
                         <div class="card-body row">
-                            <label for="menuname" class="col-md-2">Menu Adı</label>
+                            <label for="menuname" class="col-md-2">{{ __('main.Menu Name') }}</label>
                             <input type="text" name="menuname" id="menuname" class="form-control-sm form-control col-md-4">
-                            <button class="btn btn-outline-success btn-sm ml-3">Oluştur</button>
+                            <button class="btn btn-outline-success btn-sm ml-3">{{ __('main.Create') }}</button>
                         </div>
                         </form>
                     </div>

@@ -48,7 +48,7 @@ class PageController extends Controller
         $page->sidebar = $request->sidebar;
         $page->save();
 
-        return redirect()->route('admin.page.edit',$page->id)->with(['type' => 'success', 'message' =>'Sayfa Oluşturuldu.']);
+        return redirect()->route('admin.page.edit',$page->id)->with(['type' => 'success', 'message' =>'Page Created.']);
     }
 
     public function show($id)
@@ -93,7 +93,7 @@ class PageController extends Controller
             $page->sidebar = $request->sidebar;
             $page->save();
 
-            return redirect()->route('admin.page.edit',$id)->with(['type' => 'success', 'message' =>'Sayfa Güncellendi.']);
+            return redirect()->route('admin.page.edit',$id)->with(['type' => 'success', 'message' =>'Page Updated.']);
         };
     }
 
@@ -102,7 +102,7 @@ class PageController extends Controller
         $page = Page::find($id);
         Slug::find($page->slug_id)->delete();
         $page->delete();
-        return redirect()->route('admin.page.index')->with(['type' => 'success', 'message' =>'Sayfa Geri Dönüşüm Kutusuna Taşındı.']);
+        return redirect()->route('admin.page.index')->with(['type' => 'success', 'message' =>'Page Moved To Recycle Bin.']);
     }
 
     public function trash()
@@ -116,7 +116,7 @@ class PageController extends Controller
         $page = Page::withTrashed()->find($id);
         Slug::withTrashed()->find($page->slug_id)->restore();
         $page->restore();
-        return redirect()->route('admin.page.trash')->with(['type' => 'success', 'message' =>'Sayfa Kurtarıldı.']);
+        return redirect()->route('admin.page.trash')->with(['type' => 'success', 'message' =>'Page Recovered.']);
     }
 
     public function destroy($id)
@@ -125,7 +125,7 @@ class PageController extends Controller
         $slug = Slug::withTrashed()->find($page->slug_id);
         $page->forceDelete();
         $slug->forceDelete();
-        return redirect()->route('admin.page.trash')->with(['type' => 'error', 'message' =>'sayfa Silindi.']);
+        return redirect()->route('admin.page.trash')->with(['type' => 'error', 'message' =>'The Page Has Beed Deleted.']);
     }
 
     public function switch(Request $request)

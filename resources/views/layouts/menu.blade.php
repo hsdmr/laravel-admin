@@ -41,13 +41,13 @@
                             </a>
                             <ul class="dropdown-menu" role="menu">
                                 @if ($user->role=='admin')
-                                <li><a style="display: block" href="{{route('admin.home')}}">{{ __('Dashboard') }}</a></li>
+                                <li><a style="display: block" href="{{route('admin.home')}}">{{ __('main.Dashboard') }}</a></li>
                                 @endif
-                                <li><a style="display: block" href="{{route('logout')}}">{{ __('Logout') }}</a></li>
+                                <li><a style="display: block" href="{{route('logout')}}">{{ __('main.Logout') }}</a></li>
                             </ul>
                         </li>
                     @else
-                        <li><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
+                        <li><a href="{{ route('login') }}">{{ __('main.Login') }}</a></li>
                     @endif
                 </ul>
               </div>

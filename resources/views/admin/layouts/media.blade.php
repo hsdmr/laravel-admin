@@ -38,20 +38,20 @@
                     <input type="hidden" value="" id="media" name="media">
                     <input type="hidden" value="form_img" name="form_img">
                     <div class="form-group">
-                        <label for="media_title">{{ __('Name') }}</label>
+                        <label for="media_title">{{ __('main.Name') }}</label>
                         <input type="text" class="form-control form-control-sm" value="" id="media_title" name="media_title">
                     </div>
                     <div class="form-group">
-                        <label for="media_alt">{{ __('Alt Tag') }}</label>
+                        <label for="media_alt">{{ __('main.Alt Tag') }}</label>
                         <input type="text" class="form-control form-control-sm" value="" id="media_alt" name="media_alt">
                     </div>
                     <div class="form-group">
-                        <label for="media_url">{{ __('Url') }}</label>
+                        <label for="media_url">{{ __('main.Url') }}</label>
                         <input type="text" class="form-control form-control-sm" value="" id="media_url" name="media_url" disabled>
                     </div>
                 </form>
-                <a href="javascript:void(0);" class="btn btn-primary btn-xs" style="bottom: 0;" id="submit_img">{{ __('Update') }}</a>
-                <a href="javascript:void(0);" class="btn btn-success btn-xs float-right" style="bottom: 0;" id="add">{{ __('Choose Image') }}</a>
+                <a href="javascript:void(0);" class="btn btn-primary btn-xs" style="bottom: 0;" id="submit_img">{{ __('main.Update') }}</a>
+                <a href="javascript:void(0);" class="btn btn-success btn-xs float-right" style="bottom: 0;" id="add">{{ __('main.Choose Image') }}</a>
                 </div>
             </div>
         </div>

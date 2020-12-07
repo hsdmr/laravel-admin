@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>HasPanel Giriş</title>
+  <title>HasPanel {{ __('main.Login') }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="{{asset('admin')}}/plugins/fontawesome-free/css/all.min.css">
@@ -17,12 +17,12 @@
     </div>
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">{{ __('Sign in to start your session') }}</p>
+      <p class="login-box-msg">{{ __('main.Sign in to start your session') }}</p>
         @if ($errors->any()) <div class="alert alert-danger">{{$errors->first()}}</div> @endif
       <form action="{{route('login.check')}}" method="post">
         @csrf
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="{{ __('E-mail') }}" name="email" required>
+          <input type="email" class="form-control" placeholder="{{ __('main.E-mail') }}" name="email" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -30,7 +30,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="{{ __('Password') }}" name="password" required>
+          <input type="password" class="form-control" placeholder="{{ __('main.Password') }}" name="password" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -42,12 +42,12 @@
             <div class="icheck-primary">
               <input type="checkbox" id="remember">
               <label for="remember">
-                {{ __('Remember me') }}
+                {{ __('main.Remember me') }}
               </label>
             </div>
           </div>
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">{{ __('Sign in') }}</button>
+            <button type="submit" class="btn btn-primary btn-block">{{ __('main.Sign in') }}</button>
           </div>
         </div>
       </form>
@@ -66,7 +66,7 @@
         <a href="#">Şifremi Unuttum</a>
       </p>-->
       <p class="mb-0">
-        <a href="{{route('register.user')}}" class="text-center">{{ __('Register') }}</a>
+        <a href="{{route('register.user')}}" class="text-center">{{ __('main.Register') }}</a>
       </p>
     </div>
   </div>

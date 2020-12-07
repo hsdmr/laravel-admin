@@ -5,7 +5,7 @@
     <link rel="icon" sizes="48x48" href="{{App\Models\Setting::find(1)->getFavicon->getUrl()}}" type="image/x-icon" />
     <link rel="icon" href="{{asset('front')}}/favicon.png" type="image/x-icon" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<title>{{ __('Register') }}</title>
+	<title>{{ __('main.Register') }}</title>
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <link rel="stylesheet" href="{{asset('admin')}}/plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="{{asset('admin')}}/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
@@ -21,13 +21,13 @@
 
       <div class="card">
         <div class="card-body register-card-body">
-          <p class="login-box-msg">{{ __('Register a new membership') }}</p>
+          <p class="login-box-msg">{{ __('main.Register a new membership') }}</p>
 
           @if ($errors->any()) <div class="alert alert-danger">{{$errors->first()}}</div> @endif
           <form action="{{route('register')}}" method="post">@csrf
             <input type="hidden" name="role" value="user">
             <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="{{ __('Name') }}" name="name" required>
+              <input type="text" class="form-control" placeholder="{{ __('main.Name') }}" name="name" required>
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-user"></span>
@@ -35,7 +35,7 @@
               </div>
             </div>
             <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="{{ __('Surname') }}" name="surname" required>
+              <input type="text" class="form-control" placeholder="{{ __('main.Surname') }}" name="surname" required>
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-user"></span>
@@ -43,7 +43,7 @@
               </div>
             </div>
             <div class="input-group mb-3">
-              <input type="email" class="form-control" placeholder="{{ __('E-mail') }}" name="email" required>
+              <input type="email" class="form-control" placeholder="{{ __('main.E-mail') }}" name="email" required>
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-envelope"></span>
@@ -51,7 +51,7 @@
               </div>
             </div>
             <div class="input-group mb-3">
-              <input type="password" class="form-control" placeholder="{{ __('Password') }}" name="password" required>
+              <input type="password" class="form-control" placeholder="{{ __('main.Password') }}" name="password" required>
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-lock"></span>
@@ -59,7 +59,7 @@
               </div>
             </div>
             <div class="input-group mb-3">
-              <input type="password" class="form-control" placeholder="{{ __('Retype password') }}" name="password" required>
+              <input type="password" class="form-control" placeholder="{{ __('main.Retype password') }}" name="password" required>
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-lock"></span>
@@ -71,13 +71,13 @@
                 <div class="icheck-primary">
                   <input type="checkbox" id="agreeTerms" name="terms" value="agree" required>
                   <label for="agreeTerms">
-                    {{ __('I agree to the') }} <a href="#">{{ __('terms') }}</a>
+                    {{ __('main.I agree to the') }} <a href="#">{{ __('main.terms') }}</a>
                   </label>
                 </div>
               </div>
               <!-- /.col -->
               <div class="col-4">
-                <button type="submit" class="btn btn-primary btn-block">{{ __('Register') }}</button>
+                <button type="submit" class="btn btn-primary btn-block">{{ __('main.Register') }}</button>
               </div>
               <!-- /.col -->
             </div>
@@ -95,7 +95,7 @@
             </a>
           </div>-->
 
-          <a href="{{route('login')}}" class="text-center">{{ __('I already have a membership') }}</a>
+          <a href="{{route('login')}}" class="text-center">{{ __('main.I already have a membership') }}</a>
         </div>
         <!-- /.form-box -->
       </div><!-- /.card -->

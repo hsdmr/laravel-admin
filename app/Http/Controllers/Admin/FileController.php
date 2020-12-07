@@ -54,10 +54,10 @@ class FileController extends Controller
             $mediaItem[0]->name = $request->media_title;
             $mediaItem[0]->alt = $request->media_alt;
             if(true){
-                return "success,Media Bilgileri Güncellendi.";
+                return "success,Media Information Updated.";
             }
             else{
-                return "error,Media Bilgileri Güncellenirken Hata Oluştu.";
+                return "error,Error Occurred While Updating Media Information.";
             };
         }
         else{

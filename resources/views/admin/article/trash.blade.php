@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-{{ __('Yazılar Geri Dönüşüm Kutusu') }}
+{{ __('main.Posts Recycle') }}
 @endsection
 
 @section('content')
@@ -12,13 +12,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h4 class="m-0 text-dark">{{ __('Geri Dönüşüm Kutusu') }}</h4>
+            <h4 class="m-0 text-dark">{{ __('main.Recycle') }}</h4>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('Anasayfa') }}</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('admin.article.index') }}">{{ __('Yazılar') }}</a></li>
-              <li class="breadcrumb-item active">{{ __('Geri Dönüşüm Kutusu') }}</li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('main.Home') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.article.index') }}">{{ __('main.Posts') }}</a></li>
+              <li class="breadcrumb-item active">{{ __('main.Recycle') }}</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -37,9 +37,9 @@
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th>Başlık</th>
-                                    <th>Kategori</th>
-                                    <th>Silinme Tarihi</th>
+                                    <th>{{ __('main.Title') }}</th>
+                                    <th>{{ __('main.Category') }}</th>
+                                    <th>{{ __('main.Deletion Date') }}</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -53,11 +53,11 @@
                                         <td>{{ $article->getCategory->title }}</td>
                                         <td>{{ $article->deleted_at->diffForHumans() }}</td>
                                         <td>
-                                            <a href="{{ route('admin.article.recover',$article->id) }}" title="Kurtar" class="btn btn-warning btn-xs"><i class="fas fa-recycle"></i></a>
+                                            <a href="{{ route('admin.article.recover',$article->id) }}" title="{{ __('main.Recover') }}" class="btn btn-warning btn-xs"><i class="fas fa-recycle"></i></a>
                                             <form id="delete_{{$article->id}}" action="{{route('admin.article.destroy',$article->id)}}" method="post" class="d-inline">
                                                 @method('DELETE')
                                                 @csrf
-                                                <a href="javascript:void(0)" onclick="validate({{$article->id}})" title="Tamamen Sil" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>
+                                                <a href="javascript:void(0)" onclick="validate({{$article->id}})" title="{{ __('main.Destroy') }}" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>
                                             </form>
                                         </td>
                                     </tr>

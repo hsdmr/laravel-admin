@@ -16,8 +16,8 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('Home') }}</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('admin.media.index') }}">{{ __('Media') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('main.Home') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.media.index') }}">{{ __('main.Media') }}</a></li>
                 <li class="breadcrumb-item active">{{ $media->name }}</li>
             </ol>
           </div><!-- /.col -->
@@ -49,18 +49,18 @@
                                         @method('PUT')
                                         @csrf
                                         <div class="form-group">
-                                            <label for="title">{{ __('Name') }}</label>
+                                            <label for="title">{{ __('main.Name') }}</label>
                                             <input type="text" class="form-control form-control-sm" value="{{ $media[0]->name }}" id="title" name="title">
                                         </div>
                                         <div class="form-group">
-                                            <label for="alt">{{ __('Alt Tag') }}</label>
+                                            <label for="alt">{{ __('main.Alt Tag') }}</label>
                                             <input type="text" class="form-control form-control-sm"  value="{{ $media[0]->alt }}" id="alt" name="alt">
                                         </div>
                                         <div class="form-group">
-                                            <label for="url">{{ __('Url') }}</label>
+                                            <label for="url">{{ __('main.Url') }}</label>
                                             <input type="text" class="form-control form-control-sm" disabled="" value="{{ $media[0]->getUrl() }}" id="url" name="url">
                                         </div>
-                                        <button type="submit" class="btn btn-success btn-xs float-right">{{ __('Update') }}</button>
+                                        <button type="submit" class="btn btn-success btn-xs float-right">{{ __('main.Update') }}</button>
                                     </form>
                                 </div>
                             </div>

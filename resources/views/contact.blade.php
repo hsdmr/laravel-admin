@@ -24,12 +24,12 @@
 
 @section('content')
 <div class="title text-center">
-    <h1>{{ __('Contact') }}</h1>
+    <h1>{{ __('main.Contact') }}</h1>
 </div>
 <div aria-label="breadcrumb" class="container">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{url('/')}}">{{ __('Home') }}</a></li>
-        <li class="breadcrumb-item active" aria-current="page">{{ __('Contact') }}</li>
+        <li class="breadcrumb-item"><a href="{{url('/')}}">{{ __('main.Home') }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ __('main.Contact') }}</li>
     </ol>
 </div>
 
@@ -37,39 +37,39 @@
     <div class="container py-4">
         <div class="row">
             <div class="col-md-6">
-                <h2>{{ __('Contact Information') }}</h2>
+                <h2>{{ __('main.Contact Information') }}</h2>
                 @if ($page->content!=null)
                     <div class="page-content">
                         {!!$page->content!!}
                     </div>
                 @else
                 <p>{!!$contact->address!!}</p>
-                <p><b>{{ __('Call center') }}:</b>{!!$contact->phone!!}</p>
-                <p><b>{{ __('Phone') }}:</b>{!!$contact->cell!!}</p>
-                <p><b>{{ __('E-mail') }}:</b>{!!$contact->email!!}</p>
+                <p><b>{{ __('main.Call center') }}:</b>{!!$contact->phone!!}</p>
+                <p><b>{{ __('main.Phone') }}:</b>{!!$contact->cell!!}</p>
+                <p><b>{{ __('main.E-mail') }}:</b>{!!$contact->email!!}</p>
                 @endif
             </div>
             <div class="col-md-6 mb-3">
-                <h2>{{ __('Contact Form') }}</h2>
+                <h2>{{ __('main.Contact Form') }}</h2>
                 <form action="">
                     <div class="row">
                         <div class="col-md-6 mb-4">
-                            <input type="text" placeholder="İsim" class="form-control">
+                            <input type="text" placeholder="{{ __('main.Name') }}" class="form-control">
                         </div>
                         <div class="col-md-6">
-                            <input type="text" placeholder="Soyisim" class="form-control">
+                            <input type="text" placeholder="{{ __('main.Surame') }}" class="form-control">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-4">
-                            <input type="text" placeholder="Email" class="form-control">
+                            <input type="text" placeholder="{{ __('main.Email') }}" class="form-control">
                         </div>
                         <div class="col-md-6">
-                            <input type="text" placeholder="Telefon" class="form-control">
+                            <input type="text" placeholder="{{ __('main.Phone') }}" class="form-control">
                         </div>
                     </div>
-                    <textarea name="" id="" cols="30" rows="10" placeholder="Mesajınız" class="form-control mb-4"></textarea>
-                    <button type="submit" class="btn btn-success"><b>{{ __('Submit') }}</b></button>
+                    <textarea name="" id="" cols="30" rows="10" placeholder="{{ __('main.Message') }}" class="form-control mb-4"></textarea>
+                    <button type="submit" class="btn btn-success"><b>{{ __('main.Submit') }}</b></button>
                 </form>
             </div>
             <iframe style="width: 100%; height:500px;" id="gmap_canvas" src="https://maps.google.com/maps?q={{$contact->map}}&t=&z={{$contact->zoom}}&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>

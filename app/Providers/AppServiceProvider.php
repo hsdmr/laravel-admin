@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('admin.layouts.master',function($view){
             $view->with([
                 'auth'=>Auth::user(),
-                'suspend'=>Suspend::pluck('id')]);
+                ]);
         });
         view()->composer('admin.layouts.media',function($view){
             $view->with('medias',File::orderBy('created_at', 'desc')->where('collection','=','default')->simplePaginate(80));

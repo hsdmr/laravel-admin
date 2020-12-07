@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-{{ __('Yazı Düzenle') }}
+{{ __('main.Edit Post') }}
 @endsection
 
 @section('content')
@@ -11,12 +11,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h4 class="m-0 text-dark">{{ __('Yorum Düzenle') }}</h4>
+            <h4 class="m-0 text-dark">{{ __('main.Edit Post') }}</h4>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('Anasayfa') }}</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('admin.article.index') }}">{{ __('Yazılar') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('main.Home') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.article.index') }}">{{ __('main.Posts') }}</a></li>
               <li class="breadcrumb-item active">{{ $article->title }}</li>
             </ol>
             </ol>
@@ -42,11 +42,11 @@
                                         <input type="hidden" id="category_id" name="category_id" value="{{$article->getCategory->id}}">
                                         <input type="hidden" name="media_id" id="media_id" value="{{$article->getMedia->id}}">
                                         <div class="form-group">
-                                            <label for="title">Başlık</label>
+                                            <label for="title">{{ __('main.Title') }}</label>
                                             <input type="text" class="form-control form-control-sm" id="title" name="title" value="{{$article->title}}">
                                         </div>
                                         <div class="form-group">
-                                            <label for="slug">Kısa Ad</label>
+                                            <label for="slug">{{ __('main.Permalink') }}</label>
                                             <input type="text" class="form-control form-control-sm" id="slug" name="slug" value="{{$article->getSlug->slug}}">
                                         </div>
                                         <div class="form-group">
@@ -58,19 +58,19 @@
                                     <div class="col-md-3">
                                         <div class="card">
                                             <div class="card-header">
-                                                <label for="media_img">{{ __('Öne Çıkan Görsel') }}</label>
+                                                <label for="media_img">{{ __('main.Featured Image') }}</label>
                                             </div>
                                             <div class="card-body">
                                                 <img src="{{ ($article->getMedia->id==1) ? '' : $article->getMedia->getUrl()}}" alt="" id="media_img" class="w-100">
                                             </div>
                                             <div class="card-footer">
-                                                <a href="javascript:void(0);" class="btn btn-xs btn-primary float-left" id="choose">Görsel Seç</a>
-                                                <a href="javascript:void(0);" class="btn btn-xs btn-warning float-right" id="remove">Görseli Kaldır</a>
+                                                <a href="javascript:void(0);" class="btn btn-xs btn-primary float-left" id="choose">{{ __('main.Choose Image') }}</a>
+                                                <a href="javascript:void(0);" class="btn btn-xs btn-warning float-right" id="remove">{{ __('main.Remove Image') }}</a>
                                             </div>
                                         </div>
                                         <div class="card">
                                             <div class="card-header">
-                                                <label for="upper">{{ __('Kategori') }}</label>
+                                                <label>{{ __('main.Category') }}</label>
                                             </div>
                                             <div class="card-body">
                                                 <div class="form-group">
@@ -88,7 +88,7 @@
                             </div>
                         </form>
                         <div class="card-footer">
-                            <a href="javascript:void(0);" class="btn btn-success btn-sm float-right" id="submit">Kaydet</a>
+                            <a href="javascript:void(0);" class="btn btn-success btn-sm float-right" id="submit">{{ __('main.Save') }}</a>
                         </div>
                     </div>
                 </div>

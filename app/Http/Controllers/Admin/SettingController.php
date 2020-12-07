@@ -31,7 +31,7 @@ class SettingController extends Controller
         $setting->footerjs = $request->footerjs;
         $setting->save();
 
-        return redirect()->route('admin.setting.index')->with(['type' => 'success', 'message' =>'Ayarlar Kaydedildi.']);
+        return redirect()->route('admin.setting.index')->with(['type' => 'success', 'message' =>'Settings Saved.']);
     }
 
     public function contact()
@@ -53,7 +53,7 @@ class SettingController extends Controller
         $contact->zoom = $request->zoom;
         $contact->save();
 
-        return redirect()->route('admin.setting.contact')->with(['type' => 'success', 'message' =>'İletişim Bilgileri Kaydedildi.']);
+        return redirect()->route('admin.setting.contact')->with(['type' => 'success', 'message' =>'Contact Information Saved.']);
     }
 
     public function social()
@@ -86,7 +86,7 @@ class SettingController extends Controller
         $social->email = $request->email;
         $social->save();
 
-        return redirect()->route('admin.setting.social')->with(['type' => 'success', 'message' =>'Sosyal Medya Hesapları Kaydedildi.']);
+        return redirect()->route('admin.setting.social')->with(['type' => 'success', 'message' =>'Social Media Accounts Saved.']);
     }
 
     public function widget()
@@ -120,7 +120,7 @@ class SettingController extends Controller
             $widget->content = $request->content4;
         }
         $widget->save();
-        return redirect()->route('admin.setting.widget')->with(['type' => 'success', 'message' =>'Footer '.$request->id.' Kaydedildi.']);
+        return redirect()->route('admin.setting.widget')->with(['type' => 'success', 'message' =>'Footer '.$request->id.' Saved.']);
 
     }
 

@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-{{ __('Users Recycle') }}
+{{ __('main.Users Recycle') }}
 @endsection
 
 @section('content')
@@ -12,13 +12,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h4 class="m-0 text-dark">{{ __('Users Recycle') }}</h4>
+            <h4 class="m-0 text-dark">{{ __('main.Users Recycle') }}</h4>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('Anasayfa') }}</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('admin.user.index') }}">{{ __('Users') }}</a></li>
-              <li class="breadcrumb-item active">{{ __('Recycle') }}</li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('main.Anasayfa') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.user.index') }}">{{ __('main.Users') }}</a></li>
+              <li class="breadcrumb-item active">{{ __('main.Recycle') }}</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -36,9 +36,9 @@
                         <table id="table1" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
-                                    <th>{{ __('Name') }}</th>
-                                    <th>{{ __('E-mail') }}</th>
-                                    <th>{{ __('Role') }}</th>
+                                    <th>{{ __('main.Name') }}</th>
+                                    <th>{{ __('main.E-mail') }}</th>
+                                    <th>{{ __('main.Role') }}</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -49,11 +49,11 @@
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->statu }}</td>
                                         <td>
-                                            <a href="{{ route('admin.user.recover',$user->id) }}" title="{{ __('Recover') }}" class="btn btn-warning btn-xs"><i class="fas fa-recycle"></i></a>
+                                            <a href="{{ route('admin.user.recover',$user->id) }}" title="{{ __('main.Recover') }}" class="btn btn-warning btn-xs"><i class="fas fa-recycle"></i></a>
                                             <form id="delete_{{$user->id}}" action="{{route('admin.user.destroy',$user->id)}}" method="post" class="d-inline">
                                                 @method('DELETE')
                                                 @csrf
-                                                <a href="javascript:void(0)" onclick="validate({{$user->id}})" title="{{ __('Destroy') }}" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>
+                                                <a href="javascript:void(0)" onclick="validate({{$user->id}})" title="{{ __('main.Destroy') }}" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>
                                             </form>
                                         </td>
                                     </tr>

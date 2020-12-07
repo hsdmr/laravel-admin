@@ -1,52 +1,53 @@
 # Laravel Admin Panel
 
+Türkçe kurulum için <a href="https://github.com/hsdmr/laravel-admin/blob/main/README-tr.md">burayı</a> tıklayın.
 
+## Requirements
 
-## Gereksinimler
-
-Projeyi çalıştırmak için bilgisayarınıza <a href="https://getcomposer.org/">composer</a> kurmalısınız ve aşağıdaki şartları sağlamalısınız
+To run the project, you must install <a href="https://getcomposer.org/">Composer</a> on your computer and meet the following conditions.
 
 - Laravel >= 8.x
 - PHP >= 7.4
 
-## zip dosyasıyla indir
+## Download with zip file
 
-- Yeşil renkli code butonu ile projenin zip dosyasını bilgisayarınıza indirin.
-- Dosyayı zip'ten çıkarın.
+- Download the zip file of the project to your computer with the green code button.
+- Extract the file from the zip.
 
-## git ile indir
+## Download with git
 
-Bilgisayarınızda git kurulu değilse bu <a href="https://git-scm.com/downloads">linkden</a> işletim sisteminize uygun olanı kurun.
 
-- Terminal ekranı açarak aşağıdaki aşağıdaki kodu yapıştırın ve çalıştırın.
+If git is not installed on your computer, install the appropriate one for your operating system from this <a href="https://git-scm.com/downloads">link</a>
 
-  ```
-  "git clone https://github.com/hsdmr/laravel-admin.git"
-  ```
-## Kurulum
-
-- Proje dosyası içindeki .env.example isimli dosyanın ismini .env olarak değiştirin.
-- .env dosyasını açarak veritabanı bilgilerinizi kaydedin.
-- Terminalden proje dosyasının içine girin ve sırasıyla aşağıdaki kodları yapıştırın.
+- Open the terminal screen and paste the code below and run it.
 
   ```
-  "composer install"
-  "php artisan key:generate"
-  "php artisan storage:link"
-  "php artisan migrate:fresh"
-  "php artisan db:seed"
-  "php artisan optimize"
-  "php artisan serve"
+  git clone https://github.com/hsdmr/laravel-admin.git
   ```
+## Installation
 
-- localhost:8000 portundan projeye erişebilirsiniz.
-
-## Hatırlatmalar
-
-Projeyi sunucuya deploy ederken klasör izin hataları olursa aşağıdaki kodları deneyebilirsiniz.
+- Rename the file named .env.example in the project file to .env .
+- Save your database information in the appropriate place in the .env file.
+- Enter the project file from the terminal and paste the following codes respectively.
 
   ```
-  "chmod -R o+w storage"
-  "chmod 755 -R laravel-admin"
+  composer install
+  php artisan key:generate
+  php artisan storage:link
+  php artisan migrate:fresh
+  php artisan db:seed
+  php artisan optimize
+  php artisan serve
+  ```
+
+- You can access the project from 'localhost:8000' .
+
+## Reminders
+
+If folder permission errors occur while deploying the project to the server, you can try the following codes.
+
+  ```
+  chmod -R o+w storage
+  chmod 755 -R laravel-admin
   ```
 

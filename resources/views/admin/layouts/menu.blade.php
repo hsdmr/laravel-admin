@@ -25,7 +25,7 @@
           <li class="nav-item">
             <a href="{{ route('admin.home') }}" class="nav-link @if(Request::segment(2)=="home") active @endif">
               <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>{{ __('Dashboard') }}</p>
+              <p>{{ __('main.Dashboard') }}</p>
             </a>
           </li>
 
@@ -33,7 +33,7 @@
             <a href="{{ route('admin.media.index') }}" class="nav-link @if(Request::segment(2)=="media") active @endif">
               <i class="nav-icon fas fa-photo-video"></i>
               <p>
-                {{ __('Media') }}
+                {{ __('main.Media') }}
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -41,13 +41,13 @@
               <li class="nav-item">
                 <a href="{{ route('admin.media.index') }}" class="nav-link @if(Request::segment(2)=="media" && Request::segment(3)!="create") active @endif">
                     <ion-icon name="return-down-forward-outline"></ion-icon>
-                    <p>{{ __('All Media') }}</p>
+                    <p>{{ __('main.All Media') }}</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{ route('admin.media.create') }}" class="nav-link @if(Request::segment(2)=="media" && Request::segment(3)=="create") active @endif">
                     <ion-icon name="return-down-forward-outline"></ion-icon>
-                    <p>{{ __('Upload') }}</p>
+                    <p>{{ __('main.Upload') }}</p>
                 </a>
               </li>
             </ul>
@@ -57,7 +57,7 @@
             <a href="{{ route('admin.page.index') }}" class="nav-link @if(Request::segment(2)=="page") active @endif">
                 <i class="nav-icon fas fa-copy"></i>
               <p>
-                {{ __('Pages') }}
+                {{ __('main.Pages') }}
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -65,13 +65,13 @@
                 <li class="nav-item">
                   <a href="{{ route('admin.page.index') }}" class="nav-link @if(Request::segment(2)=="page"&& Request::segment(3)!="create") active @endif">
                     <ion-icon name="return-down-forward-outline"></ion-icon>
-                    <p>{{ __('All Pages') }}</p>
+                    <p>{{ __('main.All Pages') }}</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="{{ route('admin.page.create') }}" class="nav-link @if(Request::segment(2)=="page" && Request::segment(3)=="create") active @endif">
                     <ion-icon name="return-down-forward-outline"></ion-icon>
-                    <p>{{ __('Add New') }}</p>
+                    <p>{{ __('main.Add New') }}</p>
                   </a>
                 </li>
             </ul>
@@ -80,7 +80,7 @@
             <a href="{{ route('admin.media.index') }}" class="nav-link @if(Request::segment(2)=="article" || Request::segment(2)=="category") active @endif">
                 <i class=" nav-icon fas fa-thumbtack"></i>
                 <p>
-                    {{ __('Posts') }}
+                    {{ __('main.Posts') }}
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -88,19 +88,19 @@
                 <li class="nav-item">
                   <a href="{{ route('admin.article.index') }}" class="nav-link @if(Request::segment(2)=="article" && Request::segment(3)!="create") active @endif">
                     <ion-icon name="return-down-forward-outline"></ion-icon>
-                    <p>{{ __('All Posts') }}</p>
+                    <p>{{ __('main.All Posts') }}</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="{{ route('admin.article.create') }}" class="nav-link @if(Request::segment(2)=="article" && Request::segment(3)=="create") active @endif">
                     <ion-icon name="return-down-forward-outline"></ion-icon>
-                    <p>{{ __('Add New') }}</p>
+                    <p>{{ __('main.Add New') }}</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="{{ route('admin.category.index') }}" class="nav-link @if(Request::segment(2)=="category") active @endif">
                     <ion-icon name="return-down-forward-outline"></ion-icon>
-                    <p>{{ __('Category') }}</p>
+                    <p>{{ __('main.Category') }}</p>
                   </a>
                 </li>
             </ul>
@@ -108,14 +108,14 @@
           <li class="nav-item">
             <a href="{{ route('admin.comment.index') }}" class="nav-link @if(Request::segment(2)=="comment") active @endif">
                 <i class="fas fa-comments nav-icon"></i>
-              <p>{{ __('Comments') }}</p>
+              <p>{{ __('main.Comments') }}</p>
             </a>
           </li>
           <li class="nav-item has-treeview @if(Request::segment(2)=="user" ) menu-open @endif">
             <a href="{{ route('admin.user.index') }}" class="nav-link @if(Request::segment(2)=="user") active @endif">
                 <i class=" nav-icon fas fa-user"></i>
                 <p>
-                    {{ __('Users') }}
+                    {{ __('main.Users') }}
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -123,13 +123,13 @@
                 <li class="nav-item">
                   <a href="{{ route('admin.user.index') }}" class="nav-link @if(Request::segment(2)=="user" && Request::segment(3)!="create") active @endif">
                     <ion-icon name="return-down-forward-outline"></ion-icon>
-                    <p>{{ __('All Users') }}</p>
+                    <p>{{ __('main.All Users') }}</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="{{ route('admin.user.create') }}" class="nav-link @if(Request::segment(2)=="user" && Request::segment(3)=="create") active @endif">
                     <ion-icon name="return-down-forward-outline"></ion-icon>
-                    <p>{{ __('Add New') }}</p>
+                    <p>{{ __('main.Add New') }}</p>
                   </a>
                 </li>
             </ul>
@@ -138,7 +138,7 @@
             <a href="{{ route('admin.setting.index') }}" class="nav-link @if(Request::segment(2)=="setting") active @endif">
                 <i class=" nav-icon fas fa-cog"></i>
                 <p>
-                    {{ __('Settings') }}
+                    {{ __('main.Settings') }}
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -146,31 +146,31 @@
                 <li class="nav-item">
                   <a href="{{ route('admin.setting.index') }}" class="nav-link @if(Request::segment(2)=="setting" && Request::segment(3)=="index") active @endif">
                     <ion-icon name="return-down-forward-outline"></ion-icon>
-                    <p>{{ __('General Settings') }}</p>
+                    <p>{{ __('main.General Settings') }}</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="{{ route('admin.setting.menu.index')}}" class="nav-link @if(Request::segment(2)=="setting" && Request::segment(3)=="menu") active @endif">
                     <ion-icon name="return-down-forward-outline"></ion-icon>
-                    <p>{{ __('Menus') }}</p>
+                    <p>{{ __('main.Menus') }}</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="{{ route('admin.setting.widget')}}" class="nav-link @if(Request::segment(2)=="setting" && Request::segment(3)=="widget") active @endif">
                     <ion-icon name="return-down-forward-outline"></ion-icon>
-                    <p>{{ __('Widgets') }}</p>
+                    <p>{{ __('main.Widgets') }}</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="{{ route('admin.setting.contact') }}" class="nav-link @if(Request::segment(2)=="setting" && Request::segment(3)=="contact") active @endif">
                     <ion-icon name="return-down-forward-outline"></ion-icon>
-                    <p>{{ __('Contact Information') }}</p>
+                    <p>{{ __('main.Contact Information') }}</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="{{ route('admin.setting.social') }}" class="nav-link @if(Request::segment(2)=="setting" && Request::segment(3)=="social") active @endif">
                     <ion-icon name="return-down-forward-outline"></ion-icon>
-                    <p>{{ __('Social Media') }}</p>
+                    <p>{{ __('main.Social Media') }}</p>
                   </a>
                 </li>
             </ul>
@@ -180,7 +180,7 @@
           <li class="nav-item">
             <a class="nav-link" href="{{route('logout')}}">
                 <i class="nav-icon fas fa-power-off"></i>
-                {{ __('Logout') }}
+                {{ __('main.Logout') }}
             </a>
           </li>
         </ul>

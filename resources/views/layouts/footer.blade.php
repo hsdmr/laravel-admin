@@ -80,7 +80,7 @@
       </div>
     </div>
     <div class="col-md-12 p-3" style="color: white;">
-      <div class="text-center">HasPanel © 2020 - {{ __('All rights reserved.') }}</div>
+      <div class="text-center">HasPanel © 2020 - {{ __('main.All rights reserved.') }}</div>
     </div>
   </footer>
 

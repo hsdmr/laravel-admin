@@ -47,7 +47,7 @@ class CategoryController extends Controller
         $category->upper = $request->upper;
         $category->content = $request->content;
         $category->save();
-        return redirect()->route('admin.category.index')->with(['type' => 'success', 'message' =>'Kategori Kaydedildi.']);
+        return redirect()->route('admin.category.index')->with(['type' => 'success', 'message' =>'Category Saved.']);
     }
 
     public function show($id)
@@ -90,7 +90,7 @@ class CategoryController extends Controller
         $category->upper = $request->upper;
         $category->content = $request->content;
         $category->save();
-        return redirect()->route('admin.category.edit',$id)->with(['type' => 'success', 'message' =>'Kategori Güncellendi.']);
+        return redirect()->route('admin.category.edit',$id)->with(['type' => 'success', 'message' =>'Category Updated.']);
     }
 
     public function destroy($id)
@@ -99,6 +99,6 @@ class CategoryController extends Controller
         $slug_id = Slug::findOrFail($category->slug_id);
         $category->delete();
         $slug_id->forceDelete();
-        return redirect()->route('admin.category.index')->with(['type' => 'success', 'message' =>'Kategori Silindi.']);
+        return redirect()->route('admin.category.index')->with(['type' => 'success', 'message' =>'Category Deleted.']);
     }
 }

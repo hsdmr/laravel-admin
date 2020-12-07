@@ -24,12 +24,12 @@
 
 @section('content')
 <div class="title text-center">
-    <h1>Blog</h1>
+    <h1>{{ __('main.Blog') }}</h1>
 </div>
 <div aria-label="breadcrumb" class="container">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{url('/')}}">{{ __('Home') }}</a></li>
-        <li class="breadcrumb-item active" aria-current="page">{{ __('Blog') }}</li>
+        <li class="breadcrumb-item"><a href="{{url('/')}}">{{ __('main.Home') }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ __('main.Blog') }}</li>
     </ol>
 </div>
 <section>
@@ -48,14 +48,14 @@
                             <label for="">{{$article->created_at->translatedFormat(' jS F Y ')}}</label>
                             <h5>{{$article->title}}</h5>
                             <p>{!!substr($article->content,0,150)!!} ...</p>
-                            <a href="{{ url('/',$article->getSlug->slug) }}">devamı >></a>
+                            <a href="{{ url('/',$article->getSlug->slug) }}">{{ __('main.more') }} >></a>
                         </div>
                     </div>
                 </div>
                 @endforeach
             </div>
             <div class="col-md-3">
-                <h4>Blog Kategorileri</h4>
+                <h4>{{ __('main.Categories') }}</h4>
                 <hr>
                 <ul style="font-weight: bold">
                     @foreach ($categories as $cat)

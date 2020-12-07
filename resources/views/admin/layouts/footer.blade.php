@@ -6,7 +6,7 @@
       <!--Anything you want-->
     </div>
     <!-- Default to the left -->
-    <strong>{{ __('Copyright') }} &copy; 2020 <a href="https://hsdmrsoft.com">HsdmrSOFT</a>.</strong> {{ __('All rights reserved.') }}
+    <strong>{{ __('main.Copyright') }} &copy; 2020 <a href="https://hsdmrsoft.com">HsdmrSOFT</a>.</strong> {{ __('main.All rights reserved.') }}
     </footer>
 </div>
 <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
