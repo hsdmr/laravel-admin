@@ -26,9 +26,9 @@ home
 
 @section('content')
 <div class="container text-center">
-    <h1 class="mt-5 pt-5">Merhaba</h1>
-    <p>Bu proje AdminLTE ve Laravel ile geliştirilmiştir. Eksiklerini bana bildirirseniz sevinirim.</p>
-    <a href="">Kurulum ve kullanım</a>
+    <h1 class="mt-5 pt-5">{{ __('Hello') }}</h1>
+    <p>{{ __('Laravel and AdminLTE ') }}</p>
+    <a href="https://github.com/hsdmr/laravel-admin">{{ __('Installation') }}</a>
 </div>
 @endsection
 

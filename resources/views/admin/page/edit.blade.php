@@ -1,12 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-{{ __('Sayfa Düzenle') }}
-@endsection
-
-@section('header')
-<!-- summernote -->
-<link rel="stylesheet" href="{{asset('admin')}}/plugins/summernote/summernote-bs4.css">
+{{ __('Edit Page') }}
 @endsection
 
 @section('content')
@@ -16,12 +11,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h4 class="m-0 text-dark">{{ __('Sayfa Düzenle') }}</h4>
+            <h4 class="m-0 text-dark">{{ __('Edit Page') }}</h4>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('Anasayfa') }}</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('admin.page.index') }}">{{ __('Sayfalar') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('Home') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.page.index') }}">{{ __('Pages') }}</a></li>
               <li class="breadcrumb-item active">{{ $page->title }}</li>
             </ol>
             </ol>
@@ -46,11 +41,11 @@
                                         <input type="hidden" value="form" name="form">
                                         <input type="hidden" name="media_id" id="media_id" value="{{$page->getMedia->id}}">
                                         <div class="form-group">
-                                            <label for="title">Başlık</label>
+                                            <label for="title">{{ __('Title') }}</label>
                                             <input type="text" class="form-control form-control-sm" id="title" name="title" value="{{$page->title}}">
                                         </div>
                                         <div class="form-group">
-                                            <label for="slug">Kısa Ad</label>
+                                            <label for="slug">{{ __('Permalink') }}</label>
                                             <input type="text" class="form-control form-control-sm" id="slug" name="slug" value="{{$page->getSlug->slug}}">
                                         </div>
                                         <div class="form-group">
@@ -62,30 +57,26 @@
                                     <div class="col-md-3">
                                         <div class="card">
                                             <div class="card-header">
-                                                {{ __('Öne Çıkan Görsel') }}
+                                                {{ __('Featured Image') }}
                                             </div>
                                             <div class="card-body">
                                                 <img src="{{ ($page->getMedia->id==1) ? '' : $page->getMedia->getUrl()}}" alt="" id="media_img" class="w-100">
                                             </div>
                                             <div class="card-footer">
-                                                <a href="javascript:void(0);" class="btn btn-xs btn-primary float-left" id="choose">Görsel Seç</a>
-                                                <a href="javascript:void(0);" class="btn btn-xs btn-warning float-right" id="remove">Görseli Kaldır</a>
+                                                <a href="javascript:void(0);" class="btn btn-xs btn-primary float-left" id="choose">{{ __('Choose Image') }}</a>
+                                                <a href="javascript:void(0);" class="btn btn-xs btn-warning float-right" id="remove">{{ __('Remove Image') }}</a>
                                             </div>
                                         </div>
                                         <div class="card">
                                             <div class="card-header">
-                                                {{ __('Sayfa Yapısı') }}
+                                                {{ __('Page Template') }}
                                             </div>
                                             <div class="card-body">
                                                 <select class="form-control" name="template" id="template">
-                                                    <option value="standart" @if ($page->template=='standart') selected @endif>Standart</option>
-                                                    <option value="iletisim" @if ($page->template=='iletisim') selected @endif>İletişim</option>
-                                                    <option value="blog" @if ($page->template=='blog') selected @endif>Blog</option>
-                                                    <option value="doktorlar" @if ($page->template=='doktorlar') selected @endif>Doktorlar</option>
-                                                    <option value="listele" @if ($page->template=='listele') selected @endif>Arama Sayfası</option>
-                                                    <option value="uzmanlik-alanlari" @if ($page->template=='uzmanlik-alanlari') selected @endif>Uzmanlık Alanları</option>
-                                                    <option value="hastaliklar" @if ($page->template=='hastaliklar') selected @endif>Hastalıklar</option>
-                                                    <option value="hizmetler-tedaviler" @if ($page->template=='hizmetler-tedaviler') selected @endif>Hizmetler-Tedaviler</option>
+                                                    <option value="default" @if ($page->template=='default') selected @endif>{{ __('Default') }}</option>
+                                                    <option value="contact" @if ($page->template=='contact') selected @endif>{{ __('Contact') }}</option>
+                                                    <option value="blog" @if ($page->template=='blog') selected @endif>{{ __('Blog') }}</option>
+                                                    <option value="search" @if ($page->template=='search') selected @endif>{{ __('Search') }}</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -95,11 +86,9 @@
                                             </div>
                                             <div class="card-body">
                                                 <select class="form-control" name="sidebar" id="sidebar">
-                                                    <option value="0" @if ($page->sidebar==0) selected @endif>Hayır</option>
-                                                    <option value="1" @if ($page->sidebar==1) selected @endif>Sayfa Sidebar</option>
-                                                    <option value="2" @if ($page->sidebar==2) selected @endif>Blog Sidebar</option>
-                                                    <option value="3" @if ($page->sidebar==3) selected @endif>Sidebar 1</option>
-                                                    <option value="4" @if ($page->sidebar==4) selected @endif>Sidebar 2</option>
+                                                    <option value="0" @if ($page->sidebar==0) selected @endif>{{ __('No') }}</option>
+                                                    <option value="1" @if ($page->sidebar==1) selected @endif>{{ __('Page Sidebar') }}</option>
+                                                    <option value="2" @if ($page->sidebar==2) selected @endif>{{ __('Blog Sidebar') }}</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -108,7 +97,7 @@
                             </div>
                         </form>
                         <div class="card-footer">
-                            <a href="javascript:void(0);" class="btn btn-success btn-sm float-right" id="submit">Kaydet</a>
+                            <a href="javascript:void(0);" class="btn btn-success btn-sm float-right" id="submit">{{ __('Save') }}</a>
                         </div>
                     </div>
                 </div>
@@ -121,7 +110,5 @@
 @endsection
 
 @section('script')
-<!-- Summernote -->
-<script src="{{asset('admin')}}/plugins/summernote/summernote-bs4.min.js"></script>
 
 @endsection

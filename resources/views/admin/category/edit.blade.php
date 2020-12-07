@@ -4,10 +4,6 @@
     Kategori Düzenle
 @endsection
 
-@section('header')
-
-@endsection
-
 @section('content')
 
   <div class="content-wrapper">

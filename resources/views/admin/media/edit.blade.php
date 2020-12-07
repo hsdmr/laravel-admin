@@ -4,10 +4,6 @@
     {{ $media->name }}
 @endsection
 
-@section('header')
-
-@endsection
-
 @section('content')
 
   <div class="content-wrapper">
@@ -20,7 +16,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('Anasayfa') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('Home') }}</a></li>
                 <li class="breadcrumb-item"><a href="{{ route('admin.media.index') }}">{{ __('Media') }}</a></li>
                 <li class="breadcrumb-item active">{{ $media->name }}</li>
             </ol>
@@ -53,18 +49,18 @@
                                         @method('PUT')
                                         @csrf
                                         <div class="form-group">
-                                            <label for="title">İsim</label>
+                                            <label for="title">{{ __('Name') }}</label>
                                             <input type="text" class="form-control form-control-sm" value="{{ $media[0]->name }}" id="title" name="title">
                                         </div>
                                         <div class="form-group">
-                                            <label for="alt">Alt Etiketi</label>
+                                            <label for="alt">{{ __('Alt Tag') }}</label>
                                             <input type="text" class="form-control form-control-sm"  value="{{ $media[0]->alt }}" id="alt" name="alt">
                                         </div>
                                         <div class="form-group">
-                                            <label for="url">Url</label>
+                                            <label for="url">{{ __('Url') }}</label>
                                             <input type="text" class="form-control form-control-sm" disabled="" value="{{ $media[0]->getUrl() }}" id="url" name="url">
                                         </div>
-                                        <button type="submit" class="btn btn-success btn-xs float-right">Güncelle</button>
+                                        <button type="submit" class="btn btn-success btn-xs float-right">{{ __('Update') }}</button>
                                     </form>
                                 </div>
                             </div>

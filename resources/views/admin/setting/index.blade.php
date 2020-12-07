@@ -1,12 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-{{ __('Genel Ayarlar') }}
-@endsection
-
-@section('header')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/theme/base16-dark.css">
+{{ __('Settings') }}
 @endsection
 
 @section('content')
@@ -16,12 +11,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h4 class="m-0 text-dark">{{ __('Genel Ayarlar') }}</h4>
+            <h4 class="m-0 text-dark">{{ __('Settings') }}</h4>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('Anasayfa') }}</a></li>
-              <li class="breadcrumb-item active">{{ __('Genel Ayarlar') }}</li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('Home') }}</a></li>
+              <li class="breadcrumb-item active">{{ __('Settings') }}</li>
             </ol>
             </ol>
           </div><!-- /.col -->
@@ -43,19 +38,19 @@
                             <div class="card-body row">
                                 <div class="col-md-9">
                                     <div class="form-group row">
-                                        <label for="title" class="col-md-3">Site Adı</label>
+                                        <label for="title" class="col-md-3">{{ __('Site name') }}</label>
                                         <input type="text" class="form-control form-control-sm col-md-9" value="{{$setting->title}}" id="title" name="title">
                                     </div>
                                     <div class="form-group row">
-                                        <label for="headcss" class="col-md-3">Header Css</label>
+                                        <label for="headcss" class="col-md-3">{{ __('Header CSS') }}</label>
                                         <textarea type="text" class="form-control form-control-sm col-md-9" id="headcss" name="headcss" rows="10">{{$setting->headcss}}</textarea>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="headjs" class="col-md-3">Header Js</label>
+                                        <label for="headjs" class="col-md-3">{{ __('Header JS') }}</label>
                                         <textarea type="text" class="form-control form-control-sm col-md-9" id="headjs" name="headjs" rows="10">{{$setting->headjs}}</textarea>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="footerjs" class="col-md-3">Footer Js</label>
+                                        <label for="footerjs" class="col-md-3">{{ __('Footer JS') }}</label>
                                         <textarea type="text" class="form-control form-control-sm col-md-9" id="footerjs" name="footerjs" rows="10">{{$setting->footerjs}}</textarea>
                                     </div>
                                 </div>
@@ -68,8 +63,8 @@
                                             <img src="{{ ($setting->getLogo->id==1) ? '' : $setting->getLogo->getUrl()}}" alt="" id="logo_img" style="max-width: 100%">
                                         </div>
                                         <div class="card-footer">
-                                            <a href="javascript:void(0);" class="btn btn-xs btn-primary float-left" id="logochoose">Görsel Seç</a>
-                                            <a href="javascript:void(0);" class="btn btn-xs btn-warning float-right" id="logoremove">Görseli Kaldır</a>
+                                            <a href="javascript:void(0);" class="btn btn-xs btn-primary float-left" id="logochoose">{{ __('Choose Image') }}</a>
+                                            <a href="javascript:void(0);" class="btn btn-xs btn-warning float-right" id="logoremove">{{ __('Remove Image') }}</a>
                                         </div>
                                     </div>
                                     <div class="card">
@@ -80,23 +75,23 @@
                                             <img src="{{ ($setting->getfavicon->id==1) ? '' : $setting->getfavicon->getUrl()}}" alt="" id="fav_img" style="max-width: 100%">
                                         </div>
                                         <div class="card-footer">
-                                            <a href="javascript:void(0);" class="btn btn-xs btn-primary float-left" id="favchoose">Görsel Seç</a>
-                                            <a href="javascript:void(0);" class="btn btn-xs btn-warning float-right" id="favremove">Görseli Kaldır</a>
+                                            <a href="javascript:void(0);" class="btn btn-xs btn-primary float-left" id="favchoose">{{ __('Choose Image') }}</a>
+                                            <a href="javascript:void(0);" class="btn btn-xs btn-warning float-right" id="favremove">{{ __('Remove Image') }}</a>
                                         </div>
                                     </div>
                                     <div class="custom-control custom-checkbox">
                                         <input class="custom-control-input" type="checkbox" @if ($setting->no_index==1) checked @endif id="no_index" name="no_index">
-                                        <label for="no_index" class="custom-control-label">Seo No Index</label>
+                                        <label for="no_index" class="custom-control-label">{{ __('Seo No Index') }}</label>
                                     </div>
                                     <div class="custom-control custom-checkbox">
                                         <input class="custom-control-input" type="checkbox" @if ($setting->no_follow==1) checked @endif id="no_follow" name="no_follow">
-                                        <label for="no_follow" class="custom-control-label">Seo No Follow</label>
+                                        <label for="no_follow" class="custom-control-label">{{ __('Seo No Follow') }}</label>
                                     </div>
                                 </div>
                             </div>
                         </form>
                         <div class="card-footer">
-                            <a href="javascript:void(0);" class="btn btn-success btn-sm float-right" id="submit">Kaydet</a>
+                            <a href="javascript:void(0);" class="btn btn-success btn-sm float-right" id="submit">{{ __('Save') }}</a>
                         </div>
                     </div>
                 </div>
@@ -109,8 +104,6 @@
 @endsection
 
 @section('script')
-<script src= "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.js"></script>
-<script src= "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/mode/javascript/javascript.js"></script>
 <script>
 
 const cm1 = CodeMirror.fromTextArea(document.getElementById('headcss'), {

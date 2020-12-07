@@ -1,14 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-{{ __('Kullanıcılar Geri Dönüşüm Kutusu') }}
-@endsection
-
-@section('header')
-<!-- DataTables -->
-<link rel="stylesheet" href="{{ asset('admin')}}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet" href="{{ asset('admin')}}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-
+{{ __('Users Recycle') }}
 @endsection
 
 @section('content')
@@ -19,13 +12,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h4 class="m-0 text-dark">{{ __('Geri Dönüşüm Kutusu') }}</h4>
+            <h4 class="m-0 text-dark">{{ __('Users Recycle') }}</h4>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('Anasayfa') }}</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('admin.user.index') }}">{{ __('Kullanıcılar') }}</a></li>
-              <li class="breadcrumb-item active">{{ __('Geri Dönüşüm Kutusu') }}</li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.user.index') }}">{{ __('Users') }}</a></li>
+              <li class="breadcrumb-item active">{{ __('Recycle') }}</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -43,28 +36,24 @@
                         <table id="table1" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
-                                    <th>Kullanıcı Adı</th>
-                                    <th>İsim</th>
-                                    <th>e-Posta</th>
-                                    <th>Rol</th>
+                                    <th>{{ __('Name') }}</th>
+                                    <th>{{ __('E-mail') }}</th>
+                                    <th>{{ __('Role') }}</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($users as $user)
                                     <tr>
-                                        <td>
-                                            <img src="" alt="" style="width: 50px">{{ $user->username }}
-                                        </td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->statu }}</td>
                                         <td>
-                                            <a href="{{ route('admin.user.recover',$user->id) }}" title="Kurtar" class="btn btn-warning btn-xs"><i class="fas fa-recycle"></i></a>
+                                            <a href="{{ route('admin.user.recover',$user->id) }}" title="{{ __('Recover') }}" class="btn btn-warning btn-xs"><i class="fas fa-recycle"></i></a>
                                             <form id="delete_{{$user->id}}" action="{{route('admin.user.destroy',$user->id)}}" method="post" class="d-inline">
                                                 @method('DELETE')
                                                 @csrf
-                                                <a href="javascript:void(0)" onclick="validate({{$user->id}})" title="Tamamen Sil" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>
+                                                <a href="javascript:void(0)" onclick="validate({{$user->id}})" title="{{ __('Destroy') }}" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>
                                             </form>
                                         </td>
                                     </tr>
@@ -83,11 +72,6 @@
 @endsection
 
 @section('script')
-<!-- DataTables -->
-<script src="{{ asset('admin')}}/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="{{ asset('admin')}}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="{{ asset('admin')}}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="{{ asset('admin')}}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <script>
     $(function(){
         $('#table1').DataTable({

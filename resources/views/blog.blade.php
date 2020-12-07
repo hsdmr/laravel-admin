@@ -28,8 +28,8 @@
 </div>
 <div aria-label="breadcrumb" class="container">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{url('/')}}">Anasayfa</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Blog</li>
+        <li class="breadcrumb-item"><a href="{{url('/')}}">{{ __('Home') }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ __('Blog') }}</li>
     </ol>
 </div>
 <section>

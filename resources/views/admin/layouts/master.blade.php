@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <link rel="icon" href="{{asset('front')}}/medya/logo.png" type="image/x-icon" />
-  <title>@yield('title','Super Panel')</title>
+  <title>@yield('title','Has Panel')</title>
     @include('admin.layouts.header')
     @yield('header')
 

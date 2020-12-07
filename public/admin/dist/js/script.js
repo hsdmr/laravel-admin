@@ -127,48 +127,92 @@ $('.choose-panel .thumbnail img').click(function(){
 });
 
 $('nav.justify-between').hide();
-    $(function() {
-        $('.infinite-scroll').jscroll({
-            autoTrigger: true,
-            loadingHtml: '<img class="center-block" src="/images/loading.gif" alt="Loading..." />',
-            padding: 0,
-            nextSelector: 'nav.justify-between a:nth-child(2)',
-            contentSelector: 'div.scroll-content',
-            callback: function() {
-                $('nav.justify-between').remove();
-            }
-        });
-    });
 
-    $('#submit_img').click(function(){
-        var form = $("#form_img");
-        var id = $("#form_img #media").val();
-        var inputs = form.find("input, select, button, textarea");
-        $.ajax({
-            dataType: "text",
-            type: "post",
-            url: window.location.origin+"/admin/media/"+id,
-            data: form.serialize(),
-            beforeSend: function(){
-                $("#submit_img").html("Kaydediliyor...");
-                inputs.prop("disabled", true);
-            },
-            success: function(response){
-                response = response.split(',');
-                if(response[0]=='success'){
-                    toastr.success(response[1]);
+$(function(){
+    $('#table1').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+        "language": {
+                "sDecimal":        ",",
+                "sEmptyTable":     "Tabloda herhangi bir veri mevcut değil",
+                "sInfo":           "_TOTAL_ kayıttan _START_ - _END_ arasındaki kayıtlar gösteriliyor",
+                "sInfoEmpty":      "Kayıt yok",
+                "sInfoFiltered":   "(_MAX_ kayıt içerisinden bulunan)",
+                "sInfoPostFix":    "",
+                "sInfoThousands":  ".",
+                "sLengthMenu":     "Sayfada _MENU_ kayıt göster",
+                "sLoadingRecords": "Yükleniyor...",
+                "sProcessing":     "İşleniyor...",
+                "sSearch":         "Ara:",
+                "sZeroRecords":    "Eşleşen kayıt bulunamadı",
+                "oPaginate": {
+                    "sFirst":    "İlk",
+                    "sLast":     "Son",
+                    "sNext":     "Sonraki",
+                    "sPrevious": "Önceki"
+                },
+                "oAria": {
+                    "sSortAscending":  ": artan sütun sıralamasını aktifleştir",
+                    "sSortDescending": ": azalan sütun sıralamasını aktifleştir"
+                },
+                "select": {
+                    "rows": {
+                        "_": "%d kayıt seçildi",
+                        "0": "",
+                        "1": "1 kayıt seçildi"
+                    }
                 }
-                else{
-                    toastr.error(response[1]);
-                }
-            },
-            error: function(res){
-                //alert(res.responseText);
-                toastr.error("Fotoğraf Seçimi Yapmalısınız!");
-            },
-            complete: function(){
-                $("#submit_img").html("Güncelle");
-                inputs.prop("disabled", false);
             }
-        });
     });
+});
+
+$(function() {
+    $('.infinite-scroll').jscroll({
+        autoTrigger: true,
+        loadingHtml: '<img class="center-block" src="/images/loading.gif" alt="Loading..." />',
+        padding: 0,
+        nextSelector: 'nav.justify-between a:nth-child(2)',
+        contentSelector: 'div.scroll-content',
+        callback: function() {
+            $('nav.justify-between').remove();
+        }
+    });
+});
+
+$('#submit_img').click(function(){
+    var form = $("#form_img");
+    var id = $("#form_img #media").val();
+    var inputs = form.find("input, select, button, textarea");
+    $.ajax({
+        dataType: "text",
+        type: "post",
+        url: window.location.origin+"/admin/media/"+id,
+        data: form.serialize(),
+        beforeSend: function(){
+            $("#submit_img").html("Kaydediliyor...");
+            inputs.prop("disabled", true);
+        },
+        success: function(response){
+            response = response.split(',');
+            if(response[0]=='success'){
+                toastr.success(response[1]);
+            }
+            else{
+                toastr.error(response[1]);
+            }
+        },
+        error: function(res){
+            //alert(res.responseText);
+            toastr.error("Fotoğraf Seçimi Yapmalısınız!");
+        },
+        complete: function(){
+            $("#submit_img").html("Güncelle");
+            inputs.prop("disabled", false);
+        }
+    });
+});

@@ -1,10 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-{{ __('Kullanıcı Ekle') }}
-@endsection
-
-@section('header')
+{{ __('Users Add') }}
 @endsection
 
 @section('content')
@@ -14,13 +11,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h4 class="m-0 text-dark">{{ __('Kullanıcı Ekle') }}</h4>
+            <h4 class="m-0 text-dark">{{ __('Users Add') }}</h4>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('Anasayfa') }}</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('admin.article.index') }}">{{ __('Kullanıcılar') }}</a></li>
-              <li class="breadcrumb-item active">{{ __('Kullanıcı Ekle') }}</li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('Home') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.user.index') }}">{{ __('Users') }}</a></li>
+              <li class="breadcrumb-item active">{{ __('Users Add') }}</li>
             </ol>
             </ol>
           </div><!-- /.col -->
@@ -43,34 +40,34 @@
                                         <div class="row">
                                             <div class="col-md-8">
                                                 <div class="form-group">
-                                                    <label for="title">E-Posta</label>
+                                                    <label for="title">{{ __('E-mail') }}</label>
                                                     <input type="text" class="form-control form-control-sm" id="title" name="email" value="" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label for="phone">Telefon</label>
+                                                    <label for="phone">{{ __('Phone') }}</label>
                                                     <input type="text" class="form-control form-control-sm" id="phone" name="phone" value="" required>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="name">Ad</label>
+                                            <label for="name">{{ __('Name') }}</label>
                                             <input type="text" class="form-control form-control-sm" id="name" name="name" value="">
                                         </div>
                                         <div class="form-group">
-                                            <label for="surname">Soyad</label>
+                                            <label for="surname">{{ __('Surname') }}</label>
                                             <input type="text" class="form-control form-control-sm" id="surname" name="surname" value="">
                                         </div>
                                         <div class="form-group">
-                                            <label for="role">Rol</label>
+                                            <label for="role">{{ __('Role') }}</label>
                                             <select name="role" id="role" class="form-control form-control-sm">
-                                                <option value="user">Abone</option>
-                                                <option value="admin">Yönetici</option>
+                                                <option value="user">{{ __('User') }}</option>
+                                                <option value="admin">{{ __('Admin') }}</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="password">Şifre</label>
+                                            <label for="password">{{ __('Password') }}</label>
                                             <input type="text" class="form-control form-control-sm" id="password" name="password" value="">
                                         </div>
                                     </div>
@@ -81,7 +78,7 @@
                             </div>
                         </form>
                         <div class="card-footer">
-                            <a href="javascript:void(0);" class="btn btn-success btn-sm float-right" id="submit">Kaydet</a>
+                            <a href="javascript:void(0);" class="btn btn-success btn-sm float-right" id="submit">{{ __('Save') }}</a>
                         </div>
                     </div>
                 </div>

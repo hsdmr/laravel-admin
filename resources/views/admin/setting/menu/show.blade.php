@@ -1,10 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-{{ __('Menüler') }}
-@endsection
-
-@section('header')
+{{ __('Menus') }}
 @endsection
 
 @section('content')
@@ -18,9 +15,9 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('Anasayfa') }}</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('admin.setting.index') }}">{{ __('Ayarlar') }}</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('admin.setting.menu.index') }}">{{ __('Menuler') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('Home') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.setting.index') }}">{{ __('Settings') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.setting.menu.index') }}">{{ __('Menus') }}</a></li>
               <li class="breadcrumb-item active">{{ $menus[0]->menuname }}</li>
             </ol>
             </ol>
@@ -41,40 +38,39 @@
                                 <div class="col-md-2">
                                     <div class="card card-body">
                                         <div class="form-group">
-                                            <label for="page">Sayfalar</label>
+                                            <label for="page">{{ __('Pages') }}</label>
                                             <select name="page" id="page" class="form-control">
-                                                <option value="">Seçiniz</option>
+                                                <option value="">{{ __('Choose') }}</option>
                                                 @foreach ($pages as $page)
                                                 <option value="{{$page->getSlug->slug}}">{{$page->title}}</option>
                                                 @endforeach
-                                                <option value="giris">Giriş</option>
-                                                <option value="kayit-uzman">Doktor Kayıt</option>
-                                                <option value="kayit-uye">Üye Kayıt</option>
+                                                <option value="login">{{ __('Login') }}</option>
+                                                <option value="register">{{ __('Register') }}</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="category">Kategoriler</label>
+                                            <label for="category">{{ __('Categories') }}</label>
                                             <select name="category" id="category" class="form-control">
-                                                <option value="">Seçiniz</option>
+                                                <option value="">{{ __('Choose') }}</option>
                                                 @foreach ($categories as $category)
                                                 <option value="{{$category->getSlug->slug}}">{{$category->title}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="article">Yazılar</label>
+                                            <label for="article">{{ __('Posts') }}</label>
                                             <select name="article" id="article" class="form-control">
-                                                <option value="">Seçiniz</option>
+                                                <option value="">{{ __('Choose') }}</option>
                                                 @foreach ($articles as $article)
                                                 <option value="{{$article->getSlug->slug}}">{{$article->title}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
-                                    <div><b class="text-danger">Hatılatmalar</b>
+                                    <div><b class="text-danger">{{ __('Reminders') }}</b>
                                         <ul style="padding-left:20px">
-                                            <li class="mb-2">Menü ikonu seçmek için <a href="https://fontawesome.com/icons?d=gallery&m=free">buraya</a> tıklayın.</li>
-                                            <li class="mb-2">Menü elemanlarını sıralamak için '<b>Sıra</b>' alanını kullanınız.</li>
+                                            <li class="mb-2">{{ __('Click side to select menu icon.') }} <a href="https://fontawesome.com/icons?d=gallery&m=free">{{ __('here') }}</a></li>
+                                            <li class="mb-2">{{ __('Use the "Order" field to sort the menu items.') }}</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -86,19 +82,19 @@
                                                 <input type="hidden" name="position" id="position" value="{{$menus[0]->position}}">
                                                 <input type="hidden" name="menuname" id="menuname" value="{{$menus[0]->menuname}}">
                                                 <div class="form-group">
-                                                    <label for="title">Başlık</label>
+                                                    <label for="title">{{ __('Title') }}</label>
                                                     <input type="text" name="title" id="title" class="form-control">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="icon">İkon</label>
+                                                    <label for="icon">{{ __('Icon') }}</label>
                                                     <input type="text" name="icon" id="icon" class="form-control">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="link">Link</label>
+                                                    <label for="link">{{ __('Link') }}</label>
                                                     <input type="text" name="link" id="link" class="form-control">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="parent">Üst Menü</label>
+                                                    <label for="parent">{{ __('Parent') }}</label>
                                                     <select name="parent" id="parent" class="form-control">
                                                         <option value=""></option>
                                                         @foreach ($menus as $menu)
@@ -109,13 +105,13 @@
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="order">Sıra</label>
+                                                    <label for="order">{{ __('Order') }}</label>
                                                     <input type="number" name="order" id="order" class="form-control">
                                                 </div>
                                             </form>
                                         </div>
                                         <div class="card-footer">
-                                            <a href="javascript:void(0);" class="btn btn-success btn-sm float-right" id="submit">Kaydet</a>
+                                            <a href="javascript:void(0);" class="btn btn-success btn-sm float-right" id="submit">{{ __('Save') }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -125,9 +121,9 @@
                                             <table class="table table-bordered table-striped">
                                                 <thead>
                                                   <tr>
-                                                    <th style="width: 20px">Sıra</th>
-                                                    <th>Başlık</th>
-                                                    <th>Link</th>
+                                                    <th style="width: 20px">{{ __('Order') }}</th>
+                                                    <th>{{ __('Title') }}</th>
+                                                    <th>{{ __('Link') }}</th>
                                                     <th style="width: 40px"></th>
                                                   </tr>
                                                 </thead>

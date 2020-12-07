@@ -25,7 +25,7 @@
     }
 @endphp
                                         <div class="form-group">
-                                            <label for="seo_title">Seo Title</label>
+                                            <label for="seo_title">{{ __('Seo Title') }}</label>
                                             <div class="input-group">
                                                 <input type="text" class="form-control" id="seo_title" name="seo_title" value="{{$seo_title}}">
                                                 <div class="input-group-append">
@@ -34,7 +34,7 @@
                                               </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="seo_description">Seo Description</label>
+                                            <label for="seo_description">{{ __('Seo Description') }}</label>
                                             <div class="input-group">
                                                 <textarea class="form-control form-control-sm" rows="3" id="seo_description" name="seo_description">{{$seo_description}}</textarea>
                                                 <div class="input-group-append">
@@ -44,9 +44,9 @@
                                         </div>
                                         <div class="custom-control custom-checkbox">
                                             <input class="custom-control-input" type="checkbox" @if ($no_index==1) checked @endif id="no_index" name="no_index">
-                                            <label for="no_index" class="custom-control-label">Seo No Index</label>
+                                            <label for="no_index" class="custom-control-label">{{ __('Seo No Index') }}</label>
                                         </div>
                                         <div class="custom-control custom-checkbox">
                                             <input class="custom-control-input" type="checkbox" @if ($no_follow==1) checked @endif id="no_follow" name="no_follow">
-                                            <label for="no_follow" class="custom-control-label">Seo No Follow</label>
+                                            <label for="no_follow" class="custom-control-label">{{ __('Seo No Follow') }}</label>
                                         </div>

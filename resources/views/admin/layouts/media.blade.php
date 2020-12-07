@@ -38,20 +38,20 @@
                     <input type="hidden" value="" id="media" name="media">
                     <input type="hidden" value="form_img" name="form_img">
                     <div class="form-group">
-                        <label for="media_title">İsim</label>
+                        <label for="media_title">{{ __('Name') }}</label>
                         <input type="text" class="form-control form-control-sm" value="" id="media_title" name="media_title">
                     </div>
                     <div class="form-group">
-                        <label for="media_alt">Alt Etiketi</label>
+                        <label for="media_alt">{{ __('Alt Tag') }}</label>
                         <input type="text" class="form-control form-control-sm" value="" id="media_alt" name="media_alt">
                     </div>
                     <div class="form-group">
-                        <label for="media_url">Url</label>
+                        <label for="media_url">{{ __('Url') }}</label>
                         <input type="text" class="form-control form-control-sm" value="" id="media_url" name="media_url" disabled>
                     </div>
                 </form>
-                <a href="javascript:void(0);" class="btn btn-primary btn-xs" style="bottom: 0;" id="submit_img">Güncelle</a>
-                <a href="javascript:void(0);" class="btn btn-success btn-xs float-right" style="bottom: 0;" id="add">Görsel Seç</a>
+                <a href="javascript:void(0);" class="btn btn-primary btn-xs" style="bottom: 0;" id="submit_img">{{ __('Update') }}</a>
+                <a href="javascript:void(0);" class="btn btn-success btn-xs float-right" style="bottom: 0;" id="add">{{ __('Choose Image') }}</a>
                 </div>
             </div>
         </div>

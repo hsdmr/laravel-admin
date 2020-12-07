@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-    Pano
+{{ __('Dashboard') }}
 @endsection
 
 @section('content')

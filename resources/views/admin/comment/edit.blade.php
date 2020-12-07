@@ -1,12 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-{{ __('Yorum Düzenle') }}
-@endsection
-
-@section('header')
-<!-- summernote -->
-<link rel="stylesheet" href="{{asset('admin')}}/plugins/summernote/summernote-bs4.css">
+{{ __('Edit Comment') }}
 @endsection
 
 @section('content')
@@ -16,12 +11,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h4 class="m-0 text-dark">{{ __('Yorum Düzenle') }}</h4>
+            <h4 class="m-0 text-dark">{{ __('Edit Comment') }}</h4>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('Anasayfa') }}</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('admin.comment.index') }}">{{ __('Yorumlar') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('Home') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.comment.index') }}">{{ __('Comments') }}</a></li>
               <li class="breadcrumb-item active">{{ $comment->title }}</li>
             </ol>
             </ol>
@@ -44,7 +39,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="title">Başlık</label>
+                                            <label for="title">{{ __('Title') }}</label>
                                             <input type="text" class="form-control form-control-sm" id="title" name="title" value="{{$comment->title}}">
                                         </div>
                                         <div class="form-group">
@@ -56,7 +51,7 @@
                             </div>
                         </form>
                         <div class="card-footer">
-                            <a href="javascript:void(0);" class="btn btn-success btn-sm float-right" id="submit">Kaydet</a>
+                            <a href="javascript:void(0);" class="btn btn-success btn-sm float-right" id="submit">{{ __('Save') }}</a>
                         </div>
                     </div>
                 </div>

@@ -4,11 +4,6 @@
 {{ __('Yazı Düzenle') }}
 @endsection
 
-@section('header')
-<!-- summernote -->
-<link rel="stylesheet" href="{{asset('admin')}}/plugins/summernote/summernote-bs4.css">
-@endsection
-
 @section('content')
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -106,7 +101,5 @@
 @endsection
 
 @section('script')
-<!-- Summernote -->
-<script src="{{asset('admin')}}/plugins/summernote/summernote-bs4.min.js"></script>
 
 @endsection

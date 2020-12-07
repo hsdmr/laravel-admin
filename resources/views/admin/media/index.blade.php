@@ -1,15 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-{{ __('Medya') }}
-@endsection
-
-@section('header')
-<!-- Ekko Lightbox -->
-<link rel="stylesheet" href="{{ asset('admin') }}/plugins/ekko-lightbox/ekko-lightbox.css">
-<!-- Ionicons -->
-<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-
+{{ __('Media') }}
 @endsection
 
 @section('content')
@@ -20,12 +12,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h4 class="m-0 text-dark">{{ __('Medya') }}</h4>
+            <h4 class="m-0 text-dark">{{ __('Media') }}</h4>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">{{ __('Anasayfa') }}</a></li>
-              <li class="breadcrumb-item active">{{ __('Medya') }}</li>
+              <li class="breadcrumb-item"><a href="#">{{ __('Home') }}</a></li>
+              <li class="breadcrumb-item active">{{ __('Media') }}</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->

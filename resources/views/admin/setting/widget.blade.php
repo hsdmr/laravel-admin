@@ -1,11 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-{{ __('Bileşenler') }}
-@endsection
-
-@section('header')
-<link rel="stylesheet" href="{{asset('admin')}}/plugins/summernote/summernote-bs4.css">
+{{ __('Widgets') }}
 @endsection
 
 @section('content')
@@ -15,13 +11,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h4 class="m-0 text-dark">{{ __('Bileşenler') }}</h4>
+            <h4 class="m-0 text-dark">{{ __('Widgets') }}</h4>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('Anasayfa') }}</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('admin.setting.index') }}">{{ __('Ayarlar') }}</a></li>
-              <li class="breadcrumb-item active">{{ __('Bileşenler') }}</li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('Home') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.setting.index') }}">{{ __('Settings') }}</a></li>
+              <li class="breadcrumb-item active">{{ __('Widgets') }}</li>
             </ol>
             </ol>
           </div><!-- /.col -->
@@ -51,11 +47,11 @@
                         </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="title{{$i}}">Başlık</label>
+                                <label for="title{{$i}}">{{ __('Title') }}</label>
                                 <input type="text" name="title{{$i}}" id="title{{$i}}" class="form-control form-control-sm" value="{{$widget->title}}">
                             </div>
                             <div class="form-group">
-                                <label for="menu{{$i}}">Menü</label>
+                                <label for="menu{{$i}}">{{ __('Menu') }}</label>
                                 <select name="menu{{$i}}" id="menu{{$i}}" class="form-control form-control-sm">
                                     <option value=""></option>
                                     @foreach ($menus as $menu)
@@ -64,12 +60,12 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="content{{$i}}">İçerik</label>
+                                <label for="content{{$i}}">{{ __('Content') }}</label>
                                 <textarea name="content{{$i}}" id="content{{$i}}" cols="30" rows="10" class="form-control form-control-sm">{{$widget->content}}</textarea>
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-success btn-sm float-right">Kaydet</button>
+                            <button type="submit" class="btn btn-success btn-sm float-right">{{ __('Save') }}</button>
                         </div>
                         </form>
                     </div>
@@ -82,7 +78,6 @@
   </div>
 @endsection
 @section('script')
-<script src="{{asset('admin')}}/plugins/summernote/summernote-bs4.min.js"></script>
 <script>
 $(function() {
     $('#content1').summernote();
