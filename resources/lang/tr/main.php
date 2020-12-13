@@ -5,6 +5,7 @@ return [
     'Home' => 'Anasayfa',
     'Dashboard' => 'Pano',
     'Welcome' => 'Hoşgeldiniz',
+    'Hello' => 'Merhaba',
 
     'Media' => 'Medya',
     'Medias' => 'Medyalar',
@@ -89,6 +90,8 @@ return [
     'Favicon' => 'Favicon',
 
     'Menu' => 'Menü',
+    'Main Menu' => 'Ana Menü',
+    'Footer' => 'Footer',
     'Menus' => 'Menüler',
     'Menu Name' => 'Ana Menü',
     'Reminders' => 'HAtırlatmalar',
@@ -116,12 +119,14 @@ return [
     'Logout' => 'Çıkış',
 
     'Save' => 'Kaydet',
+    'Edit' => 'Düzenle',
     'Delete' => 'Sil',
     'Destroy' => 'Tamamen Sil',
     'Update' => 'Güncelle',
     'Show' => 'Göster',
     'Recover' => 'Kurtar',
     'Choose' => 'Seç',
+    'Submit' => 'Gönder',
 
     'Login' => 'Giriş',
     'Register' => 'Kayıt',
@@ -131,6 +136,8 @@ return [
     'I agree to the' => 'Kabul Ediyorum',
     'terms' => 'Şartlar',
     'I already have a membership' => 'Zaten üye misimiz?',
+    'Sign in to start your session' => 'Giriş yapmak için bilgilerinizi girin',
+    'Register a new membership' => 'Yeni bir üyelik oluşturun',
 
     'Yes' => 'Evet',
     'No' => 'Hayır',

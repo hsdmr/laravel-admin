@@ -14,10 +14,10 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/logout', [App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
-Route::get('/giris', [App\Http\Controllers\LoginController::class, 'login'])->name('login');
-Route::post('/giris', [App\Http\Controllers\LoginController::class, 'loginCheck'])->name('login.check');
-Route::get('/kayit-uye', [App\Http\Controllers\LoginController::class, 'registerUser'])->name('register.user');
-Route::post('/kayit', [App\Http\Controllers\LoginController::class, 'register'])->name('register');
+Route::get('/login', [App\Http\Controllers\LoginController::class, 'login'])->name('login');
+Route::post('/login', [App\Http\Controllers\LoginController::class, 'loginCheck'])->name('login.check');
+Route::get('/register', [App\Http\Controllers\LoginController::class, 'registerUser'])->name('register.user');
+Route::post('/register', [App\Http\Controllers\LoginController::class, 'register'])->name('register');
 
 Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function () {
 
@@ -78,7 +78,7 @@ Route::get('/{url}/{url2?}/{url3?}', function ($url,$url2=null,$url3=null) {
             if($page->statu==0) return view('404');
             else{
                 $template = $page->template;
-                if($template=='iletisim'){
+                if($template=='contact'){
                     $contact = Contact::find(1);
                     return  view('contact',compact('contact','page'));
                 }

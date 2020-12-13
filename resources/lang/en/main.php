@@ -5,6 +5,7 @@ return [
     'Home' => 'Home',
     'Dashboard' => 'Dashboard',
     'Welcome' => 'Welcome',
+    'Hello' => 'Hello',
 
     'Media' => 'Media',
     'Medias' => 'Medias',
@@ -90,6 +91,8 @@ return [
     'Favicon' => 'Favicon',
 
     'Menu' => 'Menu',
+    'Main Menu' => 'Main Menu',
+    'Footer' => 'Footer',
     'Menus' => 'Menus',
     'Menu Name' => 'Menu Name',
     'Reminders' => 'Reminders',
@@ -117,12 +120,14 @@ return [
     'Logout' => 'Logout',
 
     'Save' => 'Save',
+    'Edit' => 'Edit',
     'Delete' => 'Delete',
     'Destroy' => 'Destroy',
     'Update' => 'Update',
     'Show' => 'Show',
     'Recover' => 'Recover',
     'Choose' => 'Choose',
+    'Submit' => 'Submit',
 
     'Login' => 'Login',
     'Register' => 'Register',
@@ -132,6 +137,8 @@ return [
     'I agree to the' => 'I agree to the',
     'terms' => 'terms',
     'I already have a membership' => 'I already have a membership',
+    'Sign in to start your session' => 'Sign in to start your session',
+    'Register a new membership' => 'Register a new membership',
 
     'Yes' => 'Yes',
     'No' => 'No',

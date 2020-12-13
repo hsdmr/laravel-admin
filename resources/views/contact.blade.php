@@ -57,12 +57,12 @@
                             <input type="text" placeholder="{{ __('main.Name') }}" class="form-control">
                         </div>
                         <div class="col-md-6">
-                            <input type="text" placeholder="{{ __('main.Surame') }}" class="form-control">
+                            <input type="text" placeholder="{{ __('main.Surname') }}" class="form-control">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-4">
-                            <input type="text" placeholder="{{ __('main.Email') }}" class="form-control">
+                            <input type="text" placeholder="{{ __('main.E-mail') }}" class="form-control">
                         </div>
                         <div class="col-md-6">
                             <input type="text" placeholder="{{ __('main.Phone') }}" class="form-control">
