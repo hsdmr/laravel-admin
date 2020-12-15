@@ -2,10 +2,8 @@
 
 namespace App\Providers;
 
-use App\Models\Category;
 use App\Models\File;
 use App\Models\Setting;
-use App\Models\Suspend;
 use App\Models\Widget;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;

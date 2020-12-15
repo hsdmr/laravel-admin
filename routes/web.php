@@ -13,6 +13,8 @@ Route::get('/', function () {
     return view('index',compact('page'));
 })->name('home');
 
+Route::get('/lang/{lang}', [App\Http\Controllers\LangController::class, 'lang'])->name('lang');
+
 Route::get('/logout', [App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
 Route::get('/login', [App\Http\Controllers\LoginController::class, 'login'])->name('login');
 Route::post('/login', [App\Http\Controllers\LoginController::class, 'loginCheck'])->name('login.check');
