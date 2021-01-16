@@ -42,7 +42,7 @@
                                     <th>{{ __('main.Title') }}</th>
                                     <th>{{ __('main.Permalink') }}</th>
                                     <th>{{ __('main.Hit') }}</th>
-                                    <th>{{ __('main.main.Creation Date') }}</th>
+                                    <th>{{ __('main.Creation Date') }}</th>
                                     <th>{{ __('main.Statu') }}</th>
                                     <th></th>
                                 </tr>

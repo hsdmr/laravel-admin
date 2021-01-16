@@ -1,4 +1,3 @@
-    {{$_SESSION['lang']}}
 <!DOCTYPE html>
 <html>
 <head>
