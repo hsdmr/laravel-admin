@@ -158,5 +158,14 @@ return [
     'Message' => 'Message',
 
     'more' => 'more',
+    'From' => 'From',
+    'To' => 'To',
+    'Type' => 'Type',
+    'Redirects' => 'Redirects',
+    'Temporary' => 'Temporary',
+    'Permanent' => 'Permanent',
+    'Add New Redirect' => 'Add New Redirect',
+    'Edit Redirect' => 'Edit Redirect',
+
 
 ];

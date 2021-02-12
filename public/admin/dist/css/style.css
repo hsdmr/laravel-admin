@@ -95,3 +95,11 @@ table tbody td{
     opacity: .7;
     border-radius: 3px;
 }
+
+#save-card{
+    position: fixed;
+    bottom: -20px;
+    width: calc(100% - 250px);
+    border-radius: 0;
+    right: 0;
+}

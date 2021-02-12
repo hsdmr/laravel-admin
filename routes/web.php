@@ -67,6 +67,9 @@ Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function ()
 
         Route::get('/widget', [App\Http\Controllers\Admin\SettingController::class, 'widget'])->name('widget');
         Route::post('/widgetUpdate', [App\Http\Controllers\Admin\SettingController::class, 'widgetUpdate'])->name('widgetUpdate');
+
+        Route::resource('/redirect', 'App\Http\Controllers\Admin\RedirectController');
+        Route::resource('/link', 'App\Http\Controllers\Admin\LinkController');
     });
 });
 
@@ -106,4 +109,4 @@ Route::get('/{url}/{url2?}/{url3?}', function ($url,$url2=null,$url3=null) {
             else return view('article',compact('article','categories'));
         }
     }
-})->name('front');
+})->middleware('slashes')->middleware('redirect')->name('front');
