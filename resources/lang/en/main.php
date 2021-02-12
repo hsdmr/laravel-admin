@@ -167,5 +167,10 @@ return [
     'Add New Redirect' => 'Add New Redirect',
     'Edit Redirect' => 'Edit Redirect',
 
+    'Auto Linkers' => 'Auto Linkers',
+    'Add New Link' => 'Add New Link',
+    'Edit Link' => 'Edit Link',
+    'Word' => 'Word',
+
 
 ];

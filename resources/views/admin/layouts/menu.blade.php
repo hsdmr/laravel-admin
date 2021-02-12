@@ -182,7 +182,7 @@
                 <li class="nav-item">
                   <a href="{{ route('admin.setting.link.index') }}" class="nav-link @if(Request::segment(2)=="setting" && Request::segment(2)=="link") active @endif">
                     <ion-icon name="return-down-forward-outline"></ion-icon>
-                    <p>{{ __('main.Auto Linker') }}</p>
+                    <p>{{ __('main.Auto Linkers') }}</p>
                   </a>
                 </li>
             </ul>

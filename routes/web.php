@@ -3,6 +3,7 @@
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Contact;
+use App\Models\Link;
 use App\Models\Page;
 use App\Models\Slug;
 use Illuminate\Support\Facades\Route;
@@ -93,6 +94,14 @@ Route::get('/{url}/{url2?}/{url3?}', function ($url,$url2=null,$url3=null) {
                     return  view('blog',compact('articles','page','categories'));
                 }
                 else
+                $linker = Link::all();
+                $word = array();
+                $to_url = array();
+                foreach($linker as $link){
+                    array_push($word, '/'.$link->word.'/');
+                    array_push($to_url, '<a title="'.$link->word.'" href="'.$link->url.'">'.$link->word.'</a>');
+                }
+                $page->content = preg_replace($word, $to_url, $page->content, 1);
                 return  view('page',compact('page'));
             }
         }
@@ -105,6 +114,14 @@ Route::get('/{url}/{url2?}/{url3?}', function ($url,$url2=null,$url3=null) {
         if($owner=='article'){
             $categories = Category::all();
             $article = Article::firstWhere('slug_id','=',$slug->id);
+            $linker = Link::all();
+            $word = array();
+            $to_url = array();
+            foreach($linker as $link){
+                array_push($word, '/'.$link->word.'/');
+                array_push($to_url, '<a title="'.$link->word.'" href="'.$link->url.'">'.$link->word.'</a>');
+            }
+            $article->content = preg_replace($word, $to_url, $article->content, 1);
             if($article->statu==0) return view('404');
             else return view('article',compact('article','categories'));
         }
