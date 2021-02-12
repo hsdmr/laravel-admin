@@ -96,8 +96,8 @@ return [
     'Menu Name' => 'Ana Menü',
     'Reminders' => 'HAtırlatmalar',
     'Click side to select menu icon.' => 'Menü simgesini seçmek için yana tıklayın.',
-    'Use the "Order" field to sort the menu items.' => 'Menü öğelerini sıralamak için "Sırala" alanını kullanın.
-    ',
+    'Use the "Order" field to sort the menu items.' => 'Menü öğelerini sıralamak için "Sırala" alanını kullanın.',
+    'here' => 'Buraya',
     'Here' => 'Buraya',
     'Icon' => 'İkon',
     'Link' => 'Link',
@@ -121,6 +121,7 @@ return [
     'Save' => 'Kaydet',
     'Edit' => 'Düzenle',
     'Delete' => 'Sil',
+    'Create' => 'Oluştur',
     'Destroy' => 'Tamamen Sil',
     'Update' => 'Güncelle',
     'Show' => 'Göster',
@@ -156,5 +157,18 @@ return [
     'Message' => 'Mesaj',
 
     'more' => 'devamı',
+    'From' => 'Nereden',
+    'To' => 'Nereye',
+    'Type' => 'Tip',
+    'Redirects' => 'Yönlendirmeler',
+    'Temporary' => 'Geçici, 302',
+    'Permanent' => 'Kalıcı, 301',
+    'Add New Redirect' => 'Yeni Yönlendirme Ekle',
+    'Edit Redirect' => 'Yönlendirme Düzenle',
+
+    'Auto Linkers' => 'Oto linklemeler',
+    'Add New Link' => 'Yeni Link Ekle',
+    'Edit Link' => 'Linki Düzenle',
+    'Word' => 'Kelime',
 
 ];

@@ -87,8 +87,10 @@
                                 </div>
                             </div>
                         </form>
-                        <div class="card-footer">
-                            <a href="javascript:void(0);" class="btn btn-success btn-sm float-right" id="submit">{{ __('main.Save') }}</a>
+                        <div class="card" id="save-card">
+                            <div class="card-body">
+                                <a href="javascript:void(0);" class="btn btn-success btn-sm float-right" id="submit">{{ __('main.Update') }}</a>
+                            </div>
                         </div>
                     </div>
                 </div>
