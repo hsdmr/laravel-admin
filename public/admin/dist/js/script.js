@@ -137,7 +137,7 @@ $(function(){
         "info": true,
         "autoWidth": false,
         "responsive": true,
-        "language": {
+        /*"language": {
                 "sDecimal":        ",",
                 "sEmptyTable":     "Tabloda herhangi bir veri mevcut değil",
                 "sInfo":           "_TOTAL_ kayıttan _START_ - _END_ arasındaki kayıtlar gösteriliyor",
@@ -167,7 +167,7 @@ $(function(){
                         "1": "1 kayıt seçildi"
                     }
                 }
-            }
+            }*/
     });
 });
 

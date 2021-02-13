@@ -190,10 +190,13 @@
           <hr>
 
           <li class="nav-item">
-            <a class="nav-link" href="{{route('logout')}}">
+            <form action="{{route('logout')}}" method="POST">
+              @csrf
+              <a href="{{route('logout')}}" class="nav-link" onclick="event.preventDefault(); this.closest('form').submit();">
                 <i class="nav-icon fas fa-power-off"></i>
                 {{ __('main.Logout') }}
-            </a>
+              </a>
+            </form>
           </li>
         </ul>
       </nav>
