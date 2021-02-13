@@ -58,7 +58,7 @@
                                         <td>{{ $article->getCategory->title }}</td>
                                         <td>{{ $article->hit }}</td>
                                         <td>{{ $article->created_at->diffForHumans() }}</td>
-                                        <td><input class="switch" type="checkbox" name="my-checkbox" data-id="{{$article->id}}" @if ($article->statu==1) checked @endif data-toggle="toggle" data-size="mini" data-on="Yayında" data-off="Taslak" data-onstyle="success" data-offstyle="danger"></td>
+                                        <td><input class="switch" type="checkbox" name="my-checkbox" data-id="{{$article->id}}" @if ($article->statu==1) checked @endif data-toggle="toggle" data-size="mini" data-on="{{__('main.Published')}}" data-off="{{__('main.Draft')}}" data-onstyle="success" data-offstyle="danger"></td>
                                         <td>
                                             <a href="{{ url('/',$article->getSlug->slug) }}" title="{{ __('main.Show') }}" class="btn btn-success btn-xs"><i class="fas fa-arrow-right"></i></a>
                                             <a href="{{ route('admin.article.edit',$article->id) }}" title="{{ __('main.Edit') }}" class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></a>

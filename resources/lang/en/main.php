@@ -29,6 +29,7 @@ return [
     'Pages Recycle' => 'Pages Recycle',
     'Published' => 'Published',
     'Pending' => 'Pending',
+    'Draft' => 'Draft',
     'Seo Title' => 'Seo Title',
     'Seo Description' => 'Seo Description',
     'Seo No Index' => 'Seo No Index',

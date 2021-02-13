@@ -43,7 +43,15 @@
                                 @if ($user->role=='admin')
                                 <li><a style="display: block" href="{{route('admin.home')}}">{{ __('main.Dashboard') }}</a></li>
                                 @endif
-                                <li><a style="display: block" href="{{route('logout')}}">{{ __('main.Logout') }}</a></li>
+                                <li>
+                                    <form action="{{route('logout')}}" method="POST">
+                                      @csrf
+                                      <a href="{{route('logout')}}" style="display: block" onclick="event.preventDefault(); this.closest('form').submit();">
+                                        <i class="nav-icon fas fa-power-off"></i>
+                                        {{ __('main.Logout') }}
+                                      </a>
+                                    </form>
+                                </li>
                             </ul>
                         </li>
                     @else

@@ -53,7 +53,7 @@
                                         <td>{{ $comment->content }}</td>
                                         <td>{{ $comment->getArticle->title }}</td>
                                         <td>{{ $comment->created_at->diffForHumans() }}</td>
-                                        <td><input class="switch" type="checkbox" name="my-checkbox" data-id="{{$comment->id}}" @if ($comment->statu==1) checked @endif data-toggle="toggle" data-size="mini" data-on="Onaylandı" data-off="Bekliyor" data-onstyle="success" data-offstyle="danger"></td>
+                                        <td><input class="switch" type="checkbox" name="my-checkbox" data-id="{{$comment->id}}" @if ($comment->statu==1) checked @endif data-toggle="toggle" data-size="mini" data-on="{{__('main.Published')}}" data-off="{{__('main.Draft')}}" data-onstyle="success" data-offstyle="danger"></td>
                                         <td>
                                             <a href="" title="{{ __('main.Show') }}" class="btn btn-success btn-xs"><i class="fas fa-arrow-right"></i></a>
                                             <a href="{{ route('admin.comment.edit',$comment->id) }}" title="{{ __('main.Edit') }}" class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></a>
