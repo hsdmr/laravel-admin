@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <sitemap>
+        <loc>http://localhost:8000/article-sitemap.xml</loc>
+    
+        <lastmod>2021-03-04T13:14:10+00:00</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>http://localhost:8000/category-sitemap.xml</loc>
+    
+        <lastmod>2021-03-04T13:14:10+00:00</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>http://localhost:8000/page-sitemap.xml</loc>
+    
+        <lastmod>2021-03-04T13:14:10+00:00</lastmod>
+    </sitemap>
+</sitemapindex>
