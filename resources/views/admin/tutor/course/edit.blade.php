@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-{{ __('main.Edit Category') }}
+{{ __('main.Edit Course') }}
 @endsection
 
 @section('content')
@@ -12,14 +12,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h4 class="m-0 text-dark">{{ __('main.Edit Category') }}</h4>
+            <h4 class="m-0 text-dark">{{ __('main.Edit Course') }}</h4>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('main.Home') }}</a></li>
                 <li class="breadcrumb-item"><a href="{{ route('admin.tutor.course.index') }}">{{ __('main.Tutor') }}</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('admin.tutor.category.index') }}">{{ __('main.Categories') }}</a></li>
-              <li class="breadcrumb-item active">{{ $category->title }}</li>
+              <li class="breadcrumb-item active">{{ $course->title }}</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -30,7 +29,7 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-            <form action="{{ route('admin.tutor.category.update',$category->id) }}" method="post" id="form">
+            <form action="{{ route('admin.tutor.course.update',$course->id) }}" method="post" id="form">
                 @method('PUT')
                 @csrf
                 <input type="hidden" name="media_id" id="media_id" value="{{$category->getMedia->id}}">
