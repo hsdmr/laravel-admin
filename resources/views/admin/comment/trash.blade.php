@@ -29,45 +29,40 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                  <div class="card">
-                    <div class="card-body">
-                        <table id="table1" class="table table-bordered table-hover">
-                            <thead>
+            <div class="card">
+                <div class="card-body">
+                    <table id="table1" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>{{ __('main.Author') }}</th>
+                                <th>{{ __('main.Comment') }}</th>
+                                <th>{{ __('main.Deletion Date') }}</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($comments as $comment)
                                 <tr>
-                                    <th>{{ __('main.Author') }}</th>
-                                    <th>{{ __('main.Comment') }}</th>
-                                    <th>{{ __('main.Deletion Date') }}</th>
-                                    <th></th>
+                                    <td>{{ $comment->getUser->name }}</td>
+                                    <td>{{ $comment->content }}</td>
+                                    <td>{{ $comment->deleted_at->diffForHumans() }}</td>
+                                    <td>
+                                        <a href="{{ route('admin.comment.recover',$comment->id) }}" title="{{ __('main.Recover') }}" class="btn btn-warning btn-xs"><i class="fas fa-recycle"></i></a>
+                                        <form id="delete_{{$comment->id}}" action="{{route('admin.comment.destroy',$comment->id)}}" method="post" class="d-inline">
+                                            @method('DELETE')
+                                            @csrf
+                                            <a href="javascript:void(0)" onclick="validate({{$comment->id}})" title="{{ __('main.Destroy') }}" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>
+                                        </form>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($comments as $comment)
-                                    <tr>
-                                        <td>{{ $comment->getUser->name }}</td>
-                                        <td>{{ $comment->content }}</td>
-                                        <td>{{ $comment->deleted_at->diffForHumans() }}</td>
-                                        <td>
-                                            <a href="{{ route('admin.comment.recover',$comment->id) }}" title="{{ __('main.Recover') }}" class="btn btn-warning btn-xs"><i class="fas fa-recycle"></i></a>
-                                            <form id="delete_{{$comment->id}}" action="{{route('admin.comment.destroy',$comment->id)}}" method="post" class="d-inline">
-                                                @method('DELETE')
-                                                @csrf
-                                                <a href="javascript:void(0)" onclick="validate({{$comment->id}})" title="{{ __('main.Destroy') }}" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                  </div>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-  </div>
+    </div><!-- /.content -->
+</div>
 
 @endsection
 

@@ -29,33 +29,29 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <form action="{{ route('admin.comment.update',$comment->id) }}" method="post" id="form">
-                            @method('PUT')
-                            @csrf
+            <form action="{{ route('admin.comment.update',$comment->id) }}" method="post" id="form">
+                @method('PUT')
+                @csrf
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
                             <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="title">{{ __('main.Title') }}</label>
-                                            <input type="text" class="form-control form-control-sm" id="title" name="title" value="{{$comment->title}}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="desc"></label>
-                                            <textarea class="form-control form-control-sm" rows="3" id="content" name="content">{{$comment->content}}</textarea>
-                                        </div>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="title">{{ __('main.Title') }}</label>
+                                    <input type="text" class="form-control form-control-sm" id="title" name="title" value="{{$comment->title}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="desc"></label>
+                                    <textarea class="form-control form-control-sm" rows="3" id="content" name="content">{{$comment->content}}</textarea>
                                 </div>
                             </div>
-                        </form>
-                        <div class="card-footer">
-                            <a href="javascript:void(0);" class="btn btn-success btn-sm float-right" id="submit">{{ __('main.Save') }}</a>
                         </div>
                     </div>
+                    <div class="card-footer">
+                        <a href="javascript:void(0);" class="btn btn-success btn-sm float-right" id="submit">{{ __('main.Save') }}</a>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->

@@ -99,7 +99,7 @@ table tbody td{
 #save-card{
     position: fixed;
     bottom: -20px;
-    width: calc(100% - 250px);
+    width: 100%;
     border-radius: 0;
     right: 0;
 }

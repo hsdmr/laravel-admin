@@ -29,6 +29,54 @@
             </a>
           </li>
 
+          <li class="nav-item has-treeview @if(Request::segment(2)=="tutor") menu-open @endif">
+            <a href="{{ route('admin.tutor.course.index') }}" class="nav-link @if(Request::segment(3)=="course") active @endif">
+                <i class="nav-icon fas fa-graduation-cap"></i>
+              <p>
+                {{ __('main.Tutor') }}
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview" style="@if(Request::segment(2)=="tutor") display:block; @endif">
+                <li class="nav-item">
+                  <a href="{{ route('admin.tutor.course.index') }}" class="nav-link @if(Request::segment(2)=="tutor" && Request::segment(3)=="course") active @endif">
+                    <ion-icon name="return-down-forward-outline"></ion-icon>
+                    <p>{{ __('main.Courses') }}</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('admin.tutor.category.index') }}" class="nav-link @if(Request::segment(2)=="tutor" && Request::segment(3)=="category") active @endif">
+                    <ion-icon name="return-down-forward-outline"></ion-icon>
+                    <p>{{ __('main.Categories') }}</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('admin.tutor.category.index') }}" class="nav-link @if(Request::segment(2)=="tutor" && Request::segment(3)=="student") active @endif">
+                    <ion-icon name="return-down-forward-outline"></ion-icon>
+                    <p>{{ __('main.Announcements') }}</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('admin.tutor.category.index') }}" class="nav-link @if(Request::segment(2)=="tutor" && Request::segment(3)=="student") active @endif">
+                    <ion-icon name="return-down-forward-outline"></ion-icon>
+                    <p>{{ __('main.Students') }}</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('admin.tutor.category.index') }}" class="nav-link @if(Request::segment(2)=="tutor" && Request::segment(3)=="zoom") active @endif">
+                    <ion-icon name="return-down-forward-outline"></ion-icon>
+                    <p>{{ __('main.Zoom') }}</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('admin.tutor.category.index') }}" class="nav-link @if(Request::segment(2)=="tutor" && Request::segment(3)=="setting") active @endif">
+                    <ion-icon name="return-down-forward-outline"></ion-icon>
+                    <p>{{ __('main.Settings') }}</p>
+                  </a>
+                </li>
+            </ul>
+          </li>
+
           <li class="nav-item has-treeview @if(Request::segment(2)=="media") menu-open @endif">
             <a href="{{ route('admin.media.index') }}" class="nav-link @if(Request::segment(2)=="media") active @endif">
               <i class="nav-icon fas fa-photo-video"></i>
@@ -104,6 +152,12 @@
                   </a>
                 </li>
             </ul>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.slide.index') }}" class="nav-link @if(Request::segment(2)=="slide") active @endif">
+                <i class="fas fa-expand nav-icon"></i>
+              <p>{{ __('main.Slides') }}</p>
+            </a>
           </li>
           <li class="nav-item">
             <a href="{{ route('admin.comment.index') }}" class="nav-link @if(Request::segment(2)=="comment") active @endif">

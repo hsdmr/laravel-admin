@@ -28,49 +28,44 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                  <div class="card">
-                    <div class="card-header">
-                        <a href="{{ route('admin.comment.trash') }}" class="btn btn-warning btn-sm float-right"><i class="fas fa-trash-alt"></i>{{ __('main.Recycle') }}</a>
-                    </div>
-                    <div class="card-body">
-                        <table id="table1" class="table table-bordered table-hover">
-                            <thead>
+            <div class="card">
+                <div class="card-header">
+                    <a href="{{ route('admin.comment.trash') }}" class="btn btn-warning btn-sm float-right"><i class="fas fa-trash-alt"></i>{{ __('main.Recycle') }}</a>
+                </div>
+                <div class="card-body">
+                    <table id="table1" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>{{ __('main.Author') }}</th>
+                                <th>{{ __('main.Comment') }}</th>
+                                <th>{{ __('main.Post') }}</th>
+                                <th>{{ __('main.Creation Date') }}</th>
+                                <th>{{ __('main.Statu') }}</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($comments as $comment)
                                 <tr>
-                                    <th>{{ __('main.Author') }}</th>
-                                    <th>{{ __('main.Comment') }}</th>
-                                    <th>{{ __('main.Post') }}</th>
-                                    <th>{{ __('main.Creation Date') }}</th>
-                                    <th>{{ __('main.Statu') }}</th>
-                                    <th></th>
+                                    <td>{{ $comment->getUser->name }}</td>
+                                    <td>{{ $comment->content }}</td>
+                                    <td>{{ $comment->getArticle->title }}</td>
+                                    <td>{{ $comment->created_at->diffForHumans() }}</td>
+                                    <td><input class="switch" type="checkbox" name="my-checkbox" data-id="{{$comment->id}}" @if ($comment->statu==1) checked @endif data-toggle="toggle" data-size="mini" data-on="{{__('main.Published')}}" data-off="{{__('main.Draft')}}" data-onstyle="success" data-offstyle="danger"></td>
+                                    <td>
+                                        <a href="" title="{{ __('main.Show') }}" class="btn btn-success btn-xs"><i class="fas fa-arrow-right"></i></a>
+                                        <a href="{{ route('admin.comment.edit',$comment->id) }}" title="{{ __('main.Edit') }}" class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></a>
+                                        <a href="{{ route('admin.comment.delete',$comment->id) }}" onclick="validate({{$comment->id}})" title="{{ __('main.Delete') }}" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($comments as $comment)
-                                    <tr>
-                                        <td>{{ $comment->getUser->name }}</td>
-                                        <td>{{ $comment->content }}</td>
-                                        <td>{{ $comment->getArticle->title }}</td>
-                                        <td>{{ $comment->created_at->diffForHumans() }}</td>
-                                        <td><input class="switch" type="checkbox" name="my-checkbox" data-id="{{$comment->id}}" @if ($comment->statu==1) checked @endif data-toggle="toggle" data-size="mini" data-on="{{__('main.Published')}}" data-off="{{__('main.Draft')}}" data-onstyle="success" data-offstyle="danger"></td>
-                                        <td>
-                                            <a href="" title="{{ __('main.Show') }}" class="btn btn-success btn-xs"><i class="fas fa-arrow-right"></i></a>
-                                            <a href="{{ route('admin.comment.edit',$comment->id) }}" title="{{ __('main.Edit') }}" class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></a>
-                                            <a href="{{ route('admin.comment.delete',$comment->id) }}" onclick="validate({{$comment->id}})" title="{{ __('main.Delete') }}" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                  </div>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-  </div>
+    </div><!-- /.content -->
+</div>
 
 @endsection
 

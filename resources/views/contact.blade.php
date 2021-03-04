@@ -1,23 +1,11 @@
 @extends('layouts.master')
 
-@section('seo_title')
-{{($page->getSlug->seo_title==null) ? $page->title.' | Süper Doktorlar' : $page->getSlug->seo_title}}
-@endsection
-@section('seo_description')
-{!!($page->getSlug->seo_description==null) ? 'Süper Doktorlar İletişim bilgileri: Küçükbakkalköy mah. Merdivenköy Yolu cad. No:12 Kat:2 CZD Plaza 34750 Ataşehir / İSTANBUL, Çağrı Merkezi: 0 (850) 433 93 93' : $page->getSlug->seo_title!!}
-@endsection
-@section('no_index')
-{{$page->getSlug->no_index ? 'noindex' : 'index'}}
-@endsection
-@section('no_follow')
-{{$page->getSlug->no_follow ? 'nofollow' : 'follow'}}
-@endsection
-@section('image')
-{{$page->getMedia->getUrl()}}
-@endsection
-@section('class')
-    content
-@endsection
+@section('seo_title'){{($page->getSlug->seo_title==null) ? $page->title.' | Süper Doktorlar' : $page->getSlug->seo_title}}@endsection
+@section('seo_description'){!!($page->getSlug->seo_description==null) ? 'Murat Hasdemir' : $page->getSlug->seo_title!!}@endsection
+@section('no_index'){{$page->getSlug->no_index ? 'noindex' : 'index'}}@endsection
+@section('no_follow'){{$page->getSlug->no_follow ? 'nofollow' : 'follow'}}@endsection
+@section('image'){{$page->getMedia->getUrl()}}@endsection
+@section('class')content @endsection
 @section('header')
 
 @endsection

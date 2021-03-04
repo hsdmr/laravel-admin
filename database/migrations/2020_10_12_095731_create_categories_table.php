@@ -15,11 +15,12 @@ class CreateCategoriesTable extends Migration
             $table->string('title');
             $table->integer('upper')->nullable();
             $table->longText('content')->nullable();
-            $table->string('language')->default('tr_TR');
+            $table->string('type')->nullable();
+            $table->string('language')->default('tr');
             $table->timestamps();
 
-            $table->foreign('slug_id')->references('id')->on('slugs');
-            $table->foreign('media_id')->references('id')->on('media');
+            //$table->foreign('slug_id')->references('id')->on('slugs');
+            //$table->foreign('media_id')->references('id')->on('media');
         });
     }
 

@@ -28,57 +28,52 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                  <div class="card">
-                    <div class="card-header">
-                        <a href="{{ route('admin.category.create') }}" class="btn btn-success btn-sm">{{ __('main.Add New') }}</a>
-                    </div>
-                    <div class="card-body">
-                        <table id="table1" class="table table-bordered table-hover">
-                            <thead>
+            <div class="card">
+                <div class="card-header">
+                    <a href="{{ route('admin.category.create') }}" class="btn btn-success btn-sm">{{ __('main.Add New') }}</a>
+                </div>
+                <div class="card-body">
+                    <table id="table1" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>{{ __('main.Image') }}</th>
+                                <th>{{ __('main.Name') }}</th>
+                                <th>{{ __('main.Permalink') }}</th>
+                                <th>{{ __('main.Parent') }}</th>
+                                <th>{{ __('main.Description') }}</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($categories as $category)
                                 <tr>
-                                    <th>{{ __('main.Image') }}</th>
-                                    <th>{{ __('main.Name') }}</th>
-                                    <th>{{ __('main.Permalink') }}</th>
-                                    <th>{{ __('main.Parent') }}</th>
-                                    <th>{{ __('main.Description') }}</th>
-                                    <th></th>
+                                    <td><img src="{{ ($category->getMedia->id==1) ? '' : $category->getMedia->getUrl('thumb')}}" alt="" style="height: 26px"></td>
+                                    <td>{{ $category->title }}</td>
+                                    <td>{{ $category->getSlug->slug }}</td>
+                                    <td>@foreach ($categories as $categoryupper)
+                                        @if ($category->upper==$categoryupper->id)
+                                            {{ $categoryupper->title }}
+                                        @endif
+                                    @endforeach</td>
+                                    <td>{{ $category->desc }}</td>
+                                    <td>
+                                        <a href="{{ url('/',$category->getSlug->slug) }}" title="{{ __('main.Show') }}" class="btn btn-success btn-xs"><i class="fas fa-arrow-right"></i></a>
+                                        <a href="{{ route('admin.category.edit',$category->id) }}" title="{{ __('main.Edit') }}" class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></a>
+                                        <form id="delete_{{$category->id}}" action="{{route('admin.category.destroy',$category->id)}}" method="post" class="d-inline">
+                                            @method('DELETE')
+                                            @csrf
+                                            <a href="javascript:void(0)" onclick="validate({{$category->id}})" title="{{ __('main.Delete') }}" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>
+                                        </form>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($categories as $category)
-                                    <tr>
-                                        <td><img src="{{ ($category->getMedia->id==1) ? '' : $category->getMedia->getUrl('thumb')}}" alt="" style="height: 26px"></td>
-                                        <td>{{ $category->title }}</td>
-                                        <td>{{ $category->getSlug->slug }}</td>
-                                        <td>@foreach ($categories as $categoryupper)
-                                            @if ($category->upper==$categoryupper->id)
-                                                {{ $categoryupper->title }}
-                                            @endif
-                                        @endforeach</td>
-                                        <td>{{ $category->desc }}</td>
-                                        <td>
-                                            <a href="{{ url('/',$category->getSlug->slug) }}" title="{{ __('main.Show') }}" class="btn btn-success btn-xs"><i class="fas fa-arrow-right"></i></a>
-                                            <a href="{{ route('admin.category.edit',$category->id) }}" title="{{ __('main.Edit') }}" class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></a>
-                                            <form id="delete_{{$category->id}}" action="{{route('admin.category.destroy',$category->id)}}" method="post" class="d-inline">
-                                                @method('DELETE')
-                                                @csrf
-                                                <a href="javascript:void(0)" onclick="validate({{$category->id}})" title="{{ __('main.Delete') }}" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                  </div>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-  </div>
+    </div><!-- /.content -->
+</div>
 
 @endsection
 

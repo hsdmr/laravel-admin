@@ -28,45 +28,40 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                  <div class="card">
-                    <div class="card-header">
-                        <a href="{{ route('admin.user.create') }}" class="btn btn-success btn-sm">{{ __('main.Add New') }}</a>
-                        <a href="{{ route('admin.user.trash') }}" class="btn btn-warning btn-sm float-right"><i class="fas fa-trash-alt"></i>{{ __('main.Recycle') }}</a>
-                    </div>
-                    <div class="card-body">
-                        <table id="table1" class="table table-bordered table-hover">
-                            <thead>
+            <div class="card">
+                <div class="card-header">
+                    <a href="{{ route('admin.user.create') }}" class="btn btn-success btn-sm">{{ __('main.Add New') }}</a>
+                    <a href="{{ route('admin.user.trash') }}" class="btn btn-warning btn-sm float-right"><i class="fas fa-trash-alt"></i>{{ __('main.Recycle') }}</a>
+                </div>
+                <div class="card-body">
+                    <table id="table1" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>{{ __('main.Name') }}</th>
+                                <th>{{ __('main.E-mail') }}</th>
+                                <th>{{ __('main.Role') }}</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($users as $user)
                                 <tr>
-                                    <th>{{ __('main.Name') }}</th>
-                                    <th>{{ __('main.E-mail') }}</th>
-                                    <th>{{ __('main.Role') }}</th>
-                                    <th></th>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->role }}</td>
+                                    <td>
+                                        <a href="{{ route('admin.user.edit',$user->id) }}" title="{{ __('main.Edit') }}" class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></a>
+                                        <a href="{{ route('admin.user.delete',$user->id) }}" onclick="validate({{$user->id}})" title="{{ __('main.Delete') }}" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($users as $user)
-                                    <tr>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>{{ $user->role }}</td>
-                                        <td>
-                                            <a href="{{ route('admin.user.edit',$user->id) }}" title="{{ __('main.Edit') }}" class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></a>
-                                            <a href="{{ route('admin.user.delete',$user->id) }}" onclick="validate({{$user->id}})" title="{{ __('main.Delete') }}" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                  </div>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-  </div>
+    </div><!-- /.content -->
+</div>
 
 @endsection
 

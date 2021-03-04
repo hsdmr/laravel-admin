@@ -29,24 +29,19 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <form action="{{ route('admin.setting.menu.store')}}" method="post">
-                            @csrf
-                        <div class="card-body row">
-                            <label for="menuname" class="col-md-2">{{ __('main.Menu Name') }}</label>
-                            <input type="text" name="menuname" id="menuname" class="form-control-sm form-control col-md-4">
-                            <button class="btn btn-outline-success btn-sm ml-3">{{ __('main.Create') }}</button>
-                        </div>
-                        </form>
-                    </div>
+            <div class="card">
+                <form action="{{ route('admin.setting.menu.store')}}" method="post">
+                    @csrf
+                <div class="card-body row">
+                    <label for="menuname" class="col-md-2">{{ __('main.Menu Name') }}</label>
+                    <input type="text" name="menuname" id="menuname" class="form-control-sm form-control col-md-4">
+                    <button class="btn btn-outline-success btn-sm ml-3">{{ __('main.Create') }}</button>
                 </div>
+                </form>
             </div>
         </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-  </div>
+    </div><!-- /.content -->
+</div>
 @endsection
 
 @section('script')

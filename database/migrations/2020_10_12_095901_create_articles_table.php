@@ -22,10 +22,10 @@ class CreateArticlesTable extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('slug_id')->references('id')->on('slugs');
-            $table->foreign('category_id')->references('id')->on('categories');
-            $table->foreign('media_id')->references('id')->on('media');
+            //$table->foreign('user_id')->references('id')->on('users');
+            //$table->foreign('slug_id')->references('id')->on('slugs');
+            //$table->foreign('category_id')->references('id')->on('categories');
+            //$table->foreign('media_id')->references('id')->on('media');
         });
     }
 

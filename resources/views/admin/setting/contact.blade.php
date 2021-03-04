@@ -29,56 +29,49 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <form action="{{ route('admin.setting.contactUpdate',1) }}" method="post" id="form" >
-                            @csrf
-                            <div class="card-body">
-                                <div class="form-group row">
-                                    <label for="cell" class="col-md-3">{{ __('main.Mobile Phone') }}</label>
-                                    <input type="text" class="form-control form-control-sm col-md-9" value="{{$contact->cell}}" id="cell" name="cell">
-                                </div>
-                                <div class="form-group row">
-                                    <label for="phone" class="col-md-3">{{ __('main.Phone') }}</label>
-                                    <input type="text" class="form-control form-control-sm col-md-9" value="{{$contact->phone}}" id="phone" name="phone">
-                                </div>
-                                <div class="form-group row">
-                                    <label for="email" class="col-md-3">{{ __('main.E-mail') }}</label>
-                                    <input type="text" class="form-control form-control-sm col-md-9" value="{{$contact->email}}" id="email" name="email">
-                                </div>
-                                <div class="form-group row">
-                                    <label for="address" class="col-md-3">{{ __('main.Address') }}</label>
-                                    <input type="text" class="form-control form-control-sm col-md-9" value="{{$contact->address}}" id="address" name="address">
-                                </div>
-                                <div class="form-group row">
-                                    <label for="map" class="col-md-3">{{ __('main.Map') }}</label>
-                                    <div class="input-group col-md-6 row">
-                                        <input type="text" class="form-control form-control-sm" id="map" name="map" value="{{$contact->map}}">
-                                        <div class="input-group-append" style="cursor: pointer" id="search">
-                                            <span class="input-group-text"><i class="fas fa-search"></i></span>
-                                        </div>
-                                    </div>
-                                    <label for="zoom" class="col-md-1">{{ __('main.Zoom') }}</label>
-                                    <input type="range" id="zoom" name="zoom" class="col-md-2" min="1" max="20" value="{{$contact->zoom}}" step="1">
+            <div class="card">
+                <form action="{{ route('admin.setting.contactUpdate',1) }}" method="post" id="form" >
+                    @csrf
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label for="cell" class="col-md-3">{{ __('main.Mobile Phone') }}</label>
+                            <input type="text" class="form-control form-control-sm col-md-9" value="{{$contact->cell}}" id="cell" name="cell">
+                        </div>
+                        <div class="form-group row">
+                            <label for="phone" class="col-md-3">{{ __('main.Phone') }}</label>
+                            <input type="text" class="form-control form-control-sm col-md-9" value="{{$contact->phone}}" id="phone" name="phone">
+                        </div>
+                        <div class="form-group row">
+                            <label for="email" class="col-md-3">{{ __('main.E-mail') }}</label>
+                            <input type="text" class="form-control form-control-sm col-md-9" value="{{$contact->email}}" id="email" name="email">
+                        </div>
+                        <div class="form-group row">
+                            <label for="address" class="col-md-3">{{ __('main.Address') }}</label>
+                            <input type="text" class="form-control form-control-sm col-md-9" value="{{$contact->address}}" id="address" name="address">
+                        </div>
+                        <div class="form-group row">
+                            <label for="map" class="col-md-3">{{ __('main.Map') }}</label>
+                            <div class="input-group col-md-6 row">
+                                <input type="text" class="form-control form-control-sm" id="map" name="map" value="{{$contact->map}}">
+                                <div class="input-group-append" style="cursor: pointer" id="search">
+                                    <span class="input-group-text"><i class="fas fa-search"></i></span>
                                 </div>
                             </div>
-                        </form>
-                        <iframe style="width: 100%; height:500px;" id="gmap_canvas" src="https://maps.google.com/maps?q=İstanbul%20Alerji Ataşehir&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>                        <div class="card-footer">
-
-                        <div class="card" id="save-card">
-                            <div class="card-body">
-                                <a href="javascript:void(0);" class="btn btn-success btn-sm float-right" id="submit">{{ __('main.Save') }}</a>
-                            </div>
+                            <label for="zoom" class="col-md-1">{{ __('main.Zoom') }}</label>
+                            <input type="range" id="zoom" name="zoom" class="col-md-2" min="1" max="20" value="{{$contact->zoom}}" step="1">
                         </div>
-                        </div>
+                    </div>
+                </form>
+                <iframe style="width: 100%; height:500px;" id="gmap_canvas" src="https://maps.google.com/maps?q=İstanbul%20Alerji Ataşehir&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                <div class="card" id="save-card">
+                    <div class="card-body">
+                        <a href="javascript:void(0);" class="btn btn-success btn-sm float-right" id="submit">{{ __('main.Save') }}</a>
                     </div>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-  </div>
+    </div><!-- /.content -->
+</div>
 @endsection
 
 @section('script')

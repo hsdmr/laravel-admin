@@ -29,27 +29,21 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <form action="{{route('admin.media.store')}}" method="post" enctype="multipart/form-data">
-                            @csrf
-                            <div class="card-body">
-                                <div class="needsclick dropzone" id="document-dropzone">
-
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <button class="btn btn-success text-center px-5" type="submit" id="submit">{{ __('main.Upload') }}</button>
-                            </div>
-                        </form>
+            <div class="card">
+                <form action="{{route('admin.media.store')}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="card-body">
+                        <div class="needsclick dropzone" id="document-dropzone">
+                        </div>
                     </div>
-                </div>
+                    <div class="card-footer">
+                        <button class="btn btn-success text-center px-5" type="submit" id="submit">{{ __('main.Upload') }}</button>
+                    </div>
+                </form>
             </div>
         </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-  </div>
+    </div><!-- /.content -->
+</div>
 
 @endsection
 

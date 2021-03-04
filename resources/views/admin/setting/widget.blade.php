@@ -73,9 +73,8 @@
                 @endforeach
             </div>
         </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-  </div>
+    </div><!-- /.content -->
+</div>
 @endsection
 @section('script')
 <script>

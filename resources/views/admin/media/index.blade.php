@@ -28,36 +28,31 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="infinite-scroll">
-                                <div class="scroll-content">
-                                @foreach ($medias as $media)
-                                @php
-                                    $id = $media->id;
-                                    $media = $media->getMedia('default')->first();
-                                @endphp
-                                    @if ($id!=1)
-                                    <div class="thumbnail">
-                                        <a href="{{ route('admin.media.show',$id) }}">
-                                            <img id="{{ $id }}" src="{{ $media->getUrl('thumb') }}">
-                                        </a>
-                                    </div>
-                                    @endif
-                                @endforeach
-                                {{ $medias->links() }}
-                                </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="infinite-scroll">
+                        <div class="scroll-content">
+                        @foreach ($medias as $media)
+                        @php
+                            $id = $media->id;
+                            $media = $media->getMedia('default')->first();
+                        @endphp
+                            @if ($id!=1)
+                            <div class="thumbnail">
+                                <a href="{{ route('admin.media.show',$id) }}">
+                                    <img id="{{ $id }}" src="{{ $media->getUrl('thumb') }}">
+                                </a>
                             </div>
+                            @endif
+                        @endforeach
+                        {{ $medias->links() }}
                         </div>
                     </div>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-  </div>
+    </div><!-- /.content -->
+</div>
 
 @endsection
 

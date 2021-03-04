@@ -1,23 +1,11 @@
 @extends('layouts.master')
 
-@section('seo_title')
-{{($article->getSlug->seo_title==null) ? $article->title : $article->getSlug->seo_title}}
-@endsection
-@section('seo_description')
-{!!($article->getSlug->seo_description==null) ? substr($article->content,0,150).'...' : $article->getSlug->seo_title!!}
-@endsection
-@section('no_index')
-{{$article->getSlug->no_index ? 'noindex' : 'index'}}
-@endsection
-@section('no_follow')
-{{$article->getSlug->no_follow ? 'nofollow' : 'follow'}}
-@endsection
-@section('image')
-{{$article->getMedia->getUrl()}}
-@endsection
-@section('class')
-    article-{{$article->id}}
-@endsection
+@section('seo_title'){{($article->getSlug->seo_title==null) ? $article->title : $article->getSlug->seo_title}}@endsection
+@section('seo_description'){!!($article->getSlug->seo_description==null) ? substr($article->content,0,150).'...' : $article->getSlug->seo_title!!}@endsection
+@section('no_index'){{$article->getSlug->no_index ? 'noindex' : 'index'}}@endsection
+@section('no_follow'){{$article->getSlug->no_follow ? 'nofollow' : 'follow'}}@endsection
+@section('image'){{$article->getMedia->getUrl()}}@endsection
+@section('class') article-{{$article->id}}@endsection
 @section('header')
 
 @endsection

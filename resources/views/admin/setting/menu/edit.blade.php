@@ -30,122 +30,116 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <div class="card card-body">
-                                        <div class="form-group">
-                                            <label for="page">{{ __('main.Pages') }}</label>
-                                            <select name="page" id="page" class="form-control">
-                                                <option value="">{{ __('main.Choose') }}</option>
-                                                @foreach ($pages as $page)
-                                                <option value="{{$page->getSlug->slug}}">{{$page->title}}</option>
-                                                @endforeach
-                                                <option value="login">{{ __('main.Login') }}</option>
-                                                <option value="register">{{ __('main.Register') }}</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="category">{{ __('main.Categories') }}</label>
-                                            <select name="category" id="category" class="form-control">
-                                                <option value="">{{ __('main.Choose') }}</option>
-                                                @foreach ($categories as $category)
-                                                <option value="{{$category->getSlug->slug}}">{{$category->title}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="article">{{ __('main.Posts') }}</label>
-                                            <select name="article" id="article" class="form-control">
-                                                <option value="">{{ __('main.Choose') }}</option>
-                                                @foreach ($articles as $article)
-                                                <option value="{{$article->getSlug->slug}}">{{$article->title}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="page">{{ __('main.Pages') }}</label>
+                                        <select name="page" id="page" class="form-control">
+                                            <option value="">{{ __('main.Choose') }}</option>
+                                            @foreach ($pages as $page)
+                                            <option value="{{$page->getSlug->slug}}">{{$page->title}}</option>
+                                            @endforeach
+                                            <option value="login">{{ __('main.Login') }}</option>
+                                            <option value="register">{{ __('main.Register') }}</option>
+                                        </select>
                                     </div>
-                                    <div><b class="text-danger">{{ __('main.Reminders') }}</b>
-                                        <ul style="padding-left:20px">
-                                            <li class="mb-2">{{ __('main.Click side to select menu icon.') }} <a href="https://fontawesome.com/icons?d=gallery&m=free">{{ __('main.here') }}</a></li>
-                                            <li class="mb-2">{{ __('main.Use the "Order" field to sort the menu items.') }}</li>
-                                        </ul>
+                                    <div class="form-group">
+                                        <label for="category">{{ __('main.Categories') }}</label>
+                                        <select name="category" id="category" class="form-control">
+                                            <option value="">{{ __('main.Choose') }}</option>
+                                            @foreach ($categories as $category)
+                                            <option value="{{$category->getSlug->slug}}">{{$category->title}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="article">{{ __('main.Posts') }}</label>
+                                        <select name="article" id="article" class="form-control">
+                                            <option value="">{{ __('main.Choose') }}</option>
+                                            @foreach ($articles as $article)
+                                            <option value="{{$article->getSlug->slug}}">{{$article->title}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <form action="{{ route('admin.setting.menu.update',$menu->id)}}" method="post" id="form">
-                                                @method('PUT')
-                                                @csrf
-                                                <input type="hidden" name="position" id="position" value="{{$menu->position}}">
-                                                <input type="hidden" name="menuname" id="menuname" value="{{$menu->menuname}}">
-                                                <div class="form-group">
-                                                    <label for="title">{{ __('main.Title') }}</label>
-                                                    <input type="text" name="title" id="title" class="form-control" value="{{$menu->title}}">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="icon">{{ __('main.Icon') }}</label>
-                                                    <input type="text" name="icon" id="icon" class="form-control" value="{{$menu->icon}}">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="link">{{ __('main.Link') }}</label>
-                                                    <input type="text" name="link" id="link" class="form-control" value="{{$menu->link}}">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="parent">{{ __('main.Parent') }}</label>
-                                                    <select name="parent" id="parent" class="form-control">
-                                                        <option value=""></option>
-                                                        @foreach ($menus as $mnu)
-                                                        @if ($mnu->title!=null)
-                                                        <option value="{{$mnu->id}}" @if($mnu->id==$menu->parent) selected @endif>{{$mnu->title}}</option>
-                                                        @endif
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="order">{{ __('main.Order') }}</label>
-                                                    <input type="number" name="order" id="order" class="form-control" value="{{$menu->order}}">
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="card-footer">
-                                            <a href="javascript:void(0);" class="btn btn-success btn-sm float-right" id="submit">{{ __('main.Save') }}</a>
-                                        </div>
-                                    </div>
+                                <div class="card-body">
+                                    <b class="text-danger">{{ __('main.Reminders') }}</b>
+                                    <ul style="padding-left:20px">
+                                        <li class="mb-2">{{ __('main.Click side to select menu icon.') }} <a href="https://fontawesome.com/icons?d=gallery&m=free">{{ __('main.here') }}</a></li>
+                                        <li class="mb-2">{{ __('main.Use the "Order" field to sort the menu items.') }}</li>
+                                    </ul>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <table class="table table-bordered table-striped">
-                                                <thead>
-                                                  <tr>
-                                                    <th style="width: 20px">{{ __('main.Order') }}</th>
-                                                    <th>{{ __('main.Title') }}</th>
-                                                    <th>{{ __('main.Link') }}</th>
-                                                    <th style="width: 40px"></th>
-                                                  </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @php
-                                                        menuOrder($menus);
-                                                    @endphp
-                                                </tbody>
-                                              </table>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <form action="{{ route('admin.setting.menu.update',$menu->id)}}" method="post" id="form">
+                                        @method('PUT')
+                                        @csrf
+                                        <input type="hidden" name="position" id="position" value="{{$menu->position}}">
+                                        <input type="hidden" name="menuname" id="menuname" value="{{$menu->menuname}}">
+                                        <div class="form-group">
+                                            <label for="title">{{ __('main.Title') }}</label>
+                                            <input type="text" name="title" id="title" class="form-control" value="{{$menu->title}}">
                                         </div>
-                                    </div>
+                                        <div class="form-group">
+                                            <label for="icon">{{ __('main.Icon') }}</label>
+                                            <input type="text" name="icon" id="icon" class="form-control" value="{{$menu->icon}}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="link">{{ __('main.Link') }}</label>
+                                            <input type="text" name="link" id="link" class="form-control" value="{{$menu->link}}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="parent">{{ __('main.Parent') }}</label>
+                                            <select name="parent" id="parent" class="form-control">
+                                                <option value=""></option>
+                                                @foreach ($menus as $mnu)
+                                                @if ($mnu->title!=null)
+                                                <option value="{{$mnu->id}}" @if($mnu->id==$menu->parent) selected @endif>{{$mnu->title}}</option>
+                                                @endif
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="order">{{ __('main.Order') }}</label>
+                                            <input type="number" name="order" id="order" class="form-control" value="{{$menu->order}}">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="card-footer">
+                                    <a href="javascript:void(0);" class="btn btn-success btn-sm float-right" id="submit">{{ __('main.Save') }}</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <table class="table table-bordered table-striped">
+                                        <thead>
+                                          <tr>
+                                            <th style="width: 20px">{{ __('main.Order') }}</th>
+                                            <th>{{ __('main.Title') }}</th>
+                                            <th>{{ __('main.Link') }}</th>
+                                            <th style="width: 40px"></th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                            @php
+                                                menuOrder($menus);
+                                            @endphp
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
         </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-  </div>
+    </div><!-- /.content -->
+</div>
 @endsection
 @section('script')
 <script>

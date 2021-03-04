@@ -32,7 +32,7 @@ class CategoryController extends Controller
             $slug_check = Slug::withTrashed()->where('slug', '=', $request->slug)->first();
             if($slug_check!=null) $request->slug = $request->slug."-".uniqid();
         }
-        $slug->owner = 'category';
+        $slug->owner = $request->type;;
         $slug->slug = $request->slug;
         $slug->seo_title = $request->seo_title;
         $slug->seo_description = $request->seo_description;
@@ -46,6 +46,7 @@ class CategoryController extends Controller
         $category->media_id = ($request->media_id==null ? 1 : $request->media_id);
         $category->upper = $request->upper;
         $category->content = $request->content;
+        $category->type = $request->type;
         $category->save();
         return redirect()->route('admin.category.index')->with(['type' => 'success', 'message' =>'Category Saved.']);
     }
@@ -77,7 +78,7 @@ class CategoryController extends Controller
             }
         }
 
-        $slug->owner = 'category';
+        $slug->owner = $request->type;;
         $slug->slug = $request->slug;
         $slug->seo_title = $request->seo_title;
         $slug->seo_description = $request->seo_description;
@@ -89,6 +90,7 @@ class CategoryController extends Controller
         $category->media_id = ($request->media_id==null ? 1 : $request->media_id);
         $category->upper = $request->upper;
         $category->content = $request->content;
+        $category->type = $request->type;
         $category->save();
         return redirect()->route('admin.category.edit',$id)->with(['type' => 'success', 'message' =>'Category Updated.']);
     }

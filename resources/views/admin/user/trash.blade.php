@@ -29,45 +29,40 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                  <div class="card">
-                    <div class="card-body">
-                        <table id="table1" class="table table-bordered table-hover">
-                            <thead>
+            <div class="card">
+                <div class="card-body">
+                    <table id="table1" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>{{ __('main.Name') }}</th>
+                                <th>{{ __('main.E-mail') }}</th>
+                                <th>{{ __('main.Role') }}</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($users as $user)
                                 <tr>
-                                    <th>{{ __('main.Name') }}</th>
-                                    <th>{{ __('main.E-mail') }}</th>
-                                    <th>{{ __('main.Role') }}</th>
-                                    <th></th>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->statu }}</td>
+                                    <td>
+                                        <a href="{{ route('admin.user.recover',$user->id) }}" title="{{ __('main.Recover') }}" class="btn btn-warning btn-xs"><i class="fas fa-recycle"></i></a>
+                                        <form id="delete_{{$user->id}}" action="{{route('admin.user.destroy',$user->id)}}" method="post" class="d-inline">
+                                            @method('DELETE')
+                                            @csrf
+                                            <a href="javascript:void(0)" onclick="validate({{$user->id}})" title="{{ __('main.Destroy') }}" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>
+                                        </form>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($users as $user)
-                                    <tr>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>{{ $user->statu }}</td>
-                                        <td>
-                                            <a href="{{ route('admin.user.recover',$user->id) }}" title="{{ __('main.Recover') }}" class="btn btn-warning btn-xs"><i class="fas fa-recycle"></i></a>
-                                            <form id="delete_{{$user->id}}" action="{{route('admin.user.destroy',$user->id)}}" method="post" class="d-inline">
-                                                @method('DELETE')
-                                                @csrf
-                                                <a href="javascript:void(0)" onclick="validate({{$user->id}})" title="{{ __('main.Destroy') }}" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                  </div>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-  </div>
+    </div><!-- /.content -->
+</div>
 
 @endsection
 

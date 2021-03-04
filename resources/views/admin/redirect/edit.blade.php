@@ -29,46 +29,41 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <form action="{{ route('admin.setting.redirect.update',$redirect->id) }}" method="post" id="form">
-                            @method('PUT')
-                            @csrf
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group row">
-                                            <label for="from" class="col-md-3">{{ __('main.From') }}</label>
-                                            <input type="text" class="form-control form-control-sm col-md-9" id="from" name="from" value="{{$redirect->from}}">
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="to" class="col-md-3">{{ __('main.To') }}</label>
-                                            <input type="text" class="form-control form-control-sm col-md-9" id="to" name="to" value="{{$redirect->to}}">
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="type" class="col-md-3">{{ __('main.Type') }}</label>
-                                            <select class="form-control form-control-sm col-md-9" name="type" id="type">
-                                                <option value="302" @if($redirect->type==302) selected @endif>{{ __('main.Temporary') }}</option>
-                                                <option value="301" @if($redirect->type==301) selected @endif>{{ __('main.Permanent') }}</option>
-                                            </select>
-                                        </div>
-                                    </div>
+            <form action="{{ route('admin.setting.redirect.update',$redirect->id) }}" method="post" id="form">
+                @method('PUT')
+                @csrf
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group row">
+                                    <label for="from" class="col-md-3">{{ __('main.From') }}</label>
+                                    <input type="text" class="form-control form-control-sm col-md-9" id="from" name="from" value="{{$redirect->from}}">
+                                </div>
+                                <div class="form-group row">
+                                    <label for="to" class="col-md-3">{{ __('main.To') }}</label>
+                                    <input type="text" class="form-control form-control-sm col-md-9" id="to" name="to" value="{{$redirect->to}}">
+                                </div>
+                                <div class="form-group row">
+                                    <label for="type" class="col-md-3">{{ __('main.Type') }}</label>
+                                    <select class="form-control form-control-sm col-md-9" name="type" id="type">
+                                        <option value="302" @if($redirect->type==302) selected @endif>{{ __('main.Temporary') }}</option>
+                                        <option value="301" @if($redirect->type==301) selected @endif>{{ __('main.Permanent') }}</option>
+                                    </select>
                                 </div>
                             </div>
-                        </form>
-                        <div class="card" id="save-card">
-                            <div class="card-body">
-                                <a href="javascript:void(0);" class="btn btn-success btn-sm float-right" id="submit">{{ __('main.Update') }}</a>
-                            </div>
                         </div>
+                    </div>
+                </form>
+                <div class="card" id="save-card">
+                    <div class="card-body">
+                        <a href="javascript:void(0);" class="btn btn-success btn-sm float-right" id="submit">{{ __('main.Update') }}</a>
                     </div>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-  </div>
+    </div><!-- /.content -->
+</div>
 @endsection
 
 @section('script')

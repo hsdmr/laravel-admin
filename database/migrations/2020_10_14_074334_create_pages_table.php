@@ -22,8 +22,8 @@ class CreatePagesTable extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->foreign('slug_id')->references('id')->on('slugs');
-            $table->foreign('media_id')->references('id')->on('media');
+            //$table->foreign('slug_id')->references('id')->on('slugs');
+            //$table->foreign('media_id')->references('id')->on('media');
         });
     }
 

@@ -29,49 +29,44 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                  <div class="card">
-                    <div class="card-body">
-                        <table id="table1" class="table table-bordered table-hover">
-                            <thead>
+            <div class="card">
+                <div class="card-body">
+                    <table id="table1" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>{{ __('main.Title') }}</th>
+                                <th>{{ __('main.Category') }}</th>
+                                <th>{{ __('main.Deletion Date') }}</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($articles as $article)
                                 <tr>
-                                    <th></th>
-                                    <th>{{ __('main.Title') }}</th>
-                                    <th>{{ __('main.Category') }}</th>
-                                    <th>{{ __('main.Deletion Date') }}</th>
-                                    <th></th>
+                                    <td>
+                                        <img src="{{ asset($article->getMedia->url)}} " alt="" style="width: 50px">
+                                    </td>
+                                    <td>{{ $article->title }}</td>
+                                    <td>{{ $article->getCategory->title }}</td>
+                                    <td>{{ $article->deleted_at->diffForHumans() }}</td>
+                                    <td>
+                                        <a href="{{ route('admin.article.recover',$article->id) }}" title="{{ __('main.Recover') }}" class="btn btn-warning btn-xs"><i class="fas fa-recycle"></i></a>
+                                        <form id="delete_{{$article->id}}" action="{{route('admin.article.destroy',$article->id)}}" method="post" class="d-inline">
+                                            @method('DELETE')
+                                            @csrf
+                                            <a href="javascript:void(0)" onclick="validate({{$article->id}})" title="{{ __('main.Destroy') }}" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>
+                                        </form>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($articles as $article)
-                                    <tr>
-                                        <td>
-                                            <img src="{{ asset($article->getMedia->url)}} " alt="" style="width: 50px">
-                                        </td>
-                                        <td>{{ $article->title }}</td>
-                                        <td>{{ $article->getCategory->title }}</td>
-                                        <td>{{ $article->deleted_at->diffForHumans() }}</td>
-                                        <td>
-                                            <a href="{{ route('admin.article.recover',$article->id) }}" title="{{ __('main.Recover') }}" class="btn btn-warning btn-xs"><i class="fas fa-recycle"></i></a>
-                                            <form id="delete_{{$article->id}}" action="{{route('admin.article.destroy',$article->id)}}" method="post" class="d-inline">
-                                                @method('DELETE')
-                                                @csrf
-                                                <a href="javascript:void(0)" onclick="validate({{$article->id}})" title="{{ __('main.Destroy') }}" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                  </div>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-  </div>
+    </div><!-- /.content -->
+</div>
 
 @endsection
 

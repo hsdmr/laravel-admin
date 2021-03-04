@@ -1,25 +1,11 @@
 @extends('layouts.master')
 
-@section('seo_title')
-
-@endsection
-@section('seo_description')
-
-@endsection
-@section('no_index')
-
-@endsection
-@section('no_follow')
-
-@endsection
-@section('image')
-
-@endsection
-
-@section('class')
-home
-@endsection
-
+@section('seo_title') @endsection
+@section('seo_description') @endsection
+@section('no_index') @endsection
+@section('no_follow') @endsection
+@section('image') @endsection
+@section('class')home @endsection
 @section('header')
 
 @endsection

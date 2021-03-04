@@ -29,39 +29,34 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <form action="{{ route('admin.setting.link.update',$link->id) }}" method="post" id="form">
-                            @method('PUT')
-                            @csrf
+            <form action="{{ route('admin.setting.link.update',$link->id) }}" method="post" id="form">
+                @method('PUT')
+                @csrf
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
                             <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group row">
-                                            <label for="word" class="col-md-3">{{ __('main.Word') }}</label>
-                                            <input type="text" class="form-control form-control-sm col-md-9" id="word" name="word" value="{{$link->word}}">
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="url" class="col-md-3">{{ __('main.Url') }}</label>
-                                            <input type="text" class="form-control form-control-sm col-md-9" id="url" name="url" value="{{$link->url}}">
-                                        </div>
-                                    </div>
+                                <div class="form-group row">
+                                    <label for="word" class="col-md-3">{{ __('main.Word') }}</label>
+                                    <input type="text" class="form-control form-control-sm col-md-9" id="word" name="word" value="{{$link->word}}">
                                 </div>
-                            </div>
-                        </form>
-                        <div class="card" id="save-card">
-                            <div class="card-body">
-                                <a href="javascript:void(0);" class="btn btn-success btn-sm float-right" id="submit">{{ __('main.Update') }}</a>
+                                <div class="form-group row">
+                                    <label for="url" class="col-md-3">{{ __('main.Url') }}</label>
+                                    <input type="text" class="form-control form-control-sm col-md-9" id="url" name="url" value="{{$link->url}}">
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="card" id="save-card">
+                        <div class="card-body">
+                            <a href="javascript:void(0);" class="btn btn-success btn-sm float-right" id="submit">{{ __('main.Update') }}</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-  </div>
+    </div><!-- /.content -->
+</div>
 @endsection
 
 @section('script')

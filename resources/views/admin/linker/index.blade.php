@@ -28,46 +28,41 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                  <div class="card">
-                    <div class="card-header">
-                        <a href="{{ route('admin.setting.link.create') }}" class="btn btn-success btn-sm">{{ __('main.Add New') }}</a>
-                    </div>
-                    <div class="card-body">
-                        <table id="table1" class="table table-bordered table-hover">
-                            <thead>
+            <div class="card">
+                <div class="card-header">
+                    <a href="{{ route('admin.setting.link.create') }}" class="btn btn-success btn-sm">{{ __('main.Add New') }}</a>
+                </div>
+                <div class="card-body">
+                    <table id="table1" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>{{ __('main.Word') }}</th>
+                                <th>{{ __('main.Url') }}</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($links as $link)
                                 <tr>
-                                    <th>{{ __('main.Word') }}</th>
-                                    <th>{{ __('main.Url') }}</th>
-                                    <th></th>
+                                    <td>{{ $link->word }}</td>
+                                    <td>{{ $link->url }}</td>
+                                    <td>
+                                        <a href="{{ route('admin.setting.link.edit',$link->id) }}" title="{{ __('main.Edit') }}" class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></a>
+                                        <form id="delete_{{$link->id}}" action="{{route('admin.setting.link.destroy',$link->id)}}" method="post" class="d-inline">
+                                            @method('DELETE')
+                                            @csrf
+                                            <a href="javascript:void(0)" onclick="validate({{$link->id}})" title="{{ __('main.Delete') }}" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>
+                                        </form>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($links as $link)
-                                    <tr>
-                                        <td>{{ $link->word }}</td>
-                                        <td>{{ $link->url }}</td>
-                                        <td>
-                                            <a href="{{ route('admin.setting.link.edit',$link->id) }}" title="{{ __('main.Edit') }}" class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></a>
-                                            <form id="delete_{{$link->id}}" action="{{route('admin.setting.link.destroy',$link->id)}}" method="post" class="d-inline">
-                                                @method('DELETE')
-                                                @csrf
-                                                <a href="javascript:void(0)" onclick="validate({{$link->id}})" title="{{ __('main.Delete') }}" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                  </div>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-  </div>
+    </div><!-- /.content -->
+</div>
 
 @endsection
 

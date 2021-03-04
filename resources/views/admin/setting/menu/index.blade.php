@@ -29,53 +29,48 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                  <div class="card">
-                    <div class="card-header">
-                        <a href="{{ route('admin.setting.menu.create') }}" class="btn btn-success btn-sm">{{ __('main.Add New') }}</a>
-                    </div>
-                    <div class="card-body">
-                        <table id="table1" class="table table-bordered table-hover">
-                            <thead>
+            <div class="card">
+                <div class="card-header">
+                    <a href="{{ route('admin.setting.menu.create') }}" class="btn btn-success btn-sm">{{ __('main.Add New') }}</a>
+                </div>
+                <div class="card-body">
+                    <table id="table1" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>{{ __('main.Title') }}</th>
+                                <th>{{ __('main.Position') }}</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($menus as $menu)
                                 <tr>
-                                    <th>{{ __('main.Title') }}</th>
-                                    <th>{{ __('main.Position') }}</th>
-                                    <th></th>
+                                    <td>{{ $menu[0]->menuname }}</td>
+                                    <td>
+                                        <div>
+                                            <input class="choose {{$menu[0]->menuname}}" data-id="1" data-name="{{$menu[0]->menuname}}" @if ($menu[0]->position==1) checked @endif type="checkbox" id="main{{$menu[0]->id}}"><label for="main{{$menu[0]->id}}" class="pl-1">{{ __('main.Main Menu') }}</label>
+                                        </div>
+                                        <div>
+                                            <input class="choose {{$menu[0]->menuname}}" data-id="2" data-name="{{$menu[0]->menuname}}" @if ($menu[0]->position==2) checked @endif type="checkbox" id="footer{{$menu[0]->id}}"><label for="footer{{$menu[0]->id}}" class="pl-1">{{ __('main.Footer') }}</label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('admin.setting.menu.show',$menu[0]->id) }}" title="{{ __('main.Edit') }}" class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></a>
+                                        <form id="delete_{{$menu[0]->id}}" action="{{route('admin.setting.menu.destroy',$menu[0]->id)}}" method="post" class="d-inline">
+                                            @method('DELETE')
+                                            @csrf
+                                            <a href="javascript:void(0)" onclick="validate({{$menu[0]->id}})" title="{{ __('main.Destroy') }}" class="btn btn-danger btn-xs"><i class="fas fa-times"></i></a>
+                                        </form>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($menus as $menu)
-                                    <tr>
-                                        <td>{{ $menu[0]->menuname }}</td>
-                                        <td>
-                                            <div>
-                                                <input class="choose {{$menu[0]->menuname}}" data-id="1" data-name="{{$menu[0]->menuname}}" @if ($menu[0]->position==1) checked @endif type="checkbox" id="main{{$menu[0]->id}}"><label for="main{{$menu[0]->id}}" class="pl-1">{{ __('main.Main Menu') }}</label>
-                                            </div>
-                                            <div>
-                                                <input class="choose {{$menu[0]->menuname}}" data-id="2" data-name="{{$menu[0]->menuname}}" @if ($menu[0]->position==2) checked @endif type="checkbox" id="footer{{$menu[0]->id}}"><label for="footer{{$menu[0]->id}}" class="pl-1">{{ __('main.Footer') }}</label>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('admin.setting.menu.show',$menu[0]->id) }}" title="{{ __('main.Edit') }}" class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></a>
-                                            <form id="delete_{{$menu[0]->id}}" action="{{route('admin.setting.menu.destroy',$menu[0]->id)}}" method="post" class="d-inline">
-                                                @method('DELETE')
-                                                @csrf
-                                                <a href="javascript:void(0)" onclick="validate({{$menu[0]->id}})" title="{{ __('main.Destroy') }}" class="btn btn-danger btn-xs"><i class="fas fa-times"></i></a>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                  </div>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-  </div>
+    </div><!-- /.content -->
+</div>
 
 @endsection
 

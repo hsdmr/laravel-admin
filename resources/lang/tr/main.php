@@ -68,6 +68,13 @@ return [
     'Comments' => 'Yorumlar',
     'Author' => 'Yazar',
 
+    'Slide' => 'Slaytlar',
+    'Slides' => 'Slayt',
+    'All Slides' => 'Bütün Slaytlar',
+    'Add New Slide' => 'Yeni Slayt ekle',
+    'Edit Slide' => 'Slayt Düzenle',
+    'Create Slide' => 'Slayt Oluştur',
+
     'User' => 'Kullanıcı',
     'Users' => 'Kullanıcılar',
     'All Users' => 'Bütün Kullanıcılar',

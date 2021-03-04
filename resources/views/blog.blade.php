@@ -1,23 +1,11 @@
 @extends('layouts.master')
 
-@section('seo_title')
-{{($page->getSlug->seo_title==null) ? $page->title : $page->getSlug->seo_title}}
-@endsection
-@section('seo_description')
-{!!($page->getSlug->seo_description==null) ? 'Faydalı Bilgiler ile ihtiyacınız olana ulaşın | Süper Doktorlar' : $page->getSlug->seo_title!!}
-@endsection
-@section('no_index')
-{{$page->getSlug->no_index ? 'noindex' : 'index'}}
-@endsection
-@section('no_follow')
-{{$page->getSlug->no_follow ? 'nofollow' : 'follow'}}
-@endsection
-@section('image')
-{{$page->getMedia->getUrl()}}
-@endsection
-@section('class')
-    blog
-@endsection
+@section('seo_title'){{($page->getSlug->seo_title==null) ? $page->title : $page->getSlug->seo_title}}@endsection
+@section('seo_description'){!!($page->getSlug->seo_description==null) ? 'Faydalı Bilgiler ile ihtiyacınız olana ulaşın | Süper Doktorlar' : $page->getSlug->seo_title!!}@endsection
+@section('no_index'){{$page->getSlug->no_index ? 'noindex' : 'index'}}@endsection
+@section('no_follow'){{$page->getSlug->no_follow ? 'nofollow' : 'follow'}}@endsection
+@section('image'){{$page->getMedia->getUrl()}}@endsection
+@section('class')blog @endsection
 @section('header')
 
 @endsection

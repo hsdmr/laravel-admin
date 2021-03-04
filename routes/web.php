@@ -28,6 +28,7 @@ Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function ()
     Route::post('/media/storeMedia', [App\Http\Controllers\Admin\FileController::class, 'storeMedia'])->name('media.storeMedia');
     Route::resource('/media', 'App\Http\Controllers\Admin\FileController');
     Route::resource('/category', 'App\Http\Controllers\Admin\CategoryController');
+    Route::resource('/slide', 'App\Http\Controllers\Admin\SlideController');
 
     Route::get('/article/switch', [App\Http\Controllers\Admin\ArticleController::class, 'switch'])->name('article.switch');
     Route::get('/article/trash', [App\Http\Controllers\Admin\ArticleController::class, 'trash'])->name('article.trash');
@@ -51,6 +52,11 @@ Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function ()
     Route::get('/user/delete/{id}', [App\Http\Controllers\Admin\UserController::class, 'delete'])->name('user.delete');
     Route::get('/user/recover/{id}', [App\Http\Controllers\Admin\UserController::class, 'recover'])->name('user.recover');
     Route::resource('/user', 'App\Http\Controllers\Admin\UserController');
+
+    Route::prefix('/tutor')->name('tutor.')->group(function(){
+        Route::resource('/category', 'App\Http\Controllers\Admin\TutorCategoryController');
+        Route::resource('/course', 'App\Http\Controllers\Admin\TutorCourseController');
+    });
 
     Route::prefix('/setting')->name('setting.')->group(function(){
         Route::get('/index', [App\Http\Controllers\Admin\SettingController::class, 'index'])->name('index');
@@ -105,7 +111,7 @@ Route::get('/{url}/{url2?}/{url3?}', function ($url,$url2=null,$url3=null) {
                 return  view('page',compact('page'));
             }
         }
-        if($owner=='category'){
+        if($owner=='article-category'){
             $categories = Category::all();
             $category = Category::firstWhere('slug_id','=',$slug->id);
             $articles = Article::orderBy('created_at', 'desc')->where('category_id','=',$category->id)->simplePaginate(8);

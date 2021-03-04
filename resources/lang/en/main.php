@@ -68,6 +68,13 @@ return [
     'Comments' => 'Comments',
     'Author' => 'Author',
 
+    'Slide' => 'Slide',
+    'Slides' => 'Slides',
+    'All Slides' => 'All Slides',
+    'Add New Slide' => 'Add New Slide',
+    'Edit Slide' => 'Edit Slide',
+    'Create Slide' => 'Create Slide',
+
     'User' => 'User',
     'Users' => 'Users',
     'All Users' => 'All Users',

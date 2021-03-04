@@ -21,8 +21,8 @@ class CreateSettingsTable extends Migration
             $table->string('language')->default('tr_TR');
             $table->timestamps();
 
-            $table->foreign('logo')->references('id')->on('media');
-            $table->foreign('favicon')->references('id')->on('media');
+            //$table->foreign('logo')->references('id')->on('media');
+            //$table->foreign('favicon')->references('id')->on('media');
         });
     }
 

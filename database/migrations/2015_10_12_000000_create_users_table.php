@@ -12,7 +12,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('surname')->nullable();
-            $table->string('role')->default('uye');
+            $table->string('role')->default('user');
             $table->string('favories')->nullable();
             $table->string('email')->unique();
             $table->string('phone')->nullable();
