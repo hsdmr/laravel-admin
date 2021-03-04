@@ -13,6 +13,7 @@ class CreateSocialsTable extends Migration
             $table->string('behance')->nullable();
             $table->string('dribble')->nullable();
             $table->string('facebook')->nullable();
+            $table->string('github')->nullable();
             $table->string('flickr')->nullable();
             $table->string('instagram')->nullable();
             $table->string('linkedin')->nullable();
