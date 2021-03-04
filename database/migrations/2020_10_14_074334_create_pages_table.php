@@ -17,7 +17,7 @@ class CreatePagesTable extends Migration
             $table->longText('content')->nullable();
             $table->integer('hit')->default(0);
             $table->string('template')->default('standart');
-            $table->string('language')->default('tr_TR');
+            $table->string('language')->default('tr');
             $table->tinyInteger('sidebar')->default(0);
             $table->softDeletes();
             $table->timestamps();

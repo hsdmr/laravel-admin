@@ -18,7 +18,7 @@ class CreateContactsTable extends Migration
             $table->string('latitude')->nullable();
             $table->string('langitude')->nullable();
             $table->string('zoom')->nullable();
-            $table->string('language')->default('tr_TR');
+            $table->string('language')->default('tr');
             $table->timestamps();
         });
     }

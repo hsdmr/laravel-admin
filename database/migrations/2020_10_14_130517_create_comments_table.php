@@ -15,7 +15,7 @@ class CreateCommentsTable extends Migration
             $table->string('title')->nullable();
             $table->tinyInteger('statu')->default(0);
             $table->longText('content');
-            $table->string('language')->default('tr_TR');
+            $table->string('language')->default('tr');
             $table->softDeletes();
             $table->timestamps();
 

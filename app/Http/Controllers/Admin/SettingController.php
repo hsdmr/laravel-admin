@@ -68,6 +68,7 @@ class SettingController extends Controller
         $social->behance = $request->behance;
         $social->dribble = $request->dribble;
         $social->facebook = $request->facebook;
+        $social->github = $request->github;
         $social->flickr = $request->flickr;
         $social->instagram = $request->instagram;
         $social->linkedin = $request->linkedin;

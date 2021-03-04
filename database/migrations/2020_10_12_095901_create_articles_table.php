@@ -18,7 +18,7 @@ class CreateArticlesTable extends Migration
             $table->string('title');
             $table->longText('content')->nullable();
             $table->integer('hit')->default(0);
-            $table->string('language')->default('tr_TR');
+            $table->string('language')->default('tr');
             $table->softDeletes();
             $table->timestamps();
 

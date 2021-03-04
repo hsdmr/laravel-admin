@@ -18,7 +18,7 @@ class CreateSettingsTable extends Migration
             $table->longText('footerjs')->nullable();
             $table->tinyInteger('no_index')->default(1);
             $table->tinyInteger('no_follow')->default(1);
-            $table->string('language')->default('tr_TR');
+            $table->string('language')->default('tr');
             $table->timestamps();
 
             //$table->foreign('logo')->references('id')->on('media');

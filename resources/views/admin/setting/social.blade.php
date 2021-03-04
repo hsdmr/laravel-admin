@@ -38,6 +38,10 @@
                             <input type="text" class="form-control form-control-sm col-md-9" value="{{$social->behance}}" id="behance" name="behance">
                         </div>
                         <div class="form-group row">
+                            <label for="github" class="col-md-3">Github</label>
+                            <input type="text" class="form-control form-control-sm col-md-9" value="{{$social->github}}" id="github" name="github">
+                        </div>
+                        <div class="form-group row">
                             <label for="dribble" class="col-md-3">Dribble</label>
                             <input type="text" class="form-control form-control-sm col-md-9" value="{{$social->dribble}}" id="dribble" name="dribble">
                         </div>

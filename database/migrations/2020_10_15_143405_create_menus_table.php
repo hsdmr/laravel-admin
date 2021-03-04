@@ -16,8 +16,8 @@ class CreateMenusTable extends Migration
             $table->string('icon')->nullable();
             $table->unsignedBigInteger('parent')->nullable();
             $table->integer('position')->default(0);
-            $table->string('menuname')->default('Ana Menü');
-            $table->string('language')->default('tr_TR');
+            $table->string('menuname')->default('Main Menu');
+            $table->string('language')->default('tr');
             $table->timestamps();
         });
     }

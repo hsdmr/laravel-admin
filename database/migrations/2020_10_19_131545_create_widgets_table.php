@@ -14,7 +14,7 @@ class CreateWidgetsTable extends Migration
             $table->string('title')->nullable();
             $table->longText('content')->nullable();
             $table->string('menu')->nullable();
-            $table->string('language')->default('tr_TR');
+            $table->string('language')->default('tr');
             $table->timestamps();
         });
     }

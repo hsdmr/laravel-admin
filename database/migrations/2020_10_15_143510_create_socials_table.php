@@ -29,7 +29,7 @@ class CreateSocialsTable extends Migration
             $table->string('youtube')->nullable();
             $table->string('whatsapp')->nullable();
             $table->string('email')->nullable();
-            $table->string('language')->default('tr_TR');
+            $table->string('language')->default('tr');
             $table->timestamps();
         });
     }

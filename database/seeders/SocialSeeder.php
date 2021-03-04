@@ -11,6 +11,8 @@ class SocialSeeder extends Seeder
     {
         $social = new Social;
         $social->instagram = 'https://www.instagram.com/hsdmrsoft/';
+        $social->github = 'https://github.com/hsdmr';
+        $social->linkedin = 'https://www.linkedin.com/in/murat-hasdemir-466a4a198/';
         $social->save();
     }
 }
