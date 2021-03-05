@@ -69,7 +69,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('admin.tutor.category.index') }}" class="nav-link @if(Request::segment(2)=="tutor" && Request::segment(3)=="setting") active @endif">
+                  <a href="{{ route('admin.tutor.category.index') }}" class="nav-link @if(Request::segment(2)=="tutor" && Request::segment(3)=="option") active @endif">
                     <ion-icon name="return-down-forward-outline"></ion-icon>
                     <p>{{ __('main.Settings') }}</p>
                   </a>
@@ -188,53 +188,53 @@
                 </li>
             </ul>
           </li>
-          <li class="nav-item has-treeview @if(Request::segment(2)=="setting" ) menu-open @endif">
-            <a href="{{ route('admin.setting.index') }}" class="nav-link @if(Request::segment(2)=="setting") active @endif">
+          <li class="nav-item has-treeview @if(Request::segment(2)=="option" ) menu-open @endif">
+            <a href="{{ route('admin.option.index') }}" class="nav-link @if(Request::segment(2)=="option") active @endif">
                 <i class=" nav-icon fas fa-cog"></i>
                 <p>
                     {{ __('main.Settings') }}
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview" style="@if(Request::segment(2)=="setting") display:block; @endif">
+            <ul class="nav nav-treeview" style="@if(Request::segment(2)=="option") display:block; @endif">
                 <li class="nav-item">
-                  <a href="{{ route('admin.setting.index') }}" class="nav-link @if(Request::segment(2)=="setting" && Request::segment(3)=="index") active @endif">
+                  <a href="{{ route('admin.option.index') }}" class="nav-link @if(Request::segment(2)=="option" && Request::segment(3)=="index") active @endif">
                     <ion-icon name="return-down-forward-outline"></ion-icon>
                     <p>{{ __('main.General Settings') }}</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('admin.setting.menu.index')}}" class="nav-link @if(Request::segment(2)=="setting" && Request::segment(3)=="menu") active @endif">
+                  <a href="{{ route('admin.option.menu.index')}}" class="nav-link @if(Request::segment(2)=="option" && Request::segment(3)=="menu") active @endif">
                     <ion-icon name="return-down-forward-outline"></ion-icon>
                     <p>{{ __('main.Menus') }}</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('admin.setting.widget')}}" class="nav-link @if(Request::segment(2)=="setting" && Request::segment(3)=="widget") active @endif">
+                  <a href="{{ route('admin.option.widget')}}" class="nav-link @if(Request::segment(2)=="option" && Request::segment(3)=="widget") active @endif">
                     <ion-icon name="return-down-forward-outline"></ion-icon>
                     <p>{{ __('main.Widgets') }}</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('admin.setting.contact') }}" class="nav-link @if(Request::segment(2)=="setting" && Request::segment(3)=="contact") active @endif">
+                  <a href="{{ route('admin.option.contact') }}" class="nav-link @if(Request::segment(2)=="option" && Request::segment(3)=="contact") active @endif">
                     <ion-icon name="return-down-forward-outline"></ion-icon>
                     <p>{{ __('main.Contact Information') }}</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('admin.setting.social') }}" class="nav-link @if(Request::segment(2)=="setting" && Request::segment(3)=="social") active @endif">
+                  <a href="{{ route('admin.option.social') }}" class="nav-link @if(Request::segment(2)=="option" && Request::segment(3)=="social") active @endif">
                     <ion-icon name="return-down-forward-outline"></ion-icon>
                     <p>{{ __('main.Social Media') }}</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('admin.setting.redirect.index') }}" class="nav-link @if(Request::segment(2)=="setting" && Request::segment(2)=="redirect") active @endif">
+                  <a href="{{ route('admin.option.redirect.index') }}" class="nav-link @if(Request::segment(2)=="option" && Request::segment(2)=="redirect") active @endif">
                     <ion-icon name="return-down-forward-outline"></ion-icon>
                     <p>{{ __('main.Redirects') }}</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('admin.setting.link.index') }}" class="nav-link @if(Request::segment(2)=="setting" && Request::segment(2)=="link") active @endif">
+                  <a href="{{ route('admin.option.link.index') }}" class="nav-link @if(Request::segment(2)=="option" && Request::segment(2)=="link") active @endif">
                     <ion-icon name="return-down-forward-outline"></ion-icon>
                     <p>{{ __('main.Auto Linkers') }}</p>
                   </a>

@@ -16,7 +16,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('main.Home') }}</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('admin.setting.index') }}">{{ __('main.Settings') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.option.index') }}">{{ __('main.Settings') }}</a></li>
               <li class="breadcrumb-item active">{{ __('main.Widgets') }}</li>
             </ol>
             </ol>
@@ -39,7 +39,7 @@
                 @endphp
                 <div class="col-3">
                     <div class="card">
-                        <form action="{{route('admin.setting.widgetUpdate')}}" method="POST">
+                        <form action="{{route('admin.option.widgetUpdate')}}" method="POST">
                             @csrf
                             <input type="hidden" name="id" value="{{$i}}">
                         <div class="card-header">

@@ -32,8 +32,7 @@
         <div class="container-fluid">
             <form action="{{ route('admin.tutor.category.store') }}" method="post" id="form">
                 @csrf
-                <input type="hidden" value="form" name="form">
-                <input type="hidden" value="form" name="type" value="tutor-category">
+                <input type="hidden" value="tutor-category" name="type">
                 <input type="hidden" name="media_id" id="media_id" value="">
                 <div class="row">
                     <div class="col-md-9">

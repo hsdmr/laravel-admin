@@ -16,7 +16,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('main.Home') }}</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('admin.setting.index') }}">{{ __('main.Settings') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.option.index') }}">{{ __('main.Settings') }}</a></li>
               <li class="breadcrumb-item active">{{ __('main.Contact Information') }}</li>
             </ol>
             </ol>
@@ -30,35 +30,36 @@
     <div class="content">
         <div class="container-fluid">
             <div class="card">
-                <form action="{{ route('admin.setting.contactUpdate',1) }}" method="post" id="form" >
+                <form action="{{ route('admin.option.contactUpdate') }}" method="post" id="form" >
                     @csrf
+                    <input type="hidden" name="language" value="tr">
                     <div class="card-body">
                         <div class="form-group row">
                             <label for="cell" class="col-md-3">{{ __('main.Mobile Phone') }}</label>
-                            <input type="text" class="form-control form-control-sm col-md-9" value="{{$contact->cell}}" id="cell" name="cell">
+                            <input type="text" class="form-control form-control-sm col-md-9" value="@isset($contact['cell']){{$contact['cell']}}@endisset" id="cell" name="contact[cell]">
                         </div>
                         <div class="form-group row">
                             <label for="phone" class="col-md-3">{{ __('main.Phone') }}</label>
-                            <input type="text" class="form-control form-control-sm col-md-9" value="{{$contact->phone}}" id="phone" name="phone">
+                            <input type="text" class="form-control form-control-sm col-md-9" value="@isset($contact['phone']){{$contact['phone']}}@endisset" id="phone" name="contact[phone]">
                         </div>
                         <div class="form-group row">
                             <label for="email" class="col-md-3">{{ __('main.E-mail') }}</label>
-                            <input type="text" class="form-control form-control-sm col-md-9" value="{{$contact->email}}" id="email" name="email">
+                            <input type="text" class="form-control form-control-sm col-md-9" value="@isset($contact['email']){{$contact['email']}}@endisset" id="email" name="contact[email]">
                         </div>
                         <div class="form-group row">
                             <label for="address" class="col-md-3">{{ __('main.Address') }}</label>
-                            <input type="text" class="form-control form-control-sm col-md-9" value="{{$contact->address}}" id="address" name="address">
+                            <input type="text" class="form-control form-control-sm col-md-9" value="@isset($contact['address']){{$contact['address']}}@endisset" id="address" name="contact[address]">
                         </div>
                         <div class="form-group row">
                             <label for="map" class="col-md-3">{{ __('main.Map') }}</label>
                             <div class="input-group col-md-6 row">
-                                <input type="text" class="form-control form-control-sm" id="map" name="map" value="{{$contact->map}}">
+                                <input type="text" class="form-control form-control-sm" id="map" name="contact[map]" value="@isset($contact['map']){{$contact['map']}}@endisset">
                                 <div class="input-group-append" style="cursor: pointer" id="search">
                                     <span class="input-group-text"><i class="fas fa-search"></i></span>
                                 </div>
                             </div>
                             <label for="zoom" class="col-md-1">{{ __('main.Zoom') }}</label>
-                            <input type="range" id="zoom" name="zoom" class="col-md-2" min="1" max="20" value="{{$contact->zoom}}" step="1">
+                            <input type="range" id="zoom" name="contact[zoom]" class="col-md-2" min="1" max="20" value="@isset($contact['zoom']){{$contact['zoom']}}@endisset" step="1">
                         </div>
                     </div>
                 </form>
@@ -76,8 +77,8 @@
 
 @section('script')
 <script>
-    var map = "{{$contact->map}}";
-    var zoom = "{{$contact->zoom}}";
+    var map = "{{isset($contact['map'])? $contact['map'] : 'Ayasofya'}}";
+    var zoom = "{{isset($contact['zoom'])? $contact['zoom'] : '13'}}";
     $("#gmap_canvas").attr("src","https://maps.google.com/maps?q="+map+"&t=&z="+zoom+"&ie=UTF8&iwloc=&output=embed");
 $(function(){
 

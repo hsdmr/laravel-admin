@@ -34,7 +34,7 @@
                 @method('PUT')
                 @csrf
                 <input type="hidden" name="media_id" id="media_id" value="{{$category->getMedia->id}}">
-                <input type="hidden" value="form" name="type" value="tutor-category">
+                <input type="hidden" value="tutor-category" name="type">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">

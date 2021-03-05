@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use App\Models\File;
-use App\Models\Setting;
 use App\Models\Widget;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
@@ -38,7 +37,6 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('layouts.master',function($view){
             $view->with([
                 'widget' => Widget::all(),
-                'setting' => Setting::find(1),
                 ]);
         });
     }

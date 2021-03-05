@@ -58,22 +58,22 @@ Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function ()
         Route::resource('/course', 'App\Http\Controllers\Admin\TutorCourseController');
     });
 
-    Route::prefix('/setting')->name('setting.')->group(function(){
-        Route::get('/index', [App\Http\Controllers\Admin\SettingController::class, 'index'])->name('index');
-        Route::post('/update', [App\Http\Controllers\Admin\SettingController::class, 'update'])->name('update');
+    Route::prefix('/option')->name('option.')->group(function(){
+        Route::get('/index', [App\Http\Controllers\Admin\OptionController::class, 'index'])->name('index');
+        Route::post('/update', [App\Http\Controllers\Admin\OptionController::class, 'update'])->name('update');
 
-        Route::get('/contact', [App\Http\Controllers\Admin\SettingController::class, 'contact'])->name('contact');
-        Route::post('/contactUpdate', [App\Http\Controllers\Admin\SettingController::class, 'contactUpdate'])->name('contactUpdate');
+        Route::get('/contact', [App\Http\Controllers\Admin\OptionController::class, 'contact'])->name('contact');
+        Route::post('/contactUpdate', [App\Http\Controllers\Admin\OptionController::class, 'contactUpdate'])->name('contactUpdate');
 
-        Route::get('/social', [App\Http\Controllers\Admin\SettingController::class, 'social'])->name('social');
-        Route::post('/socialUpdate', [App\Http\Controllers\Admin\SettingController::class, 'socialUpdate'])->name('socialUpdate');
+        Route::get('/social', [App\Http\Controllers\Admin\OptionController::class, 'social'])->name('social');
+        Route::post('/socialUpdate', [App\Http\Controllers\Admin\OptionController::class, 'socialUpdate'])->name('socialUpdate');
 
         Route::get('/menu/position', [App\Http\Controllers\Admin\MenuController::class, 'position'])->name('menu.position');
         Route::get('/menu/delete/{id}', [App\Http\Controllers\Admin\MenuController::class, 'delete'])->name('menu.delete');
         Route::resource('/menu', 'App\Http\Controllers\Admin\MenuController');
 
-        Route::get('/widget', [App\Http\Controllers\Admin\SettingController::class, 'widget'])->name('widget');
-        Route::post('/widgetUpdate', [App\Http\Controllers\Admin\SettingController::class, 'widgetUpdate'])->name('widgetUpdate');
+        Route::get('/widget', [App\Http\Controllers\Admin\OptionController::class, 'widget'])->name('widget');
+        Route::post('/widgetUpdate', [App\Http\Controllers\Admin\OptionController::class, 'widgetUpdate'])->name('widgetUpdate');
 
         Route::resource('/redirect', 'App\Http\Controllers\Admin\RedirectController');
         Route::resource('/link', 'App\Http\Controllers\Admin\LinkController');
