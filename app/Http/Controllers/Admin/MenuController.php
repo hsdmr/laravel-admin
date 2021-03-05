@@ -14,12 +14,12 @@ class MenuController extends Controller
     public function index()
     {
         $menus = Menu::get()->groupBy('menuname');
-        return view('admin.setting.menu.index',compact('menus'));
+        return view('admin.option.menu.index',compact('menus'));
     }
 
     public function create(Request $request)
     {
-        return view('admin.setting.menu.create');
+        return view('admin.option.menu.create');
     }
 
     public function store(Request $request)
@@ -38,7 +38,7 @@ class MenuController extends Controller
         $pages = Page::where('statu','=','1')->get();
         $categories = Category::all();
         $articles = Article::where('statu','=','1')->get();
-        return view('admin.setting.menu.show',compact('menus','pages','categories','articles'))->with(['type' => 'success', 'message' =>'Menu Saved.']);
+        return view('admin.option.menu.show',compact('menus','pages','categories','articles'))->with(['type' => 'success', 'message' =>'Menu Saved.']);
     }
 
     public function show($id)
@@ -48,7 +48,7 @@ class MenuController extends Controller
         $pages = Page::where('statu','=','1')->get();
         $categories = Category::all();
         $articles = Article::where('statu','=','1')->get();
-        return view('admin.setting.menu.show',compact('menus','pages','categories','articles'));
+        return view('admin.option.menu.show',compact('menus','pages','categories','articles'));
     }
 
     public function edit($id)
@@ -58,7 +58,7 @@ class MenuController extends Controller
         $pages = Page::where('statu','=','1')->get();
         $categories = Category::all();
         $articles = Article::where('statu','=','1')->get();
-        return view('admin.setting.menu.edit',compact('menu','menus','pages','categories','articles'));
+        return view('admin.option.menu.edit',compact('menu','menus','pages','categories','articles'));
     }
 
     public function update(Request $request, $id)
@@ -77,7 +77,7 @@ class MenuController extends Controller
         $pages = Page::where('statu','=','1')->get();
         $categories = Category::all();
         $articles = Article::where('statu','=','1')->get();
-        return view('admin.setting.menu.show',compact('menus','pages','categories','articles'))->with(['type' => 'success', 'message' =>'Menu Saved.']);
+        return view('admin.option.menu.show',compact('menus','pages','categories','articles'))->with(['type' => 'success', 'message' =>'Menu Saved.']);
     }
 
     public function delete($id)
@@ -87,7 +87,7 @@ class MenuController extends Controller
         $menuname = Menu::where('menuname','=',$menuname)->first();
         $menuname = $menuname->id;
         $menu->delete();
-        return redirect()->route('admin.setting.menu.show',$menuname)->with(['type' => 'success', 'message' =>'Menu Line Deleted.']);
+        return redirect()->route('admin.option.menu.show',$menuname)->with(['type' => 'success', 'message' =>'Menu Line Deleted.']);
     }
 
     public function destroy($id)
@@ -97,7 +97,7 @@ class MenuController extends Controller
         foreach($menus as $menu){
             $menu->forceDelete();
         }
-        return redirect()->route('admin.setting.menu.index')->with(['type' => 'error', 'message' =>'The Menu Has Been Deleted.']);
+        return redirect()->route('admin.option.menu.index')->with(['type' => 'error', 'message' =>'The Menu Has Been Deleted.']);
     }
 
     public function position(Request $request)

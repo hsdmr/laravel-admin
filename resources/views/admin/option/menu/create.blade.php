@@ -16,7 +16,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('main.Home') }}</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('admin.setting.index') }}">{{ __('main.Settings') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.option.index') }}">{{ __('main.Options') }}</a></li>
               <li class="breadcrumb-item active">{{ __('main.Menus') }}</li>
             </ol>
             </ol>
@@ -30,7 +30,7 @@
     <div class="content">
         <div class="container-fluid">
             <div class="card">
-                <form action="{{ route('admin.setting.menu.store')}}" method="post">
+                <form action="{{ route('admin.option.menu.store')}}" method="post">
                     @csrf
                 <div class="card-body row">
                     <label for="menuname" class="col-md-2">{{ __('main.Menu Name') }}</label>

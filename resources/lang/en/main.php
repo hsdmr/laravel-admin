@@ -89,8 +89,8 @@ return [
     'User' => 'User',
     'Admin' => 'Admin',
 
-    'Settings' => 'Settings',
-    'General Settings' => 'General Settings',
+    'Options' => 'Options',
+    'General Options' => 'General Options',
     'Site name' => 'Site name',
     'Header CSS' => 'Header CSS',
     'Header JS' => 'Header JS',

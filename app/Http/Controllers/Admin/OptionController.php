@@ -12,19 +12,44 @@ class OptionController extends Controller
 {
     public function index()
     {
-        $option = Option::find(1);
+        $option = [
+            'logo' => Option::where('name','=','logo')->first()->value,
+            'favicon' => Option::where('name','=','favicon')->first()->value,
+            'title' => Option::where('name','=','title')->first()->value,
+            'headcss' => Option::where('name','=','headcss')->first()->value,
+            'headjs' => Option::where('name','=','headjs')->first()->value,
+            'footerjs' => Option::where('name','=','footerjs')->first()->value,
+            'no_index' => Option::where('name','=','no_index')->first()->value,
+            'no_follow' => Option::where('name','=','no_follow')->first()->value,
+        ];
         return view('admin.option.index',compact('option'));
     }
 
     public function update(Request $request)
     {
-        $option = Option::find(1);
-        $option->title = $request->title;
-        $option->logo = $request->logo;
-        $option->favicon = $request->favicon;
-        $option->headcss = $request->headcss;
-        $option->headjs = $request->headjs;
-        $option->footerjs = $request->footerjs;
+        $option = Option::where('name','=','logo')->first();
+        $option->value = $request->logo;
+        $option->save();
+        $option = Option::where('name','=','favicon')->first();
+        $option->value = $request->favicon;
+        $option->save();
+        $option = Option::where('name','=','title')->first();
+        $option->value = $request->title;
+        $option->save();
+        $option = Option::where('name','=','headcss')->first();
+        $option->value = $request->headcss;
+        $option->save();
+        $option = Option::where('name','=','headjs')->first();
+        $option->value = $request->headjs;
+        $option->save();
+        $option = Option::where('name','=','footerjs')->first();
+        $option->value = $request->footerjs;
+        $option->save();
+        $option = Option::where('name','=','no_index')->first();
+        $option->value = isset($request->no_index)? 1 : 0;
+        $option->save();
+        $option = Option::where('name','=','no_follow')->first();
+        $option->value = isset($request->no_follow)? 1 : 0;
         $option->save();
 
         return redirect()->route('admin.option.index')->with(['type' => 'success', 'message' =>'Options Saved.']);

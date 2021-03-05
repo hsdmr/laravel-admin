@@ -16,8 +16,8 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('main.Home') }}</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('admin.setting.index') }}">{{ __('main.Settings') }}</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('admin.setting.menu.index') }}">{{ __('main.Menus') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.option.index') }}">{{ __('main.Options') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.option.menu.index') }}">{{ __('main.Menus') }}</a></li>
               <li class="breadcrumb-item active">{{ $menus[0]->menuname }}</li>
             </ol>
             </ol>
@@ -76,7 +76,7 @@
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ route('admin.setting.menu.store')}}" method="post" id="form">
+                            <form action="{{ route('admin.option.menu.store')}}" method="post" id="form">
                                 @csrf
                                 <input type="hidden" name="position" id="position" value="{{$menus[0]->position}}">
                                 <input type="hidden" name="menuname" id="menuname" value="{{$menus[0]->menuname}}">

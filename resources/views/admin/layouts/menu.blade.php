@@ -71,7 +71,7 @@
                 <li class="nav-item">
                   <a href="{{ route('admin.tutor.category.index') }}" class="nav-link @if(Request::segment(2)=="tutor" && Request::segment(3)=="option") active @endif">
                     <ion-icon name="return-down-forward-outline"></ion-icon>
-                    <p>{{ __('main.Settings') }}</p>
+                    <p>{{ __('main.Options') }}</p>
                   </a>
                 </li>
             </ul>
@@ -192,7 +192,7 @@
             <a href="{{ route('admin.option.index') }}" class="nav-link @if(Request::segment(2)=="option") active @endif">
                 <i class=" nav-icon fas fa-cog"></i>
                 <p>
-                    {{ __('main.Settings') }}
+                    {{ __('main.Options') }}
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -200,7 +200,7 @@
                 <li class="nav-item">
                   <a href="{{ route('admin.option.index') }}" class="nav-link @if(Request::segment(2)=="option" && Request::segment(3)=="index") active @endif">
                     <ion-icon name="return-down-forward-outline"></ion-icon>
-                    <p>{{ __('main.General Settings') }}</p>
+                    <p>{{ __('main.General Options') }}</p>
                   </a>
                 </li>
                 <li class="nav-item">
@@ -228,13 +228,13 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('admin.option.redirect.index') }}" class="nav-link @if(Request::segment(2)=="option" && Request::segment(2)=="redirect") active @endif">
+                  <a href="{{ route('admin.option.redirect.index') }}" class="nav-link @if(Request::segment(2)=="option" && Request::segment(3)=="redirect") active @endif">
                     <ion-icon name="return-down-forward-outline"></ion-icon>
                     <p>{{ __('main.Redirects') }}</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('admin.option.link.index') }}" class="nav-link @if(Request::segment(2)=="option" && Request::segment(2)=="link") active @endif">
+                  <a href="{{ route('admin.option.link.index') }}" class="nav-link @if(Request::segment(2)=="option" && Request::segment(3)=="link") active @endif">
                     <ion-icon name="return-down-forward-outline"></ion-icon>
                     <p>{{ __('main.Auto Linkers') }}</p>
                   </a>

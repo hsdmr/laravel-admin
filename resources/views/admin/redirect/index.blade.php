@@ -30,7 +30,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-header">
-                    <a href="{{ route('admin.setting.redirect.create') }}" class="btn btn-success btn-sm">{{ __('main.Add New') }}</a>
+                    <a href="{{ route('admin.option.redirect.create') }}" class="btn btn-success btn-sm">{{ __('main.Add New') }}</a>
                 </div>
                 <div class="card-body">
                     <table id="table1" class="table table-bordered table-hover">
@@ -49,8 +49,8 @@
                                     <td>{{ $redirect->to }}</td>
                                     <td>{{ $redirect->type }}</td>
                                     <td>
-                                        <a href="{{ route('admin.setting.redirect.edit',$redirect->id) }}" title="{{ __('main.Edit') }}" class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></a>
-                                        <form id="delete_{{$redirect->id}}" action="{{route('admin.setting.redirect.destroy',$redirect->id)}}" method="post" class="d-inline">
+                                        <a href="{{ route('admin.option.redirect.edit',$redirect->id) }}" title="{{ __('main.Edit') }}" class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></a>
+                                        <form id="delete_{{$redirect->id}}" action="{{route('admin.option.redirect.destroy',$redirect->id)}}" method="post" class="d-inline">
                                             @method('DELETE')
                                             @csrf
                                             <a href="javascript:void(0)" onclick="validate({{$redirect->id}})" title="{{ __('main.Delete') }}" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>

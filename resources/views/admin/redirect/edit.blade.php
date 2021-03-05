@@ -17,7 +17,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('main.Home') }}</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('admin.setting.redirect.index') }}">{{ __('main.Redirects') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.option.redirect.index') }}">{{ __('main.Redirects') }}</a></li>
               <li class="breadcrumb-item active">{{ $redirect->id }}</li>
             </ol>
           </div><!-- /.col -->
@@ -29,7 +29,7 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-            <form action="{{ route('admin.setting.redirect.update',$redirect->id) }}" method="post" id="form">
+            <form action="{{ route('admin.option.redirect.update',$redirect->id) }}" method="post" id="form">
                 @method('PUT')
                 @csrf
                 <div class="card">

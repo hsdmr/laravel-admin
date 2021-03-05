@@ -88,8 +88,8 @@ return [
     'Cancel' => 'İptal',
     'Admin' => 'Yönetici',
 
-    'Settings' => 'Ayarlar',
-    'General Settings' => 'Genel Ayarlar',
+    'Options' => 'Ayarlar',
+    'General Options' => 'Genel Ayarlar',
     'Site name' => 'Site Adı',
     'Header CSS' => 'Header CSS',
     'Header JS' => 'Header JS',

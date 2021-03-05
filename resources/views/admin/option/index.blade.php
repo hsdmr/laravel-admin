@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-{{ __('main.Settings') }}
+{{ __('main.Options') }}
 @endsection
 
 @section('content')
@@ -11,12 +11,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h4 class="m-0 text-dark">{{ __('main.Settings') }}</h4>
+            <h4 class="m-0 text-dark">{{ __('main.Options') }}</h4>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('main.Home') }}</a></li>
-              <li class="breadcrumb-item active">{{ __('main.Settings') }}</li>
+              <li class="breadcrumb-item active">{{ __('main.Options') }}</li>
             </ol>
             </ol>
           </div><!-- /.col -->
@@ -28,29 +28,29 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-            <form action="{{ route('admin.setting.update',1) }}" method="post" id="form">
+            <form action="{{ route('admin.option.update') }}" method="post" id="form">
                 @csrf
-                <input type="hidden" class="form-control form-control-sm col-md-9" value="{{$setting->logo}}" id="logo" name="logo">
-                <input type="hidden" class="form-control form-control-sm col-md-9" value="{{$setting->favicon}}" id="fav" name="favicon">
+                <input type="hidden" class="form-control form-control-sm col-md-9" value="{{$option['logo']}}" id="logo" name="logo">
+                <input type="hidden" class="form-control form-control-sm col-md-9" value="{{$option['favicon']}}" id="fav" name="favicon">
                 <div class="row">
                     <div class="col-md-9">
                         <div class="card">
                             <div class="card-body">
                                 <div class="form-group row">
                                     <label for="title" class="col-md-3">{{ __('main.Site name') }}</label>
-                                    <input type="text" class="form-control form-control-sm col-md-9" value="{{$setting->title}}" id="title" name="title">
+                                    <input type="text" class="form-control form-control-sm col-md-9" value="{{$option['title']}}" id="title" name="title">
                                 </div>
                                 <div class="form-group row">
                                     <label for="headcss" class="col-md-3">{{ __('main.Header CSS') }}</label>
-                                    <textarea type="text" class="form-control form-control-sm col-md-9" id="headcss" name="headcss" rows="10">{{$setting->headcss}}</textarea>
+                                    <textarea type="text" class="form-control form-control-sm col-md-9" id="headcss" name="headcss" rows="10">{{$option['headcss']}}</textarea>
                                 </div>
                                 <div class="form-group row">
                                     <label for="headjs" class="col-md-3">{{ __('main.Header JS') }}</label>
-                                    <textarea type="text" class="form-control form-control-sm col-md-9" id="headjs" name="headjs" rows="10">{{$setting->headjs}}</textarea>
+                                    <textarea type="text" class="form-control form-control-sm col-md-9" id="headjs" name="headjs" rows="10">{{$option['headjs']}}</textarea>
                                 </div>
                                 <div class="form-group row">
                                     <label for="footerjs" class="col-md-3">{{ __('main.Footer JS') }}</label>
-                                    <textarea type="text" class="form-control form-control-sm col-md-9" id="footerjs" name="footerjs" rows="10">{{$setting->footerjs}}</textarea>
+                                    <textarea type="text" class="form-control form-control-sm col-md-9" id="footerjs" name="footerjs" rows="10">{{$option['footerjs']}}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                                 <label for="media_img">{{ __('main.Logo') }}</label>
                             </div>
                             <div class="card-body text-center">
-                                <img src="{{ ($setting->getLogo->id==1) ? '' : $setting->getLogo->getUrl()}}" alt="" id="logo_img" style="max-width: 100%">
+                                <img src="{{ ($option['logo']==1) ? '' : $option['logo']}}" alt="" id="logo_img" style="max-width: 100%">
                             </div>
                             <div class="card-footer">
                                 <a href="javascript:void(0);" class="btn btn-xs btn-primary float-left" id="logochoose">{{ __('main.Choose Image') }}</a>
@@ -73,7 +73,7 @@
                                 <label for="media_img">{{ __('main.Favicon') }}</label>
                             </div>
                             <div class="card-body text-center">
-                                <img src="{{ ($setting->getfavicon->id==1) ? '' : $setting->getfavicon->getUrl()}}" alt="" id="fav_img" style="max-width: 100%">
+                                <img src="{{ ($option['favicon']==1) ? '' : $option['favicon']}}" alt="" id="fav_img" style="max-width: 100%">
                             </div>
                             <div class="card-footer">
                                 <a href="javascript:void(0);" class="btn btn-xs btn-primary float-left" id="favchoose">{{ __('main.Choose Image') }}</a>
@@ -81,16 +81,16 @@
                             </div>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input class="custom-control-input" type="checkbox" @if ($setting->no_index==1) checked @endif id="no_index" name="no_index">
+                            <input class="custom-control-input" type="checkbox" @if ($option['no_index']==1) checked @endif id="no_index" name="no_index">
                             <label for="no_index" class="custom-control-label">{{ __('main.Seo No Index') }}</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input class="custom-control-input" type="checkbox" @if ($setting->no_follow==1) checked @endif id="no_follow" name="no_follow">
+                            <input class="custom-control-input" type="checkbox" @if ($option['no_follow']==1) checked @endif id="no_follow" name="no_follow">
                             <label for="no_follow" class="custom-control-label">{{ __('main.Seo No Follow') }}</label>
                         </div>
                     </div>
                 </div>
-                <div class="card" id="save-card">
+                <div class="card" id="save-card" style="z-index: 20">
                     <div class="card-body">
                         <a href="javascript:void(0);" class="btn btn-success btn-sm float-right" id="submit">{{ __('main.Save') }}</a>
                     </div>
