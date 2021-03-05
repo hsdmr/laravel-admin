@@ -28,10 +28,10 @@ class OptionController extends Controller
     public function update(Request $request)
     {
         $option = Option::where('name','=','logo')->first();
-        $option->value = $request->logo;
+        $option->value = $request->logo==null? 1 : $request->logo;
         $option->save();
         $option = Option::where('name','=','favicon')->first();
-        $option->value = $request->favicon;
+        $option->value = $request->favicon==null? 1 : $request->favicon;
         $option->save();
         $option = Option::where('name','=','title')->first();
         $option->value = $request->title;

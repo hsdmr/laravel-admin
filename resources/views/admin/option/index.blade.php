@@ -61,7 +61,7 @@
                                 <label for="media_img">{{ __('main.Logo') }}</label>
                             </div>
                             <div class="card-body text-center">
-                                <img src="{{ ($option['logo']==1) ? '' : $option['logo']}}" alt="" id="logo_img" style="max-width: 100%">
+                                <img src="{{ ($option['logo']==1) ? '' : App\Models\File::find($option['logo'])->getFirstMediaUrl()}}" alt="" id="logo_img" style="max-width: 100%">
                             </div>
                             <div class="card-footer">
                                 <a href="javascript:void(0);" class="btn btn-xs btn-primary float-left" id="logochoose">{{ __('main.Choose Image') }}</a>

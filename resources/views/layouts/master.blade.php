@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('seo_title')</title>
     <meta name="description" CONTENT="@yield('seo_description')">
-    <meta name="robots" content="@if($setting->no_index==1)noindex @else @yield('no_index')@endif,@if($setting->no_follow==1)nofollow @else @yield('no_follow')@endif">
-    <meta name="googlebot" content="@if($setting->no_index==1)noindex @else @yield('no_index')@endif,@if($setting->no_follow==1)nofollow @else @yield('no_follow')@endif" />
-    <link rel="icon" sizes="48x48" href="{{$setting->getFavicon->getUrl()}}" type="image/x-icon" />
+    <meta name="robots" content="@if($option['no_index']==1)noindex @else @yield('no_index')@endif,@if($option['no_follow']==1)nofollow @else @yield('no_follow')@endif">
+    <meta name="googlebot" content="@if($option['no_index']==1)noindex @else @yield('no_index')@endif,@if($option['no_follow']==1)nofollow @else @yield('no_follow')@endif" />
+    <link rel="icon" sizes="48x48" href="{{App\Models\File::find($option['favicon'])->getMedia()->first()->getUrl('thumb')}}" type="image/x-icon" />
     <!-- Social: Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="@yield('seo_title')">
@@ -23,9 +23,9 @@
     @include('layouts.header')
     @yield('header')
     <style>
-        {!! $setting->headcss !!}
+        {!! $option['headcss'] !!}
     </style>
-    {!! $setting->headjs !!}
+    {!! $option['headjs'] !!}
 </head>
 <body class="@yield('class')">
 
@@ -37,6 +37,6 @@
     @include('layouts.footer')
 
     @yield('script')
-    {!! $setting->footerjs !!}
+    {!! $option['footerjs'] !!}
 </body>
 </html>

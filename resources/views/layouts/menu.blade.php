@@ -1,10 +1,10 @@
     <header id="header" class="position-absolute" style="top: 0; left:0; right:0; z-index:500; height:90px">
         <nav class="navbar navbar-expand-lg navbar-light" style="height: 100%">
             <div class="container" style="height: 100%">
-                @if($setting->logo==1)
+                @if($option['logo']==1)
                 <a class="navbar-brand" href="{{url('/')}}">Has<b>Panel</b></a>
                 @else
-                <a class="navbar-brand" style="height: 100%" href="{{url('/')}}"><img style="max-height: 100%" src="{{$setting->getLogo->getUrl('thumb')}}" alt="Süper Doktorlar"></a>
+                <a class="navbar-brand" style="height: 100%" href="{{url('/')}}"><img style="max-height: 100%" src="{{App\Models\File::find($option['logo'])->getMedia()->first()->getUrl('thumb')}}" alt="Süper Doktorlar"></a>
                 @endif
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

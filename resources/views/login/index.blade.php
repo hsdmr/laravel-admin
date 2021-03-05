@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <link rel="icon" sizes="48x48" href="{{App\Models\File::find(App\Models\Option::where('name','=','favicon')->first()->value)->getMedia()->first()->getUrl('thumb')}}" type="image/x-icon" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>HasPanel {{ __('main.Login') }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
