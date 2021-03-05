@@ -32,8 +32,10 @@ return [
     'Draft' => 'Draft',
     'Seo Title' => 'Seo Title',
     'Seo Description' => 'Seo Description',
-    'Seo No Index' => 'Seo No Index',
-    'Seo No Follow' => 'Seo No Follow',
+    'Seo No Index' => 'Search Engines Do Not Index This Page',
+    'Seo No Follow' => 'Search Engines Do Not Follow Links On This Page',
+    'Site No Index' => 'Search Engines Do Not Index This Wepsite',
+    'Site No Follow' => 'Search Engines Do Not Follow Links On This Wepsite',
     'Featured Image' => 'Featured Image',
     'Choose Image' => 'Choose Image',
     'Remove Image' => 'Remove Image',
@@ -180,6 +182,5 @@ return [
     'Add New Link' => 'Add New Link',
     'Edit Link' => 'Edit Link',
     'Word' => 'Word',
-
 
 ];
