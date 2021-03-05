@@ -17,5 +17,11 @@ class OptionSeeder extends Seeder
             $opt->language = App::currentLocale();
             $opt->save();
         }
+        $option = Option::where('name','=','logo')->first();
+        $option->value = 1;
+        $option->save();
+        $option = Option::where('name','=','favicon')->first();
+        $option->value = 1;
+        $option->save();
     }
 }
