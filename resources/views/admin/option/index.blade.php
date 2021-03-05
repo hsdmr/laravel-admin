@@ -80,13 +80,17 @@
                                 <a href="javascript:void(0);" class="btn btn-xs btn-warning float-right" id="favremove">{{ __('main.Remove Image') }}</a>
                             </div>
                         </div>
-                        <div class="custom-control custom-checkbox">
-                            <input class="custom-control-input" type="checkbox" @if ($option['no_index']==1) checked @endif id="no_index" name="no_index">
-                            <label for="no_index" class="custom-control-label">{{ __('main.Seo No Index') }}</label>
-                        </div>
-                        <div class="custom-control custom-checkbox">
-                            <input class="custom-control-input" type="checkbox" @if ($option['no_follow']==1) checked @endif id="no_follow" name="no_follow">
-                            <label for="no_follow" class="custom-control-label">{{ __('main.Seo No Follow') }}</label>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="custom-control custom-checkbox">
+                                    <input class="custom-control-input" type="checkbox" @if ($option['no_index']==1) checked @endif id="no_index" name="no_index">
+                                    <label for="no_index" class="custom-control-label">{{ __('main.Seo No Index') }}</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input class="custom-control-input" type="checkbox" @if ($option['no_follow']==1) checked @endif id="no_follow" name="no_follow">
+                                    <label for="no_follow" class="custom-control-label">{{ __('main.Seo No Follow') }}</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
