@@ -73,7 +73,7 @@
                                 <label for="media_img">{{ __('main.Favicon') }}</label>
                             </div>
                             <div class="card-body text-center">
-                                <img src="{{ ($option['favicon']==1) ? '' : $option['favicon']}}" alt="" id="fav_img" style="max-width: 100%">
+                                <img src="{{ ($option['favicon']==1) ? '' : App\Models\File::find($option['favicon'])->getFirstMediaUrl()}}" alt="" id="fav_img" style="max-width: 100%">
                             </div>
                             <div class="card-footer">
                                 <a href="javascript:void(0);" class="btn btn-xs btn-primary float-left" id="favchoose">{{ __('main.Choose Image') }}</a>
