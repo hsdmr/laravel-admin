@@ -17,7 +17,7 @@ class CreateOptionsTable extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->longText('value')->nullable();
-            $table->string('language')->nullable();
+            $table->string('language')->default('tr');
             $table->timestamps();
         });
     }
