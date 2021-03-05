@@ -14,7 +14,7 @@ class OptionSeeder extends Seeder
         foreach($options as $option){
             $opt = new Option();
             $opt->name = $option;
-            $opt->language = App::currentLocale();
+            $opt->language = 'tr';
             $opt->save();
         }
         $option = Option::where('name','=','logo')->first();
