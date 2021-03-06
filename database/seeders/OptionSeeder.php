@@ -23,5 +23,14 @@ class OptionSeeder extends Seeder
         $option = Option::where('name','=','favicon')->first();
         $option->value = 1;
         $option->save();
+
+        $opt = new Option();
+        $opt->name = 'language';
+        $opt->value = 'tr';
+        $opt->save();
+        $opt = new Option();
+        $opt->name = 'language';
+        $opt->value = 'en';
+        $opt->save();
     }
 }
