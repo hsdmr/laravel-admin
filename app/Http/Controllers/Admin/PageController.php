@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Page;
 use App\Models\Slug;
 use App\Models\File;
+use App\Models\Option;
 
 class PageController extends Controller
 {
@@ -18,7 +19,8 @@ class PageController extends Controller
 
     public function create()
     {
-        return view('admin.page.create');
+        $languages = Option::where('name','=','language')->get();
+        return view('admin.page.create',compact('languages'));
     }
 
     public function store(Request $request)
@@ -46,6 +48,7 @@ class PageController extends Controller
         $page->content = $request->content;
         $page->template = $request->template;
         $page->sidebar = $request->sidebar;
+        $page->language = $request->language;
         $page->save();
 
         return redirect()->route('admin.page.edit',$page->id)->with(['type' => 'success', 'message' =>'Page Created.']);
@@ -59,7 +62,8 @@ class PageController extends Controller
     public function edit($id)
     {
         $page = Page::findOrFail($id);
-        return view('admin.page.edit',compact('page'));
+        $languages = Option::where('name','=','language')->get();
+        return view('admin.page.edit',compact('page','languages'));
     }
 
     public function update(Request $request, $id)
@@ -91,6 +95,7 @@ class PageController extends Controller
             $page->content = $request->content;
             $page->template = $request->template;
             $page->sidebar = $request->sidebar;
+            $page->language = $request->language;
             $page->save();
 
             return redirect()->route('admin.page.edit',$id)->with(['type' => 'success', 'message' =>'Page Updated.']);

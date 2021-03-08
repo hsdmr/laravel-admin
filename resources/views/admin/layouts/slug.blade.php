@@ -24,29 +24,33 @@
         $no_follow = 0;
     }
 @endphp
-                                        <div class="form-group">
-                                            <label for="seo_title">{{ __('main.Seo Title') }}</label>
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" id="seo_title" name="seo_title" value="{{$seo_title}}">
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text" id="seotit">0</span>
-                                                </div>
-                                              </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="seo_description">{{ __('main.Seo Description') }}</label>
-                                            <div class="input-group">
-                                                <textarea class="form-control form-control-sm" rows="3" id="seo_description" name="seo_description">{{$seo_description}}</textarea>
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text" id="seodes">0</span>
-                                                </div>
-                                              </div>
-                                        </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" @if ($no_index==1) checked @endif id="no_index" name="no_index">
-                                            <label for="no_index" class="custom-control-label">{{ __('main.Seo No Index') }}</label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" @if ($no_follow==1) checked @endif id="no_follow" name="no_follow">
-                                            <label for="no_follow" class="custom-control-label">{{ __('main.Seo No Follow') }}</label>
-                                        </div>
+<div class="card">
+    <div class="card-body">
+        <div class="form-group">
+            <label for="seo_title">{{ __('main.Seo Title') }}</label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="seo_title" name="seo_title" value="{{$seo_title}}">
+                <div class="input-group-append">
+                    <span class="input-group-text" id="seotit">0</span>
+                </div>
+              </div>
+        </div>
+        <div class="form-group">
+            <label for="seo_description">{{ __('main.Seo Description') }}</label>
+            <div class="input-group">
+                <textarea class="form-control form-control-sm" rows="3" id="seo_description" name="seo_description">{{$seo_description}}</textarea>
+                <div class="input-group-append">
+                    <span class="input-group-text" id="seodes">0</span>
+                </div>
+              </div>
+        </div>
+        <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" @if ($no_index==1) checked @endif id="no_index" name="no_index">
+            <label for="no_index" class="custom-control-label">{{ __('main.Seo No Index') }}</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" @if ($no_follow==1) checked @endif id="no_follow" name="no_follow">
+            <label for="no_follow" class="custom-control-label">{{ __('main.Seo No Follow') }}</label>
+        </div>
+    </div>
+</div>

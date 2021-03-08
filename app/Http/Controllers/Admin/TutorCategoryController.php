@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Option;
 use App\Models\Slug;
 
 class TutorCategoryController extends Controller
@@ -12,7 +13,8 @@ class TutorCategoryController extends Controller
     public function index()
     {
         $categories = Category::where('type','=','tutor-category')->get();
-        return view("admin.tutor.category.index",compact('categories'));
+        $languages = Option::where('name','=','language')->get();
+        return view("admin.tutor.category.index",compact('categories','languages'));
     }
 
     public function create()
@@ -46,6 +48,7 @@ class TutorCategoryController extends Controller
         $category->upper = $request->upper;
         $category->content = $request->content;
         $category->type = $request->type;
+        $category->language = $request->language;
         $category->save();
         return redirect()->route('admin.tutor.category.index')->with(['type' => 'success', 'message' =>'Category Saved.']);
     }
@@ -59,7 +62,8 @@ class TutorCategoryController extends Controller
     {
         $category = Category::findOrFail($id);
         $categories = Category::all();
-        return view('admin.tutor.category.edit',compact('category','categories'));
+        $languages = Option::where('name','=','language')->get();
+        return view('admin.tutor.category.edit',compact('category','categories','languages'));
     }
 
     public function update(Request $request, $id)
@@ -90,6 +94,7 @@ class TutorCategoryController extends Controller
         $category->upper = $request->upper;
         $category->content = $request->content;
         $category->type = $request->type;
+        $category->language = $request->language;
         $category->save();
         return redirect()->route('admin.tutor.category.edit',$id)->with(['type' => 'success', 'message' =>'Category Updated.']);
     }

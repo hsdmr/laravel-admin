@@ -15,18 +15,22 @@ class CreateCoursesTable extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
+            $table->unsignedBigInteger('slug_id');
             $table->unsignedBigInteger('media_id')->nullable();
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->string('title')->nullable();
             $table->longText('content')->nullable();
-            $table->integer('student_number')->default(-1);
-            $table->tinyInteger('difficulty')->default(0);
-            $table->float('price')->default(0);
+            $table->longText('video')->nullable();
+            $table->longText('zoom')->nullable();
+            $table->tinyInteger('difficulty')->nullable()->comment('0=All; 1=Easy; 2=Middle; 3=Hard');
+            $table->float('price')->nullable()->comment('null=free');
             $table->time('time')->nullable();
             $table->longText('what_to_learn')->nullable();
             $table->longText('requirements')->nullable();
             $table->longText('for_who')->nullable();
             $table->longText('includes')->nullable();
-            $table->unsignedBigInteger('course_id')->default(0);
+            $table->date('available_time')->nullable()->comment('null=forever');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

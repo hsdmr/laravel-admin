@@ -181,4 +181,31 @@ return [
     'Edit Link' => 'Linki Düzenle',
     'Word' => 'Kelime',
 
+    'Language' => 'Dil',
+    'Tutor' => 'Eğitimler',
+    'Courses' => 'Kurslar',
+    'Add New Topic' => 'Yeni Konu Ekle',
+    'Additional info' => 'ilave Bilgi',
+    'Hour' => 'Saat',
+    'Minute' => 'Dakika',
+    'Second' => 'Saniye',
+    'Total Course Time' => 'Toplam Ders Süresi',
+    'What Will You Learn?' => 'Ne öğreneceksin?',
+    'Requirements / Instructions' => 'Gereksinimler / Talimatlar',
+    'Who Is This Course For?' => 'Bu Kurs Kimler İçin?',
+    "What's Included?" => "Neler Dahil?",
+    'Course Intro video' => 'Kurs Giriş Videosu',
+    'Course Type' => 'Kurs Türü',
+    'Paid' => 'Ücretli',
+    'Free' => 'Ücretsiz',
+    'Price' => 'Fiyat',
+    'Discounted Price' => 'İndirimli Fiyat',
+    'Currency' => 'Para birimi',
+    'Put one item per line and * at the end of the line' => 'Her satıra bir öğe ve satırın sonuna * yerleştirin',
+
+    'Lessons' => 'Dersler',
+
+    'Students' => 'Öğrenciler',
+
+    'Announcements' => 'Duyurular',
 ];

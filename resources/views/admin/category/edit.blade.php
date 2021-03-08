@@ -33,7 +33,7 @@
                 @method('PUT')
                 @csrf
                 <input type="hidden" name="media_id" id="media_id" value="{{$category->getMedia->id}}">
-                <input type="hidden" value="form" name="type" value="article-category">
+                <input type="hidden" name="type" value="article-category">
                 <div class="row">
                     <div class="col-md-9">
                         <div class="card">
@@ -50,11 +50,23 @@
                                     <label for="content">{{ __('main.Description') }}</label>
                                     <textarea class="form-control form-control-sm" rows="3" id="content" name="content">{{$category->content}}</textarea>
                                 </div>
-                                @include('admin.layouts.slug')
                             </div>
                         </div>
+                        @include('admin.layouts.slug')
                     </div>
                     <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-header">
+                                <label for="language">{{ __('main.Language') }}</label>
+                            </div>
+                            <div class="card-body">
+                                <select name="language" id="language" class="form-control form-control-sm">
+                                    @foreach ($languages as $language)
+                                    <option value="{{$language->language}}" @if($category->language==$language->language) selected @endif>{{$language->value}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                         <div class="card">
                             <div class="card-header">
                                 <label for="media_img">{{ __('main.Featured Image') }}</label>

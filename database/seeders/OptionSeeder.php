@@ -26,11 +26,13 @@ class OptionSeeder extends Seeder
 
         $opt = new Option();
         $opt->name = 'language';
-        $opt->value = 'tr';
+        $opt->value = 'Türkçe';
+        $opt->language = 'tr';
         $opt->save();
         $opt = new Option();
         $opt->name = 'language';
-        $opt->value = 'en';
+        $opt->value = 'English';
+        $opt->language = 'en';
         $opt->save();
     }
 }

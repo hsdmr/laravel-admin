@@ -30,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('admin.layouts.master',function($view){
             $view->with([
                 'auth'=>Auth::user(),
+                'languages' => Option::where('name','=','language')->get(),
                 ]);
         });
         view()->composer('admin.layouts.media',function($view){
@@ -49,6 +50,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with([
                 'widget' => Widget::all(),
                 'option' => $option,
+                'languages' => Option::where('name','=','language')->get(),
                 ]);
         });
     }

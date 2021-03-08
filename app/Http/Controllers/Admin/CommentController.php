@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
+use App\Models\Option;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -32,7 +33,8 @@ class CommentController extends Controller
     public function edit($id)
     {
         $comment = Comment::find($id);
-        return view('admin.comment.edit',compact('comment'));
+        $languages = Option::where('name','=','language')->get();
+        return view('admin.comment.edit',compact('comment','languages'));
     }
 
     public function update(Request $request, $id)
@@ -40,6 +42,7 @@ class CommentController extends Controller
         $comment = Comment::find($id);
         $comment->title = $request->title;
         $comment->content = $request->content;
+        $comment->language = $request->language;
         $comment->save();
 
         return redirect()->route('admin.comment.edit',$id)->with(['type' => 'success', 'message' =>'Comment Updated.']);

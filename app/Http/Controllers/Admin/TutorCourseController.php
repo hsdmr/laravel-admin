@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Course;
+use App\Models\Option;
 use Illuminate\Http\Request;
 
 class TutorCourseController extends Controller
@@ -16,7 +18,9 @@ class TutorCourseController extends Controller
 
     public function create()
     {
-        //
+        $languages = Option::where('name','=','language')->get();
+        $categories = Category::where('type','=','tutor-category')->get();
+        return view("admin.tutor.course.create",compact('languages','categories'));
     }
 
     public function store(Request $request)

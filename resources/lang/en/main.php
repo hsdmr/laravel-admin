@@ -183,4 +183,31 @@ return [
     'Edit Link' => 'Edit Link',
     'Word' => 'Word',
 
+    'Language' => 'Language',
+    'Tutor' => 'Tutor',
+    'Courses' => 'Courses',
+    'Add New Topic' => 'Add New Topic',
+    'Additional info' => 'Additional info',
+    'Hour' => 'Hour',
+    'Minute' => 'Minute',
+    'Second' => 'Second',
+    'Total Course Time' => 'Total Course Time',
+    'What Will You Learn?' => 'What Will You Learn?',
+    'Requirements / Instructions' => 'Requirements / Instructions',
+    'Who Is This Course For?' => 'Who Is This Course For?',
+    "What's Included?" => "What's Included?",
+    'Course Intro video' => 'Course Intro video',
+    'Course Type' => 'Course Type',
+    'Paid' => 'Paid',
+    'Free' => 'Free',
+    'Price' => 'Price',
+    'Discounted Price' => 'Discounted Price',
+    'Currency' => 'Currency',
+    'Put one item per line and * at the end of the line' => 'Put one item per line and * at the end of the line',
+
+    'Lessons' => 'Lessons',
+
+    'Students' => 'Students',
+
+    'Announcements' => 'Announcements',
 ];

@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Slug;
 use App\Models\File;
 use App\Models\Article;
+use App\Models\Option;
 use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
@@ -21,7 +22,8 @@ class ArticleController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('admin.article.create',compact('categories'));
+        $languages = Option::where('name','=','language')->get();
+        return view('admin.article.create',compact('categories','languages'));
     }
 
     public function store(Request $request)
@@ -49,6 +51,7 @@ class ArticleController extends Controller
         $article->category_id = ($request->category_id==null ? 1 : $request->category_id);
         $article->title = ($request->title==null ? $request->slug : $request->title);
         $article->content = $request->content;
+        $article->language = $request->language;
         $article->save();
 
         return redirect()->route('admin.article.edit',$article->id)->with(['type' => 'success', 'message' =>'Post Saved.']);
@@ -63,7 +66,8 @@ class ArticleController extends Controller
     {
         $categories = Category::all();
         $article = Article::find($id);
-        return view('admin.article.edit',compact('categories','article'));
+        $languages = Option::where('name','=','language')->get();
+        return view('admin.article.edit',compact('categories','article','languages'));
     }
 
     public function update(Request $request, $id)
@@ -94,6 +98,7 @@ class ArticleController extends Controller
             $article->category_id = ($request->category_id==null ? 1 : $request->category_id);
             $article->title = ($request->title==null ? $request->slug : $request->title);
             $article->content = $request->content;
+            $article->language = $request->language;
             $article->save();
 
             return redirect()->route('admin.article.edit',$id)->with(['type' => 'success', 'message' =>'The Post Has Been Updated.']);

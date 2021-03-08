@@ -12,7 +12,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::where('type','=','article-category')->get();
         return view("admin.category.index",compact('categories'));
     }
 
@@ -47,6 +47,7 @@ class CategoryController extends Controller
         $category->upper = $request->upper;
         $category->content = $request->content;
         $category->type = $request->type;
+        $category->language = $request->language;
         $category->save();
         return redirect()->route('admin.category.index')->with(['type' => 'success', 'message' =>'Category Saved.']);
     }
@@ -91,6 +92,7 @@ class CategoryController extends Controller
         $category->upper = $request->upper;
         $category->content = $request->content;
         $category->type = $request->type;
+        $category->language = $request->language;
         $category->save();
         return redirect()->route('admin.category.edit',$id)->with(['type' => 'success', 'message' =>'Category Updated.']);
     }

@@ -33,7 +33,7 @@
                 @method('PUT')
                 @csrf
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-9">
                         <div class="card">
                             <div class="card-body">
                                 <div class="form-group">
@@ -44,6 +44,20 @@
                                     <label for="desc"></label>
                                     <textarea class="form-control form-control-sm" rows="3" id="content" name="content">{{$comment->content}}</textarea>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-header">
+                                <label for="language">{{ __('main.Language') }}</label>
+                            </div>
+                            <div class="card-body">
+                                <select name="language" id="language" class="form-control form-control-sm">
+                                    @foreach ($languages as $language)
+                                    <option value="{{$language->language}}" @if($comment->language==$language->language) selected @endif>{{$language->value}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                     </div>

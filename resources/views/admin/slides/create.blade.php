@@ -80,9 +80,10 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="language">Dil</label>
-                                    <select class="form-control form-control-sm" id="language" name="language">
-                                        <option value="">Türkçe</option>
-                                        <option value="">English</option>
+                                    <select name="language" id="language" class="form-control form-control-sm">
+                                        @foreach ($languages as $language)
+                                        <option value="{{$language->language}}">{{$language->value}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Option;
 use App\Models\Slide;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,8 @@ class SlideController extends Controller
     public function index()
     {
         $slides = Slide::all();
-        return view('admin.slides.index',compact('slides'));
+        $languages = Option::where('name','=','language')->get();
+        return view('admin.slides.index',compact('slides','languages'));
     }
 
     public function create()
@@ -32,7 +34,8 @@ class SlideController extends Controller
     public function edit($id)
     {
         $slide = Slide::find($id);
-        return view('admin.slides.edit',compact('slide'));
+        $languages = Option::where('name','=','language')->get();
+        return view('admin.slides.edit',compact('slide','languages'));
     }
 
     public function update(Request $request, $id)
