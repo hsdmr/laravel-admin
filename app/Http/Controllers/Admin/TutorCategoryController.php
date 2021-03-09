@@ -13,14 +13,14 @@ class TutorCategoryController extends Controller
     public function index()
     {
         $categories = Category::where('type','=','tutor-category')->get();
-        $languages = Option::where('name','=','language')->get();
-        return view("admin.tutor.category.index",compact('categories','languages'));
+        return view("admin.tutor.category.index",compact('categories'));
     }
 
     public function create()
     {
+        $languages = Option::where('name','=','language')->get();
         $categories = Category::where('type','=','tutor-category')->get();
-        return view("admin.tutor.category.create",compact('categories'));
+        return view("admin.tutor.category.create",compact('categories','languages'));
     }
 
     public function store(Request $request)
