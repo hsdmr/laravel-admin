@@ -12,7 +12,7 @@ class TutorCourseController extends Controller
 {
     public function index()
     {
-        $courses = Course::where('course_id','=',0)->get();
+        $courses = Course::all();
         return view("admin.tutor.course.index",compact('courses'));
     }
 
