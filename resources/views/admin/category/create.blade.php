@@ -31,7 +31,7 @@
         <div class="container-fluid">
             <form action="{{ route('admin.category.store') }}" method="post" id="form">
                 @csrf
-                <input type="hidden" name="type" value="article-category">
+                <input type="hidden" name="type" value="post-category">
                 <input type="hidden" name="media_id" id="media_id" value="">
                 <div class="row">
                     <div class="col-md-9">
