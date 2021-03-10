@@ -24,7 +24,7 @@ class CreateLessonsTable extends Migration
             $table->longText('zoom')->nullable();
             $table->longText('additional')->nullable();
             $table->tinyInteger('preview')->nullable();
-            $table->time('time')->nullable();
+            $table->string('time')->nullable();
             $table->timestamps();
         });
     }

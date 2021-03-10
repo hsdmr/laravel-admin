@@ -11,4 +11,7 @@ class Lesson extends Model
     function getLessons(){
         return $this->hasMany('App\Models\Lesson');
     }
+    function getMedia(){
+        return $this->hasOne('App\Models\Media','id','media_id');
+    }
 }

@@ -47,7 +47,30 @@
                             </tr>
                         </thead>
                         <tbody>
-
+                            @foreach ($courses as $course)
+                            <tr>
+                                <td><img src="{{ ($course->getMedia->id==1) ? '' : $course->getMedia->getUrl('thumb')}}" alt="" style="height: 24px"></td>
+                                <td>{{$course->title}}</td>
+                                <td>{{$course->getCategory->title}}</td>
+                                <td></td>
+                                <td></td>
+                                @php
+                                    $price = unserialize($course->price);
+                                @endphp
+                                <td>
+                                    @if ($price['type']=='free')
+                                    {{ __('main.Free') }}
+                                    @else
+                                    @if($price['discounted']=='') {{$price['cost'].' '.$price['currency']}} @else <del>{{$price['cost'].' '.$price['currency']}}</del> {{$price['discounted'].' '.$price['currency']}} @endif
+                                    @endif
+                                </td>
+                                <td>
+                                    <a href="{{ url('/',$course->getSlug->slug) }}" title="{{ __('main.Show') }}" class="btn btn-success btn-xs"><i class="fas fa-arrow-right"></i></a>
+                                    <a href="{{ route('admin.tutor.course.edit',$course->id) }}" title="{{ __('main.Edit') }}" class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></a>
+                                    <a href="{{ route('admin.tutor.course.edit',$course->id) }}" onclick="validate({{$course->id}})" title="{{ __('main.Delete') }}" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>
+                                </td>
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

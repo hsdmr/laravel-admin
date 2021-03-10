@@ -203,7 +203,7 @@ return [
     'Price' => 'Price',
     'Discounted Price' => 'Discounted Price',
     'Currency' => 'Currency',
-    'Put one item per line and * at the end of the line' => 'Put one item per line and * at the end of the line',
+    'Put one item per line' => 'Put one item per line',
 
     'Lessons' => 'Lessons',
 

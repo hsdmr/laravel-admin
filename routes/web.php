@@ -14,6 +14,8 @@ Route::get('/', function () {
     return view('index',compact('page'));
 })->name('home');
 
+Route::post('/ajax', [App\Http\Controllers\AjaxController::class, 'ajax'])->name('ajax')->middleware('isAdmin');
+
 Route::get('/lang/{lang}', [App\Http\Controllers\LangController::class, 'lang'])->name('lang');
 
 Route::post('/logout', [App\Http\Controllers\LoginController::class, 'logout'])->name('logout');

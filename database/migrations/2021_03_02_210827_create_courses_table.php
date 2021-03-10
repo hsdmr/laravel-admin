@@ -22,13 +22,14 @@ class CreateCoursesTable extends Migration
             $table->longText('content')->nullable();
             $table->longText('video')->nullable();
             $table->longText('zoom')->nullable();
-            $table->tinyInteger('difficulty')->nullable()->comment('0=All; 1=Easy; 2=Middle; 3=Hard');
-            $table->float('price')->nullable()->comment('null=free');
+            $table->tinyInteger('difficulty')->nullable()->comment('0=All; 1=Easy; 2=Medium; 3=Hard');
+            $table->string('price')->nullable();
             $table->time('time')->nullable();
             $table->longText('what_to_learn')->nullable();
             $table->longText('requirements')->nullable();
             $table->longText('for_who')->nullable();
             $table->longText('includes')->nullable();
+            $table->string('language')->default('tr');
             $table->date('available_time')->nullable()->comment('null=forever');
             $table->softDeletes();
             $table->timestamps();

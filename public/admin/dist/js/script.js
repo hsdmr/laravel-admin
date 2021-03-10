@@ -76,7 +76,8 @@ function validate(e) {
 };
 
 $(function () {
-    $('#content').summernote()
+    $('#content').summernote();
+    $('.summary').summernote();
 });
 
 $("#category").change(function(){
@@ -215,4 +216,17 @@ $('#submit_img').click(function(){
             inputs.prop("disabled", false);
         }
     });
+});
+
+$(function() {
+    $( ".sortable-topic" ).sortable({
+      revert: true,
+      handle: '.move-topic',
+    });
+    $ ( ".move-topic") .disableSelection ();
+    $( ".sortable-lesson" ).sortable({
+      revert: true,
+      handle: '.move-lesson',
+    });
+    $ ( ".move-lesson") .disableSelection ();
 });

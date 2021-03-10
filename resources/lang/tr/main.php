@@ -201,7 +201,7 @@ return [
     'Price' => 'Fiyat',
     'Discounted Price' => 'İndirimli Fiyat',
     'Currency' => 'Para birimi',
-    'Put one item per line and * at the end of the line' => 'Her satıra bir öğe ve satırın sonuna * yerleştirin',
+    'Put one item per line' => 'Her satıra bir öğe',
 
     'Lessons' => 'Dersler',
 

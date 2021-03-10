@@ -17,6 +17,12 @@
         $no_index = $category->getSlug->no_index;
         $no_follow = $category->getSlug->no_follow;
     }
+    else if(isset($course)){
+        $seo_title = $course->getSlug->seo_title;
+        $seo_description = $course->getSlug->seo_description;
+        $no_index = $course->getSlug->no_index;
+        $no_follow = $course->getSlug->no_follow;
+    }
     else{
         $seo_title = '';
         $seo_description = '';
