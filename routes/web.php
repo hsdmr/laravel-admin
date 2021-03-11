@@ -14,7 +14,7 @@ Route::get('/', function () {
     return view('index',compact('page'));
 })->name('home');
 
-Route::post('/ajax', [App\Http\Controllers\AjaxController::class, 'ajax'])->name('ajax')->middleware('isAdmin');
+Route::post('/ajax', [App\Http\Controllers\Admin\AjaxController::class, 'ajax'])->name('ajax')->middleware('isAdmin');
 
 Route::get('/lang/{lang}', [App\Http\Controllers\LangController::class, 'lang'])->name('lang');
 
@@ -58,6 +58,17 @@ Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function ()
     Route::prefix('/tutor')->name('tutor.')->group(function(){
         Route::resource('/category', 'App\Http\Controllers\Admin\TutorCategoryController');
         Route::resource('/course', 'App\Http\Controllers\Admin\TutorCourseController');
+        Route::get('/course/{course}/delete}', [App\Http\Controllers\Admin\TutorCourseController::class, 'destroy'])->name('course.delete');
+        Route::get('/course/{course}/topic/{topic}', [App\Http\Controllers\Admin\TutorLessonController::class, 'create'])->name('lesson.create');
+        Route::get('/lesson/{lesson}', [App\Http\Controllers\Admin\TutorLessonController::class, 'edit'])->name('lesson.edit');
+        Route::post('/lesson/{lesson}', [App\Http\Controllers\Admin\TutorLessonController::class, 'update'])->name('lesson.update');
+        Route::get('/lesson/{lesson}/delete', [App\Http\Controllers\Admin\TutorLessonController::class, 'delete'])->name('lesson.delete');
+        Route::post('/course/{course}/topic/{topic}', [App\Http\Controllers\Admin\TutorLessonController::class, 'store'])->name('lesson.store');
+        Route::get('/course/{course}/topic/{topic}/zoom', [App\Http\Controllers\Admin\TutorZoomController::class, 'create'])->name('zoom.create');
+        Route::get('/zoom/{lesson}', [App\Http\Controllers\Admin\TutorZoomController::class, 'edit'])->name('zoom.edit');
+        Route::post('/zoom/{lesson}', [App\Http\Controllers\Admin\TutorZoomController::class, 'update'])->name('zoom.update');
+        Route::get('/zoom/{lesson}/delete', [App\Http\Controllers\Admin\TutorZoomController::class, 'delete'])->name('zoom.delete');
+        Route::post('/course/{course}/topic/{topic}/zoom', [App\Http\Controllers\Admin\TutorZoomController::class, 'store'])->name('zoom.store');
     });
 
     Route::prefix('/option')->name('option.')->group(function(){

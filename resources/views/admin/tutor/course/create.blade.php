@@ -49,7 +49,7 @@
                                     <textarea class="form-control form-control-sm summary" rows="3" name="content"></textarea>
                                 </div>
                             </div>
-                        </div>
+                        </div><!--
                         <div class="card">
                             <div class="card-header">
                                 <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target=".topic-modal-xl">{{ __('main.Add New Topic') }}</button>
@@ -63,6 +63,7 @@
                                         <a href="javascript:void(0)" class="float-right mr-2"><i class="fas fa-pencil-alt"></i></a>
                                     </div>
                                     <div>
+                                        <button type="button" class="btn-primary btn-sm" data-toggle="modal" data-target=".lesson-modal-xl">{{ __('main.Add New Lesson') }}</button>
                                         <a href="javascript:void(0)" class="btn-primary btn-sm">Ders</a>
                                         <a href="javascript:void(0)" class="btn-primary btn-sm">Zoom</a>
                                     </div>
@@ -128,7 +129,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                         <div class="card">
                             <div class="card-header">
                                 <label for="">{{__('main.Additional info')}}</label>
@@ -275,9 +276,6 @@
     </div><!-- /.content -->
 </div>
 @include('admin.layouts.media')
-@include('admin.tutor.course.topic')
-@include('admin.tutor.course.lesson')
-@include('admin.tutor.course.zoom')
 @endsection
 
 @section('script')

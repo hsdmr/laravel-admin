@@ -1,5 +1,5 @@
 
-<div class="modal fade topic-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade" id="topic-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
@@ -12,8 +12,8 @@
             </div>
             <div class="modal-body">
                 <form action="" id="topic-form">
-                    <input type="hidden" name="id" id="">
-                    <input type="hidden" name="type" id="0">
+                    <input type="hidden" name="lesson_id" id="topicIdModal">
+                    <input type="hidden" name="course_id" id="courseIdModal">
                     <div class="form-group">
                         <label for="title">{{ __('main.Topic Title') }}</label>
                         <input type="text" class="form-control form-control-sm title" name="title" value="">
@@ -34,7 +34,10 @@
 <script>
 
 function ajaxpost(e){
-    var val = {'request': $('#topic-form').serialize(),
+    var val = {'course_id': $('#courseIdModal').val(),
+               'lesson_id': $('#topicIdModal').val(),
+               'title': $('#topic-form .title').val(),
+               'content': $('#topic-form .summary').val(),
                'select': 'topic' };
     $.ajax({
         headers: {
@@ -47,17 +50,14 @@ function ajaxpost(e){
         beforeSend: function(){
         },
         success: function(response){
-            $('#model-tablo').html('');
-            for (let index = 0; index < response.json.length; index++) {
-                const element = response.json[index];
-                $('#courses').append('');
-            }
+            console.log(response.course_id);
         },
-        error: function(res){
-            console.log(res);
+        error: function(response){
+            console.log(response);
         },
         complete: function(response){
         }
     });
 }
 </script>
+

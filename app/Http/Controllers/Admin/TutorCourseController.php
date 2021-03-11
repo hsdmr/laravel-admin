@@ -117,6 +117,7 @@ class TutorCourseController extends Controller
 
     public function destroy($id)
     {
-        //
+        Course::find($id)->delete();
+        return redirect()->route('admin.tutor.course.index')->with(['type' => 'success', 'message' =>'Course Deleted.']);
     }
 }

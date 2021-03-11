@@ -14,7 +14,7 @@
                 <form action="" id="lesson-form">
                     <input type="hidden" name="lesson_id" id="">
                     <input type="hidden" name="topic_id" id="">
-                    <input type="hidden" name="type" id="1">
+                    <input type="hidden" name="media_id" id="1">
                     <div class="form-group">
                         <label for="title">{{ __('main.Lesson Title') }}</label>
                         <input type="text" class="form-control form-control-sm title" name="title" value="">
@@ -22,6 +22,46 @@
                     <div class="form-group">
                         <label for="summary">{{ __('main.Lesson Summary') }}</label>
                         <textarea class="form-control form-control-sm summary" rows="3" name="content"></textarea>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3" for="summary">{{ __('main.Featured Image') }}</label>
+                        <div class="col-md-9">
+                            <img src="" alt="" id="media_img" class="w-100">
+                            <div>
+                                <a href="javascript:void(0);" class="btn btn-xs btn-primary float-left" id="choose">{{ __('main.Choose Image') }}</a>
+                                <a href="javascript:void(0);" class="btn btn-xs btn-warning float-right" id="remove">{{ __('main.Remove Image') }}</a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3" for="video">{{ __('main.Video') }}</label>
+                        <textarea class="form-control form-control-sm col-md-9" id="video" rows="3" name="video"></textarea>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3" for="total_time">{{ __('main.video playing time') }}</label>
+                        <div class="row col-md-9">
+                            <div class="col-md-2">
+                                <input type="number" class="form-control form-control-sm" value="00" id="total_time" name="time[h]">
+                                <small>{{ __('main.Hour') }}</small>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="number" class="form-control form-control-sm" value="00" min="00" max="59" id="total_time" name="time[m]">
+                                <small>{{ __('main.Minute') }}</small>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="number" class="form-control form-control-sm" value="00" min="00" max="59" id="total_time" name="time[s]">
+                                <small>{{ __('main.Second') }}</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="mr-3">
+                            <input type="checkbox" name="preview">
+                            {{ __('main.Enable Course Preview') }}
+                        </label>
+                        <small>
+                            {{ __('main.If checked, any users/guest can view this lesson without enroll course')}}</small>
                     </div>
                 </form>
             </div>

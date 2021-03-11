@@ -29,58 +29,75 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-            <div class="card">
-                <div class="card-header">
-                    <a href="{{ route('admin.tutor.course.create') }}" class="btn btn-success btn-sm">{{ __('main.Add New') }}</a>
+            <a href="{{ route('admin.tutor.course.create') }}" class="btn btn-success btn-sm my-2">{{ __('main.Add New') }}</a>
+            <div class="accordion" id="accordionExample">
+                @foreach ($courses as $course)
+                <div class="card">
+                    <div class="card-header p-0" id="heading{{$course->id}}">
+                        <button class="btn btn-link w-75 text-left" type="button" data-toggle="collapse" data-target="#collapseCourse{{$course->id}}" aria-expanded="true" aria-controls="collapseCourse{{$course->id}}">
+                          {{$course->title}}
+                        </button>
+                        <span class="float-right p-2">
+                            <a href="{{ url('/',$course->getSlug->slug) }}" title="{{ __('main.Show') }}" class="btn btn-success btn-xs"><i class="fas fa-arrow-right"></i></a>
+                            <a href="{{ route('admin.tutor.course.edit',$course->id) }}" title="{{ __('main.Edit') }}" class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></a>
+                            <a href="{{ route('admin.tutor.course.delete',$course->id) }}" onclick="validate({{$course->id}})" title="{{ __('main.Delete') }}" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>
+                        </span>
+                    </div>
+                    <div id="collapseCourse{{$course->id}}" class="collapse" aria-labelledby="heading{{$course->id}}" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <div class="accordion" id="accordionExample{{$course->id}}">
+                                @foreach (App\Models\Lesson::where('course_id','=',$course->id)->where('lesson_id','=',null)->get() as $topic)
+                                <div class="card">
+                                    <div class="card-header p-0" id="heading{{$topic->id}}">
+                                        <button class="btn btn-link w-75 text-left" type="button" data-toggle="collapse" data-target="#collapseTopic{{$topic->id}}" aria-expanded="true" aria-controls="collapseTopic{{$topic->id}}">
+                                          {{$topic->title}}
+                                        </button>
+                                        <span class="float-right p-2">
+                                            <a href="javascript:void(0)" data-courseId="{{$course->id}}" data-topicId="{{$topic->id}}" title="{{ __('main.Edit') }}" class="btn btn-primary btn-xs topic-modal"><i class="fas fa-pencil-alt"></i></a>
+                                            <a href="{{ route('admin.tutor.course.edit',$topic->id) }}" onclick="validate({{$topic->id}})" title="{{ __('main.Delete') }}" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>
+                                        </span>
+                                    </div>
+                                    <div id="collapseTopic{{$topic->id}}" class="collapse" aria-labelledby="heading{{$topic->id}}" data-parent="#accordionExample{{$course->id}}">
+                                        <div class="card-body">
+                                            @foreach (App\Models\Lesson::where('course_id','=',$course->id)->where('lesson_id','=',$topic->id)->get() as $lesson)
+                                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{$lesson->id}}" aria-expanded="true" aria-controls="collapse{{$lesson->id}}">
+                                                  {{$lesson->title}}
+                                                </button>
+                                                <span class="float-right p-2">
+                                                    <a href="{{ route('admin.tutor.lesson.edit',$lesson->id) }}" title="{{ __('main.Edit') }}" class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></a>
+                                                    <a href="{{ route('admin.tutor.lesson.delete',$lesson->id) }}" onclick="validate({{$lesson->id}})" title="{{ __('main.Delete') }}" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>
+                                                </span>
+                                            @endforeach
+                                            <div class="lessonWillAdd">
+                                            </div>
+                                            <a href="{{ route('admin.tutor.lesson.create',[$course->id,$topic->id]) }}" class="btn-primary btn-sm topic-modal" data-topic="0" data-course="0">{{ __('main.Add New Lesson') }}</a>
+                                            <a href="{{ route('admin.tutor.zoom.create',[$course->id,$topic->id]) }}" class="btn-primary btn-sm topic-modal" data-topic="0" data-course="0">{{ __('main.Zoom') }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                                <div class="topicWillAdd">
+                                </div>
+                            </div>
+                            <a href="javascript:void(0)" onclick="topicModalOpen(this)" class="btn-primary btn-sm topic-modal" data-topic="0" data-course="{{$course->id}}">{{ __('main.Add New Topic') }}</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <table id="table1" class="table table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th>{{ __('main.Image') }}</th>
-                                <th>{{ __('main.Name') }}</th>
-                                <th>{{ __('main.Categories') }}</th>
-                                <th>{{ __('main.Lessons') }}</th>
-                                <th>{{ __('main.Students') }}</th>
-                                <th>{{ __('main.Price') }}</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($courses as $course)
-                            <tr>
-                                <td><img src="{{ ($course->getMedia->id==1) ? '' : $course->getMedia->getUrl('thumb')}}" alt="" style="height: 24px"></td>
-                                <td>{{$course->title}}</td>
-                                <td>{{$course->getCategory->title}}</td>
-                                <td></td>
-                                <td></td>
-                                @php
-                                    $price = unserialize($course->price);
-                                @endphp
-                                <td>
-                                    @if ($price['type']=='free')
-                                    {{ __('main.Free') }}
-                                    @else
-                                    @if($price['discounted']=='') {{$price['cost'].' '.$price['currency']}} @else <del>{{$price['cost'].' '.$price['currency']}}</del> {{$price['discounted'].' '.$price['currency']}} @endif
-                                    @endif
-                                </td>
-                                <td>
-                                    <a href="{{ url('/',$course->getSlug->slug) }}" title="{{ __('main.Show') }}" class="btn btn-success btn-xs"><i class="fas fa-arrow-right"></i></a>
-                                    <a href="{{ route('admin.tutor.course.edit',$course->id) }}" title="{{ __('main.Edit') }}" class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></a>
-                                    <a href="{{ route('admin.tutor.course.edit',$course->id) }}" onclick="validate({{$course->id}})" title="{{ __('main.Delete') }}" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                @endforeach
             </div>
         </div><!-- /.container-fluid -->
     </div><!-- /.content -->
 </div>
-
+@include('admin.tutor.course.topic')
 @endsection
 
 @section('script')
-
+<script>
+function topicModalOpen(e){
+    console.log(e.dataset.topic);
+    $('#courseIdModal').val(e.dataset.course);
+    $('#topicIdModal').val(e.dataset.topic);
+    $('#topic-modal').modal('show');
+}
+</script>
 @endsection
