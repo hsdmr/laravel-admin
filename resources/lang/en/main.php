@@ -213,6 +213,7 @@ return [
 
     'Lessons' => 'Lessons',
     'Add New Lesson' => 'Add New Lesson',
+    'Edit Lesson' => 'Edit Lesson',
     'Video' => 'Video',
     'Video Playing Time' => 'Video Playing Time',
     'Enable Course Preview' => 'Enable Course Preview',
@@ -224,6 +225,7 @@ return [
     'Topic Summary' => 'Topic Summary',
 
     'Add New Zoom Meeting' => 'Add New Zoom Meeting',
+    'Edit Zoom Meeting' => 'Edit Zoom Meeting',
     'Meeting Name' => 'Meeting Name',
     'Meeting Summary' => 'Meeting Summary',
     'Meeting Time' => 'Meeting Time',

@@ -93,7 +93,7 @@
                                         <option value="America/Araguaina">(GMT-3:00) Brasilia </option>
                                         <option value="America/Argentina/Buenos_Aires">(GMT-3:00) Buenos Aires, Georgetown </option>
                                         <option value="America/Sao_Paulo">(GMT-3:00) Sao Paulo </option>
-                                        <option value="Canada/Atlantic">(GMT-3:00) Atlantic Time (Canada) </option>
+                                        <option selected value="Canada/Atlantic">(GMT-3:00) Atlantic Time (Canada) </option>
                                         <option value="America/St_Johns">(GMT-2:30) Newfoundland and Labrador </option>
                                         <option value="America/Godthab">(GMT-2:00) Greenland </option>
                                         <option value="Atlantic/Cape_Verde">(GMT-1:00) Cape Verde Islands </option>
@@ -206,7 +206,7 @@
                                     <label for="record">{{ __('main.Auto Recording') }}</label>
                                     <select name="record" id="record" class="form-control form-control-sm">
                                         <option value="none">{{ __('main.No Recordings') }}</option>
-                                        <option value="local">{{ __('main.Local') }}</option>
+                                        <option value="local" selected>{{ __('main.Local') }}</option>
                                         <option value="cloud">{{ __('main.Cloud') }}</option>
                                     </select>
                                 </div>

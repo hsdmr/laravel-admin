@@ -211,6 +211,7 @@ return [
 
     'Lessons' => 'Dersler',
     'Add New Lesson' => 'Yeni Ders Ekle',
+    'Edit Lesson' => 'Ders Düzenle',
     'Video' => 'Video',
     'Video Playing Time' => 'Video Oynatma Süresi',
     'Enable Course Preview' => 'Kurs Önizlemesini Etkinleştir',
@@ -222,6 +223,7 @@ return [
     'Topic Summary' => 'Konu Özeti',
 
     'Add New Zoom Meeting' => 'Yeni Zoom Randevusu Oluştur',
+    'Edit Zoom Meeting' => 'Zoom Randevusu Düzenle',
     'Meeting Name' => 'Randevu Adı',
     'Meeting Summary' => 'Randevu Özeti',
     'Meeting Time' => 'Randevu Tarihi',
