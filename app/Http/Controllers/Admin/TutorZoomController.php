@@ -14,7 +14,7 @@ class TutorZoomController extends Controller
 
     public function create($course,$topic)
     {
-
+        return view('admin.tutor.zoom.create',compact('course','topic'));
     }
 
     public function store(Request $request)

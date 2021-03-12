@@ -53,8 +53,8 @@
                                           {{$topic->title}}
                                         </button>
                                         <span class="float-right p-2">
-                                            <a href="javascript:void(0)" data-courseId="{{$course->id}}" data-topicId="{{$topic->id}}" title="{{ __('main.Edit') }}" class="btn btn-primary btn-xs topic-modal"><i class="fas fa-pencil-alt"></i></a>
-                                            <a href="{{ route('admin.tutor.course.edit',$topic->id) }}" onclick="validate({{$topic->id}})" title="{{ __('main.Delete') }}" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>
+                                            <a href="javascript:void(0)" onclick="editTopic({{$topic->id}})" title="{{ __('main.Edit') }}" class="btn btn-primary btn-xs topic-modal"><i class="fas fa-pencil-alt"></i></a>
+                                            <a href="javascript:void(0)" onclick="deleteTopic({{$topic->id}})" title="{{ __('main.Delete') }}" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>
                                         </span>
                                     </div>
                                     <div id="collapseTopic{{$topic->id}}" class="collapse" aria-labelledby="heading{{$topic->id}}" data-parent="#accordionExample{{$course->id}}">

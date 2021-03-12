@@ -168,22 +168,22 @@
                                 <div class="form-group row">
                                     <label class="col-md-3" for="what_to_learn">{{ __('main.What Will You Learn?') }}</label>
                                     <textarea class="form-control form-control-sm col-md-9" rows="3" id="what_to_learn" name="what_to_learn"></textarea>
-                                    <small class="ml-auto">{{__("main.Put one item per line and * at the end of the line")}}</small>
+                                    <small class="ml-auto">{{__("main.Put one item per line")}}</small>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3" for="requirements">{{ __('main.Requirements / Instructions') }}</label>
                                     <textarea class="form-control form-control-sm col-md-9" rows="3" id="requirements" name="requirements"></textarea>
-                                    <small class="ml-auto">{{__("main.Put one item per line and * at the end of the line")}}</small>
+                                    <small class="ml-auto">{{__("main.Put one item per line")}}</small>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3" for="for_who">{{ __('main.Who Is This Course For?') }}</label>
                                     <textarea class="form-control form-control-sm col-md-9" rows="3" id="for_who" name="for_who"></textarea>
-                                    <small class="ml-auto">{{__("main.Put one item per line and * at the end of the line")}}</small>
+                                    <small class="ml-auto">{{__("main.Put one item per line")}}</small>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-3" for="includes">{{ __("main.What's Included?") }}</label>
                                     <textarea class="form-control form-control-sm col-md-9" rows="3" id="includes" name="includes"></textarea>
-                                    <small class="ml-auto">{{__("main.Put one item per line and * at the end of the line")}}</small>
+                                    <small class="ml-auto">{{__("main.Put one item per line")}}</small>
                                 </div>
                             </div>
                         </div>
@@ -192,7 +192,7 @@
                                 <label for="">{{ __("main.Course Intro video") }}</label>
                             </div>
                             <div class="card-body">
-                                <input type="text" name="video" id="video" class="form-control form-control-sm" value="">
+                                <textarea class="form-control form-control-sm" id="video" rows="3" name="video"></textarea>
                             </div>
                         </div>
                         @include('admin.layouts.slug')

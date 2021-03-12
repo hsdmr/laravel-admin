@@ -39,7 +39,8 @@
                 <div class="input-group-append">
                     <span class="input-group-text" id="seotit">0</span>
                 </div>
-              </div>
+            </div>
+            <small>{{ __('main.Green Range Is Ideal') }}</small>
         </div>
         <div class="form-group">
             <label for="seo_description">{{ __('main.Seo Description') }}</label>
@@ -48,7 +49,8 @@
                 <div class="input-group-append">
                     <span class="input-group-text" id="seodes">0</span>
                 </div>
-              </div>
+            </div>
+            <small>{{ __('main.Green Range Is Ideal') }}</small>
         </div>
         <div class="custom-control custom-checkbox">
             <input class="custom-control-input" type="checkbox" @if ($no_index==1) checked @endif id="no_index" name="no_index">

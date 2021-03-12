@@ -103,3 +103,7 @@ table tbody td{
     border-radius: 0;
     right: 0;
 }
+
+.note-editable{
+    min-height: 200px;
+}

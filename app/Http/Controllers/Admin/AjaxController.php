@@ -14,6 +14,7 @@ class AjaxController extends Controller
             $course_id = $request->course_id;
             $lesson_id = $request->lesson_id;
             if($lesson_id==0){
+                $is_edit = false;
                 $topic = new Lesson;
                 $topic->media_id = 1;
                 $topic->course_id = $course_id;
@@ -21,16 +22,41 @@ class AjaxController extends Controller
                 $topic->content = $request->content;
                 $topic->save();
             }
-            $lessons = Lesson::where('course_id','=',$course_id)->get();
-            foreach($lessons as $item){
-                array_push($JSON,$item);
+            else{
+                $is_edit = true;
+                $topic = Lesson::find($lesson_id);
+                $topic->title = $request->title;
+                $topic->content = $request->content;
+                $topic->save();
             }
+            array_push($JSON,$topic);
 
-        return response()->json([
-            'json'    => $JSON,
-            'course_id'    => $course_id,
-            'select'    => $request->select,
-        ]);
+            return response()->json([
+                'json'    => $JSON,
+                'course_id'    => $course_id,
+                'is_edit'    => $is_edit,
+                'select'    => $request->select,
+            ]);
+        }
+
+        if($request->select=='topic-delete'){
+            $topic_id = $request->topic_id;
+            Lesson::find($topic_id)->delete();
+            return response()->json([
+                'topic_id'    => $topic_id,
+                'select'    => $request->select,
+            ]);
+        }
+
+        if($request->select=='topic-edit'){
+            $topic_id = $request->topic_id;
+            $topic = Lesson::find($topic_id);
+            array_push($JSON,$topic);
+            return response()->json([
+                'json'    => $JSON,
+                'topic_id'    => $topic_id,
+                'select'    => $request->select,
+            ]);
         }
     }
 }

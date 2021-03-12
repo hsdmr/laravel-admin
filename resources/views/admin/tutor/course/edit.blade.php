@@ -132,7 +132,7 @@
                                 <label for="">{{ __("main.Course Intro video") }}</label>
                             </div>
                             <div class="card-body">
-                                <input type="text" name="video" id="video" class="form-control form-control-sm" value="{{$course->video}}">
+                                <textarea class="form-control form-control-sm" id="video" rows="3" name="video">{{$course->video}}</textarea>
                             </div>
                         </div>
                         @include('admin.layouts.slug')
