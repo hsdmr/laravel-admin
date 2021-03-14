@@ -227,6 +227,7 @@ return [
     'Add New Zoom Meeting' => 'Add New Zoom Meeting',
     'Edit Zoom Meeting' => 'Edit Zoom Meeting',
     'Meeting Name' => 'Meeting Name',
+    'ZOOM' => 'ZOOM',
     'Meeting Summary' => 'Meeting Summary',
     'Meeting Time' => 'Meeting Time',
     'Meeting Duration' => 'Meeting Duration',

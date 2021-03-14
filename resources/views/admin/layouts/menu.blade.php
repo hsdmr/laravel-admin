@@ -65,7 +65,7 @@
                 <li class="nav-item">
                   <a href="{{ route('admin.tutor.category.index') }}" class="nav-link @if(Request::segment(2)=="tutor" && Request::segment(3)=="zoom") active @endif">
                     <ion-icon name="return-down-forward-outline"></ion-icon>
-                    <p>{{ __('main.Zoom') }}</p>
+                    <p>{{ __('main.ZOOM') }}</p>
                   </a>
                 </li>
                 <li class="nav-item">
