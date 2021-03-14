@@ -71,7 +71,7 @@
                                             <div class="lessonWillAdd">
                                             </div>
                                             <a href="{{ route('admin.tutor.lesson.create',[$course->id,$topic->id]) }}" class="btn-primary btn-sm topic-modal" data-topic="0" data-course="0">{{ __('main.Add New Lesson') }}</a>
-                                            <a href="{{ route('admin.tutor.zoom.create',[$course->id,$topic->id]) }}" class="btn-primary btn-sm topic-modal" data-topic="0" data-course="0">{{ __('main.Zoom') }}</a>
+                                            <a href="{{ route('admin.tutor.zoom.create',[$course->id,$topic->id]) }}" class="btn-primary btn-sm topic-modal" data-topic="0" data-course="0">{{ __('main.ZOOM') }}</a>
                                         </div>
                                     </div>
                                 </div>

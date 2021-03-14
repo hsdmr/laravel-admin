@@ -11,8 +11,8 @@ if(!function_exists('menuOrder')){
                     <td><?php echo str_repeat("-",$sub).$menu['title']." ".html_entity_decode($menu['icon']) ?></td>
                     <td><?php echo $menu['link'] ?></td>
                     <td>
-                        <a href="<?php echo URL::to('/')."/admin/setting/menu/".$menu['id']."/edit" ?>" title="Kurtar" class="btn btn-primary btn-xs"><i class="fas fa-pen"></i></a>
-                        <a href="<?php echo URL::to('/')."/admin/setting/menu/delete/".$menu['id'] ?>" onclick="validate(<?php echo $menu['id'] ?>)" title="Tamamen Sil" class="btn btn-danger btn-xs"><i class="fas fa-times"></i></a>
+                        <a href="<?php echo URL::to('/')."/admin/option/menu/".$menu['id']."/edit" ?>" title="Kurtar" class="btn btn-primary btn-xs"><i class="fas fa-pen"></i></a>
+                        <a href="<?php echo URL::to('/')."/admin/option/menu/delete/".$menu['id'] ?>" onclick="validate(<?php echo $menu['id'] ?>)" title="Tamamen Sil" class="btn btn-danger btn-xs"><i class="fas fa-times"></i></a>
                     </td>
                 </tr>
 

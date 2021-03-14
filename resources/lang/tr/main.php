@@ -105,7 +105,7 @@ return [
     'Footer' => 'Footer',
     'Menus' => 'Menüler',
     'Menu Name' => 'Ana Menü',
-    'Reminders' => 'HAtırlatmalar',
+    'Reminders' => 'Hatırlatmalar',
     'Click side to select menu icon.' => 'Menü simgesini seçmek için yana tıklayın.',
     'Use the "Order" field to sort the menu items.' => 'Menü öğelerini sıralamak için "Sırala" alanını kullanın.',
     'here' => 'Buraya',
@@ -224,6 +224,7 @@ return [
 
     'Add New Zoom Meeting' => 'Yeni Zoom Randevusu Oluştur',
     'Edit Zoom Meeting' => 'Zoom Randevusu Düzenle',
+    'ZOOM' => 'ZOOM',
     'Meeting Name' => 'Randevu Adı',
     'Meeting Summary' => 'Randevu Özeti',
     'Meeting Time' => 'Randevu Tarihi',

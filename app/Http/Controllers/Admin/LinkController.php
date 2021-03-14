@@ -25,7 +25,7 @@ class LinkController extends Controller
         $link->url = $request->url;
         $link->word = $request->word;
         $link->save();
-        return redirect()->route('admin.setting.link.index')->with(['type' => 'success', 'message' =>'Oto Linkleme Eklendi.']);
+        return redirect()->route('admin.option.link.index')->with(['type' => 'success', 'message' =>'Oto Linkleme Eklendi.']);
     }
 
     public function show($id)
@@ -45,13 +45,13 @@ class LinkController extends Controller
         $link->url = $request->url;
         $link->word = $request->word;
         $link->save();
-        return redirect()->route('admin.setting.link.index')->with(['type' => 'success', 'message' =>'Oto Linkleme Düzenlendi.']);
+        return redirect()->route('admin.option.link.index')->with(['type' => 'success', 'message' =>'Oto Linkleme Düzenlendi.']);
     }
 
     public function destroy($id)
     {
         $link = Link::find($id);
         $link->delete();
-        return redirect()->route('admin.setting.link.index')->with(['type' => 'success', 'message' =>'Oto Linkleme Silindi.']);
+        return redirect()->route('admin.option.link.index')->with(['type' => 'success', 'message' =>'Oto Linkleme Silindi.']);
     }
 }

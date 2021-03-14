@@ -18,9 +18,9 @@ class SlideController extends Controller
 
     public function create()
     {
-        return view('admin.slides.create');
+        $languages = Option::where('name','=','language')->get();
+        return view('admin.slides.create',compact('languages'));
     }
-
     public function store(Request $request)
     {
         //

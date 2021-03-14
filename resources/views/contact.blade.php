@@ -31,10 +31,10 @@
                         {!!$page->content!!}
                     </div>
                 @else
-                <p>{!!$contact->address!!}</p>
-                <p><b>{{ __('main.Call center') }}:</b>{!!$contact->phone!!}</p>
-                <p><b>{{ __('main.Phone') }}:</b>{!!$contact->cell!!}</p>
-                <p><b>{{ __('main.E-mail') }}:</b>{!!$contact->email!!}</p>
+                <p>@isset($contact['address']){{$contact['address']}}@endisset</p>
+                <p><b>{{ __('main.Call center') }}:</b>@isset($contact['phone']){{$contact['phone']}}@endisset</p>
+                <p><b>{{ __('main.Phone') }}:</b>@isset($contact['cell']){{$contact['cell']}}@endisset</p>
+                <p><b>{{ __('main.E-mail') }}:</b>@isset($contact['email']){{$contact['email']}}@endisset</p>
                 @endif
             </div>
             <div class="col-md-6 mb-3">
@@ -60,7 +60,7 @@
                     <button type="submit" class="btn btn-success"><b>{{ __('main.Submit') }}</b></button>
                 </form>
             </div>
-            <iframe style="width: 100%; height:500px;" id="gmap_canvas" src="https://maps.google.com/maps?q={{$contact->map}}&t=&z={{$contact->zoom}}&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+            <iframe style="width: 100%; height:500px;" id="gmap_canvas" src="https://maps.google.com/maps?q={{isset($contact['map'])? $contact['map'] : 'Ayasofya'}}&t=&z={{isset($contact['zoom'])? $contact['zoom'] : '13'}}&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
         </div>
     </div>
 </section>

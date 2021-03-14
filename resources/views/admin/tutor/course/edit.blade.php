@@ -204,6 +204,20 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <label for="color">{{ __('main.Primary Color') }}</label>
+                            </div>
+                            <div class="card-body">
+                                <input type="color" class="form-control form-control-sm" id="color" name="color" value="{{$course->color}}">
+                                <br>
+                                <div class="form-group row">
+                                    <label class="col-12" for="">{{ __('main.Examples') }}</label>
+                                    <button type="button" id="exampleButton" style="background-color: {{$course->color}};color:white" class="btn mt-2 col-7">{{ __('main.Button') }}</button>
+                                    <h3 id="exampleTitle" style="color:{{$course->color}}" class="m-auto col-5"><b>{{ __('main.Price') }}</b></h3>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="card" id="save-card">
                         <div class="card-body">
@@ -230,6 +244,10 @@
         else{
             $('#price-zone').css('display','block');
         }
+    })
+    $('#color').change(function(){
+        $('#exampleButton').css({'background-color':$("#color").val(),'color':'white'});
+        $('#exampleTitle').css('color',$('#color').val());
     })
 </script>
 @endsection

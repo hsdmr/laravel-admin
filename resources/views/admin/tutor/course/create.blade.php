@@ -49,87 +49,7 @@
                                     <textarea class="form-control form-control-sm summary" rows="3" name="content"></textarea>
                                 </div>
                             </div>
-                        </div><!--
-                        <div class="card">
-                            <div class="card-header">
-                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target=".topic-modal-xl">{{ __('main.Add New Topic') }}</button>
-                            </div>
-                            <div class="card-body sortable-topic" id="courses">
-                                <div class="topic sortable-lesson border p-2 mb-1">
-                                    <div>
-                                        <a href="javascript:void(0)" class="move-topic"><i class="fas fa-arrows-alt"></i></a>
-                                        <label for="">Konu1</label>
-                                        <a href="javascript:void(0)" class="float-right"><i class="far fa-trash-alt"></i></a>
-                                        <a href="javascript:void(0)" class="float-right mr-2"><i class="fas fa-pencil-alt"></i></a>
-                                    </div>
-                                    <div>
-                                        <button type="button" class="btn-primary btn-sm" data-toggle="modal" data-target=".lesson-modal-xl">{{ __('main.Add New Lesson') }}</button>
-                                        <a href="javascript:void(0)" class="btn-primary btn-sm">Ders</a>
-                                        <a href="javascript:void(0)" class="btn-primary btn-sm">Zoom</a>
-                                    </div>
-                                </div>
-                                <div class="topic sortable-lesson border p-2 mb-1">
-                                    <div>
-                                        <a href="javascript:void(0)" class="move-topic"><i class="fas fa-arrows-alt"></i></a>
-                                        <label for="">Konu2</label>
-                                        <a href="javascript:void(0)" class="float-right"><i class="far fa-trash-alt"></i></a>
-                                        <a href="javascript:void(0)" class="float-right mr-2"><i class="fas fa-pencil-alt"></i></a>
-                                    </div>
-                                    <div>
-                                        <a href="javascript:void(0)" class="btn-primary btn-sm">Ders</a>
-                                        <a href="javascript:void(0)" class="btn-primary btn-sm">Zoom</a>
-                                    </div>
-                                </div>
-                                <div class="topic sortable-lesson border p-2 mb-1">
-                                    <div>
-                                        <a href="javascript:void(0)" class="move-topic"><i class="fas fa-arrows-alt"></i></a>
-                                        <label for="">Konu3</label>
-                                        <a href="javascript:void(0)" class="float-right"><i class="far fa-trash-alt"></i></a>
-                                        <a href="javascript:void(0)" class="float-right mr-2"><i class="fas fa-pencil-alt"></i></a>
-                                    </div>
-                                    <div class="lesson border ml-4 p-1">
-                                        <a href="javascript:void(0)" class="move-lesson"><i class="fas fa-arrows-alt"></i></a>
-                                        <span for="">lesson1</span>
-                                        <a href="javascript:void(0)" class="float-right"><i class="far fa-trash-alt"></i></a>
-                                        <a href="javascript:void(0)" class="float-right mr-2"><i class="fas fa-pencil-alt"></i></a>
-                                    </div>
-                                    <div class="lesson border ml-4 p-1">
-                                        <a href="javascript:void(0)" class="move-lesson"><i class="fas fa-arrows-alt"></i></a>
-                                        <span for="">lesson2</span>
-                                        <a href="javascript:void(0)" class="float-right"><i class="far fa-trash-alt"></i></a>
-                                        <a href="javascript:void(0)" class="float-right mr-2"><i class="fas fa-pencil-alt"></i></a>
-                                    </div>
-                                    <div class="lesson border ml-4 p-1">
-                                        <a href="javascript:void(0)" class="move-lesson"><i class="fas fa-arrows-alt"></i></a>
-                                        <span for="">lesson3</span>
-                                        <a href="javascript:void(0)" class="float-right"><i class="far fa-trash-alt"></i></a>
-                                        <a href="javascript:void(0)" class="float-right mr-2"><i class="fas fa-pencil-alt"></i></a>
-                                    </div>
-                                    <div class="lesson border ml-4 p-1">
-                                        <a href="javascript:void(0)" class="move-lesson"><i class="fas fa-arrows-alt"></i></a>
-                                        <span for="">lesson4</span>
-                                        <a href="javascript:void(0)" class="float-right"><i class="far fa-trash-alt"></i></a>
-                                        <a href="javascript:void(0)" class="float-right mr-2"><i class="fas fa-pencil-alt"></i></a>
-                                    </div>
-                                    <div>
-                                        <a href="javascript:void(0)" class="btn-primary btn-sm">Ders</a>
-                                        <a href="javascript:void(0)" class="btn-primary btn-sm">Zoom</a>
-                                    </div>
-                                </div>
-                                <div class="topic sortable-lesson border p-2 mb-1">
-                                    <div>
-                                        <a href="javascript:void(0)" class="move-topic"><i class="fas fa-arrows-alt"></i></a>
-                                        <label for="">Konu4</label>
-                                        <a href="javascript:void(0)" class="float-right"><i class="far fa-trash-alt"></i></a>
-                                        <a href="javascript:void(0)" class="float-right mr-2"><i class="fas fa-pencil-alt"></i></a>
-                                    </div>
-                                    <div>
-                                        <a href="javascript:void(0)" class="btn-primary btn-sm">Ders</a>
-                                        <a href="javascript:void(0)" class="btn-primary btn-sm">Zoom</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>-->
+                        </div>
                         <div class="card">
                             <div class="card-header">
                                 <label for="">{{__('main.Additional info')}}</label>
@@ -264,6 +184,20 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <label for="color">{{ __('main.Primary Color') }}</label>
+                            </div>
+                            <div class="card-body">
+                                <input type="color" class="form-control form-control-sm" id="color" name="color" value="#2bb1a6">
+                                <br>
+                                <div class="form-group row">
+                                    <label class="col-12" for="">{{ __('main.Examples') }}</label>
+                                    <button type="button" id="exampleButton" style="background-color: #2bb1a6;color:white" class="btn mt-2 col-7">{{ __('main.Button') }}</button>
+                                    <h3 id="exampleTitle" style="color:#2bb1a6" class="m-auto col-5"><b>{{ __('main.Price') }}</b></h3>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="card" id="save-card">
                         <div class="card-body">
@@ -290,6 +224,10 @@
         else{
             $('#price-zone').css('display','block');
         }
+    })
+    $('#color').change(function(){
+        $('#exampleButton').css({'background-color':$("#color").val(),'color':'white'});
+        $('#exampleTitle').css('color',$('#color').val());
     })
 </script>
 @endsection

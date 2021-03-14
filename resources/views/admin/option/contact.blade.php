@@ -53,7 +53,7 @@
                         <div class="form-group row">
                             <label for="map" class="col-md-3">{{ __('main.Map') }}</label>
                             <div class="input-group col-md-6 row">
-                                <input type="text" class="form-control form-control-sm" id="map" name="contact[map]" value="@isset($contact['map']){{$contact['map']}}@endisset">
+                                <input type="text" class="form-control form-control-sm" id="map" name="contact[map]" value="{{isset($contact['map'])? $contact['map'] : 'Ayasofya'}}">
                                 <div class="input-group-append" style="cursor: pointer" id="search">
                                     <span class="input-group-text"><i class="fas fa-search"></i></span>
                                 </div>
@@ -63,7 +63,7 @@
                         </div>
                     </div>
                 </form>
-                <iframe style="width: 100%; height:500px;" id="gmap_canvas" src="https://maps.google.com/maps?q=İstanbul%20Alerji Ataşehir&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                <iframe style="width: 100%; height:500px;" id="gmap_canvas" src="https://maps.google.com/maps?q=Ayasofya&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
                 <div class="card" id="save-card">
                     <div class="card-body">
                         <a href="javascript:void(0);" class="btn btn-success btn-sm float-right" id="submit">{{ __('main.Save') }}</a>

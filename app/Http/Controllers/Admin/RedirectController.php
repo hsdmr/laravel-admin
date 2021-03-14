@@ -26,7 +26,7 @@ class RedirectController extends Controller
         $redirect->from = $request->from;
         $redirect->type = $request->type;
         $redirect->save();
-        return redirect()->route('admin.setting.redirect.index')->with(['type' => 'success', 'message' =>'Yönlendirme Oluşturuldu.']);
+        return redirect()->route('admin.option.redirect.index')->with(['type' => 'success', 'message' =>'Yönlendirme Oluşturuldu.']);
     }
 
     public function show($id)
@@ -47,13 +47,13 @@ class RedirectController extends Controller
         $redirect->from = $request->from;
         $redirect->type = $request->type;
         $redirect->save();
-        return redirect()->route('admin.setting.redirect.index')->with(['type' => 'success', 'message' =>'Yönlendirme Düzenlendi.']);
+        return redirect()->route('admin.option.redirect.index')->with(['type' => 'success', 'message' =>'Yönlendirme Düzenlendi.']);
     }
 
     public function destroy($id)
     {
         $redirect = Redirect::find($id);
         $redirect->delete();
-        return redirect()->route('admin.setting.redirect.index')->with(['type' => 'success', 'message' =>'Yönlendirme Silindi.']);
+        return redirect()->route('admin.option.redirect.index')->with(['type' => 'success', 'message' =>'Yönlendirme Silindi.']);
     }
 }

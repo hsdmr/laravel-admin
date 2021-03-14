@@ -56,6 +56,7 @@ class TutorCourseController extends Controller
         $course->video = $request->video;
         $course->time = serialize($request->time);
         $course->difficulty = $request->difficulty;
+        $course->color = $request->color;
         $course->price = serialize($request->price);
         $course->save();
 
@@ -109,6 +110,7 @@ class TutorCourseController extends Controller
         $course->includes = $request->includes;
         $course->video = $request->video;
         $course->difficulty = $request->difficulty;
+        $course->color = $request->color;
         $course->price = serialize($request->price);
         $course->save();
 

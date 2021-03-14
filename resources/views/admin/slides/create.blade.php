@@ -44,42 +44,42 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="bc">Arkaplan</label>
+                                    <label for="bc">{{__('main.Background')}}</label>
                                     <div class="input-group input-group-sm">
                                         <input type="text" class="form-control form-control-sm" id="bc" name="bc" value="">
                                         <span class="input-group-append">
-                                          <button type="button" class="btn btn-info btn-flat">Seç</button>
+                                          <button type="button" class="btn btn-info btn-flat">{{__('main.Choose')}}</button>
                                         </span>
                                       </div>
                                 </div>
                                 <div class="form-group">
                                     <input type="radio" class="" id="image" name="is_video" checked>
-                                    <label for="image">İmage</label>
+                                    <label for="image">{{__('main.Image')}}</label>
                                     <input type="radio" class="ml-5" id="video" name="is_video" >
-                                    <label for="video">Video</label>
+                                    <label for="video">{{__('main.Video')}}</label>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <label for="color">Renk</label>
+                                            <label for="color">{{__('main.Color')}}</label>
                                             <input type="color" class="form-control form-control-sm" id="color" name="color">
                                         </div>
                                     </div>
-                                    <div class="col-md-9">
+                                    <div class="col">
                                         <div class="form-group">
-                                            <label for="range">Saydamlık</label>
+                                            <label for="range">{{__('main.Opacity')}}</label>
                                             <input type="range" class="form-control form-control-sm" id="range" name="range" value="100">
                                         </div>
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-2">
                                         <div class="form-group">
-                                            <label for="order">Sıra</label>
-                                            <input type="text" class="form-control form-control-sm" id="order" name="order">
+                                            <label for="order">{{__('main.Order')}}</label>
+                                            <input type="number" class="form-control form-control-sm" id="order" name="order" value="0">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="language">Dil</label>
+                                    <label for="language">{{__('main.Language')}}</label>
                                     <select name="language" id="language" class="form-control form-control-sm">
                                         @foreach ($languages as $language)
                                         <option value="{{$language->language}}">{{$language->value}}</option>
@@ -93,19 +93,19 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="link">Link</label>
+                                    <label for="link">{{__('main.Link')}}</label>
                                     <input type="text" class="form-control form-control-sm" id="link" name="link">
                                 </div>
                                 <div class="form-group">
-                                    <label for="title">Başlık</label>
+                                    <label for="title">{{__('main.Title')}}</label>
                                     <input type="text" class="form-control form-control-sm" id="title" name="title">
                                 </div>
                                 <div class="form-group">
-                                    <label for="content">İçerik</label>
+                                    <label for="content">{{__('main.Content')}}</label>
                                     <input type="text" class="form-control form-control-sm" id="" name="content">
                                 </div>
                                 <div class="form-group">
-                                    <label for="button">Button</label>
+                                    <label for="button">{{__('main.Button')}}</label>
                                     <input type="text" class="form-control form-control-sm" id="button" name="button">
                                 </div>
                             </div>

@@ -4,6 +4,7 @@ use App\Models\Article;
 use App\Models\Category;
 use App\Models\Contact;
 use App\Models\Link;
+use App\Models\Option;
 use App\Models\Page;
 use App\Models\Slug;
 use Illuminate\Support\Facades\Route;
@@ -104,7 +105,7 @@ Route::get('/{url}/{url2?}/{url3?}', function ($url,$url2=null,$url3=null) {
             else{
                 $template = $page->template;
                 if($template=='contact'){
-                    $contact = Contact::find(1);
+                    $contact = Option::where('name','=','contact')->where('language','=','tr')->first();
                     return  view('contact',compact('contact','page'));
                 }
                 else if($template=='blog'){
