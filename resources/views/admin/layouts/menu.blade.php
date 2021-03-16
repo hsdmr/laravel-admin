@@ -51,7 +51,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('admin.tutor.category.index') }}" class="nav-link @if(Request::segment(2)=="tutor" && Request::segment(3)=="announcement") active @endif">
+                  <a href="{{ route('admin.tutor.announcement.index') }}" class="nav-link @if(Request::segment(2)=="tutor" && Request::segment(3)=="announcement") active @endif">
                     <ion-icon name="return-down-forward-outline"></ion-icon>
                     <p>{{ __('main.Announcements') }}</p>
                   </a>
@@ -66,12 +66,6 @@
                   <a href="{{ route('admin.tutor.category.index') }}" class="nav-link @if(Request::segment(2)=="tutor" && Request::segment(3)=="zoom") active @endif">
                     <ion-icon name="return-down-forward-outline"></ion-icon>
                     <p>{{ __('main.ZOOM') }}</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ route('admin.tutor.category.index') }}" class="nav-link @if(Request::segment(2)=="tutor" && Request::segment(3)=="option") active @endif">
-                    <ion-icon name="return-down-forward-outline"></ion-icon>
-                    <p>{{ __('main.Options') }}</p>
                   </a>
                 </li>
             </ul>
