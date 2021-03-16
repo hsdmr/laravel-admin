@@ -35,19 +35,9 @@
                     <div class="col-md-9">
                         <div class="card">
                             <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-8">
-                                        <div class="form-group">
-                                            <label for="title">{{ __('main.E-mail') }}</label>
-                                            <input type="text" class="form-control form-control-sm" id="title" name="email" value="" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="phone">{{ __('main.Phone') }}</label>
-                                            <input type="text" class="form-control form-control-sm" id="phone" name="phone" value="" required>
-                                        </div>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="title">{{ __('main.E-mail') }}</label>
+                                    <input type="text" class="form-control form-control-sm" id="title" name="email" value="" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="name">{{ __('main.Name') }}</label>

@@ -51,13 +51,13 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('admin.tutor.category.index') }}" class="nav-link @if(Request::segment(2)=="tutor" && Request::segment(3)=="student") active @endif">
+                  <a href="{{ route('admin.tutor.category.index') }}" class="nav-link @if(Request::segment(2)=="tutor" && Request::segment(3)=="announcement") active @endif">
                     <ion-icon name="return-down-forward-outline"></ion-icon>
                     <p>{{ __('main.Announcements') }}</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('admin.tutor.category.index') }}" class="nav-link @if(Request::segment(2)=="tutor" && Request::segment(3)=="student") active @endif">
+                  <a href="{{ route('admin.tutor.student.index') }}" class="nav-link @if(Request::segment(2)=="tutor" && Request::segment(3)=="student") active @endif">
                     <ion-icon name="return-down-forward-outline"></ion-icon>
                     <p>{{ __('main.Students') }}</p>
                   </a>
