@@ -26,6 +26,7 @@ Route::get('/register', [App\Http\Controllers\LoginController::class, 'registerU
 Route::post('/register', [App\Http\Controllers\LoginController::class, 'register'])->name('register');
 
 Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function () {
+    Route::get('/try', [App\Http\Controllers\TryController::class, 'try'])->name('try');
 
     Route::get('/home', [App\Http\Controllers\LoginController::class, 'admin'])->name('home');
     Route::post('/media/storeMedia', [App\Http\Controllers\Admin\FileController::class, 'storeMedia'])->name('media.storeMedia');

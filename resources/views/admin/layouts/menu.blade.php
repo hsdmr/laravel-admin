@@ -239,6 +239,12 @@
                     <p>{{ __('main.Auto Linkers') }}</p>
                   </a>
                 </li>
+                <li class="nav-item">
+                  <a href="{{ route('admin.try') }}" class="nav-link @if(Request::segment(2)=="option" && Request::segment(3)=="link") active @endif">
+                    <ion-icon name="return-down-forward-outline"></ion-icon>
+                    <p>{{ __('main.Try') }}</p>
+                  </a>
+                </li>
             </ul>
           </li>
           <hr>

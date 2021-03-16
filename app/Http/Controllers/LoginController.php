@@ -50,7 +50,6 @@ class LoginController extends Controller
                 $user->email = $request->email;
                 $user->role = 'admin';
                 $user->password = Hash::make($request->password);
-                $user->inform = $request->inform? 1 : 0;
                 $user->save();
             }
             else{

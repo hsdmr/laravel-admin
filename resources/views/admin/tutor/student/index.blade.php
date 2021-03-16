@@ -30,17 +30,15 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-header">
-                    <a href="{{ route('admin.tutor.course.create') }}" class="btn btn-success btn-sm">{{ __('main.Add New') }}</a>
+                    <a href="{{ route('admin.tutor.stuent.create') }}" class="btn btn-success btn-sm">{{ __('main.Add New') }}</a>
                 </div>
                 <div class="card-body">
                     <table id="table1" class="table table-bordered table-hover">
                         <thead>
                             <tr>
-                                <th>{{ __('main.Image') }}</th>
                                 <th>{{ __('main.Name') }}</th>
-                                <th>{{ __('main.Permalink') }}</th>
-                                <th>{{ __('main.Parent') }}</th>
-                                <th>{{ __('main.Description') }}</th>
+                                <th>{{ __('main.Courses') }}</th>
+                                <th>{{ __('main.Certificates') }}</th>
                                 <th></th>
                             </tr>
                         </thead>
