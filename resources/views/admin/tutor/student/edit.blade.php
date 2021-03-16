@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-{{ __('main.Edit Category') }}
+{{ __('main.Edit Student') }}
 @endsection
 
 @section('content')
@@ -12,14 +12,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h4 class="m-0 text-dark">{{ __('main.Edit Category') }}</h4>
-          </div><!-- /.col -->
+            Student          </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('main.Home') }}</a></li>
                 <li class="breadcrumb-item"><a href="{{ route('admin.tutor.course.index') }}">{{ __('main.Tutor') }}</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('admin.tutor.category.index') }}">{{ __('main.Categories') }}</a></li>
-              <li class="breadcrumb-item active">{{ $category->title }}</li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.tutor.student.index') }}">{{ __('main.Students') }}</a></li>
+              <li class="breadcrumb-item active">{{ $user->title }}</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -30,75 +29,74 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-            <form action="{{ route('admin.tutor.category.update',$category->id) }}" method="post" id="form">
+            <form action="{{ route('admin.tutor.student.update',$user->id) }}" method="post" id="form">
                 @method('PUT')
                 @csrf
-                <input type="hidden" name="media_id" id="media_id" value="{{$category->getMedia->id}}">
-                <input type="hidden" value="tutor-category" name="type">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-9">
-                                <div class="form-group ">
-                                    <label for="title">{{ __('main.Name') }}</label>
-                                    <input type="text" class="form-control form-control-sm" id="title" name="title" value="{{$category->title}}">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="title">{{ __('main.E-mail') }}</label>
+                                    <input type="text" class="form-control form-control-sm" id="title" name="email" value="{{ $user->email }}" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="slug">{{ __('main.Permalink') }}</label>
-                                    <input type="text" class="form-control form-control-sm" id="slug" name="slug" value="{{$category->getSlug->slug}}">
+                                    <label for="name">{{ __('main.Name') }}</label>
+                                    <input type="text" class="form-control form-control-sm" id="name" name="name" value="{{ $user->name }}">
                                 </div>
                                 <div class="form-group">
-                                    <label for="content">{{ __('main.Description') }}</label>
-                                    <textarea class="form-control form-control-sm" rows="3" id="content" name="content">{{$category->content}}</textarea>
+                                    <label for="surname">{{ __('main.Surname') }}</label>
+                                    <input type="text" class="form-control form-control-sm" id="surname" name="surname" value="{{ $user->surname }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="role">{{ __('main.Role') }}</label>
+                                    <select name="role" id="role" class="form-control form-control-sm">
+                                        <option value="student" @if ($user->role=="student") selected @endif>{{ __('main.Student') }}</option>
+                                        <option value="user" @if ($user->role=="user") selected @endif>{{ __('main.User') }}</option>
+                                        <option value="admin" @if ($user->role=="admin") selected @endif>{{ __('main.Admin') }}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password" class="float-left mr-3">{{ __('main.Password') }}</label>
+                                    <a href="javascript:void(0)" class="btn btn-primary btn-xs float-left" id="pass">{{ __('main.Create Password') }}</a>
+                                    <a href="javascript:void(0)" class="btn btn-primary btn-xs float-left" style="display: none" id="canc">{{ __('main.Cancel') }}</a>
+                                    <input type="text" class="form-control form-control-sm" style="display: none" id="password" name="password" value="">
                                 </div>
                             </div>
                         </div>
-                        @include('admin.layouts.slug')
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                         <div class="card">
-                            <div class="card-header">
-                                <label for="language">{{ __('main.Language') }}</label>
-                            </div>
-                            <div class="card-body">
-                                <select name="language" id="language" class="form-control form-control-sm">
-                                    @foreach ($languages as $language)
-                                    <option value="{{$language->language}}" @if($category->language==$language->language) selected @endif>{{$language->value}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header">
-                                <label for="media_img">{{ __('main.Featured Image') }}</label>
-                            </div>
-                            <div class="card-body">
-                                <img src="{{ ($category->getMedia->id==1) ? '' : $category->getMedia->getUrl()}}" alt="" id="media_img" class="w-100">
-                            </div>
-                            <div class="card-footer">
-                                <a href="javascript:void(0);" class="btn btn-xs btn-primary float-left" id="choose">{{ __('main.Choose Image') }}</a>
-                                <a href="javascript:void(0);" class="btn btn-xs btn-warning float-right" id="remove">{{ __('main.Remove Image') }}</a>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header">
-                                <label for="upper">{{ __('main.Parent') }}</label>
-                            </div>
                             <div class="card-body">
                                 <div class="form-group">
-                                    <select class="form-control form-control-sm" id="upper" name="upper">
-                                        <option value="0"></option>
-                                        @foreach ($categories as $cat)
-                                            <option value="{{$cat->id}}" @if ($cat->id==$category->upper) {{ 'selected' }} @endif>{{$cat->title}}</option>
+                                    <label for="course">{{ __('main.Course') }}</label>
+                                    <select class="form-control form-control-sm" id="course" name="course">
+                                        <option value="" disabled>{{__('main.Choose')}}</option>
+                                        @foreach ($courses as $course)
+                                        <option value="{{$course->id}}">{{$course->title}}</option>
                                         @endforeach
                                     </select>
+                                </div>
+                                <input type="hidden" name="metas[student_courses]" value="student_courses">
+                                <div id="courses">
+                                    @php
+                                        $meta = unserialize($user_meta['student_courses']);
+                                    @endphp
+                                    @if ($meta!='student_courses')
+                                    @foreach ($meta as $key => $value)
+                                    <div class="row mx-0 mb-1 border-bottom">
+                                        <input type="hidden" name="metas[student_courses][{{$key}}]" value="{{$value}}"><span>{{$value}}</span>
+                                        <a class="btn btn-xs btn-danger ml-auto px-2" href="javascript:void(0);" onclick="this.parentNode.remove()">&times;</a>
+                                    </div>
+                                    @endforeach
+                                    @endif
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="card" id="save-card">
                         <div class="card-body">
-                            <a href="javascript:void(0);" class="btn btn-success btn-sm float-right" id="submit">{{ __('main.Update') }}</a>
+                            <a href="javascript:void(0);" class="btn btn-success btn-sm float-right" id="submit">{{ __('main.Save') }}</a>
                         </div>
                     </div>
                 </div>
@@ -110,5 +108,22 @@
 @endsection
 
 @section('script')
-
+<script>
+    $('#course').change(function(){
+        var id = $('#course option:selected').val();
+        var title = $('#course option:selected').html();
+        $('#courses').append('<div class="row mx-0 mb-1 border-bottom"><input type="hidden" name="metas[student_courses]['+id+']" value="'+title+'"><span>'+title+'</span><a class="btn btn-xs btn-danger ml-auto px-2" href="javascript:void(0);" onclick="this.parentNode.remove()">&times;</a></div>')
+    });
+    $("#pass").click(function(){
+        $("#password").css('display',"block");
+        $("#canc").css('display',"block");
+        $("#pass").css('display',"none");
+    })
+    $("#canc").click(function(){
+        $("#password").css('display',"none");
+        $("#password").val(null);
+        $("#canc").css('display',"none");
+        $("#pass").css('display',"block");
+    })
+</script>
 @endsection

@@ -60,7 +60,7 @@ Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function ()
     Route::prefix('/tutor')->name('tutor.')->group(function(){
         Route::resource('/category', 'App\Http\Controllers\Admin\TutorCategoryController');
         Route::resource('/course', 'App\Http\Controllers\Admin\TutorCourseController');
-        Route::resource('/student', 'App\Http\Controllers\Admin\StudentController');
+        Route::resource('/student', 'App\Http\Controllers\Admin\TutorStudentController');
         Route::get('/course/{course}/delete}', [App\Http\Controllers\Admin\TutorCourseController::class, 'destroy'])->name('course.delete');
         Route::get('/course/{course}/topic/{topic}', [App\Http\Controllers\Admin\TutorLessonController::class, 'create'])->name('lesson.create');
         Route::get('/lesson/{lesson}', [App\Http\Controllers\Admin\TutorLessonController::class, 'edit'])->name('lesson.edit');

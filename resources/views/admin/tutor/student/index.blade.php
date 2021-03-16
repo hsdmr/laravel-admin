@@ -43,7 +43,17 @@
                             </tr>
                         </thead>
                         <tbody>
-
+                            @foreach ($users as $user)
+                                <tr>
+                                    <td>{{ $user->name }}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <a href="{{ route('admin.tutor.student.edit',$user->id) }}" title="{{ __('main.Edit') }}" class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></a>
+                                        <a href="{{ route('admin.tutor.student.edit',$user->id) }}" onclick="validate({{$user->id}})" title="{{ __('main.Delete') }}" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
