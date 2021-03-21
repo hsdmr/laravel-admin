@@ -1,7 +1,7 @@
 git clone https://github.com/hsdmr/superDoktor.git
 composer install --optimize-autoloader --no-dev
 .env.example -> rename ->.env
-;chmod 755 -R superDoktor
+;chmod 755 -R laravel-admin
 chmod -R o+w storage
 php artisan key:generate
 php artisan storage:link
