@@ -59,8 +59,8 @@
                                     <td>{{ $category->desc }}</td>
                                     <td>
                                         <a href="{{ url('/',$category->getSlug->slug) }}" title="{{ __('main.Show') }}" class="btn btn-success btn-xs"><i class="fas fa-arrow-right"></i></a>
-                                        <a href="{{ route('admin.category.edit',$category->id) }}" title="{{ __('main.Edit') }}" class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></a>
-                                        <form id="delete_{{$category->id}}" action="{{route('admin.category.destroy',$category->id)}}" method="post" class="d-inline">
+                                        <a href="{{ route('admin.tutor.category.edit',$category->id) }}" title="{{ __('main.Edit') }}" class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></a>
+                                        <form id="delete_{{$category->id}}" action="{{route('admin.tutor.category.destroy',$category->id)}}" method="post" class="d-inline">
                                             @method('DELETE')
                                             @csrf
                                             <a href="javascript:void(0)" onclick="validate({{$category->id}})" title="{{ __('main.Delete') }}" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>

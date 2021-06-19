@@ -23,7 +23,11 @@ class CreateCoursesTable extends Migration
             $table->longText('video')->nullable();
             $table->longText('zoom')->nullable();
             $table->tinyInteger('difficulty')->nullable()->comment('0=All; 1=Easy; 2=Medium; 3=Hard');
-            $table->string('price')->nullable();
+            $table->string('price_type')->nullable();
+            $table->integer('price_cost')->nullable();
+            $table->integer('price_old')->nullable();
+            $table->string('price_currency')->nullable();
+            $table->string('price_side')->nullable();
             $table->string('time')->nullable();
             $table->longText('what_to_learn')->nullable();
             $table->longText('requirements')->nullable();

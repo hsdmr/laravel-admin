@@ -164,22 +164,29 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label class="mr-3">
-                                        <input class="mr-1" type="radio" value="paid" name="price[type]" checked>{{ __("main.Paid") }}</label>
+                                        <input class="mr-1" type="radio" value="paid" name="price_type" checked>{{ __("main.Paid") }}</label>
                                     <label class="mr-3">
-                                        <input class="mr-1" type="radio" value="free" name="price[type]">{{ __("main.Free") }}</label>
+                                        <input class="mr-1" type="radio" value="free" name="price_type">{{ __("main.Free") }}</label>
                                 </div>
                                 <div id="price-zone">
                                     <div class="form-group row">
                                         <label for="price" class="col-md-6">{{ __("main.Price") }}</label>
-                                        <input type="text" class="form-control form-control-sm col-md-6" name="price[cost]" id="price" placeholder="eg: 60">
+                                        <input type="text" class="form-control form-control-sm col-md-6" name="price_cost" id="price_cost" placeholder="eg: 60">
                                     </div>
                                     <div class="form-group row">
-                                        <label for="discounted" class="col-md-6">{{ __("main.Discounted Price") }}</label>
-                                        <input type="text" class="form-control form-control-sm col-md-6" name="price[discounted]" id="discounted" placeholder="eg: 45">
+                                        <label for="discounted" class="col-md-6">{{ __("main.Old Price") }}</label>
+                                        <input type="text" class="form-control form-control-sm col-md-6" name="price_old" id="oldcost" placeholder="eg: 75">
                                     </div>
                                     <div class="form-group row">
                                         <label for="currency" class="col-md-6">{{ __("main.Currency") }}</label>
-                                        <input type="text" class="form-control form-control-sm col-md-6" name="price[currency]" id="currency" placeholder="eg: $,₺,£">
+                                        <input type="text" class="form-control form-control-sm col-md-6" name="price_currency" id="currency" placeholder="eg: $,₺,£">
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="currency" class="col-md-6">{{ __("main.Side") }}</label>
+                                        <select type="text" class="form-control form-control-sm col-md-6" name="price_side" id="side">
+                                            <option value="left">{{ __("main.Left") }}</option>
+                                            <option value="right">{{ __("main.Right") }}</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -214,8 +221,8 @@
 
 @section('script')
 <script>
-    $('input[name="price[type]"]').change(function(){
-        if($('input[name="price[type]"]:checked').val()=='free'){
+    $('input[name="price_type"]').change(function(){
+        if($('input[name="price_type"]:checked').val()=='free'){
             $('#price-zone').css('display','none');
             $('#price').val('');
             $('#discounted').val('');

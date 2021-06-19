@@ -77,15 +77,16 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <input type="hidden" name="metas[student_courses]" value="student_courses">
+                                <input type="hidden" name="metas[enrolled_courses]" value="enrolled_courses">
                                 <div id="courses">
                                     @php
-                                        $meta = unserialize($user_meta['student_courses']);
+                                        $meta = isset($user_meta['enrolled_courses'])? unserialize($user_meta['enrolled_courses']) : $meta = 'enrolled_courses';
                                     @endphp
-                                    @if ($meta!='student_courses')
+                                    @if ($meta!='enrolled_courses')
                                     @foreach ($meta as $key => $value)
                                     <div class="row mx-0 mb-1 border-bottom">
-                                        <input type="hidden" name="metas[student_courses][{{$key}}]" value="{{$value}}"><span>{{$value}}</span>
+                                        <input type="hidden" name="metas[enrolled_courses][{{$key}}]" value="{{$value}}">
+                                        <span>{{App\Models\Course::find($value)->title}}</span>
                                         <a class="btn btn-xs btn-danger ml-auto px-2" href="javascript:void(0);" onclick="this.parentNode.remove()">&times;</a>
                                     </div>
                                     @endforeach

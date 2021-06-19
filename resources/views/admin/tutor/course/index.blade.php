@@ -60,6 +60,7 @@
                                     <div id="collapseTopic{{$topic->id}}" class="collapse" aria-labelledby="heading{{$topic->id}}" data-parent="#accordionExample{{$course->id}}">
                                         <div class="card-body">
                                             @foreach (App\Models\Lesson::where('course_id','=',$course->id)->where('lesson_id','=',$topic->id)->get() as $lesson)
+                                            <div>
                                                 <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{$lesson->id}}" aria-expanded="true" aria-controls="collapse{{$lesson->id}}">
                                                   {{$lesson->title}}
                                                 </button>
@@ -67,6 +68,7 @@
                                                     <a href="{{ route('admin.tutor.lesson.edit',$lesson->id) }}" title="{{ __('main.Edit') }}" class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></a>
                                                     <a href="{{ route('admin.tutor.lesson.delete',$lesson->id) }}" onclick="validate({{$lesson->id}})" title="{{ __('main.Delete') }}" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>
                                                 </span>
+                                            </div>
                                             @endforeach
                                             <div class="lessonWillAdd">
                                             </div>

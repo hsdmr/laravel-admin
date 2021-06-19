@@ -34,7 +34,23 @@
                 </div>
             </div>
             <div class="row">
-
+                @foreach ($slides as $slide)
+                <div class="col-md-3">
+                    <div class="card">
+                        <img src="{{$slide->bg}}" alt="" class="w-100">
+                        <p class="text-center"><b>{{$slide->title}}</b></p>
+                        <p class="text-center">{{$slide->content}}</p>
+                        <div class="text-right">
+                            <a href="{{ route('admin.slide.edit',$slide->id) }}" title="{{ __('main.Edit') }}" class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></a>
+                            <form id="delete_{{$slide->id}}" action="{{route('admin.slide.destroy',$slide->id)}}" method="post" class="d-inline">
+                                @method('DELETE')
+                                @csrf
+                                <a href="javascript:void(0)" onclick="validate({{$slide->id}})" title="{{ __('main.Delete') }}" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
             </div>
         </div><!-- /.container-fluid -->
     </div>

@@ -57,7 +57,11 @@ class TutorCourseController extends Controller
         $course->time = serialize($request->time);
         $course->difficulty = $request->difficulty;
         $course->color = $request->color;
-        $course->price = serialize($request->price);
+        $course->price_type = $request->price_type;
+        $course->price_cost = $request->price_cost;
+        $course->price_old = $request->price_old;
+        $course->price_currency = $request->price_currency;
+        $course->price_side = $request->price_side;
         $course->save();
 
         return redirect()->route('admin.tutor.course.index')->with(['type' => 'success', 'message' =>'Course Saved.']);
@@ -111,7 +115,11 @@ class TutorCourseController extends Controller
         $course->video = $request->video;
         $course->difficulty = $request->difficulty;
         $course->color = $request->color;
-        $course->price = serialize($request->price);
+        $course->price_type = $request->price_type;
+        $course->price_cost = $request->price_cost;
+        $course->price_old = $request->price_old;
+        $course->price_currency = $request->price_currency;
+        $course->price_side = $request->price_side;
         $course->save();
 
         return redirect()->route('admin.tutor.course.index')->with(['type' => 'success', 'message' =>'Course Updated.']);

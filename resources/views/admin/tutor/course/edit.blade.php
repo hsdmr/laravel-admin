@@ -53,14 +53,6 @@
                         </div>
                         <div class="card">
                             <div class="card-header">
-                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target=".topic-modal-xl">{{ __('main.Add New Topic') }}</button>
-                            </div>
-                            <div class="card-body" id="courses">
-
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header">
                                 <label for="">{{__('main.Additional info')}}</label>
                             </div>
                             <div class="card-body">
@@ -184,22 +176,29 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label class="mr-3">
-                                        <input class="mr-1" type="radio" value="paid" name="price[type]" @if($course->price['type']=='paid') checked @endif>{{ __("main.Paid") }}</label>
+                                        <input class="mr-1" type="radio" value="paid" name="price_type" @if($course->price_type=='paid') checked @endif>{{ __("main.Paid") }}</label>
                                     <label class="mr-3">
-                                        <input class="mr-1" type="radio" value="free" name="price[type]" @if($course->price['type']=='free') checked @endif>{{ __("main.Free") }}</label>
+                                        <input class="mr-1" type="radio" value="free" name="price_type" @if($course->price_type=='free') checked @endif>{{ __("main.Free") }}</label>
                                 </div>
-                                <div id="price-zone" @if($course->price['type']=='free') style="display:none;" @endif>
+                                <div id="price-zone" @if($course->price_type=='free') style="display:none;" @endif>
                                     <div class="form-group row">
                                         <label for="price" class="col-md-6">{{ __("main.Price") }}</label>
-                                        <input type="text" class="form-control form-control-sm col-md-6" name="price[cost]" value="{{$course->price['cost']}}" id="price" placeholder="eg: 60">
+                                        <input type="text" class="form-control form-control-sm col-md-6" name="price_cost" value="{{$course->price_cost}}" id="price" placeholder="eg: 60">
                                     </div>
                                     <div class="form-group row">
-                                        <label for="discounted" class="col-md-6">{{ __("main.Discounted Price") }}</label>
-                                        <input type="text" class="form-control form-control-sm col-md-6" name="price[discounted]" value="{{$course->price['discounted']}}" id="discounted" placeholder="eg: 45">
+                                        <label for="discounted" class="col-md-6">{{ __("main.Old Price") }}</label>
+                                        <input type="text" class="form-control form-control-sm col-md-6" name="price_old" value="{{$course->price_old}}" id="oldcost" placeholder="eg: 75">
                                     </div>
                                     <div class="form-group row">
                                         <label for="currency" class="col-md-6">{{ __("main.Currency") }}</label>
-                                        <input type="text" class="form-control form-control-sm col-md-6" name="price[currency]" value="{{$course->price['currency']}}" id="currency" placeholder="eg: $,₺,£">
+                                        <input type="text" class="form-control form-control-sm col-md-6" name="price_currency" value="{{$course->price_currency}}" id="currency" placeholder="eg: $,₺,£">
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="currency" class="col-md-6">{{ __("main.Side") }}</label>
+                                        <select type="text" class="form-control form-control-sm col-md-6" name="price_side" id="side">
+                                            <option value="left" @if($course->price_side=='left') selected @endif>{{ __("main.Left") }}</option>
+                                            <option value="right" @if($course->price_side=='right') selected @endif>{{ __("main.Right") }}</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -234,8 +233,8 @@
 
 @section('script')
 <script>
-    $('input[name="price[type]"]').change(function(){
-        if($('input[name="price[type]"]:checked').val()=='free'){
+    $('input[name="price_type"]').change(function(){
+        if($('input[name="price_type"]:checked').val()=='free'){
             $('#price-zone').css('display','none');
             $('#price').val('');
             $('#discounted').val('');

@@ -50,7 +50,7 @@
                                     <td></td>
                                     <td>
                                         <a href="{{ route('admin.tutor.student.edit',$user->id) }}" title="{{ __('main.Edit') }}" class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></a>
-                                        <form id="delete_{{$user->id}}" action="{{route('admin.student.destroy',$user->id)}}" method="post" class="d-inline">
+                                        <form id="delete_{{$user->id}}" action="{{route('admin.tutor.student.destroy',$user->id)}}" method="post" class="d-inline">
                                             @method('DELETE')
                                             @csrf
                                             <a href="javascript:void(0)" onclick="validate({{$user->id}})" title="{{ __('main.Delete') }}" class="btn btn-danger btn-xs"><i class="far fa-times-circle"></i></a>

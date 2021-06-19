@@ -35,9 +35,11 @@ class TutorStudentController extends Controller
 
         $meta = new UserMeta();
         $meta->user_id = $user->id;
-        $meta->key = 'student_courses';
+        $meta->key = 'enrolled_courses';
         $meta->value = serialize($request->courses);
         $meta->save();
+
+        return redirect()->route('admin.tutor.student.edit',$user->id);
     }
 
     public function show($id)
@@ -53,6 +55,7 @@ class TutorStudentController extends Controller
         foreach ($metas as $meta){
             $user_meta[$meta->key] = $meta->value;
         };
+        isset($user_meta)? '': $user_meta = [];
         return view('admin.tutor.student.edit',compact('courses','user','user_meta'));
     }
 

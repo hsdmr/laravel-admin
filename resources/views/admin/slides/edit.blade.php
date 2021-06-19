@@ -44,31 +44,31 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="bc">{{__('main.Background')}}</label>
+                                    <label for="bg">{{__('main.Background')}}</label>
                                     <div class="input-group input-group-sm">
-                                        <input type="text" class="form-control form-control-sm" id="bc" name="bc" value="">
+                                        <input type="text" class="form-control form-control-sm" id="bg" name="bg" value="{{$slide->bg}}">
                                         <span class="input-group-append">
-                                          <button type="button" class="btn btn-info btn-flat">{{__('main.Choose')}}</button>
+                                          <button type="button" class="btn btn-info btn-flat" id="choose">{{__('main.Choose')}}</button>
                                         </span>
                                       </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="radio" class="" id="image" name="is_video" @if($slide->is_video==1) checked @endif>
+                                    <input value="0" type="radio" class="" id="image" name="is_video" @if($slide->is_video==0) checked @endif>
                                     <label for="image">{{__('main.Image')}}</label>
-                                    <input type="radio" class="ml-5" id="video" name="is_video" @if($slide->is_video==0) checked @endif>
+                                    <input value="1" type="radio" class="ml-5" id="video" name="is_video" @if($slide->is_video==1) checked @endif>
                                     <label for="video">{{__('main.Video')}}</label>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <label for="color">{{__('main.Color')}}</label>
+                                            <label for="color">{{__('main.Overlay Color')}}</label>
                                             <input type="color" class="form-control form-control-sm" id="color" name="color" value="{{$slide->color}}">
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="form-group">
-                                            <label for="range">{{__('main.Opacity')}}</label>
-                                            <input type="range" class="form-control form-control-sm" id="range" name="range" value="{{$slide->opacity}}">
+                                            <label for="opacity">{{__('main.Opacity')}}</label>
+                                            <input type="range" class="form-control form-control-sm" id="opacity" name="opacity" value="{{$slide->opacity}}">
                                         </div>
                                     </div>
                                     <div class="col-md-2">
@@ -122,6 +122,7 @@
     </div>
     <!-- /.content -->
   </div>
+  @include('admin.layouts.media')
 @endsection
 
 @section('script')

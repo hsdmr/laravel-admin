@@ -35,10 +35,10 @@
                 @csrf
                 <input type="hidden" name="media_id" id="media_id" value="{{$category->getMedia->id}}">
                 <input type="hidden" value="tutor-category" name="type">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-body">
                                 <div class="form-group ">
                                     <label for="title">{{ __('main.Name') }}</label>
                                     <input type="text" class="form-control form-control-sm" id="title" name="title" value="{{$category->title}}">
