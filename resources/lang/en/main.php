@@ -46,6 +46,8 @@ return [
     'Contact' => 'Contact',
     'Blog' => 'Blog',
     'Search' => 'Search',
+    'Contract' => 'Contract',
+    'Blank' => 'Blank',
     'Page Sidebar' => 'Page Sidebar',
     'Blog Sidebar' => 'Blog Sidebar',
     'Create Page' => 'Create Page',
@@ -241,4 +243,8 @@ return [
     'Students' => 'Students',
 
     'Announcements' => 'Announcements',
+
+    'sureLinks' => 'The page you tried to open could not be found. Make sure you entered the link correctly.',
+    'mailTo' => 'If you are sure there is a page at the address you are looking for, you can return to :mailto or :home and start fresh.',
+    'This Page Is Under Construction' => 'This Page Is Under Construiction.',
 ];

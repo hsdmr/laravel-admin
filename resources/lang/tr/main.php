@@ -46,6 +46,8 @@ return [
     'Contact' => 'İletişim',
     'Blog' => 'Blog',
     'Search' => 'Arama Sayfası',
+    'Contract' => 'Kontrat',
+    'Blank' => 'Boş',
     'Page Sidebar' => 'Sayfa Sidebar',
     'Blog Sidebar' => 'Blog Sidebar',
     'Create Page' => 'Sayfa Oluştur',
@@ -239,4 +241,8 @@ return [
     'Students' => 'Öğrenciler',
 
     'Announcements' => 'Duyurular',
+
+    'sureLinks' => 'Açmaya çalıştığınız sayfa bulunamadı. Linki doğru girdiğinizden emin olunuz.',
+    'mailTo' => 'Aradığınız adreste bir sayfa olduğundan eminseniz :mailto ya da :home  dönerek yeni bir başlangıç yapabilirsiniz.',
+    'This Page Is Under Construction' => 'Bu Sayfa Yapım Aşamasındadır.',
 ];
