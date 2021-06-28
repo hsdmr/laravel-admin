@@ -1,12 +1,6 @@
 <?php
 
-use App\Models\Article;
-use App\Models\Category;
-use App\Models\Contact;
-use App\Models\Link;
-use App\Models\Option;
 use App\Models\Page;
-use App\Models\Slug;
 use Illuminate\Support\Facades\Route;
 
 
