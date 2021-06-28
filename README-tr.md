@@ -1,6 +1,6 @@
 # Laravel Admin Panel
 
-
+Türkçe kurulum için <a href="https://github.com/hsdmr/laravel-admin/blob/main/README-tr.md">burayı</a> tıklayın.
 
 ## Gereksinimler
 
