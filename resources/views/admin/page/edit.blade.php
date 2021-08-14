@@ -89,6 +89,8 @@
                                     <option value="contact" @if ($page->template=='contact') selected @endif>{{ __('main.Contact') }}</option>
                                     <option value="blog" @if ($page->template=='blog') selected @endif>{{ __('main.Blog') }}</option>
                                     <option value="search" @if ($page->template=='search') selected @endif>{{ __('main.Search') }}</option>
+                                    <option value="contract" @if ($page->template=='contract') selected @endif>{{ __('main.Contract') }}</option>
+                                    <option value="blank" @if ($page->template=='blank') selected @endif>{{ __('main.Blank') }}</option>
                                 </select>
                             </div>
                         </div>

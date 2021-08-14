@@ -88,6 +88,8 @@
                                     <option value="contact">{{ __('main.Contact') }}</option>
                                     <option value="blog">{{ __('main.Blog') }}</option>
                                     <option value="search">{{ __('main.Search') }}</option>
+                                    <option value="contract">{{ __('main.Contract') }}</option>
+                                    <option value="blank">{{ __('main.Blank') }}</option>
                                 </select>
                             </div>
                         </div>

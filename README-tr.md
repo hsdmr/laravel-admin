@@ -1,7 +1,5 @@
 # Laravel Admin Panel
 
-
-
 ## Gereksinimler
 
 Projeyi çalıştırmak için bilgisayarınıza <a href="https://getcomposer.org/">composer</a> kurmalısınız ve aşağıdaki şartları sağlamalısınız

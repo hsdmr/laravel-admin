@@ -46,6 +46,8 @@ return [
     'Contact' => 'İletişim',
     'Blog' => 'Blog',
     'Search' => 'Arama Sayfası',
+    'Contract' => 'Kontrat',
+    'Blank' => 'Boş',
     'Page Sidebar' => 'Sayfa Sidebar',
     'Blog Sidebar' => 'Blog Sidebar',
     'Create Page' => 'Sayfa Oluştur',
@@ -250,6 +252,13 @@ return [
 
     'Announcement' => 'Duyuru',
     'Announcements' => 'Duyurular',
+<<<<<<< HEAD
     'Add New Announcement' => 'Yeni Duyuru Ekle',
     'Edit Announcement' => 'Duyuru Düzenle',
+=======
+
+    'sureLinks' => 'Açmaya çalıştığınız sayfa bulunamadı. Linki doğru girdiğinizden emin olunuz.',
+    'mailTo' => 'Aradığınız adreste bir sayfa olduğundan eminseniz :mailto ya da :home  dönerek yeni bir başlangıç yapabilirsiniz.',
+    'This Page Is Under Construction' => 'Bu Sayfa Yapım Aşamasındadır.',
+>>>>>>> a036691659d5040bede715dda0cc69c66fced992
 ];
