@@ -232,7 +232,8 @@ return [
 
     'Add New Zoom Meeting' => 'Yeni Zoom Randevusu Oluştur',
     'Edit Zoom Meeting' => 'Zoom Randevusu Düzenle',
-    'ZOOM' => 'ZOOM',
+    'ZOOM' => 'Zoom',
+    'Zoom Meetings' => 'Zoom Toplantıları',
     'Meeting Name' => 'Randevu Adı',
     'Meeting Summary' => 'Randevu Özeti',
     'Meeting Time' => 'Randevu Tarihi',
@@ -252,13 +253,10 @@ return [
 
     'Announcement' => 'Duyuru',
     'Announcements' => 'Duyurular',
-<<<<<<< HEAD
     'Add New Announcement' => 'Yeni Duyuru Ekle',
     'Edit Announcement' => 'Duyuru Düzenle',
-=======
-
+    
     'sureLinks' => 'Açmaya çalıştığınız sayfa bulunamadı. Linki doğru girdiğinizden emin olunuz.',
     'mailTo' => 'Aradığınız adreste bir sayfa olduğundan eminseniz :mailto ya da :home  dönerek yeni bir başlangıç yapabilirsiniz.',
     'This Page Is Under Construction' => 'Bu Sayfa Yapım Aşamasındadır.',
->>>>>>> a036691659d5040bede715dda0cc69c66fced992
 ];

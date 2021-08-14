@@ -235,7 +235,8 @@ return [
     'Add New Zoom Meeting' => 'Add New Zoom Meeting',
     'Edit Zoom Meeting' => 'Edit Zoom Meeting',
     'Meeting Name' => 'Meeting Name',
-    'ZOOM' => 'ZOOM',
+    'ZOOM' => 'Zoom',
+    'Zoom Meetings' => 'Zoom Meetings',
     'Meeting Summary' => 'Meeting Summary',
     'Meeting Time' => 'Meeting Time',
     'Meeting Duration' => 'Meeting Duration',
@@ -254,13 +255,10 @@ return [
 
     'Announcement' => 'Announcement',
     'Announcements' => 'Announcements',
-<<<<<<< HEAD
     'Add New Announcement' => 'Add New Announcement',
     'Edit Announcement' => 'Edit Announcement',
-=======
 
     'sureLinks' => 'The page you tried to open could not be found. Make sure you entered the link correctly.',
     'mailTo' => 'If you are sure there is a page at the address you are looking for, you can return to :mailto or :home and start fresh.',
     'This Page Is Under Construction' => 'This Page Is Under Construiction.',
->>>>>>> a036691659d5040bede715dda0cc69c66fced992
 ];
