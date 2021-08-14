@@ -12,13 +12,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            Student          </div><!-- /.col -->
+            {{ $user->name.' '.$user->surname }}</div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('main.Home') }}</a></li>
                 <li class="breadcrumb-item"><a href="{{ route('admin.tutor.course.index') }}">{{ __('main.Tutor') }}</a></li>
                 <li class="breadcrumb-item"><a href="{{ route('admin.tutor.student.index') }}">{{ __('main.Students') }}</a></li>
-              <li class="breadcrumb-item active">{{ $user->title }}</li>
+              <li class="breadcrumb-item active">{{ $user->name.' '.$user->surname }}</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -71,7 +71,7 @@
                                 <div class="form-group">
                                     <label for="course">{{ __('main.Course') }}</label>
                                     <select class="form-control form-control-sm" id="course" name="course">
-                                        <option value="" disabled>{{__('main.Choose')}}</option>
+                                        <option value="">{{__('main.Choose')}}</option>
                                         @foreach ($courses as $course)
                                         <option value="{{$course->id}}">{{$course->title}}</option>
                                         @endforeach
@@ -113,7 +113,9 @@
     $('#course').change(function(){
         var id = $('#course option:selected').val();
         var title = $('#course option:selected').html();
-        $('#courses').append('<div class="row mx-0 mb-1 border-bottom"><input type="hidden" name="metas[student_courses]['+id+']" value="'+title+'"><span>'+title+'</span><a class="btn btn-xs btn-danger ml-auto px-2" href="javascript:void(0);" onclick="this.parentNode.remove()">&times;</a></div>')
+        if(id!=""){
+            $('#courses').append('<div class="row mx-0 mb-1 border-bottom"><input type="hidden" name="metas[student_courses]['+id+']" value="'+title+'"><span>'+title+'</span><a class="btn btn-xs btn-danger ml-auto px-2" href="javascript:void(0);" onclick="this.parentNode.remove()">&times;</a></div>')
+        }
     });
     $("#pass").click(function(){
         $("#password").css('display',"block");

@@ -183,9 +183,15 @@ return [
     'Add New Link' => 'Add New Link',
     'Edit Link' => 'Edit Link',
     'Word' => 'Word',
+    
+    'Background' => 'Background',
+    'Button' => 'Button',
+    'Overlay' => 'Overlay',
+    'Opacity' => 'Opacity',
 
     'Language' => 'Language',
     'Tutor' => 'Tutor',
+    'Course' => 'Course',
     'Courses' => 'Courses',
     'Add New Course' => 'Add New Course',
     'Additional info' => 'Additional info',
@@ -238,7 +244,14 @@ return [
     'Local' => 'Local',
     'Cloud' => 'Cloud',
 
+    'Student' => 'Student',
     'Students' => 'Students',
+    'Add New Student' => 'Add New Student',
+    'Edit Student' => 'Edit Student',
+    'Certificates' => 'Certificates',
 
+    'Announcement' => 'Announcement',
     'Announcements' => 'Announcements',
+    'Add New Announcement' => 'Add New Announcement',
+    'Edit Announcement' => 'Edit Announcement',
 ];

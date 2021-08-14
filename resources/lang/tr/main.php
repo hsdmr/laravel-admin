@@ -182,8 +182,14 @@ return [
     'Edit Link' => 'Linki Düzenle',
     'Word' => 'Kelime',
 
+    'Background' => 'Arkaplan',
+    'Button' => 'Buton',
+    'Overlay' => 'Kaplama',
+    'Opacity' => 'Saydamlık',
+    
     'Language' => 'Dil',
     'Tutor' => 'Eğitimler',
+    'Course' => 'Kurs',
     'Courses' => 'Kurslar',
     'Add New Course' => 'Yeni Kurs Ekle',
     'Additional info' => 'ilave Bilgi',
@@ -236,7 +242,14 @@ return [
     'Local' => 'Yerel',
     'Cloud' => 'Bulut',
 
+    'Student' => 'Öğrenci',
     'Students' => 'Öğrenciler',
+    'Add New Student' => 'Yeni Öğrenci Ekle',
+    'Edit Student' => 'Öğrenci Düzenle',
+    'Certificates' => 'Sertifikalar',
 
+    'Announcement' => 'Duyuru',
     'Announcements' => 'Duyurular',
+    'Add New Announcement' => 'Yeni Duyuru Ekle',
+    'Edit Announcement' => 'Duyuru Düzenle',
 ];

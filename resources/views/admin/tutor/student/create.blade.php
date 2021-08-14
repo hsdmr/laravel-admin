@@ -69,7 +69,7 @@
                                 <div class="form-group">
                                     <label for="course">{{ __('main.Course') }}</label>
                                     <select class="form-control form-control-sm" id="course" name="course">
-                                        <option value="" disabled>{{__('main.Choose')}}</option>
+                                        <option value="">{{__('main.Choose')}}</option>
                                         @foreach ($courses as $course)
                                         <option value="{{$course->id}}">{{$course->title}}</option>
                                         @endforeach
@@ -100,7 +100,9 @@
     $('#course').change(function(){
         var id = $('#course option:selected').val();
         var title = $('#course option:selected').html();
-        $('#courses').append('<div class="row mx-0 mb-1 border-bottom"><input type="hidden" name="courses[]" value="'+id+'"><span>'+title+'</span><a class="btn btn-xs btn-danger ml-auto px-2" href="javascript:void(0);" onclick="this.parentNode.remove()">&times;</a></div>')
+        if(id!=""){
+            $('#courses').append('<div class="row mx-0 mb-1 border-bottom"><input type="hidden" name="metas[student_courses]['+id+']" value="'+title+'"><span>'+title+'</span><a class="btn btn-xs btn-danger ml-auto px-2" href="javascript:void(0);" onclick="this.parentNode.remove()">&times;</a></div>')
+        }
     });
 </script>
 @endsection

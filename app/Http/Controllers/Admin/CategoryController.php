@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Slug;
 use App\Models\File;
+use App\Models\Option;
 
 class CategoryController extends Controller
 {
@@ -19,7 +20,8 @@ class CategoryController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view("admin.category.create",compact('categories'));
+        $languages = Option::where('name','=','language')->get();
+        return view("admin.category.create",compact('categories','languages'));
     }
 
     public function store(Request $request)

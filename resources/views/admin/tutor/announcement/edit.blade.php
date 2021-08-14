@@ -19,7 +19,7 @@
                 <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">{{ __('main.Home') }}</a></li>
                 <li class="breadcrumb-item"><a href="{{ route('admin.tutor.course.index') }}">{{ __('main.Tutor') }}</a></li>
                 <li class="breadcrumb-item"><a href="{{ route('admin.tutor.announcement.index') }}">{{ __('main.Announcements') }}</a></li>
-              <li class="breadcrumb-item active">{{ $announcement->title }}</li>
+              <li class="breadcrumb-item active">{{ __('main.Edit Announcement') }}</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
