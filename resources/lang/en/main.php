@@ -185,7 +185,7 @@ return [
     'Add New Link' => 'Add New Link',
     'Edit Link' => 'Edit Link',
     'Word' => 'Word',
-    
+
     'Background' => 'Background',
     'Button' => 'Button',
     'Overlay' => 'Overlay',
@@ -210,6 +210,10 @@ return [
     'Paid' => 'Paid',
     'Free' => 'Free',
     'Price' => 'Price',
+    'Old Price' => 'Old Price',
+    'Side' => 'Side',
+    'Left' => 'Left',
+    'Right' => 'Right',
     'Difficulty Level' => 'Difficulty Level',
     'All Levels' => 'All Levels',
     'Beginner' => 'Beginner',

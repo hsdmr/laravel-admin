@@ -188,7 +188,7 @@ return [
     'Button' => 'Buton',
     'Overlay' => 'Kaplama',
     'Opacity' => 'Saydamlık',
-    
+
     'Language' => 'Dil',
     'Tutor' => 'Eğitimler',
     'Course' => 'Kurs',
@@ -208,6 +208,10 @@ return [
     'Paid' => 'Ücretli',
     'Free' => 'Ücretsiz',
     'Price' => 'Fiyat',
+    'Old Price' => 'Eski Fiyat',
+    'Side' => 'Taraf',
+    'Left' => 'Sol',
+    'Right' => 'Sağ',
     'Difficulty Level' => 'Zorluk Seviyesi',
     'All Levels' => 'All Levels',
     'Beginner' => 'Tüm seviyeler',
@@ -255,7 +259,7 @@ return [
     'Announcements' => 'Duyurular',
     'Add New Announcement' => 'Yeni Duyuru Ekle',
     'Edit Announcement' => 'Duyuru Düzenle',
-    
+
     'sureLinks' => 'Açmaya çalıştığınız sayfa bulunamadı. Linki doğru girdiğinizden emin olunuz.',
     'mailTo' => 'Aradığınız adreste bir sayfa olduğundan eminseniz :mailto ya da :home  dönerek yeni bir başlangıç yapabilirsiniz.',
     'This Page Is Under Construction' => 'Bu Sayfa Yapım Aşamasındadır.',
