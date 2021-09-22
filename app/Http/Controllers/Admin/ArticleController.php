@@ -51,14 +51,23 @@ class ArticleController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required|min:3|max:255',
+            'slug' => 'required|min:3|max:255',
+            'language' => 'required',
+            'no_index' => 'nullable|accepted',
+            'no_follow' => 'nullable|accepted',
+            'media_id' => 'nullable|numeric|min:1',
+            'category_id' => 'nullable|numeric|min:1',
+        ]);
         try {
             $slug = Slug::create([
                 'slug' => slugCheck($request->slug),
                 'owner' => 'article',
                 'seo_title' => $request->seo_title,
                 'seo_description' => $request->seo_description,
-                'no_index' => $request->no_index==null ? 0 : 1,
-                'no_follow' => $request->no_follow==null ? 0 : 1,
+                'no_index' => $request->no_index=='on' ? 1 : 0,
+                'no_follow' => $request->no_follow=='on' ? 1 : 0,
             ]);
 
             $article = Article::create([
@@ -104,14 +113,23 @@ class ArticleController extends Controller
 
     public function update(Request $request, Article $article)
     {
+        $request->validate([
+            'title' => 'required|min:3|max:255',
+            'slug' => 'required|min:3|max:255',
+            'language' => 'required',
+            'no_index' => 'nullable|accepted',
+            'no_follow' => 'nullable|accepted',
+            'media_id' => 'nullable|numeric|min:1',
+            'category_id' => 'nullable|numeric|min:1',
+        ]);
         try {
             $article->getSlug()->update([
                 'slug' => slugCheck($request->slug, $article->slug_id),
                 'owner' => 'article',
                 'seo_title' => $request->seo_title,
                 'seo_description' => $request->seo_description,
-                'no_index' => $request->no_index==null ? 0 : 1,
-                'no_follow' => $request->no_follow==null ? 0 : 1,
+                'no_index' => $request->no_index=='on' ? 1 : 0,
+                'no_follow' => $request->no_follow=='on' ? 1 : 0,
             ]);
 
             $article->update([
