@@ -53,13 +53,7 @@
                                                 alt="" style="height: 26px"></td>
                                         <td>{{ $category->title }}</td>
                                         <td>{{ $category->getSlug->slug }}</td>
-                                        <td>
-                                            @foreach ($categories as $categoryupper)
-                                                @if ($category->upper == $categoryupper->id)
-                                                    {{ $categoryupper->title }}
-                                                @endif
-                                            @endforeach
-                                        </td>
+                                        <td>{{ $category->upper!=null ? App\Models\Category::find($category->upper)->title : ''  }}</td>
                                         <td>{{ $category->desc }}</td>
                                         <td>
                                             <a href="{{ url('/', $category->getSlug->slug) }}"
