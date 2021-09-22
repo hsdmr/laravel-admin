@@ -19,7 +19,7 @@ class CategorySeeder extends Seeder
             $slug->save();
             $cat = new Category;
             $cat->title = $category;
-            $cat->type = 'post-category';
+            $cat->type = 'article-category';
             $cat->slug_id = $slug->id;
             $cat->media_id = 1;
             $cat->save();

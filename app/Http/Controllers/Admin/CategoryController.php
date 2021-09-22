@@ -6,105 +6,170 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Slug;
-use App\Models\File;
+use App\Models\Log;
 use App\Models\Option;
+use Throwable;
 
 class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::where('type','=','article-category')->get();
-        return view("admin.category.index",compact('categories'));
+        try {
+            $categories = Category::where('type', '=', 'article-category')->get();
+            return view("admin.category.index", compact('categories'));
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'category',
+                'message' => 'Categories page could not be loaded.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->back()->with(['type' => 'error', 'message' => 'Categories page could not be loaded.']);
+        }
     }
 
     public function create()
     {
-        $categories = Category::all();
-        $languages = Option::where('name','=','language')->get();
-        return view("admin.category.create",compact('categories','languages'));
+        try {
+            $categories = Category::all();
+            $languages = Option::where('name', '=', 'language')->get();
+            return view("admin.category.create", compact('categories', 'languages'));
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'category',
+                'message' => 'The category create page could not be loaded.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->route('admin.category.index')->with(['type' => 'error', 'message' => 'The category create page could not be loaded.']);
+        }
     }
 
     public function store(Request $request)
     {
-        $slug = new Slug;
-        if($request->slug==null){
-            $slug_last = $slug->latest()->first()->id+1;
-            $request->slug = "category-".$slug_last;
-        }else{
-            $slug_check = Slug::withTrashed()->where('slug', '=', $request->slug)->first();
-            if($slug_check!=null) $request->slug = $request->slug."-".uniqid();
+        $request->validate([
+            'title' => 'required|min:3|max:255',
+            'slug' => 'required|min:3|max:255',
+            'language' => 'required',
+            'no_index' => 'nullable|in:on',
+            'no_follow' => 'nullable|in:on',
+            'media_id' => 'nullable|numeric|min:1',
+            'upper' => 'nullable|numeric',
+            'type' => 'required',
+        ]);
+        try {
+            $slug = Slug::create([
+                'slug' => slugCheck($request->slug),
+                'owner' => $request->type,
+                'seo_title' => $request->seo_title,
+                'seo_description' => $request->seo_description,
+                'no_index' => $request->no_index == 'on' ? 1 : 0,
+                'no_follow' => $request->no_follow == 'on' ? 1 : 0,
+            ]);
+
+            Category::create([
+                'title' => $request->title,
+                'slug_id' => $slug->id,
+                'media_id' => $request->media_id ?? 1,
+                'upper' => $request->upper,
+                'content' => $request->content,
+                'type' => $request->type,
+                'language' => $request->language,
+            ]);
+
+            return redirect()->route('admin.category.index')->with(['type' => 'success', 'message' => 'Category Saved.']);
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'category',
+                'message' => 'The category could not be saved.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->route('admin.category.index')->with(['type' => 'error', 'message' => 'The category could not be saved.']);
         }
-        $slug->owner = $request->type;;
-        $slug->slug = $request->slug;
-        $slug->seo_title = $request->seo_title;
-        $slug->seo_description = $request->seo_description;
-        $slug->no_index = ($request->no_index==null ? 0 : 1);
-        $slug->no_follow = ($request->no_follow==null ? 0 : 1);
-        $slug->save();
-
-        $category = new Category;
-        $category->title = $request->title;
-        $category->slug_id = $slug->id;
-        $category->media_id = ($request->media_id==null ? 1 : $request->media_id);
-        $category->upper = $request->upper;
-        $category->content = $request->content;
-        $category->type = $request->type;
-        $category->language = $request->language;
-        $category->save();
-        return redirect()->route('admin.category.index')->with(['type' => 'success', 'message' =>'Category Saved.']);
-    }
-
-    public function show($id)
-    {
-        //
     }
 
     public function edit($id)
     {
-        $category = Category::findOrFail($id);
-        $categories = Category::all();
-        return view('admin.category.edit',compact('category','categories'));
-    }
-
-    public function update(Request $request, $id)
-    {
-        $category = Category::find($id);
-        $slug = Slug::find($category->slug_id);
-
-        if($request->slug==null){
-            $slug_last = $slug->latest()->first()->id+1;
-            $request->slug = "category-".$slug_last;
-        }else{
-            $slug_check = Slug::withTrashed()->where('slug', '=', $request->slug)->first();
-            if($slug_check!=null){
-                if($slug_check->id!=$category->slug_id) $request->slug = $request->slug."-".uniqid();
-            }
+        try {
+            $category = Category::findOrFail($id);
+            $categories = Category::all();
+            $languages = Option::where('name', '=', 'language')->get();
+            return view('admin.category.edit', compact('category', 'categories', 'languages'));
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'category',
+                'message' => 'The category edit page could not be loaded.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->route('admin.category.index')->with(['type' => 'error', 'message' => 'The category edit page could not be loaded.']);
         }
-
-        $slug->owner = $request->type;;
-        $slug->slug = $request->slug;
-        $slug->seo_title = $request->seo_title;
-        $slug->seo_description = $request->seo_description;
-        $slug->no_index = ($request->no_index==null ? 0 : 1);
-        $slug->no_follow = ($request->no_follow==null ? 0 : 1);
-        $slug->save();
-
-        $category->title = ($request->title==null ? $request->slug : $request->title);
-        $category->media_id = ($request->media_id==null ? 1 : $request->media_id);
-        $category->upper = $request->upper;
-        $category->content = $request->content;
-        $category->type = $request->type;
-        $category->language = $request->language;
-        $category->save();
-        return redirect()->route('admin.category.edit',$id)->with(['type' => 'success', 'message' =>'Category Updated.']);
     }
 
-    public function destroy($id)
+    public function update(Request $request, Category $category)
     {
-        $category = Category::findOrFail($id);
-        $slug_id = Slug::findOrFail($category->slug_id);
-        $category->delete();
-        $slug_id->forceDelete();
-        return redirect()->route('admin.category.index')->with(['type' => 'success', 'message' =>'Category Deleted.']);
+        $request->validate([
+            'title' => 'required|min:3|max:255',
+            'slug' => 'required|min:3|max:255',
+            'language' => 'required',
+            'no_index' => 'nullable|in:on',
+            'no_follow' => 'nullable|in:on',
+            'media_id' => 'nullable|numeric|min:1',
+            'upper' => 'nullable|numeric',
+            'type' => 'required',
+        ]);
+        try {
+            $category->getSlug()->update([
+                'slug' => slugCheck($request->slug, $category->slug_id),
+                'owner' => $request->type,
+                'seo_title' => $request->seo_title,
+                'seo_description' => $request->seo_description,
+                'no_index' => $request->no_index == 'on' ? 1 : 0,
+                'no_follow' => $request->no_follow == 'on' ? 1 : 0,
+            ]);
+
+            $category->update([
+                'title' => $request->title,
+                'media_id' => $request->media_id ?? 1,
+                'upper' => $request->upper,
+                'content' => $request->content,
+                'type' => $request->type,
+                'language' => $request->language,
+            ]);
+
+            return redirect()->route('admin.category.edit', $category->id)->with(['type' => 'success', 'message' => 'Category Updated.']);
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'category',
+                'message' => 'The category could not be updated.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->route('admin.category.edit', $category->id)->with(['type' => 'error', 'message' => 'The category could not be updated.']);
+        }
+    }
+
+    public function destroy(Category $category)
+    {
+        try {
+            $category->getSlug()->forceDelete();
+            $category->delete();
+            return redirect()->route('admin.category.index')->with(['type' => 'success', 'message' => 'Category Deleted.']);
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'category',
+                'message' => 'The category could not be destroyed.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->route('admin.category.trash')->with(['type' => 'error', 'message' => 'The category could not be destroyed.']);
+        }
     }
 }

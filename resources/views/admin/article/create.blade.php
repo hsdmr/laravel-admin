@@ -43,7 +43,7 @@
                                     <div class="form-group">
                                         <label for="title">{{ __('main.Title') }}</label>
                                         <input type="text"
-                                            class="form-control form-control-sm @error('Title') is-invalid @enderror"
+                                            class="form-control form-control-sm @error('title') is-invalid @enderror"
                                             id="title" name="title" value="{{ old('title') }}">
                                         @error('title') <small class="ml-auto text-danger">{{ __('main.titleError') }}</small> @enderror
                                     </div>
