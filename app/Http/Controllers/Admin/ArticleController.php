@@ -55,8 +55,8 @@ class ArticleController extends Controller
             'title' => 'required|min:3|max:255',
             'slug' => 'required|min:3|max:255',
             'language' => 'required',
-            'no_index' => 'nullable|accepted',
-            'no_follow' => 'nullable|accepted',
+            'no_index' => 'nullable|in:on',
+            'no_follow' => 'nullable|in:on',
             'media_id' => 'nullable|numeric|min:1',
             'category_id' => 'nullable|numeric|min:1',
         ]);
@@ -117,8 +117,8 @@ class ArticleController extends Controller
             'title' => 'required|min:3|max:255',
             'slug' => 'required|min:3|max:255',
             'language' => 'required',
-            'no_index' => 'nullable|accepted',
-            'no_follow' => 'nullable|accepted',
+            'no_index' => 'nullable|in:on',
+            'no_follow' => 'nullable|in:on',
             'media_id' => 'nullable|numeric|min:1',
             'category_id' => 'nullable|numeric|min:1',
         ]);
