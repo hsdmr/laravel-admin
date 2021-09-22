@@ -10,6 +10,11 @@ class Page extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    protected $guarded = [];
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
 
     function getSlug(){
         return $this->hasOne('App\Models\Slug','id','slug_id');

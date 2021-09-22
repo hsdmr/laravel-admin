@@ -10,6 +10,11 @@ class Course extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    protected $guarded = [];
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
 
     function getTopics(){
         return $this->hasMany('App\Models\Lesson');

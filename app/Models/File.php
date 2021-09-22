@@ -14,6 +14,10 @@ class File extends Model implements HasMedia
     use InteractsWithMedia;
 
     protected $guarded = [];
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
 
     public function registerMediaConversions(Media $media = null) : void
     {
