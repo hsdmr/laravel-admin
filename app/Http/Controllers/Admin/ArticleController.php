@@ -6,141 +6,220 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Slug;
-use App\Models\File;
 use App\Models\Article;
+use App\Models\Log;
 use App\Models\Option;
 use Illuminate\Support\Facades\Auth;
+use Throwable;
 
 class ArticleController extends Controller
 {
     public function index()
     {
-        $articles = Article::all();
-        return view('admin.article.index',compact('articles'));
+        try {
+            $articles = Article::all();
+            return view('admin.article.index',compact('articles'));
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'article',
+                'message' => 'Articles page could not be loaded.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->back()->with(['type' => 'error', 'message' =>'Articles page could not be loaded.']);
+        }
     }
 
     public function create()
     {
-        $categories = Category::all();
-        $languages = Option::where('name','=','language')->get();
-        return view('admin.article.create',compact('categories','languages'));
+        try {
+            $categories = Category::all();
+            $languages = Option::where('name','=','language')->get();
+            return view('admin.article.create',compact('categories','languages'));
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'article',
+                'message' => 'The article create page could not be loaded.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->route('admin.article.index')->with(['type' => 'error', 'message' =>'The article create page could not be loaded.']);
+        }
     }
 
     public function store(Request $request)
     {
-        $slug = new Slug;
-        if($request->slug==null){
-            $slug_last = $slug->latest()->first()->id+1;
-            $request->slug = "article-".$slug_last;
-        }else{
-            $slug_check = Slug::withTrashed()->where('slug', '=', $request->slug)->first();
-            if($slug_check!=null) $request->slug = $request->slug."-".uniqid();
+        try {
+            $slug = Slug::create([
+                'slug' => slugCheck($request->slug),
+                'owner' => 'article',
+                'seo_title' => $request->seo_title,
+                'seo_description' => $request->seo_description,
+                'no_index' => $request->no_index==null ? 0 : 1,
+                'no_follow' => $request->no_follow==null ? 0 : 1,
+            ]);
+
+            $article = Article::create([
+                'slug_id' => $slug->id,
+                'user_id' => Auth::id(),
+                'media_id' => $request->media_id ?? 1,
+                'category_id' => $request->category_id ?? 1,
+                'title' => $request->title,
+                'content' => $request->content,
+                'language' => $request->language,
+            ]);
+
+            return redirect()->route('admin.article.edit',$article->id)->with(['type' => 'success', 'message' =>'Post Saved.']);
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'article',
+                'message' => 'The article could not be saved.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->route('admin.article.create')->with(['type' => 'error', 'message' =>'The article could not be saved.']);
         }
-        $slug->owner = 'article';
-        $slug->slug = $request->slug;
-        $slug->seo_title = $request->seo_title;
-        $slug->seo_description = $request->seo_description;
-        $slug->no_index = ($request->no_index==null ? 0 : 1);
-        $slug->no_follow = ($request->no_follow==null ? 0 : 1);
-        $slug->save();
-
-        $article = new Article();
-        $article->slug_id = $slug->id;
-        $article->user_id = Auth::id();
-        $article->media_id = ($request->media_id==null ? 1 : $request->media_id);
-        $article->category_id = ($request->category_id==null ? 1 : $request->category_id);
-        $article->title = ($request->title==null ? $request->slug : $request->title);
-        $article->content = $request->content;
-        $article->language = $request->language;
-        $article->save();
-
-        return redirect()->route('admin.article.edit',$article->id)->with(['type' => 'success', 'message' =>'Post Saved.']);
     }
 
-    public function show($id)
+    public function edit(Article $article)
     {
-        //
+        try {
+            $categories = Category::all();
+            $languages = Option::where('name','=','language')->get();
+            return view('admin.article.edit',compact('categories','article','languages'));
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'article',
+                'message' => 'The article edit page could not be loaded.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->route('admin.article.index')->with(['type' => 'error', 'message' =>'The article edit page could not be loaded.']);
+        }
     }
 
-    public function edit($id)
+    public function update(Request $request, Article $article)
     {
-        $categories = Category::all();
-        $article = Article::find($id);
-        $languages = Option::where('name','=','language')->get();
-        return view('admin.article.edit',compact('categories','article','languages'));
+        try {
+            $article->getSlug()->update([
+                'slug' => slugCheck($request->slug, $article->slug_id),
+                'owner' => 'article',
+                'seo_title' => $request->seo_title,
+                'seo_description' => $request->seo_description,
+                'no_index' => $request->no_index==null ? 0 : 1,
+                'no_follow' => $request->no_follow==null ? 0 : 1,
+            ]);
+
+            $article->update([
+                'media_id' => $request->media_id ?? 1,
+                'category_id' => $request->category_id ?? 1,
+                'title' => $request->title,
+                'content' => $request->content,
+                'language' => $request->language,
+            ]);
+
+            return redirect()->route('admin.article.edit',$article->id)->with(['type' => 'success', 'message' =>'The Post Has Been Updated.']);
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'article',
+                'message' => 'The article could not be updated.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->route('admin.article.edit',$article->id)->with(['type' => 'error', 'message' =>'The article could not be updated.']);
+        }
     }
 
-    public function update(Request $request, $id)
+    public function delete(Article $article)
     {
-        if(isset($request->form)){
-            $article = Article::find($id);
-            $slug = Slug::find($article->slug_id);
-
-            if($request->slug==null){
-                $slug_last = $slug->latest()->first()->id+1;
-                $request->slug = "article-".$slug_last;
-            }else{
-                $slug_check = Slug::withTrashed()->where('slug', '=', $request->slug)->first();
-                if($slug_check!=null){
-                    if($slug_check->id!=$article->slug_id) $request->slug = $request->slug."-".uniqid();
-                }
-            }
-            $slug->owner = 'article';
-            $slug->slug = $request->slug;
-            $slug->seo_title = $request->seo_title;
-            $slug->seo_description = $request->seo_description;
-            $slug->no_index = ($request->no_index==null ? 0 : 1);
-            $slug->no_follow = ($request->no_follow==null ? 0 : 1);
-            $slug->save();
-
-            $article->slug_id = $slug->id;
-            $article->media_id = ($request->media_id==null ? 1 : $request->media_id);
-            $article->category_id = ($request->category_id==null ? 1 : $request->category_id);
-            $article->title = ($request->title==null ? $request->slug : $request->title);
-            $article->content = $request->content;
-            $article->language = $request->language;
-            $article->save();
-
-            return redirect()->route('admin.article.edit',$id)->with(['type' => 'success', 'message' =>'The Post Has Been Updated.']);
-        };
-    }
-
-    public function delete($id)
-    {
-        $article = Article::find($id);
-        Slug::find($article->slug_id)->delete();
-        $article->delete();
-        return redirect()->route('admin.article.index')->with(['type' => 'success', 'message' =>'Post Moved To Recycle Bin.']);
+        try {
+            $article->delete();
+            return redirect()->route('admin.article.index')->with(['type' => 'success', 'message' =>'Post Moved To Recycle Bin.']);
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'article',
+                'message' => 'The article could not be deleted.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->route('admin.article.index')->with(['type' => 'error', 'message' =>'The article could not be deleted.']);
+        }
     }
 
     public function trash()
     {
-        $articles = Article::onlyTrashed()->get();
-        return view('admin.article.trash',compact('articles'));
+        try {
+            $articles = Article::onlyTrashed()->get();
+            return view('admin.article.trash',compact('articles'));
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'article',
+                'message' => 'Articles trash page could not be loaded.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->route('admin.article.index')->with(['type' => 'error', 'message' =>'Articles trash page could not be loaded.']);
+        }
     }
 
     public function recover($id)
     {
-        $article = Article::withTrashed()->find($id);
-        Slug::withTrashed()->find($article->slug_id)->restore();
-        $article->restore();
-        return redirect()->route('admin.article.trash')->with(['type' => 'success', 'message' =>'Post Recovered.']);
+        try {
+            Article::withTrashed()->find($id)->restore();
+            return redirect()->route('admin.article.trash')->with(['type' => 'success', 'message' =>'Post Recovered.']);
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'article',
+                'message' => 'The article could not be recovered.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->route('admin.article.trash')->with(['type' => 'error', 'message' =>'The article could not be recovered.']);
+        }
     }
 
     public function destroy($id)
     {
-        $article = Article::withTrashed()->find($id);
-        $slug = Slug::withTrashed()->find($article->slug_id);
-        $article->forceDelete();
-        $slug->forceDelete();
-        return redirect()->route('admin.article.trash')->with(['type' => 'error', 'message' =>'Post Deleted.']);
+        try {
+            $article = Article::withTrashed()->find($id);
+            $article->getSlug()->delete();
+            $article->forceDelete();
+            return redirect()->route('admin.article.trash')->with(['type' => 'warning', 'message' =>'Post Deleted.']);
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'article',
+                'message' => 'The article could not be destroyed.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->route('admin.article.trash')->with(['type' => 'error', 'message' =>'The article could not be destroyed.']);
+        }
     }
 
     public function switch(Request $request)
     {
-        $page = Article::find($request->id);
-        $page->statu = $request->statu=="true" ? 1 : 0;
-        $page->save();
-        return $request->statu;
+        try {
+            Article::find($request->id)->update([
+                'status' => $request->status=="true" ? 1 : 0
+            ]);
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'article',
+                'message' => 'The article could not be switched.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+        }
+        return $request->status;
     }
 }

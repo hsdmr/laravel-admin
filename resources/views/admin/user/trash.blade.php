@@ -45,7 +45,7 @@
                                 <tr>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ $user->statu }}</td>
+                                    <td>{{ $user->status }}</td>
                                     <td>
                                         <a href="{{ route('admin.user.recover',$user->id) }}" title="{{ __('main.Recover') }}" class="btn btn-warning btn-xs"><i class="fas fa-recycle"></i></a>
                                         <form id="delete_{{$user->id}}" action="{{route('admin.user.destroy',$user->id)}}" method="post" class="d-inline">

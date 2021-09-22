@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,5 +18,11 @@ class DatabaseSeeder extends Seeder
         $this->call(PageSeeder::class);
         $this->call(WidgetSeeder::class);
         $this->call(OptionSeeder::class);
+
+        User::create([
+            'email' => 'hasdemir@gmail.com',
+            'password' => Hash::make(12345678),
+            'role' => 'admin'
+        ]);
     }
 }

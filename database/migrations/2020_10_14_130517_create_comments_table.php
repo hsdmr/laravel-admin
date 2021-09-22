@@ -13,14 +13,11 @@ class CreateCommentsTable extends Migration
             $table->unsignedBigInteger('user_id')->default(1);
             $table->unsignedBigInteger('article_id')->default(1);
             $table->string('title')->nullable();
-            $table->tinyInteger('statu')->default(0);
+            $table->tinyInteger('status')->default(0);
             $table->longText('content');
             $table->string('language')->default('tr');
             $table->softDeletes();
             $table->timestamps();
-
-            //$table->foreign('user_id')->references('id')->on('users');
-            //$table->foreign('article_id')->references('id')->on('articles');
         });
     }
 

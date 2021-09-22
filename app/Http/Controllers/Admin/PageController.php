@@ -136,8 +136,8 @@ class PageController extends Controller
     public function switch(Request $request)
     {
         $page = Page::find($request->id);
-        $page->statu = $request->statu=="true" ? 1 : 0;
+        $page->status = $request->status=="true" ? 1 : 0;
         $page->save();
-        return $request->statu;
+        return $request->status;
     }
 }

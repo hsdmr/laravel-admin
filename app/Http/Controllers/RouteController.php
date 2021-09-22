@@ -19,7 +19,7 @@ class RouteController extends Controller
             $owner = $slug->owner;
             if($owner=='page'){
                 $page = Page::firstWhere('slug_id','=',$slug->id);
-                if($page->statu==0) return view('404');
+                if($page->status==0) return view('404');
                 else{
                     $template = $page->template;
                     if($template=='contact'){
@@ -28,7 +28,7 @@ class RouteController extends Controller
                     }
                     else if($template=='blog'){
                         $categories = Category::all();
-                        $articles = Article::orderBy('created_at', 'desc')->where('statu','=',1)->simplePaginate(8);
+                        $articles = Article::orderBy('created_at', 'desc')->where('status','=',1)->simplePaginate(8);
                         return  view('blog',compact('articles','page','categories'));
                     }
                     else if($template=='contract'){
@@ -68,7 +68,7 @@ class RouteController extends Controller
                     array_push($to_url, '<a title="'.$link->word.'" href="'.$link->url.'">'.$link->word.'</a>');
                 }
                 $article->content = preg_replace($word, $to_url, $article->content, 1);
-                if($article->statu==0) return view('404');
+                if($article->status==0) return view('404');
                 else return view('article',compact('article','categories'));
             }
         }

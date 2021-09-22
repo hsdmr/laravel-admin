@@ -14,7 +14,6 @@ class CreateFilesTable extends Migration
             $table->string('collection')->default('default');
             $table->tinyInteger('suspend')->default('0');
             $table->timestamps();
-
         });
     }
 

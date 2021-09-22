@@ -80,8 +80,8 @@ $('.choose').change(function(){
     name = $(this).attr('data-name');
     id = $(this).attr('id');
     pos = $(this).attr('data-id');
-    statu = $(this).prop('checked');
-    $.get("{{route('admin.option.menu.position')}}", {pos:pos,id:id,statu:statu,name:name});
+    status = $(this).prop('checked');
+    $.get("{{route('admin.option.menu.position')}}", {pos:pos,id:id,status:status,name:name});
     window.location.reload()
 })
 </script>

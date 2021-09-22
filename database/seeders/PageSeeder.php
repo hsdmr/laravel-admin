@@ -21,7 +21,7 @@ class PageSeeder extends Seeder
             $pag->title = $page;
             $pag->slug_id = $slug->id;
             $pag->media_id = 1;
-            $pag->statu = 1;
+            $pag->status = 1;
             $pag->template = Str::slug($page);
             $pag->save();
         }

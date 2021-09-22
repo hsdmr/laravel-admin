@@ -53,7 +53,7 @@
                                     <td>{{ $page->getSlug->slug }}</td>
                                     <td>{{ $page->hit }}</td>
                                     <td>{{ $page->created_at->diffForHumans() }}</td>
-                                    <td><input class="switch" type="checkbox" name="my-checkbox" data-id="{{$page->id}}" @if ($page->statu==1) checked @endif data-toggle="toggle" data-size="mini" data-on="{{__('main.Published')}}" data-off="{{__('main.Draft')}}" data-onstyle="success" data-offstyle="danger"></td>
+                                    <td><input class="switch" type="checkbox" name="my-checkbox" data-id="{{$page->id}}" @if ($page->status==1) checked @endif data-toggle="toggle" data-size="mini" data-on="{{__('main.Published')}}" data-off="{{__('main.Draft')}}" data-onstyle="success" data-offstyle="danger"></td>
                                     <td>
                                         <a href="{{ url('/',$page->getSlug->slug) }}" title="{{ __('main.Show') }}" class="btn btn-success btn-xs"><i class="fas fa-arrow-right"></i></a>
                                         <a href="{{ route('admin.page.edit',$page->id) }}" title="{{ __('main.Edit') }}" class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></a>
@@ -75,8 +75,8 @@
 <script>
 $('.switch').change(function(){
     id = $(this).attr('data-id');
-    statu = $(this).prop('checked');
-    $.get("{{route('admin.page.switch')}}", {id:id,statu:statu})
+    status = $(this).prop('checked');
+    $.get("{{route('admin.page.switch')}}", {id:id,status:status})
 })
 </script>
 @endsection

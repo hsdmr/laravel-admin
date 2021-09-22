@@ -78,8 +78,8 @@ class CommentController extends Controller
     public function switch(Request $request)
     {
         $comment = Comment::find($request->id);
-        $comment->statu = $request->statu=="true" ? 1 : 0;
+        $comment->status = $request->status=="true" ? 1 : 0;
         $comment->save();
-        return $request->statu;
+        return $request->status;
     }
 }

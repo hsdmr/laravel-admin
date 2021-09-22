@@ -12,7 +12,7 @@ class CreatePagesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('slug_id');
             $table->unsignedBigInteger('media_id')->nullable();
-            $table->integer('statu')->default(0);
+            $table->integer('status')->default(0);
             $table->string('title');
             $table->longText('content')->nullable();
             $table->integer('hit')->default(0);
@@ -21,9 +21,6 @@ class CreatePagesTable extends Migration
             $table->tinyInteger('sidebar')->default(0);
             $table->softDeletes();
             $table->timestamps();
-
-            //$table->foreign('slug_id')->references('id')->on('slugs');
-            //$table->foreign('media_id')->references('id')->on('media');
         });
     }
 

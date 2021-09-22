@@ -35,9 +35,9 @@ class MenuController extends Controller
         $menu->save();
 
         $menus = Menu::orderBy('order', 'asc')->where('menuname','=',$menu->menuname)->get();
-        $pages = Page::where('statu','=','1')->get();
+        $pages = Page::where('status','=','1')->get();
         $categories = Category::all();
-        $articles = Article::where('statu','=','1')->get();
+        $articles = Article::where('status','=','1')->get();
         return view('admin.option.menu.show',compact('menus','pages','categories','articles'))->with(['type' => 'success', 'message' =>'Menu Saved.']);
     }
 
@@ -45,9 +45,9 @@ class MenuController extends Controller
     {
         $menu = Menu::find($id);
         $menus = Menu::orderBy('order', 'asc')->where('menuname','=',$menu->menuname)->get();
-        $pages = Page::where('statu','=','1')->get();
+        $pages = Page::where('status','=','1')->get();
         $categories = Category::all();
-        $articles = Article::where('statu','=','1')->get();
+        $articles = Article::where('status','=','1')->get();
         return view('admin.option.menu.show',compact('menus','pages','categories','articles'));
     }
 
@@ -55,9 +55,9 @@ class MenuController extends Controller
     {
         $menu = Menu::find($id);
         $menus = Menu::orderBy('order', 'asc')->where('menuname','=',$menu->menuname)->get();
-        $pages = Page::where('statu','=','1')->get();
+        $pages = Page::where('status','=','1')->get();
         $categories = Category::all();
-        $articles = Article::where('statu','=','1')->get();
+        $articles = Article::where('status','=','1')->get();
         return view('admin.option.menu.edit',compact('menu','menus','pages','categories','articles'));
     }
 
@@ -74,9 +74,9 @@ class MenuController extends Controller
         $menu->save();
 
         $menus = Menu::orderBy('order', 'asc')->where('menuname','=',$menu->menuname)->get();
-        $pages = Page::where('statu','=','1')->get();
+        $pages = Page::where('status','=','1')->get();
         $categories = Category::all();
-        $articles = Article::where('statu','=','1')->get();
+        $articles = Article::where('status','=','1')->get();
         return view('admin.option.menu.show',compact('menus','pages','categories','articles'))->with(['type' => 'success', 'message' =>'Menu Saved.']);
     }
 
@@ -107,7 +107,7 @@ class MenuController extends Controller
             $menu->position = 0;
             $menu->save();
         }
-        if($request->statu){
+        if($request->status){
             $menus = Menu::where('menuname','=',$request->name)->get();
             foreach ($menus as $menu) {
                 $menu->position = $request->pos;
