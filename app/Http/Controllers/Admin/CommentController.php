@@ -4,82 +4,152 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
+use App\Models\Log;
 use App\Models\Option;
 use Illuminate\Http\Request;
+use Throwable;
 
 class CommentController extends Controller
 {
     public function index()
     {
-        $comments = Comment::all();
-        return view('admin.comment.index',compact('comments'));
+        try {
+            $comments = Comment::all();
+            return view('admin.comment.index',compact('comments'));
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'comment',
+                'message' => 'Comments page could not be loaded.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->back()->with(['type' => 'error', 'message' =>'Comments page could not be loaded.']);
+        }
     }
 
-    public function create()
+    public function edit(Comment $comment)
     {
-        //
+        try {
+            $languages = Option::where('name','=','language')->get();
+            return view('admin.comment.edit',compact('comment','languages'));
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'comment',
+                'message' => 'The comment edit page could not be loaded.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->route('admin.comment.index')->with(['type' => 'error', 'message' =>'The article edit page could not be loaded.']);
+        }
     }
 
-    public function store(Request $request)
+    public function update(Request $request, Comment $comment)
     {
-        //
+        $request->validate([
+            'title' => 'required|min:3|max:255',
+            'language' => 'required',
+            'content' => 'required|min:3',
+        ]);
+        try {
+            $comment->update($request->only('title','content','language'));
+            return redirect()->route('admin.comment.edit',$comment->id)->with(['type' => 'success', 'message' =>'Comment Updated.']);
+        } catch(Throwable $th) {
+            Log::create([
+                'model' => 'Comment',
+                'message' => 'The comment could not be updated.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->route('admin.comment.edit',$comment->id)->with(['type' => 'success', 'message' =>'The comment could not be updated.']);
+        }
     }
 
-    public function show($id)
+    public function delete(Comment $comment)
     {
-        //
-    }
-
-    public function edit($id)
-    {
-        $comment = Comment::find($id);
-        $languages = Option::where('name','=','language')->get();
-        return view('admin.comment.edit',compact('comment','languages'));
-    }
-
-    public function update(Request $request, $id)
-    {
-        $comment = Comment::find($id);
-        $comment->title = $request->title;
-        $comment->content = $request->content;
-        $comment->language = $request->language;
-        $comment->save();
-
-        return redirect()->route('admin.comment.edit',$id)->with(['type' => 'success', 'message' =>'Comment Updated.']);
-    }
-
-    public function delete($id)
-    {
-        $comment = Comment::find($id);
-        $comment->delete();
-        return redirect()->route('admin.comment.index')->with(['type' => 'success', 'message' =>'Comment Moved to Recycle Bin.']);
+        try {
+            $comment->delete();
+            return redirect()->route('admin.comment.index')->with(['type' => 'success', 'message' =>'Comment Moved to Recycle Bin.']);
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'comment',
+                'message' => 'The comment could not be deleted.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->route('admin.comment.index')->with(['type' => 'error', 'message' =>'The comment could not be deleted.']);
+        }
     }
 
     public function trash()
     {
-        $comments = Comment::onlyTrashed()->get();
-        return view('admin.comment.trash',compact('comments'));
+        try {
+            $comments = Comment::onlyTrashed()->get();
+            return view('admin.comment.trash',compact('comments'));
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'comment',
+                'message' => 'Comments trash page could not be loaded.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->route('admin.comment.index')->with(['type' => 'error', 'message' =>'Comments trash page could not be loaded.']);
+        }
     }
 
     public function recover($id)
     {
-        $comment = Comment::withTrashed()->find($id);
-        $comment->restore();
-        return redirect()->route('admin.comment.trash')->with(['type' => 'success', 'message' =>'Comment Recovered']);
+        try {
+            Comment::withTrashed()->find($id)->restore();
+            return redirect()->route('admin.comment.trash')->with(['type' => 'success', 'message' =>'Comment Recovered']);
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'comment',
+                'message' => 'The comment could not be recovered.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->route('admin.comment.trash')->with(['type' => 'error', 'message' =>'The comment could not be recovered.']);
+        }
     }
 
     public function destroy($id)
     {
-        $comment = Comment::withTrashed()->find($id);
-        $comment->forceDelete();
-        return redirect()->route('admin.comment.trash')->with(['type' => 'error', 'message' =>'Comment Has Been Deleted.']);
+        try {
+            Comment::withTrashed()->find($id)->forceDelete();
+            return redirect()->route('admin.comment.trash')->with(['type' => 'error', 'message' =>'Comment Has Been Deleted.']);
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'comment',
+                'message' => 'The comment could not be destroyed.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->route('admin.comment.trash')->with(['type' => 'error', 'message' =>'The comment could not be destroyed.']);
+        }
     }
 
     public function switch(Request $request)
     {
-        $comment = Comment::find($request->id);
-        $comment->status = $request->status=="true" ? 1 : 0;
-        $comment->save();
+        try {
+            Comment::find($request->id)->update([
+                'status' => $request->status=="true" ? 1 : 0
+            ]);
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'article',
+                'message' => 'The article could not be switched.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+        }
         return $request->status;
     }
 }
