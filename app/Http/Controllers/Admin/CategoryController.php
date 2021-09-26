@@ -43,7 +43,7 @@ class CategoryController extends Controller
                 'th_file' => $th->getFile(),
                 'th_line' => $th->getLine(),
             ]);
-            return redirect()->route('admin.category.index')->with(['type' => 'error', 'message' => 'The category create page could not be loaded.']);
+            return redirect()->back()->with(['type' => 'error', 'message' => 'The category create page could not be loaded.']);
         }
     }
 
@@ -88,7 +88,7 @@ class CategoryController extends Controller
                 'th_file' => $th->getFile(),
                 'th_line' => $th->getLine(),
             ]);
-            return redirect()->route('admin.category.index')->with(['type' => 'error', 'message' => 'The category could not be saved.']);
+            return redirect()->back()->with(['type' => 'error', 'message' => 'The category could not be saved.']);
         }
     }
 
@@ -107,7 +107,7 @@ class CategoryController extends Controller
                 'th_file' => $th->getFile(),
                 'th_line' => $th->getLine(),
             ]);
-            return redirect()->route('admin.category.index')->with(['type' => 'error', 'message' => 'The category edit page could not be loaded.']);
+            return redirect()->back()->with(['type' => 'error', 'message' => 'The category edit page could not be loaded.']);
         }
     }
 
@@ -151,7 +151,7 @@ class CategoryController extends Controller
                 'th_file' => $th->getFile(),
                 'th_line' => $th->getLine(),
             ]);
-            return redirect()->route('admin.category.edit', $category->id)->with(['type' => 'error', 'message' => 'The category could not be updated.']);
+            return redirect()->back()->with(['type' => 'error', 'message' => 'The category could not be updated.']);
         }
     }
 
@@ -169,7 +169,7 @@ class CategoryController extends Controller
                 'th_file' => $th->getFile(),
                 'th_line' => $th->getLine(),
             ]);
-            return redirect()->route('admin.category.trash')->with(['type' => 'error', 'message' => 'The category could not be destroyed.']);
+            return redirect()->back()->with(['type' => 'error', 'message' => 'The category could not be destroyed.']);
         }
     }
 }

@@ -41,7 +41,7 @@ class CommentController extends Controller
                 'th_file' => $th->getFile(),
                 'th_line' => $th->getLine(),
             ]);
-            return redirect()->route('admin.comment.index')->with(['type' => 'error', 'message' =>'The article edit page could not be loaded.']);
+            return redirect()->back()->with(['type' => 'error', 'message' =>'The article edit page could not be loaded.']);
         }
     }
 
@@ -54,7 +54,7 @@ class CommentController extends Controller
         ]);
         try {
             $comment->update($request->only('title','content','language'));
-            return redirect()->route('admin.comment.edit',$comment->id)->with(['type' => 'success', 'message' =>'Comment Updated.']);
+            return redirect()->route('admin.comment.edit',$comment->id)->with(['type' => 'success', 'message' =>'The Comment Updated.']);
         } catch(Throwable $th) {
             Log::create([
                 'model' => 'Comment',
@@ -63,7 +63,7 @@ class CommentController extends Controller
                 'th_file' => $th->getFile(),
                 'th_line' => $th->getLine(),
             ]);
-            return redirect()->route('admin.comment.edit',$comment->id)->with(['type' => 'success', 'message' =>'The comment could not be updated.']);
+            return redirect()->back()->with(['type' => 'success', 'message' =>'The comment could not be updated.']);
         }
     }
 
@@ -71,7 +71,7 @@ class CommentController extends Controller
     {
         try {
             $comment->delete();
-            return redirect()->route('admin.comment.index')->with(['type' => 'success', 'message' =>'Comment Moved to Recycle Bin.']);
+            return redirect()->route('admin.comment.index')->with(['type' => 'success', 'message' =>'The Comment Moved to Recycle Bin.']);
         } catch (Throwable $th) {
             Log::create([
                 'model' => 'comment',
@@ -80,7 +80,7 @@ class CommentController extends Controller
                 'th_file' => $th->getFile(),
                 'th_line' => $th->getLine(),
             ]);
-            return redirect()->route('admin.comment.index')->with(['type' => 'error', 'message' =>'The comment could not be deleted.']);
+            return redirect()->back()->with(['type' => 'error', 'message' =>'The comment could not be deleted.']);
         }
     }
 
@@ -97,7 +97,7 @@ class CommentController extends Controller
                 'th_file' => $th->getFile(),
                 'th_line' => $th->getLine(),
             ]);
-            return redirect()->route('admin.comment.index')->with(['type' => 'error', 'message' =>'Comments trash page could not be loaded.']);
+            return redirect()->back()->with(['type' => 'error', 'message' =>'Comments trash page could not be loaded.']);
         }
     }
 
@@ -105,7 +105,7 @@ class CommentController extends Controller
     {
         try {
             Comment::withTrashed()->find($id)->restore();
-            return redirect()->route('admin.comment.trash')->with(['type' => 'success', 'message' =>'Comment Recovered']);
+            return redirect()->route('admin.comment.trash')->with(['type' => 'success', 'message' =>'The Comment Recovered']);
         } catch (Throwable $th) {
             Log::create([
                 'model' => 'comment',
@@ -114,7 +114,7 @@ class CommentController extends Controller
                 'th_file' => $th->getFile(),
                 'th_line' => $th->getLine(),
             ]);
-            return redirect()->route('admin.comment.trash')->with(['type' => 'error', 'message' =>'The comment could not be recovered.']);
+            return redirect()->back()->with(['type' => 'error', 'message' =>'The comment could not be recovered.']);
         }
     }
 
@@ -122,7 +122,7 @@ class CommentController extends Controller
     {
         try {
             Comment::withTrashed()->find($id)->forceDelete();
-            return redirect()->route('admin.comment.trash')->with(['type' => 'error', 'message' =>'Comment Has Been Deleted.']);
+            return redirect()->route('admin.comment.trash')->with(['type' => 'error', 'message' =>'The Comment Has Been Deleted.']);
         } catch (Throwable $th) {
             Log::create([
                 'model' => 'comment',
@@ -131,7 +131,7 @@ class CommentController extends Controller
                 'th_file' => $th->getFile(),
                 'th_line' => $th->getLine(),
             ]);
-            return redirect()->route('admin.comment.trash')->with(['type' => 'error', 'message' =>'The comment could not be destroyed.']);
+            return redirect()->back()->with(['type' => 'error', 'message' =>'The comment could not be destroyed.']);
         }
     }
 

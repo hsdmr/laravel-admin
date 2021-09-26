@@ -45,7 +45,7 @@ class ArticleController extends Controller
                 'th_file' => $th->getFile(),
                 'th_line' => $th->getLine(),
             ]);
-            return redirect()->route('admin.article.index')->with(['type' => 'error', 'message' =>'The article create page could not be loaded.']);
+            return redirect()->back()->with(['type' => 'error', 'message' =>'The article create page could not be loaded.']);
         }
     }
 
@@ -89,7 +89,7 @@ class ArticleController extends Controller
                 'th_file' => $th->getFile(),
                 'th_line' => $th->getLine(),
             ]);
-            return redirect()->route('admin.article.create')->with(['type' => 'error', 'message' =>'The article could not be saved.']);
+            return redirect()->back()->with(['type' => 'error', 'message' =>'The article could not be saved.']);
         }
     }
 
@@ -107,7 +107,7 @@ class ArticleController extends Controller
                 'th_file' => $th->getFile(),
                 'th_line' => $th->getLine(),
             ]);
-            return redirect()->route('admin.article.index')->with(['type' => 'error', 'message' =>'The article edit page could not be loaded.']);
+            return redirect()->back()->with(['type' => 'error', 'message' =>'The article edit page could not be loaded.']);
         }
     }
 
@@ -149,7 +149,7 @@ class ArticleController extends Controller
                 'th_file' => $th->getFile(),
                 'th_line' => $th->getLine(),
             ]);
-            return redirect()->route('admin.article.edit',$article->id)->with(['type' => 'error', 'message' =>'The article could not be updated.']);
+            return redirect()->back()->with(['type' => 'error', 'message' =>'The article could not be updated.']);
         }
     }
 
@@ -166,7 +166,7 @@ class ArticleController extends Controller
                 'th_file' => $th->getFile(),
                 'th_line' => $th->getLine(),
             ]);
-            return redirect()->route('admin.article.index')->with(['type' => 'error', 'message' =>'The article could not be deleted.']);
+            return redirect()->back()->with(['type' => 'error', 'message' =>'The article could not be deleted.']);
         }
     }
 
@@ -183,7 +183,7 @@ class ArticleController extends Controller
                 'th_file' => $th->getFile(),
                 'th_line' => $th->getLine(),
             ]);
-            return redirect()->route('admin.article.index')->with(['type' => 'error', 'message' =>'Articles trash page could not be loaded.']);
+            return redirect()->back()->with(['type' => 'error', 'message' =>'Articles trash page could not be loaded.']);
         }
     }
 
@@ -200,7 +200,7 @@ class ArticleController extends Controller
                 'th_file' => $th->getFile(),
                 'th_line' => $th->getLine(),
             ]);
-            return redirect()->route('admin.article.trash')->with(['type' => 'error', 'message' =>'The article could not be recovered.']);
+            return redirect()->back()->with(['type' => 'error', 'message' =>'The article could not be recovered.']);
         }
     }
 
@@ -219,7 +219,7 @@ class ArticleController extends Controller
                 'th_file' => $th->getFile(),
                 'th_line' => $th->getLine(),
             ]);
-            return redirect()->route('admin.article.trash')->with(['type' => 'error', 'message' =>'The article could not be destroyed.']);
+            return redirect()->back()->with(['type' => 'error', 'message' =>'The article could not be destroyed.']);
         }
     }
 
