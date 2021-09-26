@@ -4,54 +4,123 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Link;
+use App\Models\Log;
 use Illuminate\Http\Request;
+use Throwable;
 
 class LinkController extends Controller
 {
     public function index()
     {
-        $links = Link::all();
-        return view('admin.linker.index',compact('links'));
+        try {
+            $links = Link::all();
+            return view('admin.linker.index',compact('links'));
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'link',
+                'message' => 'Auto links page could not be loaded.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->back()->with(['type' => 'error', 'message' =>'Auto links page could not be loaded.']);
+        }
     }
 
     public function create()
     {
-        return view('admin.linker.create');
+        try {
+            return view('admin.linker.create');
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'link',
+                'message' => 'Auto link create page could not be loaded.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->back()->with(['type' => 'error', 'message' =>'Auto link create page could not be loaded.']);
+        }
     }
 
     public function store(Request $request)
     {
-        $link = new Link();
-        $link->url = $request->url;
-        $link->word = $request->word;
-        $link->save();
-        return redirect()->route('admin.option.link.index')->with(['type' => 'success', 'message' =>'Oto Linkleme Eklendi.']);
+        $request->validate([
+            'url' => 'required|min:3|max:255',
+            'word' => 'required|min:3|max:255',
+        ]);
+        try {
+            Link::create([
+                'url' => $request->url,
+                'word' => $request->word
+            ]);
+            return redirect()->route('admin.option.link.index')->with(['type' => 'success', 'message' =>'Auto link saved.']);
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'link',
+                'message' => 'Auto link could not be stored.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->back()->with(['type' => 'error', 'message' =>'Auto link could not be stored.']);
+        }
     }
 
-    public function show($id)
+    public function edit(Link $link)
     {
-        //
+        try {
+            return view('admin.linker.edit',compact('link'));
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'link',
+                'message' => 'Auto link edit page could not be loaded.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->back()->with(['type' => 'error', 'message' =>'Auto link edit page could not be loaded.']);
+        }
     }
 
-    public function edit($id)
+    public function update(Request $request, Link $link)
     {
-        $link = Link::find($id);
-        return view('admin.linker.edit',compact('link'));
+        $request->validate([
+            'url' => 'required|min:3|max:255',
+            'word' => 'required|min:3|max:255',
+        ]);
+        try {
+            $link->update([
+                'url' => $request->url,
+                'word' => $request->word
+            ]);
+            return redirect()->route('admin.option.link.index')->with(['type' => 'success', 'message' =>'Auto link updated.']);
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'link',
+                'message' => 'Auto link could not be updated.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->back()->with(['type' => 'error', 'message' =>'Auto link could not be updated.']);
+        }
     }
 
-    public function update(Request $request, $id)
+    public function destroy(Link $link)
     {
-        $link = Link::find($id);
-        $link->url = $request->url;
-        $link->word = $request->word;
-        $link->save();
-        return redirect()->route('admin.option.link.index')->with(['type' => 'success', 'message' =>'Oto Linkleme Düzenlendi.']);
-    }
-
-    public function destroy($id)
-    {
-        $link = Link::find($id);
-        $link->delete();
-        return redirect()->route('admin.option.link.index')->with(['type' => 'success', 'message' =>'Oto Linkleme Silindi.']);
+        try {
+            $link->delete();
+            return redirect()->route('admin.option.link.index')->with(['type' => 'success', 'message' =>'Auto link deleted.']);
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'link',
+                'message' => 'Failed to delete auto link.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->back()->with(['type' => 'error', 'message' =>'Failed to delete auto link.']);
+        }
     }
 }

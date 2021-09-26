@@ -38,11 +38,13 @@
                             <div class="card-body">
                                 <div class="form-group row">
                                     <label for="word" class="col-md-3">{{ __('main.Word') }}</label>
-                                    <input type="text" class="form-control form-control-sm col-md-9" id="word" name="word" value="{{$link->word}}">
+                                    <input type="text" class="form-control form-control-sm col-md-9 @error('word') is-invalid @enderror" id="word" name="word" value="{{old('word') ?? $link->word}}">
+                                    @error('word') <small class="ml-auto text-danger">{{ __('main.wordError') }}</small> @enderror
                                 </div>
                                 <div class="form-group row">
                                     <label for="url" class="col-md-3">{{ __('main.Url') }}</label>
-                                    <input type="text" class="form-control form-control-sm col-md-9" id="url" name="url" value="{{$link->url}}">
+                                    <input type="text" class="form-control form-control-sm col-md-9 @error('url') is-invalid @enderror" id="url" name="url" value="{{old('url') ?? $link->url}}">
+                                    @error('url') <small class="ml-auto text-danger">{{ __('main.urlError') }}</small> @enderror
                                 </div>
                             </div>
                         </div>
