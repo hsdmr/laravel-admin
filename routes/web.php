@@ -80,7 +80,8 @@ Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function ()
         Route::post('/socialUpdate', [App\Http\Controllers\Admin\OptionController::class, 'socialUpdate'])->name('socialUpdate');
 
         Route::get('/menu/position', [App\Http\Controllers\Admin\MenuController::class, 'position'])->name('menu.position');
-        Route::get('/menu/delete/{id}', [App\Http\Controllers\Admin\MenuController::class, 'delete'])->name('menu.delete');
+        Route::get('/menu/delete/{menu}', [App\Http\Controllers\Admin\MenuController::class, 'delete'])->name('menu.delete');
+        Route::post('/menu/menu-name', [App\Http\Controllers\Admin\MenuController::class, 'menuName'])->name('menu.menuName');
         Route::resource('/menu', 'App\Http\Controllers\Admin\MenuController');
 
         Route::get('/widget', [App\Http\Controllers\Admin\OptionController::class, 'widget'])->name('widget');
