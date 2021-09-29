@@ -30,27 +30,27 @@
         <div class="container-fluid">
             <form action="{{ route('admin.option.update') }}" method="post" id="form">
                 @csrf
-                <input type="hidden" class="form-control form-control-sm col-md-9" value="{{$option['logo']}}" id="logo" name="logo">
-                <input type="hidden" class="form-control form-control-sm col-md-9" value="{{$option['favicon']}}" id="fav" name="favicon">
+                <input type="hidden" class="form-control form-control-sm col-md-9" value="{{old('logo') ?? $option['logo'] ?? ''}}" id="logo" name="logo">
+                <input type="hidden" class="form-control form-control-sm col-md-9" value="{{old('favicon') ?? $option['favicon'] ?? ''}}" id="fav" name="favicon">
                 <div class="row">
                     <div class="col-md-9">
                         <div class="card">
                             <div class="card-body">
                                 <div class="form-group row">
                                     <label for="title" class="col-md-3">{{ __('main.Site name') }}</label>
-                                    <input type="text" class="form-control form-control-sm col-md-9" value="{{$option['title']}}" id="title" name="title">
+                                    <input type="text" class="form-control form-control-sm col-md-9" value="{{old('favicon') ?? $option['title'] ?? ''}}" id="title" name="title">
                                 </div>
                                 <div class="form-group row">
                                     <label for="headcss" class="col-md-3">{{ __('main.Header CSS') }}</label>
-                                    <textarea type="text" class="form-control form-control-sm col-md-9" id="headcss" name="headcss" rows="10">{{$option['headcss']}}</textarea>
+                                    <textarea type="text" class="form-control form-control-sm col-md-9" id="headcss" name="headcss" rows="10">{{old('headcss') ?? $option['headcss'] ?? ''}}</textarea>
                                 </div>
                                 <div class="form-group row">
                                     <label for="headjs" class="col-md-3">{{ __('main.Header JS') }}</label>
-                                    <textarea type="text" class="form-control form-control-sm col-md-9" id="headjs" name="headjs" rows="10">{{$option['headjs']}}</textarea>
+                                    <textarea type="text" class="form-control form-control-sm col-md-9" id="headjs" name="headjs" rows="10">{{old('headjs') ?? $option['headjs'] ?? ''}}</textarea>
                                 </div>
                                 <div class="form-group row">
                                     <label for="footerjs" class="col-md-3">{{ __('main.Footer JS') }}</label>
-                                    <textarea type="text" class="form-control form-control-sm col-md-9" id="footerjs" name="footerjs" rows="10">{{$option['footerjs']}}</textarea>
+                                    <textarea type="text" class="form-control form-control-sm col-md-9" id="footerjs" name="footerjs" rows="10">{{old('footerjs') ?? $option['footerjs'] ?? ''}}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                                 <label for="media_img">{{ __('main.Logo') }}</label>
                             </div>
                             <div class="card-body text-center">
-                                <img src="{{ ($option['logo']==1) ? '' : App\Models\File::find($option['logo'])->getFirstMediaUrl()}}" alt="" id="logo_img" style="max-width: 100%">
+                                <img src="{{ old('logo') ?? $option['logo'] ?? ''}}" alt="" id="logo_img" style="max-width: 100%">
                             </div>
                             <div class="card-footer">
                                 <a href="javascript:void(0);" class="btn btn-xs btn-primary float-left" id="logochoose">{{ __('main.Choose Image') }}</a>
@@ -73,7 +73,7 @@
                                 <label for="media_img">{{ __('main.Favicon') }}</label>
                             </div>
                             <div class="card-body text-center">
-                                <img src="{{ ($option['favicon']==1) ? '' : App\Models\File::find($option['favicon'])->getFirstMediaUrl()}}" alt="" id="fav_img" style="max-width: 100%">
+                                <img src="{{ old('favicon') ?? $option['favicon'] ?? ''}}" alt="" id="fav_img" style="max-width: 100%">
                             </div>
                             <div class="card-footer">
                                 <a href="javascript:void(0);" class="btn btn-xs btn-primary float-left" id="favchoose">{{ __('main.Choose Image') }}</a>
@@ -83,11 +83,11 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="custom-control custom-checkbox">
-                                    <input class="custom-control-input" type="checkbox" @if ($option['no_index']==1) checked @endif id="no_index" name="no_index">
+                                    <input class="custom-control-input" type="checkbox" @if (old('no_index') ?? $option['no_index'] ?? ''==1) checked @endif id="no_index" name="no_index">
                                     <label for="no_index" class="custom-control-label">{{ __('main.Site No Index') }}</label>
                                 </div>
                                 <div class="custom-control custom-checkbox">
-                                    <input class="custom-control-input" type="checkbox" @if ($option['no_follow']==1) checked @endif id="no_follow" name="no_follow">
+                                    <input class="custom-control-input" type="checkbox" @if (old('no_follow') ?? $option['no_follow'] ?? ''==1) checked @endif id="no_follow" name="no_follow">
                                     <label for="no_follow" class="custom-control-label">{{ __('main.Site No Follow') }}</label>
                                 </div>
                             </div>

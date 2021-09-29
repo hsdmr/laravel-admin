@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Page;
 use App\Models\Slug;
-use App\Models\File;
 use App\Models\Option;
 
 class PageController extends Controller

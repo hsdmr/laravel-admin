@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('admin.layouts.master',function($view){
             $view->with([
                 'auth'=>Auth::user(),
-                'languages' => Option::where('name','=','language')->get(),
+                'languages' => Option::where('key','=','language')->get(),
                 ]);
         });
         view()->composer('admin.layouts.media',function($view){
@@ -38,19 +38,19 @@ class AppServiceProvider extends ServiceProvider
         });
         view()->composer('layouts.master',function($view){
             $option = [
-                'no_index' => Option::where('name','=','no_index')->first()->value,
-                'no_follow' => Option::where('name','=','no_follow')->first()->value,
-                'logo' => Option::where('name','=','logo')->first()->value,
-                'favicon' => Option::where('name','=','favicon')->first()->value,
-                'headcss' => Option::where('name','=','headcss')->first()->value,
-                'headjs' => Option::where('name','=','headjs')->first()->value,
-                'footerjs' => Option::where('name','=','footerjs')->first()->value,
+                'no_index' => Option::where('key','=','no_index')->first()->value,
+                'no_follow' => Option::where('key','=','no_follow')->first()->value,
+                'logo' => Option::where('key','=','logo')->first()->value,
+                'favicon' => Option::where('key','=','favicon')->first()->value,
+                'headcss' => Option::where('key','=','headcss')->first()->value,
+                'headjs' => Option::where('key','=','headjs')->first()->value,
+                'footerjs' => Option::where('key','=','footerjs')->first()->value,
 
             ];
             $view->with([
                 'widget' => Widget::all(),
                 'option' => $option,
-                'languages' => Option::where('name','=','language')->get(),
+                'languages' => Option::where('key','=','language')->get(),
                 ]);
         });
     }
