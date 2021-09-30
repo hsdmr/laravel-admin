@@ -3,140 +3,236 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Log;
 use Illuminate\Http\Request;
 use App\Models\Page;
 use App\Models\Slug;
 use App\Models\Option;
+use Throwable;
 
 class PageController extends Controller
 {
     public function index()
     {
-        $pages = Page::all();
-        return view('admin.page.index',compact('pages'));
+        try {
+            $pages = Page::all();
+            return view('admin.page.index',compact('pages'));
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'page',
+                'message' => 'Pages page could not be loaded.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->back()->with(['type' => 'error', 'message' =>'Pages page could not be loaded.']);
+        }
     }
 
     public function create()
     {
-        $languages = Option::where('name','=','language')->get();
-        return view('admin.page.create',compact('languages'));
+        try {
+            $languages = Option::where('name','=','language')->get();
+            return view('admin.page.create',compact('languages'));
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'page',
+                'message' => 'The page create page could not be loaded.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->back()->with(['type' => 'error', 'message' =>'The page create page could not be loaded.']);
+        }
     }
 
     public function store(Request $request)
     {
-        $slug = new Slug;
-        if($request->slug==null){
-            $slug_last = $slug->latest()->first()->id+1;
-            $request->slug = "page-".$slug_last;
-        }else{
-            $slug_check = Slug::withTrashed()->where('slug', '=', $request->slug)->first();
-            if($slug_check!=null) $request->slug = $request->slug."-".uniqid();
+        $request->validate([
+            'title' => 'required|min:3|max:255',
+            'slug' => 'required|min:3|max:255',
+            'language' => 'required',
+            'no_index' => 'nullable|in:on',
+            'no_follow' => 'nullable|in:on',
+            'media_id' => 'nullable|numeric|min:1',
+        ]);
+        try {
+            $slug = Slug::create([
+                'slug' => slugCheck($request->slug),
+                'owner' => 'page',
+                'seo_title' => $request->seo_title,
+                'seo_description' => $request->seo_description,
+                'no_index' => $request->no_index=='on' ? 1 : 0,
+                'no_follow' => $request->no_follow=='on' ? 1 : 0,
+            ]);
+
+            $page = Page::create([
+                'slug_id' => $slug->id,
+                'media_id' => $request->media_id ?? 1,
+                'title' => $request->title,
+                'content' => $request->content,
+                'template' => $request->template,
+                'sidebar' => $request->sidebar,
+                'language' => $request->language,
+            ]);
+
+            return redirect()->route('admin.page.edit',$page->id)->with(['type' => 'success', 'message' =>'Page Created.']);
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'page',
+                'message' => 'The page could not be saved.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->back()->with(['type' => 'error', 'message' =>'The page could not be saved.']);
         }
-        $slug->owner = 'page';
-        $slug->slug = $request->slug;
-        $slug->seo_title = $request->seo_title;
-        $slug->seo_description = $request->seo_description;
-        $slug->no_index = ($request->no_index==null ? 0 : 1);
-        $slug->no_follow = ($request->no_follow==null ? 0 : 1);
-        $slug->save();
-
-        $page = new page();
-        $page->slug_id = $slug->id;
-        $page->media_id = ($request->media_id==null ? 1 : $request->media_id);
-        $page->title = ($request->title==null ? $request->slug : $request->title);
-        $page->content = $request->content;
-        $page->template = $request->template;
-        $page->sidebar = $request->sidebar;
-        $page->language = $request->language;
-        $page->save();
-
-        return redirect()->route('admin.page.edit',$page->id)->with(['type' => 'success', 'message' =>'Page Created.']);
     }
 
-    public function show($id)
+    public function edit(Page $page)
     {
-        //
+        try {
+            $languages = Option::where('name','=','language')->get();
+            return view('admin.page.edit',compact('page','languages'));
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'page',
+                'message' => 'The page edit page could not be loaded.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->back()->with(['type' => 'error', 'message' =>'The page edit page could not be loaded.']);
+        }
     }
 
-    public function edit($id)
+    public function update(Request $request, Page $page)
     {
-        $page = Page::findOrFail($id);
-        $languages = Option::where('name','=','language')->get();
-        return view('admin.page.edit',compact('page','languages'));
+        $request->validate([
+            'title' => 'required|min:3|max:255',
+            'slug' => 'required|min:3|max:255',
+            'language' => 'required',
+            'no_index' => 'nullable|in:on',
+            'no_follow' => 'nullable|in:on',
+            'media_id' => 'nullable|numeric|min:1',
+        ]);
+        try {
+            $page->getSlug()->update([
+                'slug' => slugCheck($request->slug, $page->slug_id),
+                'owner' => 'page',
+                'seo_title' => $request->seo_title,
+                'seo_description' => $request->seo_description,
+                'no_index' => $request->no_index=='on' ? 1 : 0,
+                'no_follow' => $request->no_follow=='on' ? 1 : 0,
+            ]);
+
+            $page->update([
+                'media_id' => $request->media_id ?? 1,
+                'title' => $request->title,
+                'content' => $request->content,
+                'template' => $request->template,
+                'sidebar' => $request->sidebar,
+                'language' => $request->language,
+            ]);
+
+            return redirect()->route('admin.page.edit',$page->id)->with(['type' => 'success', 'message' =>'Page Updated.']);
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'page',
+                'message' => 'The page could not be updated.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->back()->with(['type' => 'error', 'message' =>'The page could not be updated.']);
+        }
     }
 
-    public function update(Request $request, $id)
+    public function delete(Page $page)
     {
-        if(isset($request->form)){
-            $page = Page::find($id);
-            $slug = Slug::find($page->slug_id);
-
-            if($request->slug==null){
-                $slug_last = $slug->latest()->first()->id+1;
-                $request->slug = "page-".$slug_last;
-            }else{
-                $slug_check = Slug::withTrashed()->where('slug', '=', $request->slug)->first();
-                if($slug_check!=null){
-                    if($slug_check->id!=$page->slug_id) $request->slug = $request->slug."-".uniqid();
-                }
-            }
-            $slug->owner = 'page';
-            $slug->slug = $request->slug;
-            $slug->seo_title = $request->seo_title;
-            $slug->seo_description = $request->seo_description;
-            $slug->no_index = ($request->no_index==null ? 0 : 1);
-            $slug->no_follow = ($request->no_follow==null ? 0 : 1);
-            $slug->save();
-
-            $page->slug_id = $slug->id;
-            $page->media_id = ($request->media_id==null ? 1 : $request->media_id);
-            $page->title = ($request->title==null ? $request->slug : $request->title);
-            $page->content = $request->content;
-            $page->template = $request->template;
-            $page->sidebar = $request->sidebar;
-            $page->language = $request->language;
-            $page->save();
-
-            return redirect()->route('admin.page.edit',$id)->with(['type' => 'success', 'message' =>'Page Updated.']);
-        };
-    }
-
-    public function delete($id)
-    {
-        $page = Page::find($id);
-        Slug::find($page->slug_id)->delete();
-        $page->delete();
-        return redirect()->route('admin.page.index')->with(['type' => 'success', 'message' =>'Page Moved To Recycle Bin.']);
+        try {
+            $page->delete();
+            return redirect()->route('admin.page.index')->with(['type' => 'success', 'message' =>'Page Moved To Recycle Bin.']);
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'page',
+                'message' => 'The page could not be deleted.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->back()->with(['type' => 'error', 'message' =>'The page could not be deleted.']);
+        }
     }
 
     public function trash()
     {
-        $pages = Page::onlyTrashed()->get();
-        return view('admin.page.trash',compact('pages'));
+        try {
+            $pages = Page::onlyTrashed()->get();
+            return view('admin.page.trash',compact('pages'));
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'page',
+                'message' => 'Pages trash page could not be loaded.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->back()->with(['type' => 'error', 'message' =>'Pages trash page could not be loaded.']);
+        }
     }
 
     public function recover($id)
     {
-        $page = Page::withTrashed()->find($id);
-        Slug::withTrashed()->find($page->slug_id)->restore();
-        $page->restore();
-        return redirect()->route('admin.page.trash')->with(['type' => 'success', 'message' =>'Page Recovered.']);
+        try {
+            Page::withTrashed()->find($id)->restore();
+            return redirect()->route('admin.page.trash')->with(['type' => 'success', 'message' =>'Page Recovered.']);
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'page',
+                'message' => 'The page could not be recovered.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->back()->with(['type' => 'error', 'message' =>'The page could not be recovered.']);
+        }
     }
 
     public function destroy($id)
     {
-        $page = Page::withTrashed()->find($id);
-        $slug = Slug::withTrashed()->find($page->slug_id);
-        $page->forceDelete();
-        $slug->forceDelete();
-        return redirect()->route('admin.page.trash')->with(['type' => 'error', 'message' =>'The Page Has Beed Deleted.']);
+        try {
+            $page = Page::withTrashed()->find($id);
+            $page->getSlug()->delete();
+            $page->forceDelete();
+            return redirect()->route('admin.page.trash')->with(['type' => 'error', 'message' =>'The Page Has Beed Deleted.']);
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'page',
+                'message' => 'The page could not be destroyed.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+            return redirect()->back()->with(['type' => 'error', 'message' =>'The page could not be destroyed.']);
+        }
     }
 
     public function switch(Request $request)
     {
-        $page = Page::find($request->id);
-        $page->status = $request->status=="true" ? 1 : 0;
-        $page->save();
+        try {
+            Page::find($request->id)->update([
+                'status' => $request->status=="true" ? 1 : 0
+            ]);
+        } catch (Throwable $th) {
+            Log::create([
+                'model' => 'page',
+                'message' => 'The page could not be switched.',
+                'th_message' => $th->getMessage(),
+                'th_file' => $th->getFile(),
+                'th_line' => $th->getLine(),
+            ]);
+        }
         return $request->status;
     }
 }
