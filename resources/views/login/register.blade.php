@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-    <link rel="icon" sizes="48x48" href="{{App\Models\File::find(App\Models\Option::where('name','=','favicon')->first()->value)->getMedia()->first()->getUrl('thumb')}}" type="image/x-icon" />
+    <link rel="icon" sizes="48x48" href="{{App\Models\File::find(App\Models\Option::where('key','=','favicon')->first()->value)->getMedia()->first()->getUrl('thumb')}}" type="image/x-icon" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<title>{{ __('main.Register') }}</title>
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />

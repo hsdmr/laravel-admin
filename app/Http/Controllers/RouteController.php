@@ -8,7 +8,6 @@ use App\Models\Link;
 use App\Models\Option;
 use App\Models\Page;
 use App\Models\Slug;
-use Illuminate\Http\Request;
 
 class RouteController extends Controller
 {
@@ -23,7 +22,7 @@ class RouteController extends Controller
                 else{
                     $template = $page->template;
                     if($template=='contact'){
-                        $contact = Option::where('name','=','contact')->where('language','=','tr')->first();
+                        $contact = Option::where('key','=','contact')->where('language','=','tr')->first();
                         return  view('contact',compact('contact','page'));
                     }
                     else if($template=='blog'){

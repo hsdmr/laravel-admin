@@ -12,13 +12,13 @@ class SlideController extends Controller
     public function index()
     {
         $slides = Slide::all();
-        $languages = Option::where('name','=','language')->get();
+        $languages = Option::where('key','=','language')->get();
         return view('admin.slides.index',compact('slides','languages'));
     }
 
     public function create()
     {
-        $languages = Option::where('name','=','language')->get();
+        $languages = Option::where('key','=','language')->get();
         return view('admin.slides.create',compact('languages'));
     }
     public function store(Request $request)
@@ -46,7 +46,7 @@ class SlideController extends Controller
     public function edit($id)
     {
         $slide = Slide::find($id);
-        $languages = Option::where('name','=','language')->get();
+        $languages = Option::where('key','=','language')->get();
         return view('admin.slides.edit',compact('slide','languages'));
     }
 

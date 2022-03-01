@@ -35,7 +35,7 @@ class ArticleController extends Controller
     {
         try {
             $categories = Category::all();
-            $languages = Option::where('name','=','language')->get();
+            $languages = Option::where('key','=','language')->get();
             return view('admin.article.create',compact('categories','languages'));
         } catch (Throwable $th) {
             Log::create([
@@ -97,7 +97,7 @@ class ArticleController extends Controller
     {
         try {
             $categories = Category::all();
-            $languages = Option::where('name','=','language')->get();
+            $languages = Option::where('key','=','language')->get();
             return view('admin.article.edit',compact('categories','article','languages'));
         } catch (Throwable $th) {
             Log::create([

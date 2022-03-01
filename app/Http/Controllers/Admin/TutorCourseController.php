@@ -19,7 +19,7 @@ class TutorCourseController extends Controller
 
     public function create()
     {
-        $languages = Option::where('name','=','language')->get();
+        $languages = Option::where('key','=','language')->get();
         $categories = Category::where('type','=','tutor-category')->get();
         return view("admin.tutor.course.create",compact('languages','categories'));
     }
@@ -77,7 +77,7 @@ class TutorCourseController extends Controller
         $course = Course::find($id);
         $course->time = unserialize($course->time);
         $course->price = unserialize($course->price);
-        $languages = Option::where('name','=','language')->get();
+        $languages = Option::where('key','=','language')->get();
         $categories = Category::where('type','=','tutor-category')->get();
         return view("admin.tutor.course.edit",compact('languages','categories','course'));
     }

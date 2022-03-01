@@ -33,7 +33,7 @@ class CategoryController extends Controller
     {
         try {
             $categories = Category::all();
-            $languages = Option::where('name', '=', 'language')->get();
+            $languages = Option::where('key', '=', 'language')->get();
             return view("admin.category.create", compact('categories', 'languages'));
         } catch (Throwable $th) {
             Log::create([
@@ -97,7 +97,7 @@ class CategoryController extends Controller
         try {
             $category = Category::findOrFail($id);
             $categories = Category::all();
-            $languages = Option::where('name', '=', 'language')->get();
+            $languages = Option::where('key', '=', 'language')->get();
             return view('admin.category.edit', compact('category', 'categories', 'languages'));
         } catch (Throwable $th) {
             Log::create([

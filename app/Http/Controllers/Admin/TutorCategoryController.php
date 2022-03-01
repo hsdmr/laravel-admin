@@ -18,7 +18,7 @@ class TutorCategoryController extends Controller
 
     public function create()
     {
-        $languages = Option::where('name','=','language')->get();
+        $languages = Option::where('key','=','language')->get();
         $categories = Category::where('type','=','tutor-category')->get();
         return view("admin.tutor.category.create",compact('categories','languages'));
     }
@@ -62,7 +62,7 @@ class TutorCategoryController extends Controller
     {
         $category = Category::findOrFail($id);
         $categories = Category::all();
-        $languages = Option::where('name','=','language')->get();
+        $languages = Option::where('key','=','language')->get();
         return view('admin.tutor.category.edit',compact('category','categories','languages'));
     }
 

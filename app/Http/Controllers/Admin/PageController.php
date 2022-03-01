@@ -32,7 +32,7 @@ class PageController extends Controller
     public function create()
     {
         try {
-            $languages = Option::where('name','=','language')->get();
+            $languages = Option::where('key','=','language')->get();
             return view('admin.page.create',compact('languages'));
         } catch (Throwable $th) {
             Log::create([
@@ -92,7 +92,7 @@ class PageController extends Controller
     public function edit(Page $page)
     {
         try {
-            $languages = Option::where('name','=','language')->get();
+            $languages = Option::where('key','=','language')->get();
             return view('admin.page.edit',compact('page','languages'));
         } catch (Throwable $th) {
             Log::create([

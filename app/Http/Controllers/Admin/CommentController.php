@@ -31,7 +31,7 @@ class CommentController extends Controller
     public function edit(Comment $comment)
     {
         try {
-            $languages = Option::where('name','=','language')->get();
+            $languages = Option::where('key','=','language')->get();
             return view('admin.comment.edit',compact('comment','languages'));
         } catch (Throwable $th) {
             Log::create([
