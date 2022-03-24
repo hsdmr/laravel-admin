@@ -85,7 +85,7 @@
                                     <label for="media_img">{{ __('main.Featured Image') }}</label>
                                 </div>
                                 <div class="card-body">
-                                    <img src="{{ $category->getMedia->id == 1 ? '' : $category->getMedia->getUrl() }}"
+                                    <img src="{{ $category->getMedia->id == 1 ? '' : $category->getMedia->getUrl() ?? '' }}"
                                         alt="" id="media_img" class="w-100">
                                 </div>
                                 <div class="card-footer">

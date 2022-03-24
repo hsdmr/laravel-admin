@@ -78,7 +78,7 @@
                                 <label for="media_img">{{ __('main.Featured Image') }}</label>
                             </div>
                             <div class="card-body">
-                                <img src="{{ ($lesson->getMedia->id==1) ? '' : $course->getMedia->getUrl()}}" alt="" id="media_img" class="w-100">
+                                <img src="{{ ($lesson->getMedia->id==1) ? '' : $course->getMedia->getUrl() ?? ''}}" alt="" id="media_img" class="w-100">
                             </div>
                             <div class="card-footer">
                                 <a href="javascript:void(0);" class="btn btn-xs btn-primary float-left" id="choose">{{ __('main.Choose Image') }}</a>

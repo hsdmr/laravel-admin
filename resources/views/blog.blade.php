@@ -4,7 +4,7 @@
 @section('seo_description'){!! $page->getSlug->seo_description == null ? '' : $page->getSlug->seo_title !!}@endsection
 @section('no_index'){{ $page->getSlug->no_index ? 'noindex' : 'index' }}@endsection
 @section('no_follow'){{ $page->getSlug->no_follow ? 'nofollow' : 'follow' }}@endsection
-@section('image'){{ $page->getMedia->getUrl() }}@endsection
+@section('image'){{ $page->getMedia->getUrl() ?? '' }}@endsection
 @section('class')blog @endsection
 @section('header')
 

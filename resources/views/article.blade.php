@@ -4,7 +4,7 @@
 @section('seo_description'){!! $article->getSlug->seo_description == null ? substr($article->content, 0, 150) . '...' : $article->getSlug->seo_title !!}@endsection
 @section('no_index'){{ $article->getSlug->no_index ? 'noindex' : 'index' }}@endsection
 @section('no_follow'){{ $article->getSlug->no_follow ? 'nofollow' : 'follow' }}@endsection
-@section('image'){{ $article->getMedia->getUrl() }}@endsection
+@section('image'){{ $article->getMedia->getUrl() ?? '' }}@endsection
 @section('class') article-{{ $article->id }}@endsection
 @section('header')
 
@@ -30,7 +30,7 @@
                 <div class="col-md-9">
                     <div class="article">
                         @if ($article->media_id != 1)
-                            <img src="{{ $article->getMedia->getUrl() }}" alt="" class="blog-big-image w-100 pb-4"
+                            <img src="{{ $article->getMedia->getUrl() ?? '' }}" alt="" class="blog-big-image w-100 pb-4"
                                 style="object-fit: cover; height:20rem">
                         @endif
                         <div>{!! $article->content !!}</div>

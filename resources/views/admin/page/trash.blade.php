@@ -45,7 +45,7 @@
                                 @foreach ($pages as $page)
                                     <tr>
                                         <td>
-                                            <img src="{{ asset($page->getMedia->getUrl()) }} " alt="" style="width: 50px">
+                                            <img src="{{ asset($page->getMedia->getUrl() ?? '') }} " alt="" style="width: 50px">
                                         </td>
                                         <td>{{ $page->title }}</td>
                                         <td>{{ $page->deleted_at->diffForHumans() }}</td>
