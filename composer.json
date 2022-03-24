@@ -15,7 +15,8 @@
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.0",
         "spatie/laravel-medialibrary": "^8.10",
-        "spatie/laravel-sitemap": "^5.9"
+        "spatie/laravel-sitemap": "^5.9",
+        "ext-gd": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",
