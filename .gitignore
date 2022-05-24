@@ -10,8 +10,5 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-404.html
-index.html
-public/.user.ini
-public/.well-known/
-.htaccess
+/.idea
+/.vscode

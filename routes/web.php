@@ -94,3 +94,4 @@ Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function ()
 
 Route::get('/{url}/{url2?}/{url3?}/', [App\Http\Controllers\RouteController::class, 'route'])->middleware('slashes')->middleware('redirect')->name('route');
 
+
